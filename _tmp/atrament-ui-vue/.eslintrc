@@ -1,0 +1,17 @@
+{
+  "extends": [
+    "airbnb-base",
+    "plugin:vue/essential"
+  ],
+  "rules": {
+    "vue/jsx-uses-vars": 2,
+    "comma-dangle": ["error", "never"],
+    "indent": ["error", 4],
+    "no-use-before-define": ["error", { "functions": false, "classes": false }],
+    "arrow-parens": ["error", "always"],
+    "object-curly-spacing": ["error", "never"],
+    "function-paren-newline": ["off"],
+    "max-len": ["error", 120],
+    "no-param-reassign": ["error", { "props": false }]
+  }
+}
