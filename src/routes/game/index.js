@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import style from './style';
 
-export default class Profile extends Component {
+export default class Game extends Component {
   state = {
     time: Date.now(),
     count: 10

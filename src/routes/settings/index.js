@@ -1,5 +1,5 @@
 import { h, Component } from 'preact';
-
+import { Link } from 'preact-router/match';
 export default class Settings extends Component {
   state = {
     sound: true,
@@ -17,7 +17,7 @@ export default class Settings extends Component {
   render({}, { sound, volume }) {
     return (
       <div>
-        <h1>Settings</h1>
+        <h1 class="header">Settings</h1>
         <form>
           <hr />
           <label>
@@ -27,9 +27,10 @@ export default class Settings extends Component {
           <hr />
           <label>
             Volume:
-            <input type="text" value={volume} onChange={this.updateVolume} /> | {volume}
+            <input type="range" min="0" max="100" value={volume} onChange={this.updateVolume} /> | {volume}
           </label>
         </form>
+        <Link href="/">Back to menu</Link>
       </div>
     );
   }
