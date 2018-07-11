@@ -1,15 +1,15 @@
 import React from 'react';
-import {GenericScrollBox} from './GenericScrollBox';
+import {PreactScrollBox} from './PreactScrollBox';
 
 export class ScrollBox extends React.Component {
 
   render() {
     return (
-      <GenericScrollBox {...this.props}>
+      <PreactScrollBox {...this.props}>
         <div className="scroll-box__viewport">
           {this.props.children}
         </div>
-      </GenericScrollBox>
+      </PreactScrollBox>
     );
   }
 }
