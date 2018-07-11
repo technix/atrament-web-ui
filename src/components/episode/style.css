@@ -1,0 +1,16 @@
+.paragraph {
+  padding: 10px;
+  border-top: 1px dashed #333333;
+}
+
+.choice {
+  border: 0px;
+  display: block;
+  width: 97%;
+  background-color: rgba(127,127,127,0.3);
+  text-align: center;
+  padding: 6px;
+  margin-bottom: 5px;
+  color: #333399;
+  text-decoration: none;
+}
