@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import { Router } from 'preact-router';
+import createHashHistory from 'history/createHashHistory';
 import {} from 'normalize.css';
-
 
 import Home from '../routes/home';
 import Game from '../routes/game';
@@ -16,7 +16,7 @@ export default class App extends Component {
   render() {
     return (
       <div id="app">
-        <Router onChange={this.handleRoute}>
+        <Router onChange={this.handleRoute} history={createHashHistory()}>
           <Home path="/" />
           <Game path="/game" />
           <Settings path="/settings" />

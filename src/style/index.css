@@ -8,6 +8,14 @@ body {
 	font-family: 'Arial', sans-serif;
 }
 
+:focus {
+	outline:none;
+}
+
+::-moz-focus-inner {
+	border:0;
+}
+
 .plaintext {
 	color: #757575;
 }
@@ -40,4 +48,9 @@ a {
 		border: none;
 		margin: 0 0;
 	}
+}
+
+img {
+	width: 90%;
+	margin: auto;
 }

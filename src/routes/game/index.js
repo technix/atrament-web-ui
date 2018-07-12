@@ -1,17 +1,14 @@
 import { h, Component } from 'preact';
 import style from './style';
-import Atrament from 'atrament';
 
-import game from '../../assets/game/capsule.ink.json';
+import engine from '../../components/engine';
 
+// --
 import Episode from '../../components/episode';
-
-let atrament;
 
 export default class Game extends Component {
   makeChoice = (id) => {
-    console.log('CHOICE:', id);
-    atrament.makeChoice(id).then(this.renderScene);
+    engine.makeChoice(id).then(this.renderScene);
   }
 
   constructor() {
@@ -23,29 +20,12 @@ export default class Game extends Component {
   }
 
   componentWillMount() {
-    atrament = new Atrament({
-      episodes: [
-        'capsule.ink.json'
-      ]
-    });
-    atrament.on('loadStory', () => new Promise((resolve) => resolve(JSON.stringify(game))));
-    atrament.registerCommand(
-      'CLEAR',
-      (params, episode) => {
-        episode.reset(); return false;
-      },
-      ['episode']
-    );
-    atrament.startGame().then(this.renderScene);
+    engine.startGame().then(this.renderScene);
   }
 
   renderScene = () => {
-    atrament.renderScene();
-    const ep = atrament.getCurrentEpisode();
-    this.setState({
-      scene: atrament.getCurrentScene(),
-      episode: ep.slice(0, ep.length-1)
-    });
+    engine.renderScene();
+    this.setState(engine.gameState);
   }
 
   render({}, { scene, episode }) {

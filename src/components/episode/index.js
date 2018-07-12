@@ -4,7 +4,7 @@ import style from './style';
 // paragraph component
 const Paragraph = ({ text }) => (
   <div class={style.paragraph}>
-    { text.map((line) => <p>{line}</p>) }
+    { text.map((line) => <p dangerouslySetInnerHTML={{__html: line}} />) }
   </div>
 );
 

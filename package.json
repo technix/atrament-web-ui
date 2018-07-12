@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "atrament": "git+https://github.com/technix/atrament.git",
+    "history": "^4.7.2",
     "howler": "^2.0.13",
     "normalize.css": "^8.0.0",
     "preact": "^8.2.6",
