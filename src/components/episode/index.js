@@ -1,18 +1,40 @@
-import { h } from 'preact';
+import { h, Component } from 'preact';
 import style from './style';
 
-// child components
-import Choice from './choice';
-import Paragraph from './paragraph';
+// paragraph component
+const Paragraph = ({ text }) => (
+  <div class={style.paragraph}>
+    { text.map((line) => <p>{line}</p>) }
+  </div>
+);
 
-//
+// choice component
+class Choice extends Component {
+  makeChoice = (e) => {
+    e.preventDefault();
+    this.props.makeChoice(this.props.option.id);
+  };
+
+  render({ option, cssClass }) {
+    return (
+      <a href="#" onClick={this.makeChoice} class={style.choice}>{option.choice}</a>
+    );
+  }
+}
+
+// episode component
 const Episode = ({ episode, scene, makeChoice }) => (
-  <div class={style.sceneContainer}>
-    <div class={style.paragraphWrapper}>
-      {episode.map((s) => <Paragraph text={s.text} cssClass={style.paragraph} />)}
-    </div>
-    <div class={style.choiceWrapper}>
-      {scene.choices.map((c) => <Choice choice={c} makeChoice={makeChoice} cssClass={style.choice} />)}
+  <div class={style.episodeScroller}>
+    <div class={style.episode}>
+      <div class={style.paragraphWrapper}>
+        {episode.map((s) => <Paragraph text={s.text} />)}
+      </div>
+      <div id="currentScene" class={style.currentScene}>
+        <Paragraph text={scene.text} />
+      </div>
+      <div class={style.choiceWrapper}>
+        {scene.choices.map((o) => <Choice option={o} makeChoice={makeChoice} />)}
+      </div>
     </div>
   </div>
 );
