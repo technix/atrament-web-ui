@@ -27,6 +27,7 @@
     "preact-render-spy": "^1.2.1"
   },
   "dependencies": {
+    "atrament": "git+https://github.com/technix/atrament.git",
     "howler": "^2.0.13",
     "normalize.css": "^8.0.0",
     "preact": "^8.2.6",
