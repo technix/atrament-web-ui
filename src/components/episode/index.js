@@ -16,6 +16,14 @@ class Choice extends Component {
   };
 
   render({ option, cssClass }) {
+
+    /*
+      // Scroll into view - temporatily disabled
+      const d = document.getElementById('currentScene');
+      if (d) {
+        d.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    */
     return (
       <a href="#" onClick={this.makeChoice} class={style.choice}>{option.choice}</a>
     );
