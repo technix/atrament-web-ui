@@ -3,7 +3,7 @@ import cfg from './config.json';
 
 const atrament = new Atrament(cfg);
 
-atrament.on('loadStory', () => fetch(cfg.episodes[0]).then((r) => r.text()));
+atrament.on('loadStory', () => fetch(cfg.episodes[0]).then((r) => r.json()));
 atrament.registerCommand('IMG', (url) => `<img src="assets/game/${url}">`);
 atrament.registerCommand(
   'CLEAR',
