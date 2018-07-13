@@ -1,15 +1,14 @@
 import { h } from 'preact';
+import style from './style';
 import { Link } from 'preact-router/match';
 
 const Home = () => (
   <div>
-    <h1 class="header">Home</h1>
+    <h1 class={style.header}>Home</h1>
     <p>This is main app screen.</p>
-    <ul>
-      <li><Link href="/game">Continue</Link></li>
-      <li><Link href="/game">Start new game</Link></li>
-      <li><Link href="/settings">Settings</Link></li>
-    </ul>
+    <Link href="/game" class={style.button}>Continue</Link>
+    <Link href="/game" class={style.button}>Start new game</Link>
+    <Link href="/settings" class={style.button}>Settings</Link>
   </div>
 );
 

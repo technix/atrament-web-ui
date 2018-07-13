@@ -1,0 +1,7 @@
+{
+  "uuid": "ua.in.technix.capsule",
+  "name": "Капсула",
+  "episodes": [
+    "assets/game/capsule.ink.json"
+  ]
+}

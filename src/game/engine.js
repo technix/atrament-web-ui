@@ -1,10 +1,5 @@
 import Atrament from 'atrament';
-
-const cfg = {
-  episodes: [
-    'assets/game/capsule.ink.json'
-  ]
-};
+import cfg from './config.json';
 
 const atrament = new Atrament(cfg);
 

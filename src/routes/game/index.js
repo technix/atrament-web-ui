@@ -1,10 +1,9 @@
 import { h, Component } from 'preact';
-import style from './style';
 
-import engine from '../../components/engine';
+import engine from '../../game/engine';
 
 // --
-import Episode from '../../components/episode';
+import Episode from '../../components/game-ui/episode';
 
 export default class Game extends Component {
   makeChoice = (id) => {
