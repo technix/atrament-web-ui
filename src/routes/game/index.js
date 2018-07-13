@@ -29,7 +29,9 @@ export default class Game extends Component {
 
   render({}, { scene, episode }) {
     if (!scene.text) {
-      return;
+      return (
+        <div style="width: 50%; padding-top: 200px; margin: auto;">Loading...</div>
+      );
     }
     return (
       <Episode scene={scene} episode={episode} makeChoice={this.makeChoice} />
