@@ -1,21 +1,15 @@
 import { h, Component } from 'preact';
+import { connect } from 'unistore/preact';
+import { actions } from '../../store';
 
 import engine from '../../game/engine';
 
 // --
 import Episode from '../../components/game-ui/episode';
 
-export default class Game extends Component {
+class Game extends Component {
   makeChoice = (id) => {
     engine.makeChoice(id).then(this.renderScene);
-  }
-
-  constructor() {
-    super();
-    this.state = {
-      scene: { choices: [] },
-      episode: []
-    };
   }
 
   componentWillMount() {
@@ -24,11 +18,11 @@ export default class Game extends Component {
 
   renderScene = () => {
     engine.renderScene();
-    this.setState(engine.gameState);
+    this.props.gameState(engine.gameState);
   }
 
-  render({}, { scene, episode }) {
-    if (!scene.text) {
+  render({ scene, episode }) {
+    if (!scene) {
       return (
         <div style="width: 50%; padding-top: 200px; margin: auto;">Loading...</div>
       );
@@ -38,3 +32,5 @@ export default class Game extends Component {
     );
   }
 }
+
+export default connect('scene,episode', actions)(Game);

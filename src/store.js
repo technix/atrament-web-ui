@@ -2,14 +2,21 @@ import createStore from 'unistore';
 
 let store = createStore(
   {
+    // settings
     sound: true,
     volume: 20,
     transcript: false,
-    debug: true
+    debug: true,
+    // game
+    scene: null,
+    episode: null
   }
 );
 
 let actions = store => ({
+  gameState(state, obj) {
+    return obj;
+  },
   setSound(state) {
     return { sound: !state.sound };
   },
