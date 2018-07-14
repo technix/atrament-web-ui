@@ -1,0 +1,27 @@
+/* Animation */
+@keyframes slideInFromBottom {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideOutToBottom {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+
+.mapSlideIn {
+	animation: 0.3s ease-out 0s 1 slideInFromBottom;
+}
+
+.mapSlideOut {
+	animation: 0.3s ease-out 0s 1 slideOutToBottom;
+}

@@ -2,7 +2,7 @@
   width: inherit;
   height: inherit;
   scroll-behavior: smooth;
-  overflow-y: scroll;
+  overflow: hidden;
 }
 
 .episode {
