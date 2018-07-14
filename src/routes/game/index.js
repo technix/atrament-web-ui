@@ -6,6 +6,7 @@ import engine from '../../game/engine';
 
 // --
 import Episode from '../../components/game-ui/episode';
+import Map from '../../components/game-ui/map';
 
 class Game extends Component {
   makeChoice = (id) => {
@@ -25,6 +26,11 @@ class Game extends Component {
     if (!scene) {
       return (
         <div style="width: 50%; padding-top: 200px; margin: auto;">Loading...</div>
+      );
+    }
+    if (scene.type === 'map') {
+      return (
+        <Map scene={scene} makeChoice={this.makeChoice} />
       );
     }
     return (

@@ -9,6 +9,7 @@ const Home = () => (
     <Link href="/game" class={style.button}>Continue</Link>
     <Link href="/game" class={style.button}>Start new game</Link>
     <Link href="/settings" class={style.button}>Settings</Link>
+    <Link href="/map" class={style.button}>Map</Link>
   </div>
 );
 

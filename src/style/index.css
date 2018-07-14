@@ -30,6 +30,10 @@ a {
 	background-color: #FFFFFF;
 	margin: auto auto;
 	margin-top: 20px;
+	background-image: url(../assets/game/gfx/bg_main.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center; 
 }
 
 @media (min-width: 320px) and (max-width: 480px) {

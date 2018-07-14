@@ -10,6 +10,8 @@ import Home from '../routes/home';
 import Game from '../routes/game';
 import Settings from '../routes/settings';
 
+import Map from './game-ui/map';
+
 export default class App extends Component {
 
   handleRoute = e => {
@@ -24,6 +26,7 @@ export default class App extends Component {
             <Home path="/" />
             <Game path="/game" />
             <Settings path="/settings" />
+            <Map path="/map" />
           </Router>
         </div>
       </Provider>
