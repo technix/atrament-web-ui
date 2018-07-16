@@ -1,17 +1,27 @@
 import createStore from 'unistore';
+import storage from './game/storage';
 
-let store = createStore(
-  {
-    // settings
-    sound: true,
-    volume: 20,
-    transcript: false,
-    debug: true,
-    // game
-    scene: null,
-    episode: null
-  }
-);
+let defaultStore =  {
+  // settings
+  sound: true,
+  volume: 20,
+  transcript: false,
+  debug: true,
+  // game
+  scene: null,
+  episode: null
+};
+
+if (storage.exists('settings')) {
+  defaultStore = storage.get('settings');
+}
+
+let store = createStore(defaultStore);
+
+// autosave settings
+store.subscribe((state) => {
+  storage.set('settings', state);
+});
 
 let actions = store => ({
   gameState(state, obj) {
