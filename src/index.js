@@ -1,3 +1,4 @@
+import {} from 'normalize.css';
 import './style';
 import './style/animation';
 import App from './components/app';

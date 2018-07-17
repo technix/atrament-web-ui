@@ -1,7 +1,6 @@
 import { h, Component } from 'preact';
 import { Router } from 'preact-router';
 import createHashHistory from 'history/createHashHistory';
-import {} from 'normalize.css';
 
 import { Provider } from 'unistore/preact';
 import { store } from '../store';
