@@ -7,9 +7,12 @@ function keyName(key) {
 }
 
 const storage = {
-  get(key) {
+  get(key, isRaw) {
     let item;
     const value = localstorage.getItem(keyName(key));
+    if (isRaw) {
+      return value;
+    }
     try {
       item = JSON.parse(value);
     } catch (e) {

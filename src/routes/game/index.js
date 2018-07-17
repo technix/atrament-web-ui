@@ -11,10 +11,11 @@ import Map from '../../components/game-ui/map';
 class Game extends Component {
   makeChoice = (id) => {
     engine.makeChoice(id).then(this.renderScene);
+    engine.saveGame();
   }
 
   componentWillMount() {
-    engine.startGame().then(this.renderScene);
+    engine.initGame().then(this.renderScene);
   }
 
   renderScene = () => {
