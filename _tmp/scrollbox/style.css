@@ -1,0 +1,21 @@
+.container {
+  width: 360px;
+  height: 616px;
+  overflow: hidden;
+  position: relative;
+}
+
+.container::-webkit-scrollbar { 
+  display: none;
+}
+
+.content {
+  background-color: #FFFFFF;
+  width: 360px;
+  height: 616px;
+  padding-right: 17px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  box-sizing: content-box;
+  position: relative;
+}
