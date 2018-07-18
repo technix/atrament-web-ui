@@ -1,11 +1,21 @@
-.episodeScroller {
+.scroller {
   width: inherit;
   height: inherit;
-  scroll-behavior: smooth;
   overflow: hidden;
+  position: relative;
 }
 
 .episode {
+  width: calc(100% + 17px);
+  height: inherit;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  box-sizing: content-box;
+  position: relative;
+}
+
+.paragraphWrapper {
   width: 100%;
 }
 
