@@ -1,5 +1,5 @@
 /* Animation */
-@keyframes slideInFromBottom {
+@keyframes slideInFromLeft {
   0% {
     transform: translateX(-100%);
   }
@@ -8,20 +8,50 @@
   }
 }
 
-@keyframes slideOutToBottom {
+@keyframes slideOutToLeft {
   0% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(-100%);
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(-50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes appear2 {
+  0% {
+    transform: translateY(50%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 
 
 .mapSlideIn {
-	animation: 0.3s ease-out 0s 1 slideInFromBottom;
+	animation: 0.3s ease-out 0s 1 slideInFromLeft;
 }
 
 .mapSlideOut {
-	animation: 0.3s ease-out 0s 1 slideOutToBottom;
+	animation: 0.3s ease-out 0s 1 slideOutToLeft;
+}
+
+.sceneAppear {
+	animation: 0.5s ease-out 0s 1 appear;
+}
+
+.choicesAppear {
+	animation: 0.5s ease-out 0s 1 appear2;
 }

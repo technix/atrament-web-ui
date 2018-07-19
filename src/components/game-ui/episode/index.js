@@ -30,6 +30,16 @@ class Episode extends Component {
         behavior: 'smooth',
         block: 'start'
       });
+      
+      /*
+      // Animations
+      this.currentScene.classList.remove('sceneAppear');
+      this.currentChoices.classList.remove('choicesAppear');
+      void this.currentScene.offsetWidth;
+      void this.currentChoices.offsetWidth;
+      this.currentScene.classList.add('sceneAppear');
+      this.currentChoices.classList.add('choicesAppear');
+      */
     }
   }
   
@@ -43,7 +53,7 @@ class Episode extends Component {
           <div class={style.currentScene} ref={c => this.currentScene = c}>
             <Paragraph text={scene.text} />
           </div>
-          <div class={style.choiceWrapper}>
+          <div class={style.choiceWrapper} ref={c => this.currentChoices = c}>
             {scene.choices.map((o) => <Choice option={o} makeChoice={makeChoice} />)}
           </div>
         </div>
