@@ -15,6 +15,17 @@
   position: relative;
 }
 
+@media (min-width: 320px) and (max-width: 480px) {
+  .episode {
+    width: 100%;
+  }
+
+  .episode::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
 .paragraphWrapper {
   width: 100%;
 }
