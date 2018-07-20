@@ -25,6 +25,10 @@ const storage = {
     localstorage.setItem(keyName(key), JSON.stringify(object));
   },
 
+  delete(key) {
+    localstorage.removeItem(keyName(key));
+  },
+
   exists(key) {
     if (!key) {
       return false;
