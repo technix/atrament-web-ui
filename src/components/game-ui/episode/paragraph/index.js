@@ -3,7 +3,7 @@ import { h } from 'preact';
 import { connect } from 'unistore/preact';
 import style from './style';
 
-import hyphenate from '../../../lib/hyphens';
+import hyphenate from '../../../../lib/hyphens';
 
 // paragraph component
 const Paragraph = ({ hyphens, text }) => (

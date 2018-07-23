@@ -1,0 +1,15 @@
+.choice {
+  border: 0px;
+  display: block;
+  width: 97%;
+  background-color: rgba(127,127,127,0.3);
+  padding: 5px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin: auto;
+  margin-bottom: 10px;
+  color: #333399;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.2em;
+}

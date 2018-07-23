@@ -1,0 +1,13 @@
+.paragraph {
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-top: 1px dashed #333333;
+}
+
+.paragraph p {
+  text-indent: 1em;
+  margin-top: 0;
+  margin-bottom: 0;
+  line-height: 1.25em;
+}

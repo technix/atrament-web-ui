@@ -1,21 +1,8 @@
 import { h, Component } from 'preact';
 import style from './style';
 
+import Choice from './choice';
 import Paragraph from './paragraph';
-
-// choice component
-class Choice extends Component {
-  makeChoice = (e) => {
-    e.preventDefault();
-    this.props.makeChoice(this.props.option.id);
-  };
-
-  render({ option }) {
-    return (
-      <a href="#" onClick={this.makeChoice} class={style.choice}>{option.choice}</a>
-    );
-  }
-}
 
 // episode component
 class Episode extends Component {

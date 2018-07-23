@@ -33,36 +33,6 @@
   width: 100%;
 }
 
-.paragraph {
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-top: 1px dashed #333333;
-}
-
-.paragraph p {
-  text-indent: 1em;
-  margin-top: 0;
-  margin-bottom: 0;
-  line-height: 1.25em;
-}
-
 .choiceWrapper {
   margin-top: 30px;
-}
-
-.choice {
-  border: 0px;
-  display: block;
-  width: 97%;
-  background-color: rgba(127,127,127,0.3);
-  padding: 5px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  margin: auto;
-  margin-bottom: 10px;
-  color: #333399;
-  text-align: center;
-  text-decoration: none;
-  font-size: 1.2em;
 }
