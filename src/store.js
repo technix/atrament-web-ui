@@ -7,6 +7,7 @@ let defaultStore =  {
   volume: 20,
   transcript: false,
   debug: true,
+  hyphens: true,
   // game
   scene: null,
   episode: null
@@ -39,6 +40,9 @@ let actions = store => ({
   },
   setDebug(state) {
     return { debug: !state.debug };
+  },
+  setHyphens(state) {
+    return { hyphens: !state.hyphens };
   }
 });
 

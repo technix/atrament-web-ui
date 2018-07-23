@@ -1,13 +1,7 @@
 import { h, Component } from 'preact';
 import style from './style';
-import hyphenate from '../../../lib/hyphens';
 
-// paragraph component
-const Paragraph = ({ text }) => (
-  <div class={style.paragraph}>
-    { text.map((line) => <p dangerouslySetInnerHTML={{ __html: hyphenate(line) }} />) }
-  </div>
-);
+import Paragraph from './paragraph';
 
 // choice component
 class Choice extends Component {

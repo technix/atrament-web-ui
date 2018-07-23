@@ -5,12 +5,17 @@ import { connect } from 'unistore/preact';
 import { actions } from '../../store';
 
 const Settings = ({
-  sound, volume, transcript, debug,
-  setTranscript, setDebug, setSound, setVolume
+  hyphens, sound, volume, transcript, debug,
+  setHyphens, setTranscript, setDebug, setSound, setVolume
 }) => (
   <div>
     <h1 class="header">Settings</h1>
     <form>
+      <hr />
+      <label>
+        Hyphens:
+        <input type="checkbox" checked={hyphens} onChange={setHyphens} /> | {hyphens.toString()}
+      </label>
       <hr />
       <label>
         Sound:
@@ -36,4 +41,4 @@ const Settings = ({
   </div>
 );
 
-export default connect('sound,volume,transcript,debug', actions)(Settings);
+export default connect('sound,volume,transcript,debug,hyphens', actions)(Settings);
