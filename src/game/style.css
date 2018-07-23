@@ -1,0 +1,10 @@
+body {
+  font-family: 'Alegreya', sans-serif;
+}
+
+#app {
+	background-image: url(../assets/game/gfx/bg_main.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center; 
+}

@@ -1,7 +1,9 @@
 import {} from 'normalize.css';
 import './style';
 import './style/animation';
-// fonts
+// game CSS
+import './game/style';
+// game fonts
 import './game/fonts/alegreya';
 
 // app
