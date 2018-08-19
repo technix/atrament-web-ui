@@ -20,6 +20,20 @@
   cursor: pointer;
 }
 
+.marker {
+  border-radius: 20px;
+  background-color: #eeeeee;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  background-position: center;
+	background-size: contain;
+  background-repeat: no-repeat;
+  transition: left 0.8s ease-in-out, top 0.8s ease-in-out;
+}
+
 .caption {
   position: relative;
   border: 1px solid #000000;
