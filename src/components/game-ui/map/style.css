@@ -31,7 +31,7 @@
   background-position: center;
 	background-size: contain;
   background-repeat: no-repeat;
-  transition: left 0.8s ease-in-out, top 0.8s ease-in-out;
+  transition: left 1s ease-in-out, top 1s ease-in-out;
 }
 
 .caption {
@@ -44,4 +44,8 @@
   font-size: 0.7em;
   text-align: center;
   width: 60px;
+}
+
+.disabled {
+  cursor: auto;
 }

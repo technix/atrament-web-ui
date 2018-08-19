@@ -2,20 +2,24 @@ import { h, Component } from 'preact';
 import style from './style';
 
 const assetPath = 'assets/game/map';
-
-function delay(sec) {
-  return new Promise((resolve) => setTimeout(resolve, sec));
-}
+const delayPositionAnimation = 1400;
+const delayMapslideAnimation = 200;
 
 class Point extends Component {
   makeChoice = (e) => {
     e.preventDefault();
-    this.props.mapChoice(this.props.data);
+    if (! this.props.data.disabled) {
+      this.props.mapChoice(this.props.data);
+    }
   }
   
   render({ data }) {
+    const styles = [style.point];
+    if (data.disabled) {
+      styles.push(style.disabled);
+    }
     return (
-      <div class={style.point} style={{
+      <div class={styles.join(' ')} style={{
         top: data.y,
         left: data.x,
         'background-image': `url(${assetPath}/${data.bg})`
@@ -56,11 +60,14 @@ class Map extends Component {
   }
 
   mapChoice = (data) => {
-    this.setState({ mapPosition: data });
-    delay(1200).then(() => {
-      this.setState({ mapClass: [style.map, 'mapSlideOut'].join(' ') });
-      setTimeout(() => this.props.makeChoice(data.id), 200);
+    const mapPoints = this.state.mapPoints.map((d) => {
+      d.disabled = true; return d;
     });
+    this.setState({ mapPosition: data, mapPoints });
+    setTimeout(() => {
+      this.setState({ mapClass: [style.map, 'mapSlideOut'].join(' ') });
+      setTimeout(() => this.props.makeChoice(data.id), delayMapslideAnimation);
+    }, delayPositionAnimation);
   }
 
   componentWillMount() {
@@ -75,6 +82,7 @@ class Map extends Component {
     // current place on map
     const currentPosition = scene.text[0].replace(/\n|\n/g, '');
     const mapPosition = mapPoint(scene.tags[currentPosition], 1);
+    //
     this.setState({ mapPoints, mapPosition });
   }
 
