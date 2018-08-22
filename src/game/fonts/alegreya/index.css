@@ -1,5 +1,6 @@
 @font-face {
   font-family: 'Alegreya';
+  font-display: swap;
   font-style: normal;
   font-weight: 400;
   src: url(Alegreya-Regular.woff2) format('woff2');
@@ -7,6 +8,7 @@
 
 @font-face {
   font-family: 'Alegreya';
+  font-display: swap;
   font-style: italic;
   font-weight: 400;
   src: url(Alegreya-Italic.woff2) format('woff2');
@@ -14,6 +16,7 @@
 
 @font-face {
   font-family: 'Alegreya';
+  font-display: swap;
   font-style: normal;
   font-weight: 700;
   src: url(Alegreya-Bold.woff2) format('woff2');
@@ -21,6 +24,7 @@
 
 @font-face {
   font-family: 'Alegreya';
+  font-display: swap;
   font-style: italic;
   font-weight: 700;
   src: url(Alegreya-BoldItalic.woff2) format('woff2');
