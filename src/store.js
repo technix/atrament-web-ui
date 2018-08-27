@@ -7,7 +7,7 @@ let defaultStore =  {
   volume: 20,
   transcript: false,
   debug: true,
-  hyphens: true,
+  hyphens: false,
   // game
   scene: null,
   episode: null
