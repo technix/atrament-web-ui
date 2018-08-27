@@ -7,7 +7,12 @@ import hyphenate from '../../../../lib/hyphens';
 
 // paragraph component
 const Paragraph = ({ hyphens, text }) => (
-  <div class={[style.paragraph, hyphens ? 'justified' : ''].join(' ')}>
+  <div class={[
+    style.paragraph,
+    hyphens ? 'justified' : '',
+    text[0].indexOf('<') === 0 ? '' : 'indented'
+  ].join(' ')}
+  >
     { text.map((line) => <p dangerouslySetInnerHTML={{ __html: hyphens ? hyphenate(line) : line }} />) }
   </div>
 );

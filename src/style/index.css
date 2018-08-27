@@ -19,6 +19,10 @@ body {
 	color: #757575;
 }
 
+h1 {
+	font-size: 1.8em;
+}
+
 a {
 	color: #303F9F;
 }
@@ -54,7 +58,12 @@ img {
 }
 
 
-/* (Required by Paragraph component): justified text */
+/* (Required by Paragraph component): justified and indented text */
 .justified {
 	text-align: justify;
 }
+
+.indented {
+  text-indent: 1em;
+}
+/* *** */
