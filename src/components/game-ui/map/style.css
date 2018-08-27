@@ -4,7 +4,11 @@
 	width: 360px;
   height: 616px;
   border: 1px solid #000000;
-  position: relative;
+  /* align */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: -308px 0 0 -180px;
 }
 
 .point {
