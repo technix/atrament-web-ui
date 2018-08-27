@@ -30,9 +30,13 @@ a {
 #app {
 	width: 360px;
 	height: 616px;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+  transform: translate(-50%, -50%);
+	transform-origin: center center;
+	
 	background-color: #FFFFFF;
-	margin: auto auto;
-	margin-top: 20px;
 	background-image: url(../assets/game/gfx/bg_main.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -40,7 +44,7 @@ a {
 	overflow: hidden;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (max-width: 480px) {
 	#app {
 		position: absolute;
 		top: 0;
@@ -49,6 +53,8 @@ a {
 		height: 100vh;
 		border: none;
 		margin: 0 0;
+		transform: none;
+		transform-origin: none;
 	}
 }
 
