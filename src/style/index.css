@@ -37,10 +37,6 @@ a {
 	transform-origin: center center;
 	
 	background-color: #FFFFFF;
-	background-image: url(../assets/game/gfx/bg_main.jpg);
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center center; 
 	overflow: hidden;
 }
 
