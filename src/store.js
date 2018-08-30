@@ -1,5 +1,5 @@
 import createStore from 'unistore';
-import storage from './game/storage';
+import storage from './lib/storage';
 
 let defaultStore =  {
   // settings

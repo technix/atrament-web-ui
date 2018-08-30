@@ -1,6 +1,6 @@
 import Atrament from 'atrament';
 import cfg from './config.json';
-import storage from './storage';
+import storage from '../lib/storage';
 
 const atrament = new Atrament(cfg);
 

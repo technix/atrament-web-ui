@@ -1,15 +1,19 @@
-import cfg from './config.json';
-
 const localstorage = window.localStorage;
 
-function keyName(key) {
-  return `${cfg.uuid}/${key}`;
-}
-
 const storage = {
+  uuid: '',
+
+  setUUID(uuid) {
+    this.uuid = uuid;
+  },
+  
+  key(k) {
+    return `${this.uuid}/${k}`;
+  },
+
   get(key, isRaw) {
     let item;
-    const value = localstorage.getItem(keyName(key));
+    const value = localstorage.getItem(this.key(key));
     if (isRaw) {
       return value;
     }
@@ -22,18 +26,18 @@ const storage = {
   },
 
   set(key, object) {
-    localstorage.setItem(keyName(key), JSON.stringify(object));
+    localstorage.setItem(this.key(key), JSON.stringify(object));
   },
 
   delete(key) {
-    localstorage.removeItem(keyName(key));
+    localstorage.removeItem(this.key(key));
   },
 
   exists(key) {
     if (!key) {
       return false;
     }
-    return !!localStorage.getItem(keyName(key));
+    return !!localStorage.getItem(this.key(key));
   }
 };
 
