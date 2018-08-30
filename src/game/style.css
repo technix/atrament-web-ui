@@ -3,8 +3,12 @@ body {
 }
 
 #app {
-	background-image: url(../assets/game/gfx/bg_main.jpg);
+	background-image: url(./gfx/bg_main.jpg);
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center; 
+}
+
+#episode {
+	background: url(./gfx/paper.jpg);
 }

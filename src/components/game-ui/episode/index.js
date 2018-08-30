@@ -28,7 +28,7 @@ class Episode extends Component {
   render ({ episode, scene, makeChoice }) {
     return (
       <div class={style.scroller}>
-        <div class={style.episode}>
+        <div id="episode" class={style.episode}>
           <div class={style.paragraphWrapper}>
             {episode.map((s) => <Paragraph text={s.text} />)}
           </div>

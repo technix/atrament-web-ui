@@ -13,7 +13,6 @@
   scroll-behavior: smooth;
   box-sizing: content-box;
   position: relative;
-  background: url('../../../assets/game/gfx/paper.jpg');
   background-repeat: repeat;
   background-attachment: local;
 }
