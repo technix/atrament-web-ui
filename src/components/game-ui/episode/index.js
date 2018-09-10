@@ -7,11 +7,8 @@ import Paragraph from './paragraph';
 // episode component
 class Episode extends Component {
   componentDidUpdate() {
-    if (this.currentScene) {
-      this.currentScene.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      });
+    if (this.scroller) {
+      this.scroller.scrollTop = this.scroller.scrollHeight;
       
       /*
       // Animations
@@ -28,7 +25,7 @@ class Episode extends Component {
   render ({ episode, scene, makeChoice }) {
     return (
       <div class={style.scroller}>
-        <div id="episode" class={style.episode}>
+        <div id="episode" class={style.episode} ref={c => this.scroller = c}>
           <div class={style.paragraphWrapper}>
             {episode.map((s) => <Paragraph text={s.text} />)}
           </div>
