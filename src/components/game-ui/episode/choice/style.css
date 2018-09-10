@@ -22,16 +22,16 @@
 .endEpisode {
   border: 0px;
   display: block;
-  width: 60px;
-  height: 60px;
-  border-radius: 30px;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
   background-color: rgba(127,127,127,0.3);
   padding: 0px;
   margin: auto;
   margin-bottom: 10px;
-  color: #333399;
+  color: #333333;
   text-align: center;
   text-decoration: none;
-  font-size: 50px;
-  line-height: 50px;
+  font-size: 30px;
+  line-height: 40px;
 }
