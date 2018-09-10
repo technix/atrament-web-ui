@@ -18,6 +18,12 @@ class Game extends Component {
     engine.initGame().then(this.renderScene);
   }
 
+  componentDidUpdate() {
+    if (this.props.scene.choices.length === 0 ) {
+      engine.clearSavedGame();
+    }
+  }
+
   renderScene = () => {
     engine.renderScene();
     this.props.gameState(engine.gameState);

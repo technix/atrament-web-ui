@@ -1,6 +1,9 @@
 import Atrament from 'atrament';
 import cfg from './config.json';
 import storage from '../lib/storage';
+import sound from '../lib/sound';
+import { store } from '../store';
+
 
 const atrament = new Atrament(cfg);
 
@@ -55,10 +58,15 @@ const engine = {
   },
 
   initGame() {
+    sound.mute(!store.getState().sound);
     if (storage.exists('auto')) {
       return this.resumeGame();
     }
     return this.startGame();
+  },
+
+  clearSavedGame() {
+    storage.delete('auto');
   }
 };
 

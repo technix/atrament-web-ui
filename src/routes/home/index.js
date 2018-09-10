@@ -12,8 +12,8 @@ const Home = () => (
   <div>
     <h1 class={style.header}>Home</h1>
     <p>This is main app screen.</p>
-    <Link href="/game" class={style.button}>Continue</Link>
-    <Link href="/game" onClick={deleteAutosave} class={style.button}>Start new game</Link>
+    {storage.exists('auto') ? <Link href="/game" class={style.button}>Continue</Link> : ''}
+    <Link href="/game" onClick={deleteAutosave} class={style.button}>{storage.exists('auto') ? 'Restart game' : 'Start game' }</Link>
     <Link href="/settings" class={style.button}>Settings</Link>
   </div>
 );
