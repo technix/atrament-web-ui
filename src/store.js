@@ -15,6 +15,8 @@ let defaultStore =  {
 
 if (storage.exists('settings')) {
   defaultStore = storage.get('settings');
+  defaultStore.scene = null;
+  defaultStore.episode = null;
 }
 
 let store = createStore(defaultStore);
