@@ -9,11 +9,10 @@ import hyphenate from '../../../../lib/hyphens';
 const Paragraph = ({ hyphens, text }) => (
   <div class={[
     style.paragraph,
-    hyphens ? 'justified' : '',
-    text[0].indexOf('<') === 0 ? '' : 'indented'
+    hyphens ? 'justified' : ''
   ].join(' ')}
   >
-    { text.map((line) => <p dangerouslySetInnerHTML={{ __html: hyphens ? hyphenate(line) : line }} />) }
+    { text.map((line) => <p class={line.indexOf('<') === 0 ? '' : 'indented'} dangerouslySetInnerHTML={{ __html: hyphens ? hyphenate(line) : line }} />) }
   </div>
 );
 
