@@ -25,6 +25,7 @@ h1 {
 
 a {
 	color: #303F9F;
+	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* avoid highlight on Android */
 }
 
 #app {
