@@ -19,10 +19,9 @@ atrament.on('loadStory', () => fetch(cfg.episodes[0]).then((r) => r.json()));
 atrament.registerCommand('IMG', (url) => `<img src="assets/game/${url}">`);
 atrament.registerCommand(
   'CLEAR',
-  (params, episode) => {
-    episode.reset(); return false;
-  },
-  ['episode']
+  (params, story) => {
+    story.clearEpisode(); return false;
+  }
 );
 
 const engine = {
@@ -38,9 +37,9 @@ const engine = {
 
   renderScene() {
     atrament.renderScene();
-    const ep = atrament.getCurrentEpisode();
+    const ep = atrament.story.getCurrentEpisode();
     this.gameState = {
-      scene: atrament.getCurrentScene(),
+      scene: atrament.story.getCurrentScene(),
       episode: ep.slice(0, ep.length-1)
     };
   },
