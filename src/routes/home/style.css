@@ -1,19 +1,19 @@
 .header {
-	background-color: #455A64;
-	color: #FFFFFF;
-	margin-top: 0px;
+  background-color: #455A64;
+  color: #FFFFFF;
+  margin-top: 0px;
 }
 
 .button {
-    border: 0px;
-    display: block;
-    width: 80%;
-    background-color: rgba(127,127,127,0.3);
-    text-align: center;
-    padding: 15px;
-    margin: auto;
-    margin-bottom: 20px;
-    color: #333399;
-    text-decoration: none;
-    font-size: 1.5em;
-  }
+  border: 0px;
+  display: block;
+  width: 80%;
+  background-color: rgba(127,127,127,0.3);
+  text-align: center;
+  padding: 15px;
+  margin: auto;
+  margin-bottom: 20px;
+  color: #333399;
+  text-decoration: none;
+  font-size: 1.5em;
+}

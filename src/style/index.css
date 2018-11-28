@@ -1,69 +1,68 @@
 * {
-	box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
-	background-color: #CFD8DC;
-	color: #212121;
+  background-color: #CFD8DC;
+  color: #212121;
 }
 
 :focus {
-	outline:none;
+  outline:none;
 }
 
 ::-moz-focus-inner {
-	border:0;
+  border:0;
 }
 
 .plaintext {
-	color: #757575;
+  color: #757575;
 }
 
 h1 {
-	font-size: 1.8em;
+  font-size: 1.8em;
 }
 
 a {
-	color: #303F9F;
-	-webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* avoid highlight on Android */
+  color: #303F9F;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* avoid highlight on Android */
 }
 
 #app {
-	width: 360px;
-	height: 616px;
-	position: absolute;
-	left: 50%;
-	top: 50%;
+  width: 360px;
+  height: 616px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
   transform: translate(-50%, -50%);
-	transform-origin: center center;
-	
-	background-color: #FFFFFF;
-	overflow: hidden;
+  transform-origin: center center;
+  background-color: #FFFFFF;
+  overflow: hidden;
 }
 
 @media (max-width: 480px) {
-	#app {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		height: 100vh;
-		border: none;
-		margin: 0 0;
-		transform: none;
-		transform-origin: none;
-	}
+  #app {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    border: none;
+    margin: 0 0;
+    transform: none;
+    transform-origin: none;
+  }
 }
 
 img {
-	width: 90%;
-	margin: auto;
+  width: 90%;
+  margin: auto;
 }
 
 
 /* (Required by Paragraph component): justified and indented text */
 .justified {
-	text-align: justify;
+  text-align: justify;
 }
 
 .indented {

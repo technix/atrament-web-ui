@@ -41,17 +41,17 @@
 
 
 .mapSlideIn {
-	animation: 0.3s ease-out 0s 1 slideInFromLeft;
+  animation: 0.3s ease-out 0s 1 slideInFromLeft;
 }
 
 .mapSlideOut {
-	animation: 0.3s ease-out 0s 1 slideOutToLeft;
+  animation: 0.3s ease-out 0s 1 slideOutToLeft;
 }
 
 .sceneAppear {
-	animation: 0.5s ease-out 0s 1 appear;
+  animation: 0.5s ease-out 0s 1 appear;
 }
 
 .choicesAppear {
-	animation: 0.5s ease-out 0s 1 appear2;
+  animation: 0.5s ease-out 0s 1 appear2;
 }
