@@ -14,7 +14,7 @@ atrament.on('saveGame', (p) => new Promise((resolve) => {
 atrament.on('loadGame', (id) => new Promise((resolve) => {
   resolve(storage.get(id, true));
 }));
-atrament.on('loadStory', () => fetch(cfg.episodes[0]).then((r) => r.json()));
+atrament.on('loadStory', () => import('./ink/gamefile').then(({ default: inkJSON }) => inkJSON));
 
 atrament.registerCommand('IMG', (url) => `<img src="assets/game/${url}">`);
 atrament.registerCommand(
