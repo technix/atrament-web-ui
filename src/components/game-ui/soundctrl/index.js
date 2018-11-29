@@ -1,9 +1,9 @@
 import { h, Component } from 'preact';
 import style from './style';
-import soundLib from '../../../lib/sound';
+import soundLib from '_src_/lib/sound';
 
 import { connect } from 'unistore/preact';
-import { actions } from '../../../store';
+import { actions } from '_src_/store';
 
 
 class SoundCtrl extends Component {

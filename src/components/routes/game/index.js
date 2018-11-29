@@ -1,12 +1,12 @@
 import { h, Component } from 'preact';
 import { connect } from 'unistore/preact';
-import { actions } from '../../store';
+import { actions } from '_src_/store';
 
-import engine from '../../game/engine';
+import engine from '_src_/game/engine';
 
 // --
-import Episode from '../../components/game-ui/episode';
-import Map from '../../components/game-ui/map';
+import Episode from '_src_/components/game-ui/episode';
+import Map from '_src_/components/game-ui/map';
 
 class Game extends Component {
   makeChoice = (id) => {

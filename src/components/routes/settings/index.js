@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { Link } from 'preact-router/match';
 
 import { connect } from 'unistore/preact';
-import { actions } from '../../store';
+import { actions } from '_src_/store';
 
 const Settings = ({
   hyphens, sound, volume, transcript, debug,

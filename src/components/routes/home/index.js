@@ -2,7 +2,7 @@ import { h } from 'preact';
 import style from './style';
 import { Link } from 'preact-router/match';
 
-import storage from '../../lib/storage';
+import storage from '_src_/lib/storage';
 
 function deleteAutosave() {
   storage.delete('auto');

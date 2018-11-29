@@ -2,14 +2,14 @@ import { h, Component } from 'preact';
 import { Router } from 'preact-router';
 import createHashHistory from 'history/createHashHistory';
 
-import scaleElement from '../lib/scale';
+import scaleElement from '_src_/lib/scale';
 
 import { Provider } from 'unistore/preact';
-import { store } from '../store';
+import { store } from '_src_/store';
 
-import Home from '../routes/home';
-import Game from '../routes/game';
-import Settings from '../routes/settings';
+import Home from './routes/home';
+import Game from './routes/game';
+import Settings from './routes/settings';
 
 export default class App extends Component {
   onResize = () => {
