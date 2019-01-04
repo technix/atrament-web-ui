@@ -3,9 +3,12 @@ import style from './style';
 
 import Choice from './choice';
 import Paragraph from './paragraph';
+import ParallaxImg from '_src_/components/blocks/parallax-img';
 
 // episode component
 class Episode extends Component {
+  getScroller = () => this.scroller;
+
   componentDidUpdate() {
     if (this.scroller) {
       this.scroller.scrollTop = this.scroller.scrollHeight;
@@ -22,7 +25,7 @@ class Episode extends Component {
     }
   }
   
-  render ({ episode, scene, makeChoice }) {
+  render ({ episode, scene, makeChoice }, { scrollEvent }) {
     return (
       <div class={style.scroller}>
         <div id="episode" class={style.episode} ref={c => this.scroller = c}>
@@ -35,6 +38,49 @@ class Episode extends Component {
           <div class={style.choiceWrapper} ref={c => this.currentChoices = c}>
             {scene.choices.map((o) => <Choice option={o} makeChoice={makeChoice} />)}
           </div>
+          <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+
+    <ParallaxImg width={'200px'} height={'100px'} scroller={this.getScroller} />
+
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+
         </div>
       </div>
     );
