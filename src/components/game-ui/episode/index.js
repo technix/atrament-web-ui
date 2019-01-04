@@ -38,48 +38,49 @@ class Episode extends Component {
           <div class={style.choiceWrapper} ref={c => this.currentChoices = c}>
             {scene.choices.map((o) => <Choice option={o} makeChoice={makeChoice} />)}
           </div>
-          <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
+          <p>test 1</p>
+    <p>test 2</p>
+    <p>test 3</p>
+    <p>test 4</p>
+    <p>test 5</p>
+    <p>test 6</p>
+    <p>test 7</p>
+    <p>test 8</p>
+    <p>test 9 </p>
+    <p>test 10</p>
+    <p>test 11</p>
+    <p>test 12</p>
+    <p>test 13</p>
+    <p>test 14</p>
+    <p>test 15</p>
+    <p>test 16</p>
+    <p>test 17</p>
+    <p>test 18</p>
+    <p>test 19</p>
+    <p>test 20</p>
 
-    <ParallaxImg width={'200px'} height={'100px'} scroller={this.getScroller} />
+    <ParallaxImg width={'360px'} height={'300px'} scroller={this.getScroller} />
 
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
-    <p>test</p>
+    <p>test 1</p>
+    <p>test 2</p>
+    <p>test 3</p>
+    <p>test 4</p>
+    <p>test 5</p>
+    <p>test 6</p>
+    <p>test 7</p>
+    <p>test 8</p>
+    <p>test 9 </p>
+    <p>test 10</p>
+    <p>test 11</p>
+    <p>test 12</p>
+    <p>test 13</p>
+    <p>test 14</p>
+    <p>test 15</p>
+    <p>test 16</p>
+    <p>test 17</p>
+    <p>test 18</p>
+    <p>test 19</p>
+    <p>test 20</p>
 
         </div>
       </div>
