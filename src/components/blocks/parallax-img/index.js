@@ -25,7 +25,7 @@ class ParallaxImg extends Component {
 
   render({ width, height }, { visible, scrollPercentage }) {
     return (
-      <div style={`background-color: ${visible ? '#990000' : '#000000'}; width: ${width}; height: ${height}`} ref={(e) => this.element = e}>
+      <div style={`background-image: url(assets/game/gfx/postcards.jpg); background-size: cover; background-position: ${scrollPercentage}%; width: ${width}; height: ${height}`} ref={(e) => this.element = e}>
         <div style={`width: 30px; height: 30px; position: relative; top: 30px; left: 30px; background-color: #FFFFFF; transition: 300ms linear all; transform: rotate(${scrollPercentage}deg);`} />
       </div>
     );
