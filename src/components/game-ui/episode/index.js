@@ -7,7 +7,7 @@ import ParallaxImg from '_src_/components/blocks/parallax-img';
 
 // episode component
 class Episode extends Component {
-  getScroller = () => this.scroller;
+  getScroller = () => this.scroller; // required to pass 'scroller' object to parallax
 
   componentDidUpdate() {
     if (this.scroller) {

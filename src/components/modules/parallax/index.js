@@ -1,25 +1,26 @@
 import { h, Component } from 'preact';
 
 /*
-// Outer scrolling element should be passed as 'scroller' prop
+  // getter function for outer scrolling element
+  // should be passed as 'scroller' prop
 
-class myParallaxImage extends Parallax {
-  componentDidMount() {
-    // if needed
-    super.componentDidMount();
-  }
+  class myParallaxImage extends Parallax {
+    componentDidMount() {
+      // if needed
+      super.componentDidMount();
+    }
 
-  componentWillUnmount() {
-    // if needed
-    super.componentWillMount();
-  }
+    componentWillUnmount() {
+      // if needed
+      super.componentWillMount();
+    }
 
-  // parallaxProgress changes from 0 (bottom edge) to 100 (top edge)
-  render({}, { parallaxIsVisible, parallaxProgress }) {
-    // should expose ref to outer dom element:
-    <div ref={this.parallaxRef} />
+    // parallaxProgress changes from 0 (bottom edge) to 100 (top edge)
+    render({}, { parallaxIsVisible, parallaxProgress }) {
+      // should expose ref to outer dom element:
+      <div ref={this.parallaxRef} />
+    }
   }
-}
 */
 
 class ParallaxComponent extends Component {
