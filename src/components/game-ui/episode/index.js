@@ -6,6 +6,8 @@ import Paragraph from './paragraph';
 
 // episode component
 class Episode extends Component {
+  getScroller = () => this.scroller; // required to pass 'scroller' object to parallax
+
   componentDidUpdate() {
     if (this.scroller) {
       this.scroller.scrollTop = this.scroller.scrollHeight;
@@ -22,7 +24,7 @@ class Episode extends Component {
     }
   }
   
-  render ({ episode, scene, makeChoice }) {
+  render ({ episode, scene, makeChoice }, { scrollEvent }) {
     return (
       <div class={style.scroller}>
         <div id="episode" class={style.episode} ref={c => this.scroller = c}>
