@@ -8,6 +8,11 @@ import Paragraph from './paragraph';
 class Episode extends Component {
   getScroller = () => this.scroller; // required to pass 'scroller' object to parallax
 
+  // save refs
+  refScroller = e => this.scroller = e;
+  refCurrentScene = e => this.currentScene = e;
+  refCurrentChoices = e => this.currentChoices = e;
+
   componentDidUpdate() {
     if (this.scroller) {
       this.scroller.scrollTop = this.scroller.scrollHeight;
@@ -27,14 +32,14 @@ class Episode extends Component {
   render ({ episode, scene, makeChoice }, { scrollEvent }) {
     return (
       <div class={style.scroller}>
-        <div id="episode" class={style.episode} ref={c => this.scroller = c}>
+        <div id="episode" class={style.episode} ref={this.refScroller}>
           <div class={style.paragraphWrapper}>
             {episode.map((s) => <Paragraph text={s.text} />)}
           </div>
-          <div class={style.currentScene} ref={c => this.currentScene = c}>
+          <div class={style.currentScene} ref={this.refCurrentScene}>
             <Paragraph text={scene.text} />
           </div>
-          <div class={style.choiceWrapper} ref={c => this.currentChoices = c}>
+          <div class={style.choiceWrapper} ref={this.refCurrentChoices}>
             {scene.choices.map((o) => <Choice option={o} makeChoice={makeChoice} />)}
           </div>
         </div>
