@@ -1,4 +1,31 @@
-const localstorage = window.localStorage;
+function testStorage (storage) {
+  try {
+    const key = '__atrament_ui_set_random_key__';
+    storage.setItem(key, key);
+    storage.removeItem(key);
+    return true;
+  } catch (e) {
+    return false;
+  }
+}
+
+let store = {
+  storage: {},
+  getItem(key) {
+    return this.storage[key];
+  },
+  setItem(key, value) {
+    this.storage[key] = value;
+  },
+  removeItem(key) {
+    delete this.storage[key];
+  }
+};
+
+// if localStorage is available, use it instead of in-memory storage
+if ('localStorage' in window && testStorage(window.localStorage)) {
+  store = window.localStorage;
+}
 
 const storage = {
   uuid: '',
@@ -13,7 +40,7 @@ const storage = {
 
   get(key, isRaw) {
     let item;
-    const value = localstorage.getItem(this.key(key));
+    const value = store.getItem(this.key(key));
     if (isRaw) {
       return value;
     }
@@ -26,11 +53,11 @@ const storage = {
   },
 
   set(key, object) {
-    localstorage.setItem(this.key(key), JSON.stringify(object));
+    store.setItem(this.key(key), JSON.stringify(object));
   },
 
   delete(key) {
-    localstorage.removeItem(this.key(key));
+    store.removeItem(this.key(key));
   },
 
   exists(key) {
