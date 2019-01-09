@@ -39,6 +39,17 @@
   }
 }
 
+@keyframes unblur {
+  0% {
+    opacity: 0.5;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 1;
+    filter: blur(0);
+  }
+}
+
 
 .mapSlideIn {
   animation: 0.3s ease-out 0s 1 slideInFromLeft;
@@ -49,9 +60,9 @@
 }
 
 .sceneAppear {
-  animation: 0.5s ease-out 0s 1 appear;
+  animation: unblur 0.25s ease-in 0s 1;
 }
 
 .choicesAppear {
-  animation: 0.5s ease-out 0s 1 appear2;
+  animation: unblur 0.25s ease-in 0s 1;
 }

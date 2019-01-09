@@ -16,8 +16,7 @@ class Episode extends Component {
   componentDidUpdate() {
     if (this.scroller) {
       this.scroller.scrollTop = this.scroller.scrollHeight;
-      
-      /*
+
       // Animations
       this.currentScene.classList.remove('sceneAppear');
       this.currentChoices.classList.remove('choicesAppear');
@@ -25,7 +24,6 @@ class Episode extends Component {
       void this.currentChoices.offsetWidth;
       this.currentScene.classList.add('sceneAppear');
       this.currentChoices.classList.add('choicesAppear');
-      */
     }
   }
   
