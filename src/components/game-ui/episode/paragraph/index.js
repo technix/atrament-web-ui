@@ -1,19 +1,27 @@
-
 import { h } from 'preact';
-import { connect } from 'unistore/preact';
-import style from './style';
 
 import hyphenate from '_src_/lib/hyphens';
 
+function paragraphStyle(text) {
+  return text.indexOf('<') === 0 ? '' : 'indented';
+}
+
+
+function paragraphText(hyphens, text) {
+  text = text
+    .replace(/--/g, '—')              // emdash
+    .replace(/"([^"]*)"/g, '«$1»');   // quotes
+
+  if (hyphens) {
+    text = hyphenate(text);
+  }
+
+  return text;
+}
+
 // paragraph component
 const Paragraph = ({ hyphens, text }) => (
-  <div class={[
-    style.paragraph,
-    hyphens ? 'justified' : ''
-  ].join(' ')}
-  >
-    { text.map((line) => <p class={line.indexOf('<') === 0 ? '' : 'indented'} dangerouslySetInnerHTML={{ __html: hyphens ? hyphenate(line) : line }} />) }
-  </div>
+  <p class={paragraphStyle(text)} dangerouslySetInnerHTML={{ __html: paragraphText(hyphens, text) }} />
 );
 
-export default connect('hyphens')(Paragraph);
+export default Paragraph;

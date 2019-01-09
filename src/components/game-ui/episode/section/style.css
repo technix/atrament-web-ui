@@ -1,11 +1,11 @@
-.paragraph {
+.section {
   padding: 10px;
   padding-left: 20px;
   padding-right: 20px;
   border-top: 1px dashed #333333;
 }
 
-.paragraph p {
+.section p {
   margin-top: 0;
   margin-bottom: 0;
   line-height: 1.25em;

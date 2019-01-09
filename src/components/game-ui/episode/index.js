@@ -2,7 +2,7 @@ import { h, Component } from 'preact';
 import style from './style';
 
 import Choice from './choice';
-import Paragraph from './paragraph';
+import Section from './section';
 
 // episode component
 class Episode extends Component {
@@ -34,10 +34,10 @@ class Episode extends Component {
       <div class={style.scroller}>
         <div id="episode" class={style.episode} ref={this.refScroller}>
           <div class={style.paragraphWrapper}>
-            {episode.map((s) => <Paragraph text={s.text} />)}
+            {episode.map((s) => <Section text={s.text} />)}
           </div>
           <div class={style.currentScene} ref={this.refCurrentScene}>
-            <Paragraph text={scene.text} />
+            <Section text={scene.text} />
           </div>
           <div class={style.choiceWrapper} ref={this.refCurrentChoices}>
             {scene.choices.map((o) => <Choice option={o} makeChoice={makeChoice} />)}
