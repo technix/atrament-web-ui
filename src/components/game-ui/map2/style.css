@@ -1,0 +1,53 @@
+.map {
+  background-size: cover;
+  background-repeat: no-repeat;
+  border: 1px solid #FF0000;
+  /* align */
+  position: relative;
+  top: 0;
+  left: 0;
+  /* transition: left 0.15s linear, top 0.15s linear; */
+}
+
+.point {
+  padding: 0px;
+  border: 1px solid #000000;
+  border-radius: 40px;
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0px 0px 5px 6px #eeeeee;
+  cursor: pointer;
+}
+
+.marker {
+  border-radius: 30px;
+  background-color: #eeeeee;
+  margin-left: 10px;
+  margin-top: 10px;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  transition: left 1s ease-in-out, top 1s ease-in-out;
+}
+
+.caption {
+  position: relative;
+  border: 1px solid #000000;
+  background-color: #FFF9C4;
+  margin: auto;
+  margin-top: 50px;
+  font-family: 'Georgia', serif;
+  font-size: 0.7em;
+  text-align: center;
+  width: 60px;
+}
+
+.disabled {
+  cursor: auto;
+}
