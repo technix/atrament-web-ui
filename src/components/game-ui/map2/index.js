@@ -9,8 +9,6 @@ const delayMapslideAnimation = 200;
 const viewportWidth = 360;
 const viewportHeight = 616;
 
-
-
 class Point extends Component {
   makeChoice = (e) => {
     e.preventDefault();
@@ -87,40 +85,51 @@ class Map extends Component {
       x: pageX - parseInt(this.mapEl.style.left, 10),
       y: pageY - parseInt(this.mapEl.style.top, 10)
     };
-    window.addEventListener('mousemove', this.drag);
-    window.addEventListener('mouseup', this.dragStop);
-    window.addEventListener('touchmove', this.drag);
-    window.addEventListener('touchend', this.dragStop);
-
+    if (e.touches) {
+      window.addEventListener('touchmove', this.drag);
+      window.addEventListener('touchend', this.dragStop);
+      this.mapEl.style.transition = 'left 0.25s linear, top 0.25s linear';
+    } else {
+      window.addEventListener('mousemove', this.drag);
+      window.addEventListener('mouseup', this.dragStop);
+      this.mapEl.style.transition = 'none';
+    }
   }
 
   drag = (e) => {
     const [ pageX, pageY ] = handleEvent(e);
     let diffX = - (this.dragPoint.x - pageX);
     let diffY = - (this.dragPoint.y - pageY);
-    console.log(pageX, pageY, diffX, diffY);
     if (diffX > 0) {
       diffX = 0;
     }
     if (diffY > 0) {
       diffY = 0;
     }
-    if (diffX < viewportWidth - this.props.width) {
-      diffX = viewportWidth - this.props.width;
+    if (diffX < this.mapEdgeW) {
+      diffX = this.mapEdgeW;
     }
-    if (diffY < viewportHeight - this.props.height) {
-      diffY = viewportHeight - this.props.height;
+    if (diffY < this.mapEdgeH) {
+      diffY = this.mapEdgeH;
     }
-    this.mapEl.style.left = `${diffX}px`;
-    this.mapEl.style.top = `${diffY}px`;
+    window.requestAnimationFrame(() => this.moveMap(diffX, diffY));
   }
 
   dragStop = (e) => {
+    e.preventDefault();
     console.log('stopDrag');
-    window.removeEventListener('mousemove', this.drag);
-    window.removeEventListener('mouseup', this.dragStop);
-    window.removeEventListener('touchmove', this.drag);
-    window.removeEventListener('touchend', this.dragStop);
+    if (e.touches) {
+      window.removeEventListener('touchmove', this.drag);
+      window.removeEventListener('touchend', this.dragStop);
+    } else {
+      window.removeEventListener('mousemove', this.drag);
+      window.removeEventListener('mouseup', this.dragStop);
+    }
+  }
+
+  moveMap(diffX, diffY) {
+    this.mapEl.style.left = `${diffX}px`;
+    this.mapEl.style.top = `${diffY}px`;
   }
 
 
@@ -151,6 +160,10 @@ class Map extends Component {
     // current place on map
     const currentPosition = scene.text[0].replace(/\n|\n/g, '');
     const mapPosition = mapPoint(scene.tags[currentPosition], 1);
+    // precalc map movements
+    this.mapEdgeW = viewportWidth - this.props.width;
+    this.mapEdgeH = viewportHeight - this.props.height;
+
     //
     this.setState({ mapPoints, mapPosition });
   }
