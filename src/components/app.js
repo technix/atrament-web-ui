@@ -2,7 +2,7 @@ import { h, Component } from 'preact';
 import { Router } from 'preact-router';
 import createHashHistory from 'history/createHashHistory';
 
-import scaleElement from '_src_/lib/scale';
+import scale from '_src_/lib/scale';
 
 import { Provider } from 'unistore/preact';
 import { store } from '_src_/store';
@@ -15,11 +15,10 @@ export default class App extends Component {
   onResize = () => {
     const el = this.appContainer;
     if (window.innerWidth < 480) {
-      el.style.transform = 'none';
-      el.style.transformOrigin = 'none';
-      return; // disable full scaling on mobile devices
+      scale.disable(el); // disable full scaling on mobile devices
+      return;
     }
-    scaleElement(el);
+    scale.enable(el);
   };
 
   handleRoute = e => {
