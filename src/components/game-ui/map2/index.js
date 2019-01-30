@@ -56,6 +56,10 @@ function handleEvent (e) {
     pageX = e.pageX;
     pageY = e.pageY;
   }
+  if (scale.ratio) {
+    pageX /= scale.ratio;
+    pageY /= scale.ratio;
+  }
   return [pageX, pageY];
 }
 
@@ -89,7 +93,7 @@ class Map extends Component {
     if (e.touches) {
       window.addEventListener('touchmove', this.drag);
       window.addEventListener('touchend', this.dragStop);
-      this.mapEl.style.transition = 'left 0.25s linear, top 0.25s linear';
+      // this.mapEl.style.transition = 'left 0.25s linear, top 0.25s linear';
     } else {
       window.addEventListener('mousemove', this.drag);
       window.addEventListener('mouseup', this.dragStop);
@@ -101,10 +105,6 @@ class Map extends Component {
     const [ pageX, pageY ] = handleEvent(e);
     let diffX = - (this.dragPoint.x - pageX);
     let diffY = - (this.dragPoint.y - pageY);
-    if (scale.ratio) {
-      diffX /= scale.ratio;
-      diffY /= scale.ratio;
-    }
     if (diffX > 0) {
       diffX = 0;
     }
