@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 import style from './style';
+import scale from '_src_/lib/scale';
 
 const assetPath = 'assets/game/map';
 const delayPositionAnimation = 1400;
@@ -100,6 +101,10 @@ class Map extends Component {
     const [ pageX, pageY ] = handleEvent(e);
     let diffX = - (this.dragPoint.x - pageX);
     let diffY = - (this.dragPoint.y - pageY);
+    if (scale.ratio) {
+      diffX /= scale.ratio;
+      diffY /= scale.ratio;
+    }
     if (diffX > 0) {
       diffX = 0;
     }
