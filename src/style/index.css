@@ -5,6 +5,7 @@
 body {
   background-color: #CFD8DC;
   color: #212121;
+  overscroll-behavior: none; /* disallow pull-to-refresh on Android */
 }
 
 :focus {
