@@ -1,4 +1,4 @@
-import createStore from 'unistore';
+import { createStore, Provider, connect } from 'unistore/full/preact';
 import storage from './lib/storage';
 
 let defaultStore =  {
@@ -48,4 +48,4 @@ let actions = store => ({
   }
 });
 
-export { store, actions };
+export { Provider, connect, store, actions };

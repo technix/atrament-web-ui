@@ -2,10 +2,9 @@ import { h, Component } from 'preact';
 import { Router } from 'preact-router';
 import createHashHistory from 'history/createHashHistory';
 
-import scale from '_src_/lib/scale';
+import { Provider, store } from '_src_/store';
 
-import { Provider } from 'unistore/preact';
-import { store } from '_src_/store';
+import scale from '_src_/lib/scale';
 
 import Home from './routes/home';
 import Game from './routes/game';
