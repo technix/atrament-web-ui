@@ -3,8 +3,6 @@
 }
 
 body {
-  background-color: #CFD8DC;
-  color: #212121;
   overscroll-behavior: none; /* disallow pull-to-refresh on Android */
 }
 
@@ -14,14 +12,6 @@ body {
 
 ::-moz-focus-inner {
   border:0;
-}
-
-.plaintext {
-  color: #757575;
-}
-
-h1 {
-  font-size: 1.8em;
 }
 
 a {
@@ -37,7 +27,6 @@ a {
   top: 50%;
   transform: translate(-50%, -50%);
   transform-origin: center center;
-  background-color: #FFFFFF;
   overflow: hidden;
 }
 
@@ -59,14 +48,3 @@ img {
   width: 90%;
   margin: auto;
 }
-
-
-/* (Required by Paragraph component): justified and indented text */
-.justified {
-  text-align: justify;
-}
-
-.indented {
-  text-indent: 1em;
-}
-/* *** */

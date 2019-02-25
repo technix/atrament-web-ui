@@ -9,6 +9,7 @@ import Paragraph from '../paragraph';
 const Section = ({ hyphens, text }) => (
   <div class={[
     style.section,
+    'ui-section',
     hyphens ? 'justified' : ''
   ].join(' ')}
   >

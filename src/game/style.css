@@ -1,5 +1,9 @@
 body {
   font-family: 'Alegreya', sans-serif;
+  font-size: 95%;
+  line-height: 1.3;
+  background-color: #CFD8DC;
+  color: #121212;
 }
 
 #app {
@@ -11,4 +15,31 @@ body {
 
 #episode {
   background: url(./gfx/paper.jpg);
+}
+
+h1 {
+  font-size: 2.747em;
+}
+h2 {
+  font-size: 0.874em;
+}
+h3 {
+  font-size: 1.229em;
+}
+
+/* (Required by Paragraph component): justified and indented text */
+.justified {
+  text-align: justify;
+}
+
+.indented {
+  text-indent: 1em;
+}
+/* *** */
+
+.ui-section hr {
+  margin-bottom: 0;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0));
 }
