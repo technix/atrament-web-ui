@@ -37,6 +37,14 @@ h3 {
 }
 /* *** */
 
+.ui-paragraph {
+  font-size: 1.12em;
+}
+
+.ui-choice {
+  font-size: 1.3em;
+}
+
 .ui-section hr {
   margin-bottom: 0;
   border: 0;

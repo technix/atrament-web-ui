@@ -3,7 +3,10 @@ import { h } from 'preact';
 import hyphenate from '_src_/lib/hyphens';
 
 function paragraphStyle(text) {
-  return text.indexOf('<') === 0 ? '' : 'indented';
+  return [
+    'ui-paragraph',
+    text.indexOf('<') === 0 ? '' : 'indented'
+  ].join(' ');
 }
 
 

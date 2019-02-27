@@ -11,11 +11,11 @@ class Choice extends Component {
   render({ option }) {
     if (option.choice === '^') {
       return (
-        <a href="#" onClick={this.makeChoice} class={style.endEpisode}>»</a>
+        <a href="#" onClick={this.makeChoice} class={['ui-endepisode', style.endEpisode].join(' ')}>»</a>
       );
     }
     return (
-      <a href="#" onClick={this.makeChoice} class={style.choice}>{option.choice}</a>
+      <a href="#" onClick={this.makeChoice} class={['ui-choice', style.choice].join(' ')}>{option.choice}</a>
     );
   }
 }
