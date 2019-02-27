@@ -4,30 +4,14 @@ import createHashHistory from 'history/createHashHistory';
 
 import { Provider, store } from '_src_/store';
 
-import scale from '_src_/lib/scale';
-
 import Home from './routes/home';
 import Game from './routes/game';
 import Settings from './routes/settings';
 
 export default class App extends Component {
-  onResize = () => {
-    const el = this.appContainer;
-    if (window.innerWidth < 480) {
-      scale.disable(el); // disable full scaling on mobile devices
-      return;
-    }
-    scale.enable(el);
-  };
-
   handleRoute = e => {
     this.currentUrl = e.url;
   };
-
-  componentDidMount = () => {
-    this.onResize();
-    window.onresize = this.onResize;
-  }
 
   render() {
     return (

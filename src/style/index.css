@@ -20,9 +20,10 @@ a {
 }
 
 #app {
-  width: 360px;
-  height: 616px;
   position: absolute;
+  min-width: 360px;
+  width: 56.25vh;
+  height: 98vh;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
@@ -37,10 +38,10 @@ a {
     left: 0;
     width: 100%;
     height: 100vh;
-    border: none;
     margin: 0 0;
     transform: none;
     transform-origin: none;
+    border: none;
   }
 }
 
