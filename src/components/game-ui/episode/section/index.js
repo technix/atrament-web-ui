@@ -6,15 +6,15 @@ import style from './style';
 import Paragraph from '../paragraph';
 
 // paragraph component
-const Section = ({ hyphens, text }) => (
+const Section = ({ settings, text }) => (
   <div class={[
     style.section,
     'ui-section',
-    hyphens ? 'justified' : ''
+    settings.hyphens ? 'justified' : ''
   ].join(' ')}
   >
-    { text.map((line) => <Paragraph text={line} hyphens={hyphens} />) }
+    { text.map((line) => <Paragraph text={line} hyphens={settings.hyphens} />) }
   </div>
 );
 
-export default connect('hyphens')(Section);
+export default connect('settings')(Section);

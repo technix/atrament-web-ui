@@ -4,7 +4,7 @@ import { Link } from 'preact-router/match';
 import { connect, actions } from '_src_/store';
 
 const Settings = ({
-  hyphens, sound, volume, transcript, debug,
+  settings,
   setHyphens, setTranscript, setDebug, setSound, setVolume
 }) => (
   <div>
@@ -13,31 +13,31 @@ const Settings = ({
       <hr />
       <label>
         Hyphens:
-        <input type="checkbox" checked={hyphens} onChange={setHyphens} /> | {hyphens.toString()}
+        <input type="checkbox" checked={settings.hyphens} onChange={setHyphens} /> | {settings.hyphens.toString()}
       </label>
       <hr />
       <label>
         Sound:
-        <input type="checkbox" checked={sound} onChange={setSound} /> | {sound.toString()}
+        <input type="checkbox" checked={settings.sound} onChange={setSound} /> | {settings.sound.toString()}
       </label>
       <hr />
       <label>
         Volume:
-        <input type="range" min="0" max="100" value={volume} onChange={setVolume} /> | {volume}
+        <input type="range" min="0" max="100" value={settings.volume} onChange={setVolume} /> | {settings.volume}
       </label>
       <hr />
       <label>
         Transcript:
-        <input type="checkbox" checked={transcript} onChange={setTranscript} /> | {transcript.toString()}
+        <input type="checkbox" checked={settings.transcript} onChange={setTranscript} /> | {settings.transcript.toString()}
       </label>
       <hr />
       <label>
         Debug:
-        <input type="checkbox" checked={debug} onChange={setDebug} /> | {debug.toString()}
+        <input type="checkbox" checked={settings.debug} onChange={setDebug} /> | {settings.debug.toString()}
       </label>
     </form>
     <Link href="/">Back to menu</Link>
   </div>
 );
 
-export default connect('sound,volume,transcript,debug,hyphens', actions)(Settings);
+export default connect('settings', actions)(Settings);

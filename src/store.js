@@ -3,18 +3,20 @@ import storage from './lib/storage';
 
 let defaultStore =  {
   // settings
-  sound: true,
-  volume: 20,
-  transcript: false,
-  debug: true,
-  hyphens: false,
+  settings: {
+    sound: true,
+    volume: 20,
+    transcript: false,
+    debug: true,
+    hyphens: false
+  },
   // game
   scene: null,
   episode: null
 };
 
 if (storage.exists('settings')) {
-  defaultStore = storage.get('settings');
+  defaultStore.settings = storage.get('settings');
   defaultStore.scene = null;
   defaultStore.episode = null;
 }
@@ -23,28 +25,36 @@ let store = createStore(defaultStore);
 
 // autosave settings
 store.subscribe((state) => {
-  storage.set('settings', state);
+  storage.set('settings', state.settings);
 });
+
+function toggleSetting(state, param) {
+  const settings = { ...state.settings };
+  settings[param] = !settings[param];
+  return { settings };
+}
 
 let actions = store => ({
   gameState(state, obj) {
     return obj;
   },
   setSound(state) {
-    return { sound: !state.sound };
+    return toggleSetting(state, 'sound');
   },
   setVolume(state, e) {
     e.preventDefault();
-    return { volume: e.target.value };
+    const settings = { ...state.settings };
+    settings.volume = e.target.value;
+    return { settings };
   },
   setTranscript(state) {
-    return { transcript: !state.transcript };
+    return toggleSetting(state, 'transcript');
   },
   setDebug(state) {
-    return { debug: !state.debug };
+    return toggleSetting(state, 'debug');
   },
   setHyphens(state) {
-    return { hyphens: !state.hyphens };
+    return toggleSetting(state, 'hyphens');
   }
 });
 
