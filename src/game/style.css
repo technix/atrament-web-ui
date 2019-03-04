@@ -14,7 +14,10 @@ body {
 }
 
 #episode {
-  background: url(./gfx/paper.jpg);
+  /*background: url(./gfx/paper.jpg);*/
+  background-color: #f6efdf;
+  /* background-color: #f6efdc; */
+  color: #2f180e;
 }
 
 h1 {
