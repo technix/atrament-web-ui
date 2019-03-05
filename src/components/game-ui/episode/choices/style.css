@@ -1,5 +1,7 @@
 .choiceWrapper {
-  margin-top: 30px;
+  margin-top: auto;
+  padding-top: 2em;
+  padding-bottom: 1em;
 }
 
 .choice {
