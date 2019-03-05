@@ -1,6 +1,8 @@
 import { h, Component } from 'preact';
 import style from './style';
 
+import { animateRef } from '_src_/lib/animate';
+
 import Choice from './choice';
 
 // choice component
@@ -12,9 +14,7 @@ class Choices extends Component {
   refCurrentChoices = e => this.currentChoices = e;
 
   componentDidUpdate() {
-    this.currentChoices.classList.remove('choicesAppear');
-    void this.currentChoices.offsetWidth;
-    this.currentChoices.classList.add('choicesAppear');
+    animateRef(this.currentChoices, 'choicesAppear');
   }
 
   render({ choices }) {

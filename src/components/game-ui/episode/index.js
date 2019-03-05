@@ -1,6 +1,8 @@
 import { h, Component } from 'preact';
 import style from './style';
 
+import { animateRef } from '_src_/lib/animate';
+
 import Choices from './choices';
 import Section from './section';
 
@@ -17,9 +19,7 @@ class Episode extends Component {
       this.scroller.scrollTop = this.scroller.scrollHeight;
 
       // Animations
-      this.currentScene.classList.remove('sceneAppear');
-      void this.currentScene.offsetWidth;
-      this.currentScene.classList.add('sceneAppear');
+      animateRef(this.currentScene, 'sceneAppear');
     }
   }
   
