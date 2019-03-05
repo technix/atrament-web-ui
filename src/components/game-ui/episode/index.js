@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import style from './style';
 
-import Choice from './choice';
+import Choices from './choices';
 import Section from './section';
 
 // episode component
@@ -11,7 +11,6 @@ class Episode extends Component {
   // save refs
   refScroller = e => this.scroller = e;
   refCurrentScene = e => this.currentScene = e;
-  refCurrentChoices = e => this.currentChoices = e;
 
   componentDidUpdate() {
     if (this.scroller) {
@@ -19,11 +18,8 @@ class Episode extends Component {
 
       // Animations
       this.currentScene.classList.remove('sceneAppear');
-      this.currentChoices.classList.remove('choicesAppear');
       void this.currentScene.offsetWidth;
-      void this.currentChoices.offsetWidth;
       this.currentScene.classList.add('sceneAppear');
-      this.currentChoices.classList.add('choicesAppear');
     }
   }
   
@@ -37,9 +33,7 @@ class Episode extends Component {
           <div class={style.currentScene} ref={this.refCurrentScene}>
             <Section text={scene.text} />
           </div>
-          <div class={style.choiceWrapper} ref={this.refCurrentChoices}>
-            {scene.choices.map((o) => <Choice option={o} makeChoice={makeChoice} />)}
-          </div>
+          <Choices choices={scene.choices} makeChoice={makeChoice} />
         </div>
       </div>
     );

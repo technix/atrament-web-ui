@@ -9,13 +9,16 @@ class Choice extends Component {
   };
 
   render({ option }) {
+    let optionText = option.choice;
+    let choiceClasses = ['ui-choice', style.choice].join(' ');
+
     if (option.choice === '^') {
-      return (
-        <a href="#" onClick={this.makeChoice} class={['ui-endepisode', style.endEpisode].join(' ')}>»</a>
-      );
+      optionText = '»';
+      choiceClasses = ['ui-endepisode', style.endEpisode].join(' ');
     }
+
     return (
-      <a href="#" onClick={this.makeChoice} class={['ui-choice', style.choice].join(' ')}>{option.choice}</a>
+      <a href="#" onClick={this.makeChoice} class={choiceClasses}>{optionText}</a>
     );
   }
 }
