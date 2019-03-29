@@ -1,0 +1,14 @@
+.playground {
+  padding: 1em;
+  background-color: #EEEEEE;
+  height: 100vw;
+}
+
+.playground h1 {
+  text-align: center;
+}
+
+.btn {
+  padding: 0.3em;
+  background-color: #CCCCCC;
+}

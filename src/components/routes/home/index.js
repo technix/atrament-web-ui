@@ -15,6 +15,7 @@ const Home = () => (
     {storage.exists('auto') ? <Link href="/game" class={style.button}>Continue</Link> : ''}
     <Link href="/game" onClick={deleteAutosave} class={style.button}>{storage.exists('auto') ? 'Restart game' : 'Start game' }</Link>
     <Link href="/settings" class={style.button}>Settings</Link>
+    <Link href="/playground" class={style.button}><em>Playground</em></Link>
   </div>
 );
 

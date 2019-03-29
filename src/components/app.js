@@ -8,6 +8,9 @@ import Home from './routes/home';
 import Game from './routes/game';
 import Settings from './routes/settings';
 
+// playground
+import Playground from './routes/playground';
+
 export default class App extends Component {
   handleRoute = e => {
     this.currentUrl = e.url;
@@ -21,6 +24,7 @@ export default class App extends Component {
             <Home path="/" />
             <Game path="/game" />
             <Settings path="/settings" />
+            <Playground path="/playground/:subcomponent?" />
           </Router>
         </div>
       </Provider>
