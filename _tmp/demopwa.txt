@@ -1,7 +1,0 @@
-<meta name="msapplication-TileColor" content="#0288d1">
-<meta name="msapplication-TileImage" content="./images/icons/mstile-150x150.png">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="Progressive Web Application">
-<meta name="application-name" content="Progressive Web Application">
-<link rel="apple-touch-icon" href="./images/icons/apple-touch-icon.png">
