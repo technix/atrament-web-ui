@@ -25,12 +25,6 @@ atrament.registerCommand(
 );
 
 const engine = {
-  gameState: {},
-
-  renderer(renderCb) {
-    this.renderer = renderCb;
-  },
-
   startGame() {
     return atrament.startGame();
   },
@@ -38,7 +32,7 @@ const engine = {
   renderScene() {
     atrament.renderScene();
     const ep = atrament.story.getCurrentEpisode();
-    this.gameState = {
+    return {
       scene: atrament.story.getCurrentScene(),
       episode: ep.slice(0, ep.length-1)
     };
