@@ -8,7 +8,8 @@ class ParallaxImg extends ParallaxComponent {
     const style = [
       'background-image: url(assets/game/gfx/postcards.jpg)',
       'background-size: cover',
-      `background-position: ${parallaxProgress}%`
+      `background-position: 0 ${parallaxProgress}%`,
+      'backface-visibility: hidden'
     ];
     if (width) {
       style.push(`width: ${width}`);
@@ -20,17 +21,21 @@ class ParallaxImg extends ParallaxComponent {
     return (
       <div
         style={style.join(';')}
+        class="is-animated"
         ref={this.parallaxRef}
       >
-        <div style={`
-          width: 30px;
-          height: 30px;
-          position: relative;
-          top: 30px;
-          left: 30px;
-          background-color: #FFFFFF;
-          transition: 300ms linear all;
-          transform: rotate(${parallaxProgress}deg);
+        <div
+          class="is-animated"
+          style={`
+            width: 30px;
+            height: 30px;
+            position: relative;
+            top: 30px;
+            left: 30px;
+            background-color: #FFFFFF;
+            transition: 300ms linear all;
+            transform: rotate(${parallaxProgress}deg);
+            backface-visibility: hidden;
           `}
         />
       </div>

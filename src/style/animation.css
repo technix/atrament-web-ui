@@ -51,6 +51,10 @@
 }
 
 
+.is-animated {
+  backface-visibility: hidden; /* animation 1px glitch fix */
+}
+
 .mapSlideIn {
   animation: 0.3s ease-out 0s 1 slideInFromLeft;
 }

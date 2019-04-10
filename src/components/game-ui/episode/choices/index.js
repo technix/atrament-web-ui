@@ -19,7 +19,7 @@ class Choices extends Component {
 
   render({ choices }) {
     return (
-      <div class={style.choiceWrapper} ref={this.refCurrentChoices}>
+      <div class={[style.choiceWrapper, 'is-animated'].join(' ')} ref={this.refCurrentChoices}>
         {choices.map((o) => <Choice option={o} makeChoice={this.makeChoice} />)}
       </div>
     );

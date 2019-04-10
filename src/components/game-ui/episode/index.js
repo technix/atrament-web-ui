@@ -30,7 +30,7 @@ class Episode extends Component {
           <div class={style.paragraphWrapper}>
             {episode.map((s) => <Section text={s.text} />)}
           </div>
-          <div class={style.currentScene} ref={this.refCurrentScene}>
+          <div class={[style.currentScene, 'is-animated'].join(' ')} ref={this.refCurrentScene}>
             <Section text={scene.text} />
           </div>
           <Choices choices={scene.choices} makeChoice={makeChoice} />
