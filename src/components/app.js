@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import { Router } from 'preact-router';
-import createHashHistory from 'history/createHashHistory';
+import { createHashHistory } from 'history';
 
 import { Provider, store } from '_src_/store';
 
