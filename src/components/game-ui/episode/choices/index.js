@@ -7,10 +7,6 @@ import Choice from './choice';
 
 // choice component
 class Choices extends Component {
-  makeChoice = (optionId) => {
-    this.props.makeChoice(optionId);
-  };
-
   refCurrentChoices = e => this.currentChoices = e;
 
   componentDidUpdate() {
@@ -20,7 +16,7 @@ class Choices extends Component {
   render({ choices }) {
     return (
       <div class={[style.choiceWrapper, 'is-animated'].join(' ')} ref={this.refCurrentChoices}>
-        {choices.map((o) => <Choice option={o} makeChoice={this.makeChoice} />)}
+        {choices.map((o) => <Choice option={o} />)}
       </div>
     );
   }

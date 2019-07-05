@@ -24,10 +24,6 @@ const scene = {
   ]
 };
 
-function makeChoice (c) {
-  console.log('makeChoice called', c);
-}
-
-const DemoMap2 = () => (<Map2 width={654} height={1041} scene={scene} makeChoice={makeChoice} />);
+const DemoMap2 = () => (<Map2 width={654} height={1041} scene={scene} />);
 
 export default DemoMap2;

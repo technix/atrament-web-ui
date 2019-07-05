@@ -1,5 +1,6 @@
 import { h, Component } from 'preact';
 import style from './style';
+import { makeChoice } from '_src_/game/engine';
 
 const assetPath = 'assets/game/map';
 const delayPositionAnimation = 1400;
@@ -66,7 +67,7 @@ class Map extends Component {
     this.setState({ mapPosition: data, mapPoints });
     setTimeout(() => {
       this.setState({ mapClass: [style.map, 'mapSlideOut'].join(' ') });
-      setTimeout(() => this.props.makeChoice(data.id), delayMapslideAnimation);
+      setTimeout(() => makeChoice(data.id), delayMapslideAnimation);
     }, delayPositionAnimation);
   }
 

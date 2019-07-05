@@ -23,7 +23,7 @@ class Episode extends Component {
     }
   }
   
-  render ({ episode, scene, makeChoice }, { scrollEvent }) {
+  render ({ episode, scene }, { scrollEvent }) {
     return (
       <div class={style.scroller}>
         <div id="episode" class={style.episode} ref={this.refScroller}>
@@ -33,7 +33,7 @@ class Episode extends Component {
           <div class={[style.currentScene, 'is-animated'].join(' ')} ref={this.refCurrentScene}>
             <Section text={scene.text} />
           </div>
-          <Choices choices={scene.choices} makeChoice={makeChoice} />
+          <Choices choices={scene.choices} />
         </div>
       </div>
     );

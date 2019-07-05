@@ -24,43 +24,28 @@ atrament.registerCommand(
   }
 );
 
-const engine = {
-  startGame() {
-    return atrament.startGame();
-  },
+export function renderScene() {
+  atrament.renderScene();
+  const ep = atrament.story.getCurrentEpisode();
+  store.setState({
+    scene: atrament.story.getCurrentScene(),
+    episode: ep.slice(0, ep.length-1)
+  });
+  return atrament.saveGame('auto');
+}
 
-  renderScene() {
-    atrament.renderScene();
-    const ep = atrament.story.getCurrentEpisode();
-    return {
-      scene: atrament.story.getCurrentScene(),
-      episode: ep.slice(0, ep.length-1)
-    };
-  },
+export function makeChoice(id) {
+  return atrament.makeChoice(id).then(renderScene);
+}
 
-  makeChoice(id) {
-    return atrament.makeChoice(id);
-  },
-
-  saveGame() {
-    return atrament.saveGame('auto');
-  },
-
-  resumeGame() {
-    return atrament.loadGame('auto');
-  },
-
-  initGame() {
-    sound.mute(!store.getState().sound);
-    if (storage.exists('auto')) {
-      return this.resumeGame();
-    }
-    return this.startGame();
-  },
-
-  clearSavedGame() {
-    storage.delete('auto');
+export function initGame() {
+  sound.mute(!store.getState().sound);
+  if (storage.exists('auto')) {
+    return atrament.loadGame('auto').then(renderScene);
   }
-};
+  return atrament.startGame().then(renderScene);
+}
 
-export default engine;
+export function clearSavedGame() {
+  storage.delete('auto');
+}
