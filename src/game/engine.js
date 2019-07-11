@@ -8,7 +8,7 @@ import { store } from '_src_/store';
 const atrament = new Atrament(cfg);
 
 atrament.on('saveGame', (p) => new Promise((resolve) => {
-  storage.set(p.id, p.data);
+  storage.set(p.id, p);
   resolve();
 }));
 atrament.on('loadGame', (id) => new Promise((resolve) => {
