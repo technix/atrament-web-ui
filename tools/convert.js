@@ -6,7 +6,7 @@ const inputFile = process.argv[2];
 const outputTemp = `${inputFile}.tmp.json`;
 const outputFile = `${inputFile}.json`;
 
-const inklecate = path.resolve(__dirname, 'inklecate/inklecate_win.exe');
+const inklecate = path.resolve(__dirname, 'inklecate/inklecate.exe');
 
 const prc = spawn(inklecate, ['-o', outputTemp, inputFile]);
 
