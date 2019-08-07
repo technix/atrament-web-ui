@@ -22,7 +22,7 @@ class Episode extends Component {
 
   componentDidMount() {
     Animate.sceneAppear(this.currentScene)
-      .then(Animate.choicesAppear());
+      .then(Animate.choicesAppear);
   }
 
   componentDidUpdate() {
@@ -30,7 +30,7 @@ class Episode extends Component {
       this.scroller.scrollTop = this.scroller.scrollHeight;
     }
     Animate.sceneAppear(this.currentScene)
-      .then(Animate.choicesAppear());
+      .then(Animate.choicesAppear);
   }
   
   render ({ episode, scene }, { scrollEvent }) {

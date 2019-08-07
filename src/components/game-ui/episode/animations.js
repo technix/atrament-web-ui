@@ -26,7 +26,8 @@ const Animate = {
   },
 
   sceneAppear(ref) {
-    return animateRef(ref, 'animation-sceneAppear', true);
+    return animateRef(ref, 'animation-sceneAppear', true)
+      .then(() => new Promise(resolve => setTimeout(resolve, 1000)));
   }
 
 };
