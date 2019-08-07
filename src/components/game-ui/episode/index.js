@@ -21,10 +21,8 @@ class Episode extends Component {
   componentDidUpdate() {
     if (this.scroller) {
       this.scroller.scrollTop = this.scroller.scrollHeight;
-
-      // Animations
-      animateRef(this.currentScene, 'animation-sceneAppear');
     }
+    animateRef(this.currentScene, 'animation-sceneAppear');
   }
   
   render ({ episode, scene }, { scrollEvent }) {
