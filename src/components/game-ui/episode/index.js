@@ -14,6 +14,10 @@ class Episode extends Component {
   refScroller = e => this.scroller = e;
   refCurrentScene = e => this.currentScene = e;
 
+  componentDidMount() {
+    animateRef(this.currentScene, 'animation-sceneAppear');
+  }
+
   componentDidUpdate() {
     if (this.scroller) {
       this.scroller.scrollTop = this.scroller.scrollHeight;

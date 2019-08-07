@@ -94,7 +94,7 @@
 
 .animation-choicesAppear {
   animation-name: unblur;
-  animation-duration: 0.3s;
+  animation-duration: 0.25s;
   animation-timing-function: ease-in;
   animation-delay: 0s;
   animation-iteration-count: 1;
@@ -103,7 +103,7 @@
 
 .animation-choicesDisappear {
   animation-name: blur;
-  animation-duration: 0.9s;
+  animation-duration: 0.6s;
   animation-timing-function: ease-in;
   animation-delay: 0s;
   animation-iteration-count: 1;
