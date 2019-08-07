@@ -10,19 +10,25 @@ import Animate from './animations';
 
 // episode component
 class Episode extends Component {
+  choicesActive = false;
+
   getScroller = () => this.scroller; // required to pass 'scroller' object to parallax
 
   // save refs
   refScroller = e => this.scroller = e;
   refCurrentScene = e => this.currentScene = e;
 
-  makeChoice(id) {
-    Animate.choicesDisappear(id).then(() => makeChoice(id));
+  makeChoice = id => {
+    if (this.choicesActive) {
+      this.choicesActive = false;
+      Animate.choicesDisappear(id).then(() => makeChoice(id));
+    }
   }
 
   componentDidMount() {
     Animate.sceneAppear(this.currentScene)
-      .then(Animate.choicesAppear);
+      .then(Animate.choicesAppear)
+      .then(() => this.choicesActive = true);
   }
 
   componentDidUpdate() {
@@ -30,7 +36,8 @@ class Episode extends Component {
       this.scroller.scrollTop = this.scroller.scrollHeight;
     }
     Animate.sceneAppear(this.currentScene)
-      .then(Animate.choicesAppear);
+      .then(Animate.choicesAppear)
+      .then(() => this.choicesActive = true);
   }
   
   render ({ episode, scene }, { scrollEvent }) {

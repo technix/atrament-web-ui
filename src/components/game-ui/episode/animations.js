@@ -6,7 +6,7 @@ const Animate = {
   refChoices: (i, e) => Animate.allChoiceRefs[i] = e,
 
   choicesAppear() {
-    Animate.allChoiceRefs.reduce((promiseChain, ref) => {
+    return Animate.allChoiceRefs.reduce((promiseChain, ref) => {
       if (ref === null) {
         return promiseChain;
       }
