@@ -19,7 +19,7 @@ class Episode extends Component {
       this.scroller.scrollTop = this.scroller.scrollHeight;
 
       // Animations
-      animateRef(this.currentScene, 'sceneAppear');
+      animateRef(this.currentScene, 'animation-sceneAppear');
     }
   }
   

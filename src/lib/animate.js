@@ -2,10 +2,12 @@ export function animateRef(ref, className) {
   return new Promise((resolve) => {
     ref.addEventListener('animationend', function animationEnd() {
       ref.removeEventListener('animationend', animationEnd);
-      ref.classList.remove(className);
       resolve();
     });
-    ref.classList.remove(className);
+    // remove all existing animation classes
+    [].slice.apply(ref.classList)
+      .filter(i => i.startsWith('animation-'))
+      .forEach(c => ref.classList.remove(c));
     void ref.offsetWidth;
     ref.classList.add(className);
   });

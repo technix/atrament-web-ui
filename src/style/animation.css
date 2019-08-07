@@ -41,6 +41,10 @@
 
 @keyframes unblur {
   0% {
+    opacity: 0;
+    filter: blur(10px);
+  }
+  80% {
     opacity: 0.5;
     filter: blur(4px);
   }
@@ -50,10 +54,26 @@
   }
 }
 
+@keyframes blur {
+  0% {
+    opacity: 1;
+    filter: blur(0px);
+  }
+  20% {
+    opacity: 0.5;
+    filter: blur(4px);
+  }
+  100% {
+    opacity: 0;
+    filter: blur(8px);
+  }
+}
 
-.is-animated {
+
+.is-animated-disabled {
   backface-visibility: hidden; /* animation 1px glitch fix */
 }
+
 
 .mapSlideIn {
   animation: 0.3s ease-out 0s 1 slideInFromLeft;
@@ -63,10 +83,29 @@
   animation: 0.3s ease-out 0s 1 slideOutToLeft;
 }
 
-.sceneAppear {
-  animation: unblur 0.25s ease-in 0s 1;
+.animation-sceneAppear {
+  animation-name: unblur;
+  animation-duration: 0.25s;
+  animation-timing-function: ease-in;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
-.choicesAppear {
-  animation: unblur 0.25s ease-in 0s 1;
+.animation-choicesAppear {
+  animation-name: unblur;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.animation-choicesDisappear {
+  animation-name: blur;
+  animation-duration: 0.9s;
+  animation-timing-function: ease-in;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }

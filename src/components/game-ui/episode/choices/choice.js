@@ -1,15 +1,15 @@
 import { h, Component } from 'preact';
 import style from './style';
 
-import { makeChoice } from '_src_/game/engine';
-
 import { fmtText } from '_src_/lib/typography';
 
 // choice component
 class Choice extends Component {
+  getRefChoice = e => this.props.setRef(this.props.option.id, e);
+
   handleClick = (e) => {
     e.preventDefault();
-    return makeChoice(this.props.option.id);
+    return this.props.makeChoice(this.props.option.id);
   };
 
   render({ option }) {
@@ -22,7 +22,14 @@ class Choice extends Component {
     }
 
     return (
-      <a href="#" onClick={this.handleClick} class={choiceClasses}>{fmtText(optionText)}</a>
+      <a
+        href="#"
+        onClick={this.handleClick}
+        class={choiceClasses}
+        ref={this.getRefChoice}
+      >
+        {fmtText(optionText)}
+      </a>
     );
   }
 }
