@@ -6,13 +6,14 @@ import style from './style';
 import Paragraph from '../paragraph';
 
 // paragraph component
-const Section = ({ settings, text }) => (
+const Section = ({ settings, text }) => text.length === 0 ? '' : (
   <div class={[
     style.section,
     'ui-section',
     settings.hyphens ? 'justified' : ''
   ].join(' ')}
   >
+    <hr />
     { text.map((line) => <Paragraph text={line} hyphens={settings.hyphens} />) }
   </div>
 );
