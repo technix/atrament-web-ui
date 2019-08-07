@@ -1,10 +1,12 @@
 import { h, Component } from 'preact';
 import style from './style';
 
-import { animateRef } from '_src_/lib/animate';
+import { makeChoice } from '_src_/game/engine';
 
 import Choices from './choices';
 import Section from './section';
+
+import Animate from './animations';
 
 // episode component
 class Episode extends Component {
@@ -14,15 +16,21 @@ class Episode extends Component {
   refScroller = e => this.scroller = e;
   refCurrentScene = e => this.currentScene = e;
 
+  makeChoice(id) {
+    Animate.choicesDisappear(id).then(() => makeChoice(id));
+  }
+
   componentDidMount() {
-    animateRef(this.currentScene, 'animation-sceneAppear');
+    Animate.sceneAppear(this.currentScene)
+      .then(Animate.choicesAppear());
   }
 
   componentDidUpdate() {
     if (this.scroller) {
       this.scroller.scrollTop = this.scroller.scrollHeight;
     }
-    animateRef(this.currentScene, 'animation-sceneAppear');
+    Animate.sceneAppear(this.currentScene)
+      .then(Animate.choicesAppear());
   }
   
   render ({ episode, scene }, { scrollEvent }) {
@@ -35,7 +43,7 @@ class Episode extends Component {
           <div class={[style.currentScene, 'is-animated'].join(' ')} ref={this.refCurrentScene}>
             <Section text={scene.text} />
           </div>
-          <Choices choices={scene.choices} />
+          <Choices choices={scene.choices} makeChoice={this.makeChoice} refChoices={Animate.refChoices} />
         </div>
       </div>
     );

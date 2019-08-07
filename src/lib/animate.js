@@ -1,4 +1,4 @@
-export function animateRef(ref, className) {
+export function animateRef(ref, className, delayed) {
   return new Promise((resolve) => {
     ref.addEventListener('animationend', function animationEnd() {
       ref.removeEventListener('animationend', animationEnd);
@@ -8,7 +8,13 @@ export function animateRef(ref, className) {
     [].slice.apply(ref.classList)
       .filter(i => i.startsWith('animation-'))
       .forEach(c => ref.classList.remove(c));
+    // reset offset
     void ref.offsetWidth;
-    ref.classList.add(className);
+    // add animation class
+    if (delayed) {
+      setTimeout(() => ref.classList.add(className), 0);
+    } else {
+      ref.classList.add(className);
+    }
   });
 }
