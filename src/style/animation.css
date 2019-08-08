@@ -70,10 +70,10 @@
 }
 
 
-.is-animated-disabled {
+.is-animated {
+  transform: perspective(1px) translateZ(0);
   backface-visibility: hidden; /* animation 1px glitch fix */
 }
-
 
 .mapSlideIn {
   animation: 0.3s ease-out 0s 1 slideInFromLeft;

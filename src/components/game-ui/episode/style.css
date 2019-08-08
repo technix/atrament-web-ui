@@ -37,5 +37,4 @@
 
 .currentScene {
   opacity: 0;
-  filter: blur(10px);
 }
