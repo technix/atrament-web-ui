@@ -1,8 +1,13 @@
 import { h } from 'preact';
+import style from './style';
 
-// loading message
+// loading block
 const Loading = () => (
-  <div style="width: 50%; padding-top: 200px; margin: auto;">Loading...</div>
+  <div class={style.container}>
+    <div class={style['lds-roller']}>
+      <div /><div /><div /><div /><div /><div /><div /><div />
+    </div>
+  </div>
 );
 
 export default Loading;
