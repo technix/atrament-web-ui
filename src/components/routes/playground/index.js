@@ -4,6 +4,8 @@ import style from './style';
 
 import DemoMap2 from './demo/map2';
 import DemoParallax from './demo/parallax';
+import Animations from './demo/animations';
+import Loading from '_src_/components/game-ui/loading';
 
 const Playground = ({ subcomponent }) => {
   let render;
@@ -18,6 +20,16 @@ const Playground = ({ subcomponent }) => {
       <DemoParallax />
     );
     break;
+  case 'animations':
+    render = (
+      <Animations />
+    );
+    break;
+  case 'loading':
+    render = (
+      <Loading />
+    );
+    break;
   default:
     render = (
       <div class={style.playground}>
@@ -26,6 +38,8 @@ const Playground = ({ subcomponent }) => {
         <ul>
           <li><Link href="/playground/map2">Map 2</Link></li>
           <li><Link href="/playground/parallax">Parallax</Link></li>
+          <li><Link href="/playground/loading">Loading</Link></li>
+          <li><Link href="/playground/animations">Animations</Link></li>
           <li>3</li>
           <li>4</li>
         </ul>
