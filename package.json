@@ -8,6 +8,7 @@
     "build": "preact build --no-prerender --template src/index.html",
     "serve": "preact build --no-prerender --template src/index.html && preact serve",
     "dev": "preact watch --template src/index.html",
+    "inklecate": "node tools/convertAll.js src/game/ink",
     "lint": "eslint src",
     "test": "jest ./tests"
   },
