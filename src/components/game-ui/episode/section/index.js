@@ -4,6 +4,7 @@ import { connect } from '_src_/store';
 import style from './style';
 
 import Paragraph from '../paragraph';
+import Image from '../image';
 
 // paragraph component
 const Section = ({ settings, text }) => text.length === 0 ? '' : (
@@ -14,7 +15,12 @@ const Section = ({ settings, text }) => text.length === 0 ? '' : (
   ].join(' ')}
   >
     <hr />
-    { text.map((line) => <Paragraph text={line} hyphens={settings.hyphens} />) }
+    { text.map((line) => {
+      if (line.startsWith('::IMAGE')) {
+        return (<Image config={line} />);
+      }
+      return (<Paragraph text={line} hyphens={settings.hyphens} />);
+    }) }
   </div>
 );
 

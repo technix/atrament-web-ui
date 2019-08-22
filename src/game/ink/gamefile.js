@@ -1,2 +1,2 @@
-import inkJSON from './gamefile.json';
+import inkJSON from './textflow.ink.json';
 export default inkJSON;
