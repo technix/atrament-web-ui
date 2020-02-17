@@ -1,6 +1,6 @@
 import { h, Component } from 'preact';
 import style from './style';
-import { makeChoice } from '_src_/game/engine';
+import connectGame from '_src_/components/connect-game';
 
 const assetPath = 'assets/game/map';
 const delayPositionAnimation = 1400;
@@ -67,7 +67,7 @@ class Map extends Component {
     this.setState({ mapPosition: data, mapPoints });
     setTimeout(() => {
       this.setState({ mapClass: [style.map, 'mapSlideOut'].join(' ') });
-      setTimeout(() => makeChoice(data.id), delayMapslideAnimation);
+      setTimeout(() => this.props.gameActions.makeChoice(data.id), delayMapslideAnimation);
     }, delayPositionAnimation);
   }
 
@@ -100,4 +100,4 @@ class Map extends Component {
   }
 }
 
-export default Map;
+export default connectGame(Map);

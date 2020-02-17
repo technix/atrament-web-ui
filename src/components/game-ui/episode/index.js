@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import style from './style';
 
-import { makeChoice } from '_src_/game/engine';
+import connectGame from '_src_/components/connect-game';
 
 import Choices from './choices';
 import Section from './section';
@@ -21,7 +21,7 @@ class Episode extends Component {
   makeChoice = id => {
     if (this.choicesActive) {
       this.choicesActive = false;
-      Animate.choicesDisappear(id).then(() => makeChoice(id));
+      Animate.choicesDisappear(id).then(() => this.props.gameActions.makeChoice(id));
     }
   }
 
@@ -57,4 +57,4 @@ class Episode extends Component {
   }
 }
 
-export default Episode;
+export default connectGame(Episode);
