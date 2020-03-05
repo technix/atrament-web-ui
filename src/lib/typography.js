@@ -1,4 +1,4 @@
-import hyphenate from '_src_/lib/hyphens';
+import hyphenate from 'src/lib/hyphens';
 
 function fmtText(text, options) {
   text = text

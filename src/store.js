@@ -1,5 +1,5 @@
 import { createStore, Provider, connect } from 'unistore/full/preact';
-import storage from './lib/storage';
+import storage from 'src/lib/storage';
 
 let defaultStore =  {
   // settings

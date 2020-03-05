@@ -1,11 +1,11 @@
 import { h } from 'preact';
 
-import Ripple from '_src_/components/blocks/animation-ripple';
-import Spinner from '_src_/components/blocks/animation-spinner';
-import Grid from '_src_/components/blocks/animation-grid';
-import Fold from '_src_/components/blocks/animation-fold';
-import Blip from '_src_/components/blocks/animation-blip';
-import Bounce from '_src_/components/blocks/animation-bounce';
+import Ripple from 'src/components/blocks/animation-ripple';
+import Spinner from 'src/components/blocks/animation-spinner';
+import Grid from 'src/components/blocks/animation-grid';
+import Fold from 'src/components/blocks/animation-fold';
+import Blip from 'src/components/blocks/animation-blip';
+import Bounce from 'src/components/blocks/animation-bounce';
 
 // loading block
 const RippleDemo = () => (

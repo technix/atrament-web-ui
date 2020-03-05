@@ -2,7 +2,7 @@ import { h } from 'preact';
 import style from './style';
 import { Link } from 'preact-router/match';
 
-import storage from '_src_/lib/storage';
+import storage from 'src/lib/storage';
 
 const Home = () => (
   <div>

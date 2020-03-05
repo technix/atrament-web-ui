@@ -2,15 +2,15 @@ import { h, Component } from 'preact';
 import { Router } from 'preact-router';
 import { createHashHistory } from 'history';
 
-import { Provider, store } from '_src_/store';
-import storage from '_src_/lib/storage';
+import { Provider, store } from 'src/store';
+import storage from 'src/lib/storage';
 
-import Home from './routes/home';
-import Game from './routes/game';
-import Settings from './routes/settings';
+import Home from 'src/components/routes/home';
+import Game from 'src/components/routes/game';
+import Settings from 'src/components/routes/settings';
 
 // playground
-import Playground from './routes/playground';
+import Playground from 'src/components/routes/playground';
 
 export default class App extends Component {
   handleRoute = e => {

@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import style from './style';
-import scale from '_src_/lib/scale';
-import connectGame from '_src_/components/connect-game';
+import scale from 'src/lib/scale';
+import connectGame from 'src/components/connect-game';
 
 const assetPath = 'assets/game/map';
 const delayPositionAnimation = 1400;

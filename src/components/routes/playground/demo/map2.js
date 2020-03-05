@@ -1,6 +1,6 @@
 import { h } from 'preact';
 
-import Map2 from '_src_/components/game-ui/map2';
+import Map2 from 'src/components/game-ui/map2';
 
 const scene = {
   tags: {

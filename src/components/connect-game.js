@@ -1,7 +1,7 @@
 import { h } from 'preact';
-import { connect, actions } from '_src_/store';
+import { connect, actions } from 'src/store';
 
-import { initGame, clearSavedGame, makeChoice, renderScene } from '_src_/game/engine';
+import { initGame, clearSavedGame, makeChoice, renderScene } from 'src/game/engine';
 
 function connectGame(WrappedComponent) {
   const wrapped = (props) => (

@@ -1,4 +1,4 @@
-import { animateRef } from '_src_/lib/animate';
+import { animateRef } from 'src/lib/animate';
 
 const Animate = {
   allChoiceRefs: [],

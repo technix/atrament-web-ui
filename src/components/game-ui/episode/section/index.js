@@ -1,6 +1,6 @@
 
 import { h } from 'preact';
-import { connect } from '_src_/store';
+import { connect } from 'src/store';
 import style from './style';
 
 import Paragraph from '../paragraph';

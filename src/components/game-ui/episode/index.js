@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import style from './style';
 
-import connectGame from '_src_/components/connect-game';
+import connectGame from 'src/components/connect-game';
 
 import Choices from './choices';
 import Section from './section';

@@ -1,8 +1,8 @@
 import { h, Component } from 'preact';
 import style from './style';
-import soundLib from '_src_/lib/sound';
+import soundLib from 'src/lib/sound';
 
-import { connect, actions } from '_src_/store';
+import { connect, actions } from 'src/store';
 
 class SoundCtrl extends Component {
   componentDidUpdate() {

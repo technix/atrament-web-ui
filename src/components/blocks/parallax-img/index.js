@@ -1,7 +1,7 @@
 import { h } from 'preact';
 // import style from './style';
 
-import ParallaxComponent from '_src_/components/modules/parallax';
+import ParallaxComponent from 'src/components/modules/parallax';
 
 class ParallaxImg extends ParallaxComponent {
   render({ width, height }, { parallaxProgress }) {

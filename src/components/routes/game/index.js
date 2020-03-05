@@ -1,11 +1,11 @@
 import { h, Component } from 'preact';
 
-import connectGame from '_src_/components/connect-game';
+import connectGame from 'src/components/connect-game';
 
 // --
-import Loading from '_src_/components/game-ui/loading';
-import Episode from '_src_/components/game-ui/episode';
-import Map from '_src_/components/game-ui/map';
+import Loading from 'src/components/game-ui/loading';
+import Episode from 'src/components/game-ui/episode';
+import Map from 'src/components/game-ui/map';
 
 
 class Game extends Component {

@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import style from './style';
 
-import { fmtText } from '_src_/lib/typography';
+import { fmtText } from 'src/lib/typography';
 
 // choice component
 class Choice extends Component {

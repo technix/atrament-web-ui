@@ -5,7 +5,7 @@ import style from './style';
 import DemoMap2 from './demo/map2';
 import DemoParallax from './demo/parallax';
 import Animations from './demo/animations';
-import Loading from '_src_/components/game-ui/loading';
+import Loading from 'src/components/game-ui/loading';
 
 const Playground = ({ subcomponent }) => {
   let render;

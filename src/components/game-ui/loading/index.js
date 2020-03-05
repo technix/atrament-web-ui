@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import style from './style';
-import Fold from '_src_/components/blocks/animation-fold';
+import Fold from 'src/components/blocks/animation-fold';
 
 // loading block
 const Loading = () => (

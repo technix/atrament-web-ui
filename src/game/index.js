@@ -4,7 +4,7 @@ import './style';
 import './fonts/alegreya';
 
 // init libraries
-import storage from '_src_/lib/storage';
+import storage from 'src/lib/storage';
 
 // import game config
 import cfg from './config.json';

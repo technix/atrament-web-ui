@@ -1,8 +1,8 @@
 import Atrament from 'atrament';
 import cfg from './config.json';
-import storage from '_src_/lib/storage';
-import sound from '_src_/lib/sound';
-import { store } from '_src_/store';
+import storage from 'src/lib/storage';
+import sound from 'src/lib/sound';
+import { store } from 'src/store';
 
 
 const atrament = new Atrament(cfg);

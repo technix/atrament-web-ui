@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { Link } from 'preact-router/match';
 
-import { connect, actions } from '_src_/store';
+import { connect, actions } from 'src/store';
 
 const Settings = ({
   settings,

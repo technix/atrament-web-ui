@@ -1,6 +1,6 @@
 import { h } from 'preact';
 
-import { fmtText } from '_src_/lib/typography';
+import { fmtText } from 'src/lib/typography';
 
 function paragraphStyle(text) {
   return [
