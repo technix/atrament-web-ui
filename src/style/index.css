@@ -3,9 +3,13 @@
 }
 
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overscroll-behavior: none; /* disallow pull-to-refresh on Android */
 }
 
+/* avoid button and link highlight */
 :focus {
   outline:none;
 }
@@ -15,37 +19,11 @@ body {
 }
 
 a {
-  color: #303F9F;
   -webkit-tap-highlight-color: rgba(255, 255, 255, 0); /* avoid highlight on Android */
 }
 
 #app {
-  position: absolute;
-  min-width: 360px;
-  width: 56.25vh;
-  height: 98vh;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  transform-origin: center center;
+  height: 100vh;
+  width: 56.25vh; /* 9:16 */
   overflow: hidden;
-}
-
-@media (max-width: 480px) {
-  #app {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    margin: 0 0;
-    transform: none;
-    transform-origin: none;
-    border: none;
-  }
-}
-
-img {
-  width: 90%;
-  margin: auto;
 }

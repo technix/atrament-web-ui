@@ -6,6 +6,11 @@ body {
   color: #121212;
 }
 
+img {
+  width: 90%;
+  margin: auto;
+}
+
 #app {
   background-image: url(./gfx/bg_main.jpg);
   background-size: cover;
@@ -53,4 +58,8 @@ h3 {
   height: 1px;
   width: 30%;
   background-image: linear-gradient(to right, rgba(127, 127, 127, 0), rgba(127, 127, 127, 0.75), rgba(127, 127, 127, 0));
+}
+
+a {
+  color: #303F9F;
 }
