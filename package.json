@@ -5,8 +5,8 @@
   "license": "MIT",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-    "build": "preact build --no-prerender --template src/index.html",
-    "serve": "preact build --no-prerender --template src/index.html && preact serve",
+    "build": "preact build --no-esm --no-prerender --template src/index.html",
+    "serve": "preact build --no-esm --no-prerender --template src/index.html && preact serve",
     "dev": "preact watch --template src/index.html",
     "inklecate": "node node_modules/atrament/tools/convertAll.js src/game/ink",
     "lint": "eslint src",
