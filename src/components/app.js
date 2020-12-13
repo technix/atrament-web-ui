@@ -9,9 +9,6 @@ import Home from 'src/components/routes/home';
 import Game from 'src/components/routes/game';
 import Settings from 'src/components/routes/settings';
 
-// playground
-import Playground from 'src/components/routes/playground';
-
 export default class App extends Component {
   handleRoute = e => {
     if (e.current.props.url === '/game/new') {
@@ -28,7 +25,6 @@ export default class App extends Component {
             <Home path="/" />
             <Game path="/game/:new?" />
             <Settings path="/settings" />
-            <Playground path="/playground/:subcomponent?" />
           </Router>
         </div>
       </Provider>
