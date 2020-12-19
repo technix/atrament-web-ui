@@ -1,43 +1,28 @@
 import { h } from 'preact';
-import { Link } from 'preact-router/match';
+import { useCallback } from 'preact/hooks';
+import { useStoreon } from 'storeon/preact';
 
-import { connect, actions } from 'src/store';
+import UISettings from 'src/components/ui/settings';
 
-const Settings = ({
-  settings,
-  setHyphens, setTranscript, setDebug, setSound, setVolume
-}) => (
-  <div>
-    <h1 class="header">Settings</h1>
-    <form>
-      <hr />
-      <label>
-        Hyphens:
-        <input type="checkbox" checked={settings.hyphens} onChange={setHyphens} /> | {settings.hyphens.toString()}
-      </label>
-      <hr />
-      <label>
-        Sound:
-        <input type="checkbox" checked={settings.sound} onChange={setSound} /> | {settings.sound.toString()}
-      </label>
-      <hr />
-      <label>
-        Volume:
-        <input type="range" min="0" max="100" value={settings.volume} onChange={setVolume} /> | {settings.volume}
-      </label>
-      <hr />
-      <label>
-        Transcript:
-        <input type="checkbox" checked={settings.transcript} onChange={setTranscript} /> | {settings.transcript.toString()}
-      </label>
-      <hr />
-      <label>
-        Debug:
-        <input type="checkbox" checked={settings.debug} onChange={setDebug} /> | {settings.debug.toString()}
-      </label>
-    </form>
-    <Link href="/">Back to menu</Link>
-  </div>
-);
+const Settings = () => {
+  const { dispatch, sound, volume } = useStoreon('sound', 'volume');
+  const setSound = useCallback(() => {
+    dispatch('switch/sound');
+    dispatch('settings/save');
+  }, []);
+  const setVolume = useCallback((e) => {
+    dispatch('set/volume', e.target.value);
+    dispatch('settings/save');
+  }, []);
 
-export default connect('settings', actions)(Settings);
+  return (
+    <UISettings
+      sound={sound}
+      setSound={setSound}
+      volume={volume}
+      setVolume={setVolume}
+    />
+  );
+};
+
+export default Settings;

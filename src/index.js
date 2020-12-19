@@ -1,10 +1,5 @@
-import {} from 'normalize.css';
 import './style';
-import './style/animation';
-
-import './game';
-
-// app
+import 'src/lib/storage'; // init localforage here
 import App from './components/app';
 
 export default App;

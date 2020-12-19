@@ -1,28 +1,33 @@
-import { h, Component } from 'preact';
+import { h } from 'preact';
+import { useEffect, useCallback } from 'preact/hooks';
+import { useStoreon } from 'storeon/preact';
+import connectGame from 'src/components/app/connectGame';
 
-import connectGame from 'src/components/connect-game';
+import UIGame from 'src/components/ui/game';
 
-// --
-import Loading from 'src/components/game-ui/loading';
-import Episode from 'src/components/game-ui/episode';
+const Game = ({ matches, gameController }) => {
+  const { scene, episode } = useStoreon('scene', 'episode');
+  const makeChoice = useCallback((id) => gameController.makeChoice(id), []);
 
-class Game extends Component {
-  componentWillMount() {
-    this.props.gameActions.initGame();
-  }
-
-  componentDidUpdate(props) {
-    if (props.scene && props.scene.choices.length === 0 ) {
-      this.props.gameActions.clearSavedGame();
+  useEffect(async () => {
+    if (matches.new) {
+      // new game; remove autosave
+      await gameController.clearAutoSave();
     }
+    gameController.initGame();
+  }, []);
+
+  if (!scene && !episode) {
+    return;
   }
 
-  render({ scene }) {
-    if (!scene) {
-      return (<Loading />);
-    }
-    return (<Episode />);
-  }
-}
+  return (
+    <UIGame
+      scene={scene}
+      episode={episode}
+      makeChoice={makeChoice}
+    />
+  );
+};
 
 export default connectGame(Game);

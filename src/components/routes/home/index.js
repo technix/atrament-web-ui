@@ -1,18 +1,25 @@
 import { h } from 'preact';
-import style from './style';
+import { useState, useEffect } from 'preact/hooks';
 import { Link } from 'preact-router/match';
+import { autosaveExists } from 'src/lib/autosave';
 
-import storage from 'src/lib/storage';
+import UIHome from 'src/components/ui/home';
 
-const Home = () => (
-  <div>
-    <h1 class={style.header}>Home</h1>
-    <p>This is main app screen.</p>
-    {storage.exists('auto') ? <Link href="/game" class={style.button}>Continue</Link> : ''}
-    <Link href="/game/new" class={style.button}>{storage.exists('auto') ? 'Restart game' : 'Start game' }</Link>
-    <Link href="/settings" class={style.button}>Settings</Link>
-    <Link href="/playground" class={style.button}><em>Playground</em></Link>
-  </div>
-);
+const Home = () => {
+  const [isAutosaved, setAutosaved] = useState(false);
+  useEffect(async () => {
+    setAutosaved(await autosaveExists());
+  }, []);
+
+  return (
+    <UIHome
+      menu={[
+        <Link href="/game/new">Start game</Link>,
+        isAutosaved && <li><Link href="/game">Continue</Link></li>,
+        <Link href="/settings">Settings</Link>
+      ]}
+    />
+  );
+};
 
 export default Home;

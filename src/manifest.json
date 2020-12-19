@@ -1,6 +1,7 @@
 {
-  "name": "atrament-ui",
+  "name": "Atrament UI",
   "short_name": "atrament-ui",
+  "db_uuid": "atrament_ui",
   "start_url": "/",
   "display": "standalone",
   "orientation": "portrait",
