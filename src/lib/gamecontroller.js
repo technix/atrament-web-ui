@@ -1,4 +1,3 @@
-import Atrament from 'atrament';
 import gameStorage from 'localforage';
 import { enableSound } from 'src/lib/sound';
 import store from 'src/store';
@@ -6,7 +5,8 @@ import { autosaveId, autosaveExists, autosaveClear } from 'src/lib/autosave';
 
 
 class GameController {
-  constructor(cfg) {
+  async initAtrament() {
+    const { default: Atrament } = await import(/* webpackChunkName: "atrament" */ 'atrament');
     const atrament = new Atrament({ storyFile: null });
     atrament.on('saveGame', (p) => gameStorage.setItem(p.id, p));
     atrament.on('loadGame', (id) => gameStorage.getItem(id).then((v) => JSON.stringify(v)));

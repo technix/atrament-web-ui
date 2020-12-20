@@ -14,7 +14,8 @@ const Game = ({ matches, gameController }) => {
       // new game; remove autosave
       await gameController.clearAutoSave();
     }
-    gameController.initGame();
+    await gameController.initAtrament();
+    await gameController.initGame();
   }, []);
 
   if (!scene && !episode) {
