@@ -65,7 +65,7 @@ function getItem(key, callback) {
 
   // Cast the key to a string, as that's all we can set as a key.
   if (typeof key !== 'string') {
-    console.warn(key + ' used as a key, but it is not a string.');
+    console.warn(`${key} used as a key, but it is not a string.`);
     key = String(key);
   }
 
@@ -168,7 +168,7 @@ function removeItem(key, callback) {
 
   // Cast the key to a string, as that's all we can set as a key.
   if (typeof key !== 'string') {
-    console.warn(key + ' used as a key, but it is not a string.');
+    console.warn(`${key} used as a key, but it is not a string.`);
     key = String(key);
   }
 
@@ -188,7 +188,7 @@ function setItem(key, value, callback) {
 
   // Cast the key to a string, as that's all we can set as a key.
   if (typeof key !== 'string') {
-    console.warn(key + ' used as a key, but it is not a string.');
+    console.warn(`${key} used as a key, but it is not a string.`);
     key = String(key);
   }
 
