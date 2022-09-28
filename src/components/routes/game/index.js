@@ -1,22 +1,16 @@
 import { h } from 'preact';
-import { useEffect, useCallback } from 'preact/hooks';
+import { useEffect } from 'preact/hooks';
 import { useStoreon } from 'storeon/preact';
-import connectGame from 'src/components/app/connectGame';
 
 import UIGame from 'src/components/ui/game';
+import { initEngine, makeChoice } from 'src/lib/atrament';
 
-const Game = ({ matches, gameController }) => {
+const Game = ({ matches }) => {
   const { scene, episode } = useStoreon('scene', 'episode');
-  const makeChoice = useCallback((id) => gameController.makeChoice(id), []);
 
-  useEffect(async () => {
-    if (matches.new) {
-      // new game; remove autosave
-      await gameController.clearAutoSave();
-    }
-    await gameController.initAtrament();
-    await gameController.initGame();
-  }, []);
+  useEffect(() => {
+    initEngine(matches.new);
+  });
 
   if (!scene && !episode) {
     return;
@@ -31,4 +25,4 @@ const Game = ({ matches, gameController }) => {
   );
 };
 
-export default connectGame(Game);
+export default Game;
