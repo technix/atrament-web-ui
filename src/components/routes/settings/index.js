@@ -9,11 +9,11 @@ const Settings = () => {
   const setSound = useCallback(() => {
     dispatch('switch/sound');
     dispatch('settings/save');
-  }, []);
+  }, [ dispatch ]);
   const setVolume = useCallback((e) => {
     dispatch('set/volume', e.target.value);
     dispatch('settings/save');
-  }, []);
+  }, [ dispatch ]);
 
   return (
     <UISettings

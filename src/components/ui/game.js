@@ -16,7 +16,7 @@ const UIGame = ({ scene, episode, makeChoice }) => {
         <p>{scene.text.map((p) => p === '' ? '' : <p>{p}</p>)}</p>
       </blockquote>
       <ul>
-        { scene.choices.map((c) => <li><button data-id={c.id} onClick={handleClick}>{c.choice}</button></li>) }
+        { scene.choices.map((c) => <li key={c.id}><button data-id={c.id} onClick={handleClick}>{c.choice}</button></li>) }
       </ul>
     </div>
   );

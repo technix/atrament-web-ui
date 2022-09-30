@@ -22,7 +22,7 @@ export default function settingsStore(store) {
   store.on('set/volume', (s, volume) => ({ volume }));
   // load/save settings
   store.on('settings/load', (s, settings) => settings);
-  store.on('settings/save', (s) => {
+  store.on('settings/save', () => {
     const state = store.get();
     settingsStorage.setItem('settings', {
       sound: state.sound,

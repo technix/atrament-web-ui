@@ -7,16 +7,19 @@ import UIHome from 'src/components/ui/home';
 
 const Home = () => {
   const [isAutosaved, setAutosaved] = useState(false);
-  useEffect(async () => {
-    setAutosaved(await autosaveExists());
-  }, []);
+  useEffect(() => {
+    async function checkAutosave() {
+      setAutosaved(await autosaveExists());
+    }
+    checkAutosave();
+  });
 
   return (
     <UIHome
       menu={[
-        <Link href="/game/new">Start game</Link>,
-        isAutosaved && <li><Link href="/game">Continue</Link></li>,
-        <Link href="/settings">Settings</Link>
+        <Link key="startgame" href="/game/new">Start game</Link>,
+        isAutosaved && <li><Link key="continuegame" href="/game">Continue</Link></li>,
+        <Link key="settings" href="/settings">Settings</Link>
       ]}
     />
   );
