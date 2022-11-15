@@ -1,7 +1,7 @@
 import { h } from 'preact';
 
 const UIApp = ({ children }) => (
-  <div id="#app">
+  <div id="atrament-ui-app">
     {children}
   </div>
 );

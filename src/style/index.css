@@ -1,6 +1,4 @@
 html, body {
-	height: 100%;
-	width: 100%;
 	padding: 0;
 	margin: 0;
 	background: #FAFAFA;
@@ -15,6 +13,15 @@ html, body {
 	box-sizing: border-box;
 }
 
-#app {
-	height: 100%;
+#atrament-ui-app {
+	border: 1px solid #F2E9E4;
+	background-color: #F2E9E4;
+	margin: 0 auto;
+}
+
+@media (min-width: 961px) {
+	#atrament-ui-app {
+		aspect-ratio: 9 / 16;
+		max-height: 100vh;
+	}	
 }
