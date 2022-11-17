@@ -13,6 +13,7 @@ export default function settingsStore(store) {
     loadSettings();
     // return default settings on init
     return {
+      fontsize: 100,
       sound: true,
       volume: 20
     };
@@ -20,13 +21,15 @@ export default function settingsStore(store) {
   // Reducers returns only changed part of the state
   store.on('switch/sound', ({ sound }) => ({ sound: !sound }));
   store.on('set/volume', (s, volume) => ({ volume }));
+  store.on('set/fontsize', (s, fontsize) => ({ fontsize }));
   // load/save settings
   store.on('settings/load', (s, settings) => settings);
   store.on('settings/save', () => {
     const state = store.get();
     settingsStorage.setItem('settings', {
       sound: state.sound,
-      volume: state.volume
+      volume: state.volume,
+      fontsize: state.fontsize
     });
   });
 }

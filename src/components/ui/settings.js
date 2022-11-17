@@ -1,10 +1,16 @@
 import { Link } from 'preact-router/match';
 
+const minFontSize = 60;
+const maxFontSize = 140;
+const stepFontSize = 20;
+
+
 const UISettings = ({
   sound, setSound,
-  volume, setVolume
+  volume, setVolume,
+  fontsize, setFontsize
 }) => (
-  <div>
+  <div id="settings">
     <h1>Settings</h1>
     <form>
       <hr />
@@ -16,6 +22,14 @@ const UISettings = ({
       <label>
         Volume:
         <input type="range" min="0" max="100" value={volume} onChange={setVolume} /> | {volume}
+      </label>
+      <hr />
+      <label>
+        Font size:
+        <input type="range" min={minFontSize} max={maxFontSize} step={stepFontSize} value={fontsize} onChange={setFontsize} /> | {fontsize}%
+        <div id="settings-font-sample" style={{'font-size': `${fontsize}%`}}>
+          Коли я розповідаю про текстові ігри, з’ясовується, що мої співрозмовники про них чули. У кожного з них своє ставлення до них, що врешті-решт зводиться до двох варіантів: “А, текстові квести! Це такі ретро-ігри, я пам’ятаю, як складно було в них грати” або “Це щось незвичайне, авангардне, дуже цікаве і дивне, але незрозуміле”.
+        </div>
       </label>
       <hr />
     </form>

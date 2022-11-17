@@ -2,6 +2,7 @@ html, body {
 	padding: 0;
 	margin: 0;
 	background: #FAFAFA;
+	font-size: 100%;
 	font-family: sans-serif;
 	font-weight: 400;
 	color: #444;
@@ -17,11 +18,28 @@ html, body {
 	border: 1px solid #F2E9E4;
 	background-color: #F2E9E4;
 	margin: 0 auto;
+	height: 100vh;
 }
 
 @media (min-width: 961px) {
 	#atrament-ui-app {
 		aspect-ratio: 9 / 16;
-		max-height: 100vh;
 	}	
+}
+
+
+/* text sizes */
+h1 {
+	font-size: 2.6em;
+	text-align: center;
+}
+
+#settings {
+	font-size: 1rem;
+}
+
+#settings-font-sample {
+	width: 100%;
+	text-align: left;
+	padding: 1rem;
 }
