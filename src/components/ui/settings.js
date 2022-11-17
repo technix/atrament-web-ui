@@ -1,8 +1,8 @@
 import { Link } from 'preact-router/match';
 
-const minFontSize = 60;
-const maxFontSize = 140;
-const stepFontSize = 20;
+const minFontSize = 50;
+const maxFontSize = 150;
+const stepFontSize = 10;
 
 
 const UISettings = ({
@@ -21,7 +21,7 @@ const UISettings = ({
       <hr />
       <label>
         Volume:
-        <input type="range" min="0" max="100" value={volume} onChange={setVolume} /> | {volume}
+        <input disabled={!sound} type="range" min="0" max="100" value={volume} onChange={setVolume} /> | {volume}
       </label>
       <hr />
       <label>
