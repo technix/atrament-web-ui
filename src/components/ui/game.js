@@ -1,23 +1,32 @@
 import { h } from 'preact';
 
+const UIScene = ({ scene, isOld }) => {
+  const classes = ['atrament-block'];
+  if (isOld) {
+    classes.push('old-text');
+  }
+  return (
+    <div class={classes.join(' ')}>
+      {scene.text.map((p) => p === '' ? '' : <p>{p}</p>)}
+    </div>
+  );
+}
+
+
 const UIGame = ({ scene, episode, makeChoice }) => {
   function handleClick (e) {
     const id = e.target.getAttribute('data-id');
     makeChoice(id);
   }
-
+  
+  const content = [ ...episode, scene ];
+  console.log(content);
   return (
     <div>
-      <blockquote>
-        { episode.map((s) => s.text.map((p) => p === '' ? '' : <p>{p}</p>)) }
-      </blockquote>
-      <br />
-      <blockquote>
-        <p>{scene.text.map((p) => p === '' ? '' : <p>{p}</p>)}</p>
-      </blockquote>
-      <ul>
-        { scene.choices.map((c) => <li key={c.id}><button data-id={c.id} onClick={handleClick}>{c.choice}</button></li>) }
-      </ul>
+      {content.map((s, id) => <UIScene scene={s} isOld={id < content.length - 1} key={id} />)}
+      <div class='atrament-block'>
+        { scene.choices.map((c) => <button class='atrament-choice' data-id={c.id} key={c.id} onClick={handleClick}>{c.choice}</button>) }
+      </div>
     </div>
   );
 };
