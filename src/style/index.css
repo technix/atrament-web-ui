@@ -44,9 +44,13 @@ h1 {
 	padding: 1rem;
 }
 
-.atrament-block {
+.atrament-paragraph {
 	padding-left: 1rem;
 	padding-right: 1rem;
+}
+
+.atrament-paragraph p {
+	margin-top: 0;
 }
 
 .atrament-choice {
@@ -60,4 +64,35 @@ h1 {
 
 .old-text {
 	opacity: 60%;
+}
+
+.atrament-storytext {
+	position: relative;
+	max-height: 100vh;
+	margin: -1px;
+}
+
+.atrament-storytext-content {
+	height: 100vh;
+	display: flex;
+	flex-grow: 1;
+	flex-basis: 0;
+	flex-direction: column;
+	justify-content: center;
+	overflow: auto;
+}
+
+/*
+.atrament-storytext-content::-webkit-scrollbar {
+    display: none;
+}
+*/
+
+.toolbar {
+	position: absolute;
+	width: 100%;
+	/* border: 1px solid #000000; */
+	text-align: right;
+	padding: 0.5rem;
+	font-size: 2em;
 }
