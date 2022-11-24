@@ -15,7 +15,9 @@ const UIStoryScene = ({ scene, isOld }) => {
   }  
   return (
     <div class={classes.join(' ')} ref={elementRef}>
-      {scene.text.map((p) => p === '' ? '' : <p>{p}</p>)}
+      {scene.text.filter((item) => item !== '').map(
+        (p, id) => <p key={`${scene.id}-${id}`}>{p}</p>
+      )}
     </div>
   );
 }
@@ -48,7 +50,11 @@ const UIStory = ({ scene, episode, makeChoice }) => {
   return (
     <div class='atrament-story'>
       <div class='atrament-story-content'>
-        {content.map((s, id) => <UIStoryScene scene={s} isOld={id < content.length - 1} key={id} />)}
+        {
+          content.map((s, id) => (
+            <UIStoryScene scene={s} isOld={id < content.length - 1} key={id} />
+          ))
+        }
         <UIStoryChoices scene={scene} key={scene.id} handleClick={handleClick} />
       </div>
     </div>
