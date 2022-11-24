@@ -44,6 +44,41 @@ h1 {
 	padding: 1rem;
 }
 
+
+/* game container */
+.atrament-game {
+	position: relative;
+	max-height: 100vh;
+	margin: -1px;
+}
+
+.toolbar {
+	position: absolute;
+	width: 100%;
+	/* border: 1px solid #000000; */
+	text-align: right;
+	padding: 0.5rem;
+	font-size: 2em;
+}
+
+/* atrament-story */
+
+.atrament-story {
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	overflow: auto;
+	padding-bottom: 1rem;
+}
+
+.atrament-story-content {
+	margin: auto;
+}
+
+.atrament-story::-webkit-scrollbar {
+    display: none;
+}
+
 .atrament-paragraph {
 	padding-left: 1rem;
 	padding-right: 1rem;
@@ -64,35 +99,4 @@ h1 {
 
 .old-text {
 	opacity: 60%;
-}
-
-.atrament-storytext {
-	position: relative;
-	max-height: 100vh;
-	margin: -1px;
-}
-
-.atrament-storytext-content {
-	height: 100vh;
-	display: flex;
-	flex-grow: 1;
-	flex-basis: 0;
-	flex-direction: column;
-	justify-content: center;
-	overflow: auto;
-}
-
-/*
-.atrament-storytext-content::-webkit-scrollbar {
-    display: none;
-}
-*/
-
-.toolbar {
-	position: absolute;
-	width: 100%;
-	/* border: 1px solid #000000; */
-	text-align: right;
-	padding: 0.5rem;
-	font-size: 2em;
 }
