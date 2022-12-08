@@ -1,10 +1,11 @@
 import { h } from 'preact';
 import UIStory from './game/story';
+import UIToolbar from './toolbar';
 
 const UIGame = ({ scene, episode, makeChoice }) => {
   return (
     <div class='atrament-container'>
-      <div class='toolbar'>⚙</div>
+      <UIToolbar />
       <UIStory scene={scene} episode={episode} makeChoice={makeChoice} />
     </div>
   );

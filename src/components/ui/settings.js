@@ -1,17 +1,16 @@
-import { Link } from 'preact-router/match';
-
 const minFontSize = 50;
 const maxFontSize = 150;
 const stepFontSize = 10;
 
 
 const UISettings = ({
+  onClose,
   sound, setSound,
   volume, setVolume,
   fontsize, setFontsize
 }) => (
   <>
-    <div class="settings-backdrop" />
+    <div class="settings-backdrop" onClick={onClose} />
     <div id="settings">
       <h1>Settings</h1>
       <form>
@@ -35,7 +34,7 @@ const UISettings = ({
         </label>
         <hr />
       </form>
-      <Link href="/">Back to menu</Link>
+      <button onClick={onClose}>Back to menu</button>
     </div>
   </>
 );

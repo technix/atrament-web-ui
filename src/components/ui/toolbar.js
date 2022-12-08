@@ -10,9 +10,8 @@ const UIToolbar = () => {
   }, []);
 
   return(<>
-    <a class='toolbar' onClick={clickToggleSettings}>⚙</a>
     {
-      isSettingsVisible && <Settings />
+      isSettingsVisible ? <Settings onClose={clickToggleSettings} /> : <a class='toolbar' onClick={clickToggleSettings}>⚙</a>
     }
   </>)
 };

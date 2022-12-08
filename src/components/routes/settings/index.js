@@ -4,7 +4,7 @@ import { useStoreon } from 'storeon/preact';
 
 import UISettings from 'src/components/ui/settings';
 
-const Settings = () => {
+const Settings = ({ onClose }) => {
   const { dispatch, sound, volume, fontsize } = useStoreon('sound', 'volume', 'fontsize');
   const setSound = useCallback(() => {
     dispatch('switch/sound');
@@ -21,6 +21,7 @@ const Settings = () => {
 
   return (
     <UISettings
+      onClose={onClose}
       sound={sound}
       setSound={setSound}
       volume={volume}
