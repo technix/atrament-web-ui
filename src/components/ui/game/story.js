@@ -48,7 +48,7 @@ const UIStory = ({ scene, episode, makeChoice }) => {
   const content = [ ...episode, scene ];
     
   return (
-    <div class='atrament-story'>
+    <div class='atrament-flex-container'>
       <div class='atrament-story-content'>
         {
           content.map((s, id) => (

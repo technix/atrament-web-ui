@@ -34,8 +34,23 @@ h1 {
 	text-align: center;
 }
 
-#settings {
+.settings-backdrop {
+	position: absolute;
+	width: 100%;
+	height: 100%;
 	font-size: 1rem;
+	background: #000000;
+	opacity: 50%;
+}
+
+#settings {
+	position: absolute;
+	height: 90%;
+	width: 90%;
+	margin: auto;
+	font-size: 1rem;
+	background: #FFFFFF;
+	opacity: 100%;
 }
 
 #settings-font-sample {
@@ -44,32 +59,31 @@ h1 {
 	padding: 1rem;
 }
 
-
-/* game container */
-.atrament-game {
-	position: relative;
-	max-height: 100vh;
-	margin: -1px;
-}
-
 .toolbar {
 	position: absolute;
 	width: 100%;
 	/* border: 1px solid #000000; */
 	text-align: right;
 	padding: 0.5rem;
-	font-size: 2em;
+	font-size: 2rem;
 }
 
-/* atrament-story */
+/* containers */
+.atrament-container {
+	position: relative;
+	max-height: 100vh;
+	margin: -1px;
+}
 
-.atrament-story {
+.atrament-flex-container {
 	height: 100vh;
 	display: flex;
 	flex-direction: column;
 	overflow: auto;
 	padding-bottom: 1rem;
 }
+
+/* atrament-story */
 
 .atrament-story-content {
 	margin: auto;
