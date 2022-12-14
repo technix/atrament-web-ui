@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { useCallback, useState } from 'preact/hooks';
-import Settings from 'src/components/app/settings';
+import UISettings from 'src/components/ui/settings';
 
 const UIToolbar = () => {
   const [isSettingsVisible, toggleSettings] = useState(false);
@@ -11,7 +11,7 @@ const UIToolbar = () => {
 
   return(<>
     {
-      isSettingsVisible ? <Settings onClose={clickToggleSettings} /> : <a class='toolbar' onClick={clickToggleSettings}>⚙</a>
+      isSettingsVisible ? <UISettings onClose={clickToggleSettings} /> : <a class='toolbar' onClick={clickToggleSettings}>⚙</a>
     }
   </>)
 };

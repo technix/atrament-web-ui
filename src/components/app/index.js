@@ -8,7 +8,7 @@ import store from 'src/store';
 import Home from 'src/components/routes/home';
 import Game from 'src/components/routes/game';
 
-import UIApp from 'src/components/ui/app';
+import UIApp from './app-wrapper';
 
 function App() {
   function handleRoute(route) {

@@ -1,10 +1,10 @@
 import { h } from 'preact';
 
-import UIToolbar from './toolbar';
+import Toolbar from './toolbar';
 
 const UIHome = ({ menu }) => (
   <div class='atrament-container'>
-    <UIToolbar />
+    <Toolbar />
     <div class='atrament-flex-container'>
       <h1>Home</h1>
       <p>This is main app screen. </p>

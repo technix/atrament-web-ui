@@ -1,40 +1,8 @@
 import { h } from 'preact';
-import { useEffect, useRef, useCallback } from 'preact/hooks';
+import { useCallback } from 'preact/hooks';
 
-const UIStoryScene = ({ scene, isOld }) => {
-  const elementRef = useRef(null);
-  const classes = ['atrament-paragraph'];
-  useEffect(() => {
-    if (!isOld) {
-      elementRef.current.scrollIntoView({ behavior: 'smooth' });
-    }
-  }, [isOld, elementRef]);
-
-  if (isOld) {
-    classes.push('old-text');
-  }  
-  return (
-    <div class={classes.join(' ')} ref={elementRef}>
-      {scene.text.filter((item) => item !== '').map(
-        (p, id) => <p key={`${scene.id}-${id}`}>{p}</p>
-      )}
-    </div>
-  );
-}
-
-const UIStoryChoices = ({ scene, handleClick }) => {
-  useEffect(() => {
-    console.log('choices rendered');
-  }, []);
-
-  return (
-    <div class='atrament-paragraph'>
-      { scene.choices.map((c) => (
-        <button class='atrament-choice' data-id={c.id} key={c.id} onClick={handleClick}>{c.choice}</button>
-      )) }
-    </div>
-  );
-};
+import UIStoryScene from './story-scene';
+import UIStoryChoices from './story-choices';
 
 const UIStory = ({ scene, episode, makeChoice }) => {
   const handleClick = useCallback(
