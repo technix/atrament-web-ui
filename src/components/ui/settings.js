@@ -48,7 +48,7 @@ const UISettings = ({ onClose }) => {
           </label>
           <hr />
         </form>
-        <button onClick={onClose}>Back to menu</button>
+        <button onClick={onClose}>Close</button>
       </div>
     </>
   );

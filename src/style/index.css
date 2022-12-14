@@ -88,14 +88,14 @@ h1 {
 	padding-bottom: 1rem;
 }
 
+.atrament-flex-container::-webkit-scrollbar {
+    display: none;
+}
+
 /* atrament-story */
 
 .atrament-story-content {
 	margin: auto;
-}
-
-.atrament-story::-webkit-scrollbar {
-    display: none;
 }
 
 .atrament-paragraph {
@@ -110,7 +110,7 @@ h1 {
 .atrament-choice {
 	margin-top: 0.5rem;
 	font-size: 1em;
-	padding: 0.5rem;
+	padding: 1rem;
 	width: 100%;
 	border: 1px solid #CCCCCC;
 	background-color: #FFFFFF;
