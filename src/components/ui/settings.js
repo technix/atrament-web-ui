@@ -1,7 +1,8 @@
+import { h } from 'preact';
+
 const minFontSize = 50;
 const maxFontSize = 150;
 const stepFontSize = 10;
-
 
 const UISettings = ({
   onClose,

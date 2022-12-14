@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { useCallback, useState } from 'preact/hooks';
-import Settings from 'src/components/routes/settings';
+import Settings from 'src/components/app/settings';
 
 const UIToolbar = () => {
   const [isSettingsVisible, toggleSettings] = useState(false);

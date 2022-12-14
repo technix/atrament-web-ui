@@ -40,15 +40,17 @@ h1 {
 	height: 100%;
 	font-size: 1rem;
 	background: #000000;
-	opacity: 50%;
+	opacity: 70%;
 	z-index: 100;
 }
 
 #settings {
 	position: absolute;
-	height: 90%;
+	height: 70%;
 	width: 90%;
-	margin: auto;
+	margin: 5%;
+	margin-top: 15%;
+	padding: 1rem;
 	font-size: 1rem;
 	background: #FFFFFF;
 	opacity: 100%;

@@ -18,8 +18,7 @@ const Home = () => {
     <UIHome
       menu={[
         <Link key="startgame" href="/game/new">Start game</Link>,
-        isAutosaved && <li><Link key="continuegame" href="/game">Continue</Link></li>,
-        <Link key="settings" href="/settings">Settings</Link>
+        isAutosaved && <li><Link key="continuegame" href="/game">Continue</Link></li>
       ]}
     />
   );
