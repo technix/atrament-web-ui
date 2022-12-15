@@ -1,4 +1,5 @@
 import settingsStorage from 'localforage';
+import { defaultFontSize } from 'src/constants';
 
 export default function settingsStore(store) {
   async function loadSettings() {
@@ -13,7 +14,7 @@ export default function settingsStore(store) {
     loadSettings();
     // return default settings on init
     return {
-      fontsize: 100,
+      fontsize: defaultFontSize,
       sound: true,
       volume: 20
     };

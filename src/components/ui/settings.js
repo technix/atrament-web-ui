@@ -1,11 +1,8 @@
 import { h } from 'preact';
-
 import { useCallback } from 'preact/hooks';
 import { useStoreon } from 'storeon/preact';
 
-const minFontSize = 50;
-const maxFontSize = 150;
-const stepFontSize = 10;
+import { minFontSize, maxFontSize, stepFontSize, sampleFontsizeText } from 'src/constants';
 
 const UISettings = ({ onClose }) => {
   const { dispatch, sound, volume, fontsize } = useStoreon('sound', 'volume', 'fontsize');
@@ -43,7 +40,7 @@ const UISettings = ({ onClose }) => {
             Font size:
             <input type="range" min={minFontSize} max={maxFontSize} step={stepFontSize} value={fontsize} onChange={setFontsize} /> | {fontsize}%
             <div id="settings-font-sample" style={{'font-size': `${fontsize}%`}}>
-              Коли я розповідаю про текстові ігри, з’ясовується, що мої співрозмовники про них чули. У кожного з них своє ставлення до них, що врешті-решт зводиться до двох варіантів: “А, текстові квести! Це такі ретро-ігри, я пам’ятаю, як складно було в них грати” або “Це щось незвичайне, авангардне, дуже цікаве і дивне, але незрозуміле”.
+              {sampleFontsizeText}
             </div>
           </label>
           <hr />
