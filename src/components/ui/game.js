@@ -3,6 +3,7 @@ import UIStory from './game/story';
 import UIToolbar from './toolbar';
 
 const UIGame = ({ scene, episode, makeChoice }) => {
+  console.log(scene);
   return (
     <div class='atrament-container'>
       <UIToolbar />
