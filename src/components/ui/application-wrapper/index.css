@@ -1,0 +1,11 @@
+.application_wrapper {
+	background-color: var(--bg-color);
+	margin: 0 auto;
+	height: var(--screen-vh);
+}
+
+@media (min-width: 961px) {
+	.application_wrapper {
+		aspect-ratio: 10 / 16;
+	}	
+}

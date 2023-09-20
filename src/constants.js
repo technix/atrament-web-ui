@@ -1,9 +1,30 @@
-// Settings
+// Application ID
+// - uses page URL to make sure it's unique
+
+export const applicationID = [
+  'Atrament://',
+  window.location.host,
+  window.location.pathname
+].join('');
+
+
+// Ink file
+
+export const gamePath = 'assets/game';
+export const gameFile = 'intercept.ink.json';
+
+//// Settings ////
+
+// theme
+export const gameDefaultTheme = 'light';
+
+// font
+export const gameDefaultFont = 'System';
 
 // Font size range and step (percentage)
 export const defaultFontSize = 100;
-export const minFontSize = 50;
-export const maxFontSize = 150;
 export const stepFontSize = 10;
+export const minFontSize = defaultFontSize - ( stepFontSize * 3);
+export const maxFontSize = defaultFontSize + ( stepFontSize * 5);
 
-export const sampleFontsizeText = 'Коли я розповідаю про текстові ігри, з’ясовується, що мої співрозмовники про них чули. У кожного з них своє ставлення до них, що врешті-решт зводиться до двох варіантів: “А, текстові квести! Це такі ретро-ігри, я пам’ятаю, як складно було в них грати” або “Це щось незвичайне, авангардне, дуже цікаве і дивне, але незрозуміле”.';
+export const sampleFontsizeText = 'The quick brown fox jumps over the lazy dog. Jackdaws love my big sphinx of quartz.';

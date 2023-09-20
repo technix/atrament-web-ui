@@ -1,0 +1,12 @@
+.header {
+    flex-grow: 1;
+    text-align: center;
+    display: flex;
+    margin: 1rem;
+    line-height: calc(1ex / 0.32);
+    font-family: var(--font-game);
+}
+
+.header_align {
+    margin: auto;
+}

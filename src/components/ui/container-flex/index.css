@@ -1,0 +1,13 @@
+.container_flex {
+	display: flex;
+	flex-direction: column;
+    justify-content: flex-start;
+	overflow: auto;
+	height: 100%;
+}
+
+/*
+.container_flex::-webkit-scrollbar {
+    display: none;
+}
+*/

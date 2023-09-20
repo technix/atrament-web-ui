@@ -1,0 +1,27 @@
+.settings_fontsize_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.settings_font_a {
+    margin: auto;
+    min-width: 2rem;
+    text-align: center;
+}
+
+.settings_fontsize_input_container {
+    flex-grow: 1;
+}
+
+.settings_fontsize_input {
+    width: 100%;
+    margin-top: 0.5rem;
+    accent-color: var(--fg-color);
+}
+
+.settings_font_sample {
+    height: 9rem;
+    padding: 0.5rem;
+    line-height: calc(1ex / 0.32);
+    overflow: hidden;
+}

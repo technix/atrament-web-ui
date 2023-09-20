@@ -1,0 +1,12 @@
+.block {
+    display: block;
+    margin: 1rem;
+}
+
+.block_start {
+    margin-bottom: auto;
+}
+
+.block_end {
+    margin-top: auto;
+}

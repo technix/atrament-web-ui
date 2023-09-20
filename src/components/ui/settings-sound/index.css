@@ -1,0 +1,22 @@
+.settings_sound_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.settings_sound_input_container {
+    flex-grow: 1;
+}
+
+.settings_sound_volume {
+    width: 100%;
+    margin-top: 0.3rem;
+    vertical-align: top;
+    accent-color: var(--fg-color);
+}
+
+.settings_sound_icon {
+    margin: auto;
+    min-width: 2rem;
+    text-align: center;
+}
+

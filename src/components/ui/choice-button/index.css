@@ -1,0 +1,18 @@
+.choice_button {
+    display: block;
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    margin-top: 0.5em;
+    padding: 0.75em;
+    text-align: center;
+    text-decoration: none;
+    width: 100%;
+    border: 1px solid var(--fg-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.choice_button:hover {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+}

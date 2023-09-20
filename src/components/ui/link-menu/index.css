@@ -1,0 +1,19 @@
+.link_menu {
+    display: block;
+    width: 100%;
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    margin-top: 1rem;
+    padding: 1rem;
+    text-align: center;
+    text-decoration: none;
+    border: 1px solid var(--fg-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-family: var(--font-game);
+}
+
+.link_menu:hover {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+}
