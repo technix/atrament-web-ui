@@ -1,7 +1,7 @@
 .link_home {
     display: block;
     background-color: var(--bg-color);
-    color: var(--fg-color);
+    color: var(--accent-bg-color);
     padding: 1rem;
     text-align: center;
     text-decoration: none;

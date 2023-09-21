@@ -24,11 +24,11 @@ const HomeRoute = () => {
 
   const newGame = useCallback(async () => {
     await atrament.game.start();
+    atrament.game.save();
     route('/game');
   });
 
   const resumeGame = useCallback(async () => {
-    await atrament.game.resume();
     route('/game');
   });
 

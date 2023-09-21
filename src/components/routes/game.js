@@ -8,6 +8,7 @@ import { Container, ContainerText } from 'src/components/ui';
 import Scenes from 'src/components/screens/scenes';
 import Choices from 'src/components/screens/choices';
 import Settings from 'src/components/screens/settings';
+import LinkHome from '../ui/link-home';
 
 const GameRoute = () => {
   const atrament = useContext(Atrament);
@@ -19,17 +20,22 @@ const GameRoute = () => {
   })
 
   useEffect(() => {
-    atrament.game.continueStory();
+    const init = async () => {
+      await atrament.game.resume();
+      atrament.game.continueStory();
+    }
+    init();
   }, []);
 
   const currentScene = gamestate.scenes.slice(-1)[0];
+  let gameEnd = currentScene && currentScene.choices.length === 0;
 
   return (
     <Container>
       <Settings />
       <ContainerText fontSize={gamestate.settings.fontSize}>
         <Scenes scenes={gamestate.scenes} />
-        <Choices choices={currentScene?.choices} handleClick={makeChoice} />
+        {gameEnd ? <LinkHome /> : <Choices choices={currentScene?.choices} handleClick={makeChoice} />}
       </ContainerText>
     </Container>
   );
