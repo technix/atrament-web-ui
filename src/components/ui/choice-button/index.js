@@ -7,7 +7,7 @@ const ChoiceButton = ({ choice, handleClick }) => {
     handleClick(choice.id);
   }, choice);
   return (
-    <button class={style.choice_button} onClick={onClick}>{choice.choice}</button>
+    <button class={style.choice_button} onClick={onClick} dangerouslySetInnerHTML={{__html: choice.choice}}></button>
   );
 };
 

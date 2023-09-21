@@ -25,7 +25,7 @@ const Scene = ({ scene, isCurrent }) => {
             return (
               <>
                 {item.tags.IMAGE ? <Image src={atrament.game.getAssetPath(item.tags.IMAGE)} /> : ''}
-                <p style={pStyle}>{item.text}</p>
+                <p style={pStyle} dangerouslySetInnerHTML={{__html: item.text}}></p>
               </>
             );
           })
