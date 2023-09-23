@@ -9,6 +9,7 @@ import {
   SettingsModal,
   SettingsCloseButton,
   SettingsSound,
+  SettingsSpeech,
   SettingsText,
   SettingsFont,
   SettingsTheme,
@@ -45,7 +46,16 @@ const Settings = () => {
     atrament.settings.set('font', v);
     atrament.settings.save();
   });
-    
+  const setSpeech = useCallback((v) => {
+    atrament.settings.toggle('speech');
+    atrament.settings.save();
+  });
+  const setVoice = useCallback((v) => {
+    atrament.settings.set('voice', v);
+    atrament.settings.save();
+  });
+
+
   //
   const [ isOpen, openSettings ] = useState(false);
   const toggleSettings = useCallback(() => openSettings(!isOpen));
@@ -74,6 +84,7 @@ const Settings = () => {
           <SettingsFont font={settings.font} setFont={setFont} />
           <SettingsText font={settings.font} fontSize={settings.fontSize} setFontSize={setFontSize} />          
           <SettingsTheme theme={settings.theme} setTheme={setTheme} />
+          <SettingsSpeech speech_synthesis={settings.speech} speech_synthesis_voice={settings.voice} setSpeech={setSpeech} setVoice={setVoice} />
           <div style={{width: '100%', 'text-align': "right", 'font-size': '0.8rem'}}>atrament {atrament.version}</div>
         </SettingsModal>
       </div>

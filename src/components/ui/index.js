@@ -14,6 +14,7 @@ import SettingsCloseButton from './settings-close-button';
 import SettingsModal from './settings-modal';
 import SettingsFont from './settings-font';
 import SettingsSound from './settings-sound';
+import SettingsSpeech from './settings-speech';
 import SettingsText from './settings-text';
 import SettingsTheme from './settings-theme';
 
@@ -34,6 +35,7 @@ export {
   SettingsModal,
   SettingsFont,
   SettingsSound,
+  SettingsSpeech,
   SettingsText,
   SettingsTheme
 };

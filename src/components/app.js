@@ -13,6 +13,8 @@ import GameRoute from 'src/components/routes/game';
 
 import { applyTheme, applyFont } from './theme';
 
+import { detectVoices, getVoice, getDefaultVoice } from 'src/speech-synthesis';
+
 let atrament;
 
 function App() {
@@ -47,7 +49,9 @@ function App() {
           animation: true,
           mute: false,
           volume: 50,
-          fontSize: 100
+          fontSize: 100,
+          speech: false,
+          voice: getDefaultVoice()
         }
       });
       // initialize game
@@ -63,6 +67,20 @@ function App() {
       if (!atrament.settings.get('font')) {
         atrament.settings.set('font', defaultFont);
       }
+      // voice support
+      atrament.game.defineSceneProcessor((scene) => {
+        console.log(atrament.settings.get('speech'));
+        if (!atrament.settings.get('speech')) {
+          return;
+        }
+        speechSynthesis.cancel(); // stop previous speech
+        scene.text.forEach((line) => {
+          const utterance = new SpeechSynthesisUtterance(line);
+          utterance.voice = getVoice(atrament.settings.get('voice'));
+          speechSynthesis.speak(utterance);
+        });
+      });
+
       // done
       isLoaded(true);
     };
