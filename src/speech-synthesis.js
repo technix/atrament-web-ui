@@ -18,6 +18,8 @@ if (speechSynthesis.onvoiceschanged !== undefined) {
   speechSynthesis.onvoiceschanged = detectVoices;
 }
 
+detectVoices();
+
 export function allVoices() {
   return voices;
 }
@@ -27,5 +29,10 @@ export function getVoice(name) {
 }
 
 export function getDefaultVoice() {
-  return voices.filter((v) => v.default)[0].name;
+  const defaultVoice = voices.filter((v) => v.default);
+  if (defaultVoice.length > 0) {
+    return defaultVoice[0].name;
+  } else {
+    return '';
+  }
 }
