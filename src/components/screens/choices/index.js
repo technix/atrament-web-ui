@@ -2,16 +2,17 @@ import { h } from 'preact';
 import style from './index.css';
 import { Block, ChoiceButton } from 'src/components/ui';
 
-const Choices = ({ choices, handleClick }) => {
-  if (!choices) {
+const Choices = ({ currentScene, handleClick }) => {
+  if (!currentScene || !currentScene.choices) {
     return;
   }
+  const key = `choices-${currentScene.uuid}`;
   return (
-    <div key={Date.now()} class={[style.block_choices, 'atrament-block-choices', 'animation_appear'].join(' ')}>
+    <div key={key} class={[style.block_choices, 'atrament-block-choices', 'animation_appear'].join(' ')}>
       <Block>
-        {choices.map((choice, index) => (
+        {currentScene.choices.map((choice, index) => (
           <ChoiceButton
-            key={`${Date.now()}-${index}`}
+            key={`${key}-${index}`}
             choice={choice}
             handleClick={handleClick}
           />)

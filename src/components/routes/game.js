@@ -35,7 +35,7 @@ const GameRoute = () => {
       <Settings />
       <ContainerText fontSize={gamestate.settings.fontSize}>
         <Scenes scenes={gamestate.scenes} />
-        {gameEnd ? <LinkHome /> : <Choices choices={currentScene?.choices} handleClick={makeChoice} />}
+        {gameEnd ? <LinkHome /> : <Choices currentScene={currentScene} handleClick={makeChoice} />}
       </ContainerText>
     </Container>
   );

@@ -63,6 +63,10 @@ function App() {
       if (!atrament.settings.get('font')) {
         atrament.settings.set('font', defaultFont);
       }
+      // scene processor - add unique ID
+      atrament.game.defineSceneProcessor((scene) => {
+        scene.uuid = Date.now();
+      });
       // done
       isLoaded(true);
     };

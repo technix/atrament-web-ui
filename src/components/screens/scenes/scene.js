@@ -22,7 +22,7 @@ const Scene = ({ scene, isCurrent }) => {
       {
         scene.content
           .map((item, i) => {
-            const key = `${Date.now()}-${i}`;
+            const key = `paragraph-${scene.uuid}-${i}`;
             return (
               <Fragment key={key}>
                 {item.tags.IMAGE ? <Image src={atrament.game.getAssetPath(item.tags.IMAGE)} /> : ''}
