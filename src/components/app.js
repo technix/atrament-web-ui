@@ -75,7 +75,7 @@ function App() {
       // back from game screen
       atrament.game.clear();
     }
-  });
+  }, []);
 
   if (loaded) {
     return (
@@ -88,9 +88,8 @@ function App() {
         </ApplicationWrapper>
       </Atrament.Provider>
     );
-  } else {
-    return (<ApplicationWrapper><Loading /></ApplicationWrapper>);
   }
+  return (<ApplicationWrapper><Loading /></ApplicationWrapper>);
 }
 
 export default App;

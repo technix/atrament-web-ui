@@ -24,37 +24,37 @@ const Settings = () => {
   const setAnimation = useCallback((v) => {
     atrament.settings.set('animation', v);
     atrament.settings.save();
-  });
+  }, [ atrament.settings ]);
   const setMute = useCallback(() => {
     atrament.settings.toggle('mute');
     atrament.settings.save();
-  });
+  }, [ atrament.settings ]);
   const setVolume = useCallback((v) => {
     atrament.settings.set('volume', v);
     atrament.settings.save();
-  });
+  }, [ atrament.settings ]);
   const setFontSize = useCallback((v) => {
     atrament.settings.set('fontSize', v);
     atrament.settings.save();
-  });
+  }, [ atrament.settings ]);
   const setTheme = useCallback((v) => {
     atrament.settings.set('theme', v);
     atrament.settings.save();
-  });
+  }, [ atrament.settings ]);
   const setFont = useCallback((v) => {
     atrament.settings.set('font', v);
     atrament.settings.save();
-  });
+  }, [ atrament.settings ]);
     
   //
   const [ isOpen, openSettings ] = useState(false);
-  const toggleSettings = useCallback(() => openSettings(!isOpen));
+  const toggleSettings = useCallback(() => openSettings(!isOpen), [ isOpen ]);
 
   const escHandler = useCallback((e) => {
     if (e.key === "Escape") {
       openSettings(false)
     }
-  });
+  }, []);
 
   useEffect(() => {
     document.addEventListener("keydown", escHandler, false);
@@ -78,11 +78,10 @@ const Settings = () => {
         </SettingsModal>
       </div>
     );
-  } else {
-    return (
-      <button class={style.settings_toggle} onClick={toggleSettings}>☰</button>
-    );
   }
+  return (
+    <button class={style.settings_toggle} onClick={toggleSettings}>☰</button>
+  );
 };
 
 export default Settings;

@@ -17,7 +17,7 @@ const GameRoute = () => {
   const makeChoice = useCallback((id) => {
     atrament.game.makeChoice(id);
     atrament.game.continueStory();
-  })
+  }, [ atrament.game ])
 
   useEffect(() => {
     const init = async () => {
@@ -25,7 +25,7 @@ const GameRoute = () => {
       atrament.game.continueStory();
     }
     init();
-  }, []);
+  }, [ atrament.game ]);
 
   const currentScene = gamestate.scenes.slice(-1)[0];
   let gameEnd = currentScene && currentScene.choices.length === 0;

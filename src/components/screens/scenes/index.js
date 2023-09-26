@@ -7,7 +7,7 @@ const BlockScenes = ({ scenes }) => {
   return (
     <div class={[style.block_scene, 'atrament-block-scene'].join(' ')}>
       {
-        scenes.map((s, i) => <Scene scene={s} isCurrent={i === lastSceneIndex} />)
+        scenes.map((s, i) => <Scene key={`scene-${Date.now()}-${i}`} scene={s} isCurrent={i === lastSceneIndex} />)
       }
     </div>
   );

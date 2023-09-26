@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { h, Fragment } from 'preact';
 import style from './index.css';
 import { useRef, useEffect, useContext } from 'preact/hooks';
 import { Image } from 'src/components/ui';
@@ -21,12 +21,13 @@ const Scene = ({ scene, isCurrent }) => {
     <div class={[style.block, 'atrament-block-text', isCurrent ? 'animation_appear' : ''].join(' ')} ref={elementRef}>
       {
         scene.content
-          .map((item) => {
+          .map((item, i) => {
+            const key = `${Date.now()}-${i}`;
             return (
-              <>
+              <Fragment key={key}>
                 {item.tags.IMAGE ? <Image src={atrament.game.getAssetPath(item.tags.IMAGE)} /> : ''}
-                <p style={pStyle} dangerouslySetInnerHTML={{__html: item.text}}></p>
-              </>
+                <p style={pStyle} dangerouslySetInnerHTML={{__html: item.text}} />
+              </Fragment>
             );
           })
       }

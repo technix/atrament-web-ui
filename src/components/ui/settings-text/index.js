@@ -30,7 +30,7 @@ const SettingsText = ({ font, fontSize, setFontSize }) => {
             list="fontSizes"
           />
           <datalist id="fontSizes">
-            {datapointsFontSize.map((f) => <option value={f}></option>)}
+            {datapointsFontSize.map((f) => <option key={f} value={f} />)}
           </datalist>
         </div>
         <div class={style.settings_font_a} style={{'font-size': `${maxFontSize}%`}}>A</div>

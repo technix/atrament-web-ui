@@ -20,17 +20,17 @@ const HomeRoute = () => {
       setResumeState(!!canResumeGame);
     }
     initHome();
-  }, []);
+  }, [ atrament.game ]);
 
   const newGame = useCallback(async () => {
     await atrament.game.start();
-    atrament.game.save();
+    await atrament.game.save();
     route('/game');
-  });
+  }, [ atrament.game ]);
 
   const resumeGame = useCallback(async () => {
     route('/game');
-  });
+  }, []);
 
   return (
     <Container>
