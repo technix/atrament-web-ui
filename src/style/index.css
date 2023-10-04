@@ -7,6 +7,10 @@
   --font-interface: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0px;
   padding: 0px;
@@ -28,6 +32,10 @@ body {
   100% {
       opacity: 1;
   }
+}
+
+a, a:visited {
+  color: var(--accent-bg-color);
 }
 
 .animation_appear {

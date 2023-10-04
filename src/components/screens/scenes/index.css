@@ -7,7 +7,7 @@
 
 .block {
     display: block;
-    margin: 1rem;
+    padding: 1rem;
 }
 
 .block p:first-child {

@@ -19,4 +19,5 @@
     border: none;
     background: none;
     color: var(--font-color);
+    z-index: 150;
 }
