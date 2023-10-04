@@ -1,7 +1,7 @@
 import { h, Fragment } from 'preact';
 import style from './index.css';
 import { useRef, useEffect, useContext } from 'preact/hooks';
-import { Image } from 'src/components/ui';
+import { ContainerImage } from 'src/components/ui';
 import Atrament from 'src/atrament-context';
 
 const Scene = ({ scene, isCurrent }) => {
@@ -25,7 +25,7 @@ const Scene = ({ scene, isCurrent }) => {
             const key = `paragraph-${scene.uuid}-${i}`;
             return (
               <Fragment key={key}>
-                {item.tags.IMAGE ? <Image src={atrament.game.getAssetPath(item.tags.IMAGE)} /> : ''}
+                {item.tags.IMAGE ? <ContainerImage src={atrament.game.getAssetPath(item.tags.IMAGE)} /> : ''}
                 <p style={pStyle} dangerouslySetInnerHTML={{__html: item.text}} />
               </Fragment>
             );

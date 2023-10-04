@@ -5,7 +5,7 @@ import Container from './container';
 import ContainerFlex from './container-flex';
 import ContainerText from './container-text';
 import Header from './header';
-import Image from './image';
+import ContainerImage from './container-image';
 import LinkHome from './link-home';
 import LinkMenu from './link-menu';
 import SettingsAnimation from './settings-animation';
@@ -25,7 +25,7 @@ export {
   ContainerFlex,
   ContainerText,
   Header,
-  Image,
+  ContainerImage,
   LinkHome,
   LinkMenu,
   Backdrop,
