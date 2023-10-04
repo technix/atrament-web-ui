@@ -9,9 +9,9 @@ import Image from './image';
 import LinkHome from './link-home';
 import LinkMenu from './link-menu';
 import SettingsAnimation from './settings-animation';
-import SettingsBackdrop from './settings-backdrop';
-import SettingsCloseButton from './settings-close-button';
-import SettingsModal from './settings-modal';
+import Backdrop from './backdrop';
+import CloseButton from './close-button';
+import Modal from './modal';
 import SettingsFont from './settings-font';
 import SettingsSound from './settings-sound';
 import SettingsText from './settings-text';
@@ -28,10 +28,10 @@ export {
   Image,
   LinkHome,
   LinkMenu,
+  Backdrop,
+  CloseButton,
+  Modal,
   SettingsAnimation,
-  SettingsBackdrop,
-  SettingsCloseButton,
-  SettingsModal,
   SettingsFont,
   SettingsSound,
   SettingsText,

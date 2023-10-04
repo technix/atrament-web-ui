@@ -5,9 +5,9 @@ import { useStore } from '@nanostores/preact';
 import { useCallback, useContext, useEffect, useState } from 'preact/hooks';
 
 import {
-  SettingsBackdrop,
-  SettingsModal,
-  SettingsCloseButton,
+  Backdrop,
+  Modal,
+  CloseButton,
   SettingsSound,
   SettingsText,
   SettingsFont,
@@ -66,16 +66,16 @@ const Settings = () => {
   if (isOpen) {
     return (
       <div class={style.settings_container}>
-        <SettingsBackdrop onClick={toggleSettings} />
-        <SettingsModal>
-          <SettingsCloseButton onClick={toggleSettings} />
+        <Backdrop onClick={toggleSettings} />
+        <Modal>
+          <CloseButton onClick={toggleSettings} />
           <SettingsAnimation animation={settings.animation} setAnimation={setAnimation} />
           <SettingsSound mute={settings.mute} volume={settings.volume} setMute={setMute} setVolume={setVolume} />
           <SettingsFont font={settings.font} setFont={setFont} />
           <SettingsText font={settings.font} fontSize={settings.fontSize} setFontSize={setFontSize} />          
           <SettingsTheme theme={settings.theme} setTheme={setTheme} />
           <div style={{width: '100%', 'text-align': "right", 'font-size': '0.8rem'}}>atrament {atrament.version}</div>
-        </SettingsModal>
+        </Modal>
       </div>
     );
   }
