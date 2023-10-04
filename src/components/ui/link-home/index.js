@@ -1,12 +1,23 @@
 import { h } from 'preact';
-import { Link } from 'preact-router/match';
+import { useContext } from 'preact/hooks';
+import { route } from 'preact-router';
+import Atrament from 'src/atrament-context';
 import Block from '../block';
 import style from './index.css';
 
-const LinkHome = () => (
-  <Block>
-    <Link key="mainmenu" href="/" class={style.link_home}>The end</Link>
-  </Block>
-);
+const LinkHome = () => {
+  const atrament = useContext(Atrament);
+
+  const endGame = async () => {
+    await atrament.game.removeSave();
+    route('/');
+  };
+
+  return (
+    <Block>
+      <button key="mainmenu" onClick={endGame} class={style.link_home}>The end</button>
+    </Block>
+  );
+};
 
 export default LinkHome;
