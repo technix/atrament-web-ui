@@ -11,6 +11,8 @@ import Loading from 'src/components/ui/loading';
 import HomeRoute from 'src/components/routes/home';
 import GameRoute from 'src/components/routes/game';
 
+import muteWhenInactive from 'src/utils/mute-when-inactive';
+
 import { applyTheme, applyFont } from './theme';
 
 let atrament;
@@ -67,6 +69,8 @@ function App() {
       atrament.game.defineSceneProcessor((scene) => {
         scene.uuid = Date.now();
       });
+      // mute when tab is inactive
+      muteWhenInactive(atrament);
       // done
       isLoaded(true);
     };
