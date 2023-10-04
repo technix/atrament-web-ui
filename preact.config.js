@@ -11,6 +11,6 @@ export default function (config, env, helpers) {
 
   // production env setup
   if (env.production) {
-    config.output.publicPath = '';
+    config.output.publicPath = './';
   }
 }
