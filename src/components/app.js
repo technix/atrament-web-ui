@@ -12,6 +12,7 @@ import HomeRoute from 'src/components/routes/home';
 import GameRoute from 'src/components/routes/game';
 
 import muteWhenInactive from 'src/utils/mute-when-inactive';
+import handleTagBackground from 'src/utils/tag-background';
 
 import { applyTheme, applyFont } from './theme';
 
@@ -71,6 +72,8 @@ function App() {
       });
       // mute when tab is inactive
       muteWhenInactive(atrament);
+      // handle #BACKGROUND tag
+      handleTagBackground(atrament);
       // done
       isLoaded(true);
     };
