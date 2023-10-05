@@ -5,6 +5,7 @@ import { useStore } from '@nanostores/preact';
 import Atrament from 'src/atrament-context';
 
 import { Block, Container, ContainerFlex, Header, LinkMenu } from 'src/components/ui';
+import LinkInstallPWA from 'src/components/ui/link-install-pwa';
 import Settings from 'src/components/screens/settings';
 
 const HomeRoute = () => {
@@ -43,6 +44,7 @@ const HomeRoute = () => {
         <Block align='end'>
           {canBeResumed ? <LinkMenu key="continuegame" onClick={resumeGame}>Continue</LinkMenu> : ''}
           <LinkMenu key="startgame" onClick={newGame}>New game</LinkMenu>
+          <LinkInstallPWA>Install</LinkInstallPWA>
         </Block>
       </ContainerFlex>
     </Container>
