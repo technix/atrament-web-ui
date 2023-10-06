@@ -1,26 +1,25 @@
 import { h } from 'preact';
-import { useStore } from '@nanostores/preact';
-import Atrament from 'src/atrament-context';
 
-import { useContext, useEffect } from 'preact/hooks';
+import useAtrament from 'src/hooks/atrament';
+
+import { useEffect } from 'preact/hooks';
 import { Container, ContainerText } from 'src/components/ui';
 
 import Scenes from 'src/components/screens/scenes';
 import Settings from 'src/components/screens/settings';
 
 const GameRoute = () => {
-  const atrament = useContext(Atrament);
-  const gamestate = useStore(atrament.store());
+  const { state, continueStory } = useAtrament();
 
   useEffect(() => {
-    atrament.game.continueStory();
-  }, [ atrament.game ]);
+    continueStory();
+  }, [ continueStory ]);
 
   return (
     <Container>
       <Settings />
-      <ContainerText fontSize={gamestate.settings.fontSize}>
-        <Scenes scenes={gamestate.scenes} />
+      <ContainerText fontSize={state.settings.fontSize}>
+        <Scenes scenes={state.scenes} />
       </ContainerText>
     </Container>
   );

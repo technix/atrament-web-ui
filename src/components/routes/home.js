@@ -1,36 +1,35 @@
 import { h } from 'preact';
 import { route } from 'preact-router';
-import { useContext, useEffect, useState, useCallback } from 'preact/hooks';
-import { useStore } from '@nanostores/preact';
-import Atrament from 'src/atrament-context';
+import { useEffect, useState, useCallback } from 'preact/hooks';
+import useAtrament from 'src/hooks/atrament';
 
 import { Block, Container, ContainerFlex, Header, LinkMenu } from 'src/components/ui';
 import Settings from 'src/components/screens/settings';
 
-const HomeRoute = () => {
-  const atrament = useContext(Atrament);
-  const gamestate = useStore(atrament.store());
 
-  const { title, author } = gamestate.metadata;
+const HomeRoute = () => {
+  const { state, canResume, gameStart, gameResume } = useAtrament();
+
+  const { title, author } = state.metadata;
 
   const [ canBeResumed, setResumeState ] = useState(false);
   useEffect(() => {
     const initHome = async () => {
-      const canResumeGame = await atrament.game.canResume();
+      const canResumeGame = await canResume();
       setResumeState(!!canResumeGame);
     }
     initHome();
-  }, [ atrament.game ]);
+  }, [ canResume ]);
 
   const newGame = useCallback(async () => {
-    await atrament.game.start();
+    await gameStart();
     route('/game');
-  }, [ atrament.game ]);
+  }, [ gameStart ]);
 
   const resumeGame = useCallback(async () => {
-    await atrament.game.resume();
+    await gameResume();
     route('/game');
-  }, [ atrament.game ]);
+  }, [ gameResume ]);
 
   return (
     <Container>

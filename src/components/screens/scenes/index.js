@@ -1,21 +1,22 @@
 import { h } from 'preact';
 import style from './index.css';
 import Scene from './scene';
-import { useState, useContext, useCallback } from 'preact/hooks';
+import { useState, useCallback } from 'preact/hooks';
 import Choices from 'src/components/screens/choices';
 import LinkHome from 'src/components/ui/link-home';
-import Atrament from 'src/atrament-context';
+
+import useAtrament from 'src/hooks/atrament';
 
 const AllChoices = ({ currentScene, readyHandler, isReady }) => {
-  const atrament = useContext(Atrament);
-
-  const makeChoice = useCallback((id) => {
+  const { makeChoice, continueStory } = useAtrament();
+  
+  const selectChoice = useCallback((id) => {
     readyHandler(false);
     setTimeout(() => {
-      atrament.game.makeChoice(id);
-      atrament.game.continueStory();  
+      makeChoice(id);
+      continueStory();  
     }, 200);
-  }, [ atrament.game, readyHandler ]);
+  }, [ makeChoice, continueStory, readyHandler ]);
 
   if (!currentScene) {
     return '';
@@ -23,7 +24,7 @@ const AllChoices = ({ currentScene, readyHandler, isReady }) => {
 
   return (
     <>
-      { currentScene.choices.length === 0 ? <LinkHome /> : <Choices isReady={isReady} currentScene={currentScene} handleClick={makeChoice} /> }
+      { currentScene.choices.length === 0 ? <LinkHome /> : <Choices isReady={isReady} currentScene={currentScene} handleClick={selectChoice} /> }
     </>
   );
 };

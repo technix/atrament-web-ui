@@ -1,8 +1,7 @@
 import { h } from 'preact';
 import style from './index.css';
-import { useStore } from '@nanostores/preact';
 
-import { useCallback, useContext, useEffect, useState } from 'preact/hooks';
+import { useCallback, useEffect, useState } from 'preact/hooks';
 
 import {
   Backdrop,
@@ -15,11 +14,11 @@ import {
   SettingsAnimation
 } from 'src/components/ui';
 
-import Atrament from 'src/atrament-context';
+import useAtrament from 'src/hooks/atrament';
 
 const Settings = () => {
-  const atrament = useContext(Atrament);
-  const { settings } = useStore(atrament.store());
+  const { atrament, state } = useAtrament();
+  const { settings } = state;
 
   const setAnimation = useCallback((v) => {
     atrament.settings.set('animation', v);
