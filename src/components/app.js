@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { Router } from 'preact-router';
-import { createHashHistory } from 'history';
+import { createMemoryHistory } from 'history';
 import Atrament from 'src/atrament-context';
 
 import { applicationID, gameFile, gamePath, gameDefaultTheme, gameDefaultFont } from 'src/constants';
@@ -92,7 +92,7 @@ function App() {
     return (
       <Atrament.Provider value={atrament}>
         <ApplicationWrapper>
-          <Router history={createHashHistory()} onChange={handleRoute}>
+          <Router history={createMemoryHistory()} onChange={handleRoute}>
             <HomeRoute path="/" />
             <GameRoute path="/game" />
           </Router>

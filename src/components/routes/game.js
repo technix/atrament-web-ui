@@ -13,11 +13,7 @@ const GameRoute = () => {
   const gamestate = useStore(atrament.store());
 
   useEffect(() => {
-    const init = async () => {
-      await atrament.game.resume();
-      atrament.game.continueStory();
-    }
-    init();
+    atrament.game.continueStory();
   }, [ atrament.game ]);
 
   return (
