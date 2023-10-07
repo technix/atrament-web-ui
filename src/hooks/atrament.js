@@ -14,6 +14,10 @@ const useAtrament = () => {
     gameResume: atrament.game.resume,
     makeChoice: atrament.game.makeChoice,
     continueStory: atrament.game.continueStory,
+    updateSettings: (name, value) => {
+      atrament.settings.set(name, value);
+      atrament.settings.save();
+    }
   };
 };
 

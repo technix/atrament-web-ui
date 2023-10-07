@@ -1,13 +1,15 @@
 import { h } from 'preact';
-import { useCallback } from 'preact/hooks';
 import Toggle from '../toggle';
 
-const SettingsAnimation = ({ animation, setAnimation }) => {
-  const handleAnimation = useCallback((e) => setAnimation(e.target.checked), [ setAnimation ]);
+import useAtrament from 'src/hooks/atrament';
+
+const SettingsAnimation = () => {
+  const { state, updateSettings } = useAtrament();
+  const handleAnimation = (e) => updateSettings('animation', e.target.checked);
 
   return (
     <div class={['atrament-settings-animation'].join(' ')}>
-      <Toggle enabled={animation} onChange={handleAnimation} /> Animations
+      <Toggle enabled={state.settings.animation} onChange={handleAnimation} /> Animations
     </div>
   );
 };

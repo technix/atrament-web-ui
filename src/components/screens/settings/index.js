@@ -11,40 +11,11 @@ import {
   SettingsText,
   SettingsFont,
   SettingsTheme,
-  SettingsAnimation
+  SettingsAnimation,
+  SettingsVersion
 } from 'src/components/ui';
 
-import useAtrament from 'src/hooks/atrament';
-
 const Settings = () => {
-  const { atrament, state } = useAtrament();
-  const { settings } = state;
-
-  const setAnimation = useCallback((v) => {
-    atrament.settings.set('animation', v);
-    atrament.settings.save();
-  }, [ atrament.settings ]);
-  const setMute = useCallback(() => {
-    atrament.settings.toggle('mute');
-    atrament.settings.save();
-  }, [ atrament.settings ]);
-  const setVolume = useCallback((v) => {
-    atrament.settings.set('volume', v);
-    atrament.settings.save();
-  }, [ atrament.settings ]);
-  const setFontSize = useCallback((v) => {
-    atrament.settings.set('fontSize', v);
-    atrament.settings.save();
-  }, [ atrament.settings ]);
-  const setTheme = useCallback((v) => {
-    atrament.settings.set('theme', v);
-    atrament.settings.save();
-  }, [ atrament.settings ]);
-  const setFont = useCallback((v) => {
-    atrament.settings.set('font', v);
-    atrament.settings.save();
-  }, [ atrament.settings ]);
-    
   //
   const [ isOpen, openSettings ] = useState(false);
   const toggleSettings = useCallback(() => openSettings(!isOpen), [ isOpen ]);
@@ -68,12 +39,12 @@ const Settings = () => {
         <Backdrop onClick={toggleSettings} />
         <Modal>
           <CloseButton onClick={toggleSettings} />
-          <SettingsAnimation animation={settings.animation} setAnimation={setAnimation} />
-          <SettingsSound mute={settings.mute} volume={settings.volume} setMute={setMute} setVolume={setVolume} />
-          <SettingsFont font={settings.font} setFont={setFont} />
-          <SettingsText font={settings.font} fontSize={settings.fontSize} setFontSize={setFontSize} />          
-          <SettingsTheme theme={settings.theme} setTheme={setTheme} />
-          <div style={{width: '100%', 'text-align': "right", 'font-size': '0.8rem'}}>atrament {atrament.version}</div>
+          <SettingsAnimation />
+          <SettingsSound />
+          <SettingsFont />
+          <SettingsText />
+          <SettingsTheme />
+          <SettingsVersion />
         </Modal>
       </div>
     );

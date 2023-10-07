@@ -16,6 +16,7 @@ import SettingsFont from './settings-font';
 import SettingsSound from './settings-sound';
 import SettingsText from './settings-text';
 import SettingsTheme from './settings-theme';
+import SettingsVersion from './settings-version';
 
 export {
   ApplicationWrapper,
@@ -35,5 +36,6 @@ export {
   SettingsFont,
   SettingsSound,
   SettingsText,
-  SettingsTheme
+  SettingsTheme,
+  SettingsVersion
 };

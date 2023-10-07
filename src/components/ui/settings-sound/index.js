@@ -1,11 +1,14 @@
 import { h } from 'preact';
 import style from './index.css';
-import { useCallback } from 'preact/hooks';
 import Toggle from '../toggle';
 
-const SettingsSound = ({ mute, volume, setMute, setVolume }) => {
-  const handleMute = useCallback((e) => setMute(!e.target.checked), [ setMute ]);
-  const handleVolume = useCallback((e) => setVolume(e.target.value), [ setVolume ]);
+import useAtrament from 'src/hooks/atrament';
+
+const SettingsSound = () => {
+  const { state, updateSettings } = useAtrament();
+  const handleMute = (e) => updateSettings('mute', !e.target.checked);
+  const handleVolume = (e) => updateSettings('volume', e.target.value);
+  const { mute, volume } = state.settings;
 
   return (
     <>
