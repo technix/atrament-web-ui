@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import Toggle from '../toggle';
+import Toggle from 'src/components/ui/toggle';
 
 import useAtrament from 'src/hooks/atrament';
 

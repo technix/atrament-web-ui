@@ -7,13 +7,15 @@ import {
   Backdrop,
   Modal,
   CloseButton,
-  SettingsSound,
-  SettingsText,
-  SettingsFont,
-  SettingsTheme,
-  SettingsAnimation,
-  SettingsVersion
 } from 'src/components/ui';
+
+import SettingsSound from './settings-sound';
+import SettingsText from './settings-text';
+import SettingsFont from './settings-font';
+import SettingsTheme from './settings-theme';
+import SettingsAnimation from './settings-animation';
+import SettingsVersion from './settings-version';
+
 
 const Settings = () => {
   //
