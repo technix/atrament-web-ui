@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import Toggle from 'src/components/ui/toggle';
 
-import useAtrament from 'src/hooks/atrament';
+import useAtrament from 'src/atrament/hooks';
 
 const SettingsAnimation = () => {
   const { state, updateSettings } = useAtrament();

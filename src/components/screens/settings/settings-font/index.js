@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import style from './index.css';
-import useAtrament from 'src/hooks/atrament';
+import useAtrament from 'src/atrament/hooks';
 
 import { fonts } from 'src/components/theme';
 

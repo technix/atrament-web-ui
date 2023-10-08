@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { route } from 'preact-router';
 import { useEffect, useState, useCallback } from 'preact/hooks';
-import useAtrament from 'src/hooks/atrament';
+import useAtrament from 'src/atrament/hooks';
 
 import { Block, Container, ContainerFlex, Header, LinkMenu } from 'src/components/ui';
 import Settings from 'src/components/screens/settings';

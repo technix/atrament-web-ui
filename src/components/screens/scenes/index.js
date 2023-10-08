@@ -5,7 +5,7 @@ import { useState, useCallback } from 'preact/hooks';
 import Choices from 'src/components/screens/choices';
 import LinkHome from 'src/components/ui/link-home';
 
-import useAtrament from 'src/hooks/atrament';
+import useAtrament from 'src/atrament/hooks';
 
 const AllChoices = ({ currentScene, readyHandler, isReady }) => {
   const { makeChoice, continueStory } = useAtrament();

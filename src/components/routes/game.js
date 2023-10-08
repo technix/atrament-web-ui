@@ -1,6 +1,6 @@
 import { h } from 'preact';
 
-import useAtrament from 'src/hooks/atrament';
+import useAtrament from 'src/atrament/hooks';
 
 import { useEffect } from 'preact/hooks';
 import { Container, ContainerText } from 'src/components/ui';
