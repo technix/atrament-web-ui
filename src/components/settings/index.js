@@ -3,11 +3,9 @@ import style from './index.css';
 
 import { useCallback, useEffect, useState } from 'preact/hooks';
 
-import {
-  Backdrop,
-  Modal,
-  CloseButton,
-} from 'src/components/ui';
+import Backdrop from '../ui/backdrop';
+import Modal from '../ui/modal';
+import CloseButton from '../ui/close-button';
 
 import SettingsSound from './settings-sound';
 import SettingsText from './settings-text';

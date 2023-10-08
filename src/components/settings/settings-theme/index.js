@@ -2,7 +2,7 @@ import { h } from 'preact';
 import style from './index.css';
 import useAtrament from 'src/atrament/hooks';
 
-import { themes } from 'src/components/theme';
+import { themes } from 'src/theme';
 
 const SettingButton = ({themeId, themeConfig, onClick }) =>  {
   const buttonStyle={

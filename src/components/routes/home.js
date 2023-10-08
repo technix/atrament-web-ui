@@ -3,9 +3,13 @@ import { route } from 'preact-router';
 import { useEffect, useState, useCallback } from 'preact/hooks';
 import useAtrament from 'src/atrament/hooks';
 
-import { Block, Container, ContainerFlex, Header, LinkMenu } from 'src/components/ui';
-import Settings from 'src/components/screens/settings';
+import Block from '../ui/block';
+import Container from '../ui/container';
+import ContainerFlex from '../ui/container-flex';
+import Header from '../ui/header';
+import LinkMenu from '../ui/link-menu';
 
+import Settings from 'src/components/settings';
 
 const HomeRoute = () => {
   const { state, canResume, gameStart, gameResume } = useAtrament();

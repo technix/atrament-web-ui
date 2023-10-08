@@ -4,7 +4,7 @@ import { Router } from 'preact-router';
 import { createMemoryHistory } from 'history';
 import Atrament from 'src/atrament-context';
 
-import { applicationID, gameFile, gamePath, gameDefaultTheme, gameDefaultFont } from 'src/constants';
+import { applicationID, gameFile, gamePath } from 'src/constants';
 
 import ApplicationWrapper from 'src/components/ui/application-wrapper';
 import Loading from 'src/components/ui/loading';
@@ -14,7 +14,9 @@ import GameRoute from 'src/components/routes/game';
 import muteWhenInactive from 'src/utils/mute-when-inactive';
 import handleTagBackground from 'src/utils/tag-background';
 
-import { applyTheme, applyFont } from './theme';
+import { registerSettingsHandlers } from 'src/atrament/settings-handlers'
+import { sceneAddUuid, sceneListImages } from 'src/atrament/scene-processors';
+import { loadDefaultFont, loadDefaultTheme } from 'src/atrament/load-defaults';
 
 let atrament;
 
@@ -33,16 +35,7 @@ function App() {
         message
       ));
       // handle theme settings
-      atrament.settings.defineHandler('theme', (oldV, value) => {
-        applyTheme(value);
-      });
-      atrament.settings.defineHandler('font', (oldV, value) => {
-        applyFont(value);
-      });
-      atrament.settings.defineHandler('animation', (oldV, value) => {
-        document.documentElement.style.setProperty('--animation-type', value ? 'appear' : '');
-      });
-
+      registerSettingsHandlers(atrament);
       // initialize Atrament
       await atrament.init(Story, {
         applicationID,
@@ -56,20 +49,12 @@ function App() {
       // initialize game
       atrament.game.init(gamePath, gameFile);
       await atrament.game.initInkStory();
-      // set initial theme from game
-      const defaultTheme = atrament.state().get().metadata.theme || gameDefaultTheme;
-      if (!atrament.settings.get('theme')) {
-        atrament.settings.set('theme', defaultTheme);
-      }
-      // set initial font from game
-      const defaultFont = atrament.state().get().metadata.font || gameDefaultFont;
-      if (!atrament.settings.get('font')) {
-        atrament.settings.set('font', defaultFont);
-      }
-      // scene processor - add unique ID
-      atrament.game.defineSceneProcessor((scene) => {
-        scene.uuid = Date.now();
-      });
+      // load defaults
+      loadDefaultTheme(atrament);
+      loadDefaultFont(atrament);
+      // register scene processors
+      sceneAddUuid(atrament);
+      sceneListImages(atrament);
       // mute when tab is inactive
       muteWhenInactive(atrament);
       // handle #BACKGROUND tag
