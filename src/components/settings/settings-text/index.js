@@ -1,18 +1,21 @@
 import { h } from 'preact';
 import style from './index.css';
-import { useCallback } from 'preact/hooks';
+import useAtrament from 'src/atrament/hooks';
 
 import { defaultFontSize, stepFontSize, minFontSize, maxFontSize, sampleFontsizeText } from 'src/constants';
 
-import { fonts } from 'src/components/theme';
+import { fonts } from 'src/theme';
 
 const datapointsFontSize = [];
 for (let s=minFontSize; s <= maxFontSize; s+= stepFontSize) {
   datapointsFontSize.push(s);
 }
 
-const SettingsText = ({ font, fontSize, setFontSize }) => {
-  const handleFontSize = useCallback((e) => setFontSize(e.target.value), [ setFontSize ]);
+const SettingsText = () => {
+  const { state, updateSettings } = useAtrament();
+  const { font, fontSize } = state.settings;
+
+  const handleFontSize = (e) => updateSettings('fontSize', e.target.value);
 
   return (
     <div class={[style.settings_text, 'atrament-settings-text'].join(' ')}>

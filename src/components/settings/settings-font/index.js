@@ -1,11 +1,13 @@
 import { h } from 'preact';
 import style from './index.css';
-import { useCallback } from 'preact/hooks';
+import useAtrament from 'src/atrament/hooks';
 
-import { fonts } from 'src/components/theme';
+import { fonts } from 'src/theme';
 
-const SettingsFont = ({ font, setFont }) => {
-  const handleFont = useCallback((e) => setFont(e.target.value), [ setFont ]);
+const SettingsFont = () => {
+  const { state, updateSettings } = useAtrament();
+  const handleFont = (e) => updateSettings('font', e.target.value);
+  const font = state.settings.font;
   return (
     <div class={[style.settings_font_container, 'atrament-settings-font'].join(' ')}>
       <select onChange={handleFont} style={{'font-family': fonts[font]}}>

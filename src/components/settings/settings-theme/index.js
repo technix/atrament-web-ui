@@ -1,8 +1,8 @@
 import { h } from 'preact';
 import style from './index.css';
-import { useCallback } from 'preact/hooks';
+import useAtrament from 'src/atrament/hooks';
 
-import { themes } from 'src/components/theme';
+import { themes } from 'src/theme';
 
 const SettingButton = ({themeId, themeConfig, onClick }) =>  {
   const buttonStyle={
@@ -12,8 +12,9 @@ const SettingButton = ({themeId, themeConfig, onClick }) =>  {
   return (<button class={style.settings_theme_button} style={buttonStyle} onClick={onClick} data-theme-id={themeId}>{themeId}</button>);
 };
 
-const SettingsTheme = ({ setTheme }) => {
-  const handleTheme = useCallback((e) => setTheme(e.target.attributes['data-theme-id'].value), [ setTheme ]);
+const SettingsTheme = () => {
+  const { updateSettings } = useAtrament();
+  const handleTheme = (e) => updateSettings('theme', e.target.attributes['data-theme-id'].value);
   return (
     <div class={[style.settings_theme_container, 'atrament-settings-theme'].join(' ')}>
       {Object.entries(themes).map(([k, v]) => {
