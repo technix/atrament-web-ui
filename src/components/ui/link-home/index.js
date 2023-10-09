@@ -1,12 +1,12 @@
 import { h } from 'preact';
-import { useContext } from 'preact/hooks';
 import { route } from 'preact-router';
-import Atrament from 'src/atrament-context';
-import Block from '../block';
 import style from './index.css';
 
+import Block from '../block';
+import useAtrament from 'src/atrament/hooks';
+
 const LinkHome = () => {
-  const atrament = useContext(Atrament);
+  const { atrament } = useAtrament();
 
   const endGame = async () => {
     await atrament.game.removeSave();
