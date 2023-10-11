@@ -18,6 +18,8 @@ import { registerSettingsHandlers } from 'src/atrament/settings-handlers'
 import { sceneAddUuid, sceneListImages } from 'src/atrament/scene-processors';
 import { loadDefaultFont, loadDefaultTheme } from 'src/atrament/load-defaults';
 
+import { loadAsar, inkLoader } from '../utils/asar';
+
 let atrament;
 
 function App() {
@@ -29,6 +31,13 @@ function App() {
       atrament = atramentLib.default;
       // import inkjs
       const {Story} = await import(/* webpackChunkName: "inkjs" */ "inkjs/dist/ink-es2015");
+      // fix loader
+      await loadAsar("assets/the-coiled-crown.atrament");
+      atrament.defineInterfaces({
+        loader: {
+          load: inkLoader
+        }
+      });
       // show all events in console
       atrament.on('*', (event, message) => console.log(
         `%c Atrament > ${event} `, 'color: #111111; background-color: #7FDBFF;',
@@ -46,8 +55,10 @@ function App() {
           fontSize: 100
         }
       });
+
+
       // initialize game
-      atrament.game.init(gamePath, gameFile);
+      atrament.game.init('.', 'the-coiled-crown.ink.json');
       await atrament.game.initInkStory();
       // load defaults
       loadDefaultTheme(atrament);
