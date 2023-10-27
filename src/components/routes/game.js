@@ -69,6 +69,7 @@ const GameRoute = () => {
               key={s.uuid}
               scene={s}
               isCurrent={i === lastSceneIndex}
+              isSingle={lastSceneIndex === 0}
               readyHandler={setReady}
             />
           )}

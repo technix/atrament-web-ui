@@ -1,25 +1,34 @@
 import { h, Fragment } from 'preact';
 import style from './index.css';
-import { useRef, useState, useEffect } from 'preact/hooks';
+import { useRef, useState, useEffect, useCallback } from 'preact/hooks';
+import { scrollIntoView } from "seamless-scroll-polyfill";
 // UI
 import ContainerImage from '../container-image';
 import Paragraph from '../scene-paragraph';
 // utils
 import preloadImages from 'src/utils/preload-images';
 
-const Scene = ({ scene, isCurrent, readyHandler }) => {
+const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
   const [ isLoaded, setIsLoaded ] = useState(false);
   const elementRef = useRef(null);
 
+  const scrollToScene = useCallback((behavior) => {
+    readyHandler(true);
+    setTimeout(
+      () => {
+        // elementRef.current.scrollIntoView({ behavior, block: 'start' });
+        // native 'scrollIntoView' glitches sometimes, so we use polyfill instead
+        scrollIntoView(elementRef.current, { behavior, block: 'start' }, { duration: 300 });
+      },
+      100
+    );
+  }, [ readyHandler ]);
+
   useEffect(() => {
     if (isLoaded && isCurrent) {
-      readyHandler(true);
-      setTimeout(
-        () => elementRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }),
-        100
-      );
+      scrollToScene(isSingle ? 'instant' : 'smooth');
     }
-  }, [isLoaded, isCurrent, elementRef, readyHandler]);
+  }, [isLoaded, isCurrent, isSingle, scrollToScene]);
 
   // preload all images for scene
   useEffect(() => {

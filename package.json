@@ -19,7 +19,8 @@
     "inkjs": "2.2.2",
     "normalize.css": "8.0.1",
     "preact": "10.17.1",
-    "preact-router": "4.1.2"
+    "preact-router": "4.1.2",
+    "seamless-scroll-polyfill": "2.3.4"
   },
   "devDependencies": {
     "@babel/eslint-parser": "7.22.15",
