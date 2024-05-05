@@ -4,7 +4,7 @@ import Atrament from 'src/atrament-context';
 
 const useAtrament = () => {
   const atrament = useContext(Atrament);
-  const state = useStore(atrament.store());
+  const state = useStore(atrament.store);
 
   return {
     atrament,

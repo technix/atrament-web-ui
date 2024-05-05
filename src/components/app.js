@@ -47,7 +47,7 @@ function App() {
         }
       });
       // initialize game
-      atrament.game.init(gamePath, gameFile);
+      await atrament.game.init(gamePath, gameFile);
       await atrament.game.initInkStory();
       // load defaults
       loadDefaultTheme(atrament);

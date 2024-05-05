@@ -9,11 +9,11 @@ function setBackground(bg) {
 }
 
 export default function handleTagBackground(atrament) {
-  atrament.on('game/continueStory', () => setBackground(atrament.state().get().game.background));
+  atrament.on('game/continueStory', () => setBackground(atrament.state.get().game.background));
   atrament.game.defineSceneProcessor((scene) => {
     if (scene.tags?.BACKGROUND) {
       const background = scene.tags?.BACKGROUND;
-      atrament.state().setSubkey('game', 'background', background);
+      atrament.state.setSubkey('game', 'background', background);
       setBackground(background);
     }
   });
