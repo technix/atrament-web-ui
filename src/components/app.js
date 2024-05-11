@@ -15,7 +15,7 @@ import muteWhenInactive from 'src/utils/mute-when-inactive';
 import handleTagBackground from 'src/utils/tag-background';
 
 import { registerSettingsHandlers } from 'src/atrament/settings-handlers'
-import { sceneAddUuid, sceneListImages } from 'src/atrament/scene-processors';
+import { sceneListImages } from 'src/atrament/scene-processors';
 import { loadDefaultFont, loadDefaultTheme } from 'src/atrament/load-defaults';
 
 let atrament;
@@ -53,7 +53,6 @@ function App() {
       loadDefaultTheme(atrament);
       loadDefaultFont(atrament);
       // register scene processors
-      sceneAddUuid(atrament);
       sceneListImages(atrament);
       // mute when tab is inactive
       muteWhenInactive(atrament);
