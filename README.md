@@ -17,6 +17,18 @@ The application is available at `http://localhost:8900`
 
 To build the application bundle for publishing, use `npm run build` command. Application will be in `build` folder.
 
+## Building your own game
+
+1. Remove all files from `src/assets/game` and put your game files there (ink script, images, music etc).
+2. Edit `atrament.config.json`, change the following parameters in `game` section:
+    * `source`: your main Ink file name
+    * `script`: desired compiled Ink file name (JSON extension is mandatory)
+3. You may also change default configuration in `atrament.config.json`:
+    * "`theme`": "`light`", "`sepia`", or "`dark`"
+    * "`font`": "`System`", "`Fira Sans`", "`Lora`", "`Merriweather`", or "`OpenDyslexic`"
+4. (optionally) edit `src/manifest.json` and change `name` and `short_name` parameters.
+5. That's it! You can make a test run with `npm start`, or build standalone web app with `npm run build`.
+
 ## Ink tags handled by Atrament Preact UI
 
 ### Global tags
