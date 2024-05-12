@@ -1,12 +1,17 @@
 const  { spawn } = require('node:child_process');
 const cfg = require('./atrament.config.json');
 
+const inputFile = `src/${cfg.game.path}/${cfg.game.source}`;
+const outputFile = `src/${cfg.game.path}/${cfg.game.script}`;
+
+console.log(`${inputFile} => ${outputFile}`);
+
 const process = spawn('node',
   [
     'node_modules/inkjs/dist/inkjs-compiler.js',
-    `src/${cfg.game.path}/${cfg.game.source}`,
+    inputFile,
     '-o',
-    `src/${cfg.game.path}/${cfg.game.script}`
+    outputFile
   ]
 );
 
