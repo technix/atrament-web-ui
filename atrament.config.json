@@ -1,6 +1,7 @@
 {
     "game": {
         "path": "assets/game",
+        "source": "intercept.ink",
         "script": "intercept.ink.json"
     },
     "theme": "light",

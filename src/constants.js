@@ -1,4 +1,4 @@
-import cfg from './config.json';
+import cfg from '../atrament.config.json';
 
 // Ink file
 

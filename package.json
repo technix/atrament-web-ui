@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "license": "MIT",
   "scripts": {
-    "prestart": "node node_modules/inkjs/dist/inkjs-compiler.js src/assets/game/intercept.ink",
+    "prestart": "node ink-compile.js",
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-    "prebuild": "node node_modules/inkjs/dist/inkjs-compiler.js src/assets/game/intercept.ink",
+    "prebuild": "node ink-compile.js",
     "build": "preact build --no-esm --no-prerender",
     "serve": "sirv build --port 8900 --cors --single",
     "dev": "preact watch --port 8900",
