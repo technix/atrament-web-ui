@@ -8,6 +8,7 @@ import Container from '../ui/container';
 import ContainerText from '../ui/container-text';
 import ContainerChoices from '../ui/container-choices';
 import ContainerScenes from '../ui/container-scenes';
+import Toolbar from '../ui/toolbar';
 
 import Scene from '../ui/scene';
 import ChoiceButton from '../ui/choice-button';
@@ -62,6 +63,7 @@ const GameRoute = () => {
   return (
     <Container>
       <Settings />
+      <Toolbar>{state.metadata.title}</Toolbar>
       <ContainerText fontSize={state.settings.fontSize}>
         <ContainerScenes>
           {state.scenes.map((s, i) => 

@@ -1,9 +1,11 @@
 .container_text {
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: auto;
 	display: flex;
 	flex-direction: column;
 	overflow: auto;
     line-height: calc(1ex / 0.32);
-    height: 100%;
     font-family: var(--font-game);
 }
 

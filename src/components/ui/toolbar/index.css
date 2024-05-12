@@ -1,0 +1,8 @@
+.toolbar {
+    height: 50px;
+    padding: 0.5em;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    border-bottom: 1px solid var(--fg-color);
+}

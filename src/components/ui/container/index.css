@@ -2,4 +2,6 @@
     background-color: var(--bg-color);
 	position: relative;
 	height: 100%;
+	display: flex;
+	flex-flow: column;
 }
