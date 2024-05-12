@@ -1,25 +1,28 @@
+import cfg from './config.json';
+
+// Ink file
+
+export const gamePath = cfg.game.path;
+export const gameFile = cfg.game.script;
+
 // Application ID
 // - uses page URL to make sure it's unique
 
 export const applicationID = [
   'Atrament://',
   window.location.host,
-  window.location.pathname
+  window.location.pathname,
+  gamePath,
+  gameFile
 ].join('');
-
-
-// Ink file
-
-export const gamePath = 'assets/game';
-export const gameFile = 'intercept.ink.json';
 
 //// Settings ////
 
 // theme
-export const gameDefaultTheme = 'light';
+export const gameDefaultTheme = cfg.theme;
 
 // font
-export const gameDefaultFont = 'System';
+export const gameDefaultFont = cfg.font;
 
 // Font size range and step (percentage)
 export const defaultFontSize = 100;
