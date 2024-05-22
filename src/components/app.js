@@ -13,6 +13,7 @@ import GameRoute from 'src/components/routes/game';
 
 import muteWhenInactive from 'src/utils/mute-when-inactive';
 import handleTagBackground from 'src/utils/tag-background';
+import { registerGetAssetPath } from 'src/utils/get-asset-path';
 
 import { registerSettingsHandlers } from 'src/atrament/settings-handlers'
 import { sceneListImages } from 'src/atrament/scene-processors';
@@ -46,6 +47,8 @@ function App() {
           fontSize: 100
         }
       });
+      // register getAssetPath function
+      registerGetAssetPath(atrament.game.getAssetPath);
       // initialize game
       await atrament.game.init(gamePath, gameFile);
       await atrament.game.initInkStory();

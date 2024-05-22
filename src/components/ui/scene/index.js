@@ -7,6 +7,7 @@ import ContainerImage from '../container-image';
 import Paragraph from '../scene-paragraph';
 // utils
 import preloadImages from 'src/utils/preload-images';
+import { getAssetPath } from "src/utils/get-asset-path";
 
 const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
   const [ isLoaded, setIsLoaded ] = useState(false);
@@ -33,7 +34,7 @@ const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
   // preload all images for scene
   useEffect(() => {
     const preloader = async () => {
-      await preloadImages(scene.images);
+      await preloadImages(getAssetPath, scene.images);
       setIsLoaded(true);
     }
     preloader();
@@ -45,7 +46,7 @@ const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
         {
           scene.content.map((item, i) => (
             <Fragment key={`paragraph-${scene.uuid}-${i}`}>
-              <ContainerImage src={item.image} />
+              <ContainerImage src={getAssetPath(item.image)} />
               <Paragraph isCurrent={isCurrent} content={item.text} />
             </Fragment>
           ))
