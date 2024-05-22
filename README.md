@@ -48,15 +48,23 @@ To build the application bundle for publishing, use `npm run build` command. App
 | :-------- | :------------------------- |
 | `# IMAGE: some/picture.jpg` | Show image before paragraph text. |
 | `# CLEAR` | Clear scenes list before saving current scene to Atrament state. |
-| `# AUDIOLOOP: music.mp3` <br/> `# MUSIC: music.mp3` | Play music (looped). |
-| `# AUDIOLOOP: false` <br/> `# MUSIC: false` | Stop playing music. |
-| `# AUDIO: sound.mp3` <br/> `# SOUND: sound.mp3` | Play sound (once). |
+| `# AUDIO: sound.mp3` | Play sound (once). |
+| `# AUDIOLOOP: music.mp3` | Play music (looped). |
+| `# AUDIOLOOP: false` | Stop playing music. |
+| `# PLAY_SOUND: sound.mp3` | Play sound (once). |
+| `# STOP_SOUND: sound.mp3` | Stop playing specific sound. |
+| `# STOP_SOUND` | Stop playing all sounds. |
+| `# PLAY_MUSIC: music.mp3` | Play background music (looped). |
+| `# STOP_MUSIC: music.mp3` | Stop playing specific background music. |
+| `# STOP_MUSIC` | Stop playing all background music. |
 | `# CHECKPOINT` | Save game to 'default' checkpoint. |
 | `# CHECKPOINT: checkpointName` | Save game to  checkpoint `checkpointName`. |
 | `# SAVEGAME: saveslot` | Save game to `saveslot`. |
 | `# RESTART` | Start game from beginning. |
 | `# RESTART_FROM_CHECKPOINT` | Restart game from latest checkpoint. |
 | `# RESTART_FROM_CHECKPOINT: checkpointName` | Restart game from named checkpoint. |
+
+Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MUSIC/STOP_SOUND/STOP_MUSIC tags. Combining them may lead to unexpected side effects.
 
 ## More documentation
 
