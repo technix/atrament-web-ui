@@ -35,6 +35,8 @@ const HomeRoute = () => {
     route('/game');
   }, [ gameResume ]);
 
+  const aboutGame = () => route('/about');
+
   return (
     <Container>
       <ContainerFlex>
@@ -46,6 +48,7 @@ const HomeRoute = () => {
         <Block align='end'>
           {canBeResumed ? <LinkMenu key="continuegame" onClick={resumeGame}>Continue</LinkMenu> : ''}
           <LinkMenu key="startgame" onClick={newGame}>New game</LinkMenu>
+          <LinkMenu key="about" onClick={aboutGame}>About</LinkMenu>
         </Block>
       </ContainerFlex>
     </Container>

@@ -10,6 +10,7 @@ import ApplicationWrapper from 'src/components/ui/application-wrapper';
 import Loading from 'src/components/ui/loading';
 import HomeRoute from 'src/components/routes/home';
 import GameRoute from 'src/components/routes/game';
+import AboutRoute from 'src/components/routes/about';
 
 let atrament;
 
@@ -45,6 +46,7 @@ function App() {
           <Router history={createMemoryHistory()} onChange={handleRoute}>
             <HomeRoute path="/" />
             <GameRoute path="/game" />
+            <AboutRoute path="/about" />
           </Router>
         </ApplicationWrapper>
       </AtramentContext.Provider>
