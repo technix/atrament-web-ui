@@ -40,7 +40,7 @@ const inklecateRun = {
 
 let env = 'js';
 if (!cfg.inkjscompiler) {
-  let env = os.platform();
+  env = os.platform();
   if (!['win32', 'linux', 'darwin'].includes(env)) {
     console.log(`Unsupported OS (${env}), falling back to JS compiler.`);
     env = 'js';
