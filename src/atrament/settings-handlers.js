@@ -1,4 +1,5 @@
-import { applyTheme, applyFont } from '../theme';
+import { applyTheme } from 'src/themes';
+import { applyFont } from 'src/fonts';
 
 export function registerSettingsHandlers(atrament) {
   atrament.settings.defineHandler('theme', (oldV, value) => {

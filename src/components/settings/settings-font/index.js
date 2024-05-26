@@ -2,7 +2,7 @@ import { h } from 'preact';
 import style from './index.css';
 import useAtrament from 'src/atrament/hooks';
 
-import { fonts } from 'src/theme';
+import { fonts } from 'src/fonts';
 
 const SettingsFont = () => {
   const { state, updateSettings } = useAtrament();

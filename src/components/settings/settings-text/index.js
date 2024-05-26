@@ -4,7 +4,7 @@ import useAtrament from 'src/atrament/hooks';
 
 import { defaultFontSize, stepFontSize, minFontSize, maxFontSize, sampleFontsizeText } from 'src/constants';
 
-import { fonts } from 'src/theme';
+import { fonts } from 'src/fonts';
 
 const datapointsFontSize = [];
 for (let s=minFontSize; s <= maxFontSize; s+= stepFontSize) {

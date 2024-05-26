@@ -2,22 +2,14 @@ import { h } from 'preact';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { Router } from 'preact-router';
 import { createMemoryHistory } from 'history';
-import Atrament from 'src/atrament-context';
 
-import { applicationID, gameFile, gamePath } from 'src/constants';
+import AtramentContext from 'src/atrament/context';
+import atramentInit from 'src/atrament/init';
 
 import ApplicationWrapper from 'src/components/ui/application-wrapper';
 import Loading from 'src/components/ui/loading';
 import HomeRoute from 'src/components/routes/home';
 import GameRoute from 'src/components/routes/game';
-
-import muteWhenInactive from 'src/utils/mute-when-inactive';
-import handleTagBackground from 'src/utils/tag-background';
-import { registerGetAssetPath } from 'src/utils/get-asset-path';
-
-import { registerSettingsHandlers } from 'src/atrament/settings-handlers'
-import { sceneListImages } from 'src/atrament/scene-processors';
-import { loadDefaultFont, loadDefaultTheme } from 'src/atrament/load-defaults';
 
 let atrament;
 
@@ -30,37 +22,8 @@ function App() {
       atrament = atramentLib.default;
       // import inkjs
       const {Story} = await import(/* webpackChunkName: "inkjs" */ "inkjs/dist/ink-es2015");
-      // show all events in console
-      atrament.on('*', (event, message) => console.log(
-        `%c Atrament > ${event} `, 'color: #111111; background-color: #7FDBFF;',
-        message
-      ));
-      // handle theme settings
-      registerSettingsHandlers(atrament);
-      // initialize Atrament
-      await atrament.init(Story, {
-        applicationID,
-        settings: {
-          animation: true,
-          mute: false,
-          volume: 50,
-          fontSize: 100
-        }
-      });
-      // register getAssetPath function
-      registerGetAssetPath(atrament.game.getAssetPath);
-      // initialize game
-      await atrament.game.init(gamePath, gameFile);
-      await atrament.game.initInkStory();
-      // load defaults
-      loadDefaultTheme(atrament);
-      loadDefaultFont(atrament);
-      // register scene processors
-      sceneListImages(atrament);
-      // mute when tab is inactive
-      muteWhenInactive(atrament);
-      // handle #BACKGROUND tag
-      handleTagBackground(atrament);
+      // initialize engine
+      await atramentInit(atrament, Story);
       // done
       isLoaded(true);
     };
@@ -77,14 +40,14 @@ function App() {
 
   if (loaded) {
     return (
-      <Atrament.Provider value={atrament}>
+      <AtramentContext.Provider value={atrament}>
         <ApplicationWrapper>
           <Router history={createMemoryHistory()} onChange={handleRoute}>
             <HomeRoute path="/" />
             <GameRoute path="/game" />
           </Router>
         </ApplicationWrapper>
-      </Atrament.Provider>
+      </AtramentContext.Provider>
     );
   }
   return (<ApplicationWrapper><Loading /></ApplicationWrapper>);
