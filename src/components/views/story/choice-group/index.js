@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useCallback } from 'preact/hooks';
+import { useState, useCallback } from 'preact/hooks';
 import { route } from 'preact-router';
 
 import useAtrament from 'src/atrament/hooks';
@@ -11,13 +11,19 @@ import ChoiceButton from '../choice-button';
 
 const ChoiceGroup = ({ currentScene, isReady, setReady }) => {
   const { atrament, makeChoice, continueStory } = useAtrament();
+  const [ chosen, setChosen ] = useState(null);
 
   const selectChoice = useCallback((id) => {
-    setReady(false);
+    setChosen(id);
     setTimeout(() => {
-      makeChoice(id);
-      continueStory();  
-    }, 200);
+      // pass choice to Atrament
+      setTimeout(() => {
+        setChosen(null);
+        setReady(false);
+        makeChoice(id);
+        continueStory();
+      }, 700);
+    }, 0);
   }, [ makeChoice, continueStory, setReady ]);
 
   const endGame = async () => {
@@ -36,6 +42,7 @@ const ChoiceGroup = ({ currentScene, isReady, setReady }) => {
             <ChoiceButton
               key={`${key}-${index}`}
               choice={choice}
+              chosen={chosen}
               handleClick={selectChoice}
             />)
           )

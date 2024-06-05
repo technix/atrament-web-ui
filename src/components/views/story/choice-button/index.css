@@ -16,3 +16,33 @@
     background-color: var(--fg-color);
     color: var(--bg-color);
 }
+
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.choice_active {
+    background-color: var(--accent-bg-color);
+    border: 1px solid var(--accent-bg-color);
+    color: var(--accent-fg-color);
+}
+
+.choice_active:hover {
+    background-color: var(--accent-bg-color);
+    border: 1px solid var(--accent-bg-color);
+    color: var(--accent-fg-color);
+}
+
+.choice_inactive {
+    animation-name: disappear;
+    animation-duration: 0.3s;
+    animation-timing-function: ease-in;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}

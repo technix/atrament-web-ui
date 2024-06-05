@@ -1,13 +1,20 @@
 import { h } from 'preact';
 import style from './index.css';
-import { useCallback } from 'preact/hooks';
 
-const ChoiceButton = ({ choice, handleClick }) => {
-  const onClick = useCallback(() => {
-    handleClick(choice.id);
-  }, [ choice, handleClick ]);
+const ChoiceButton = ({ choice, chosen, handleClick }) => {
+  const choiceIsMade = chosen !== null; // something is chosen
+  const activeChoice = chosen === choice.id; // this is the active choice
+  const onClick = () => {
+    if (!choiceIsMade) {
+      handleClick(choice.id);
+    }
+  };
   return (
-    <button class={style.choice_button} onClick={onClick} dangerouslySetInnerHTML={{__html: choice.choice}} />
+    <button
+      class={`${style.choice_button} ${choiceIsMade ? (activeChoice ? style.choice_active : style.choice_inactive) : ''}`}
+      onClick={onClick}
+      dangerouslySetInnerHTML={{__html: choice.choice}}
+    />
   );
 };
 
