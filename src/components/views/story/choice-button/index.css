@@ -27,21 +27,21 @@
 }
 
 .choice_active {
-    background-color: var(--accent-bg-color);
-    border: 1px solid var(--accent-bg-color);
-    color: var(--accent-fg-color);
+    background-color: var(--fg-color);
+    border: 1px solid var(--fg-color);
+    color: var(--bg-color);
 }
 
 .choice_active:hover {
-    background-color: var(--accent-bg-color);
-    border: 1px solid var(--accent-bg-color);
-    color: var(--accent-fg-color);
+    background-color: var(--fg-color);
+    border: 1px solid var(--fg-color);
+    color: var(--bg-color);
 }
 
 .choice_inactive {
     animation-name: disappear;
     animation-duration: 0.3s;
-    animation-timing-function: ease-in;
+    animation-timing-function: ease-out;
     animation-delay: 0s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;
