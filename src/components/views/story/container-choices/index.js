@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import style from './index.css';
 // UI
-import Block from '../block';
+import Block from 'src/components/ui/block';
 
 const ContainerChoices = ({ children, key, isReady }) => {
   return (

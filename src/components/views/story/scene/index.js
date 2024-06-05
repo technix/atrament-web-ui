@@ -3,7 +3,7 @@ import style from './index.css';
 import { useRef, useState, useEffect, useCallback } from 'preact/hooks';
 import { scrollIntoView } from "seamless-scroll-polyfill";
 // UI
-import ContainerImage from '../container-image';
+import ContainerImage from 'src/components/ui/container-image';
 import Paragraph from '../scene-paragraph';
 // utils
 import preloadImages from 'src/utils/preload-images';
