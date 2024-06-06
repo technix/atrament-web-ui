@@ -29,10 +29,22 @@
     color: var(--bg-color);
 }
 
+@keyframes disappear {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
 .choice_inactive {
+    filter: blur(4px);
     animation-name: disappear;
-    animation-duration: var(--animation-disabled, 0.3s);
-    animation-timing-function: ease-out;
+    animation-duration: var(--animation-disabled, 0.2s);
     animation-delay: 0s;
     animation-iteration-count: 1;
     animation-fill-mode: forwards;

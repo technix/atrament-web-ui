@@ -13,7 +13,10 @@ const ChoiceGroup = ({ currentScene, isReady, setReady }) => {
   const { atrament, makeChoice, continueStory } = useAtrament();
   const [ chosen, setChosen ] = useState(null);
 
+  const numberOfChoices = (currentScene && currentScene.choices) ? currentScene.choices.length : -1;
+
   const selectChoice = useCallback((id) => {
+    const delay = numberOfChoices > 1 ? 500 : 200;
     setChosen(id);
     setTimeout(() => {
       // pass choice to Atrament
@@ -22,20 +25,20 @@ const ChoiceGroup = ({ currentScene, isReady, setReady }) => {
         setReady(false);
         makeChoice(id);
         continueStory();
-      }, 700);
+      }, delay);
     }, 0);
-  }, [ makeChoice, continueStory, setReady ]);
+  }, [ makeChoice, continueStory, setReady, numberOfChoices ]);
 
   const endGame = async () => {
     await atrament.game.removeSave();
     route('/');
   };
 
-  if (currentScene && currentScene.choices) {
+  if (numberOfChoices >= 0) {
     const key = `choices-${currentScene.uuid}`;
     return (
       <ContainerChoices isReady={isReady} key={key}>
-        {currentScene.choices.length == 0 ?
+        {numberOfChoices === 0 ?
           <LinkHome onClick={endGame} />
           :
           currentScene.choices.map((choice, index) => (
