@@ -9,6 +9,11 @@ export function registerSettingsHandlers(atrament) {
     applyFont(value);
   });
   atrament.settings.defineHandler('animation', (oldV, value) => {
-    document.documentElement.style.setProperty('--animation-type', value ? 'appear' : '');
+    if (value) {
+      document.documentElement.style.removeProperty('--animation-disabled');
+    } else {
+      document.documentElement.style.setProperty('--animation-disabled', '0s');
+    }
+    
   });
 }

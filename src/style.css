@@ -34,13 +34,22 @@ body {
   }
 }
 
+@keyframes disappear {
+  0% {
+      opacity: 1;
+  }
+  100% {
+      opacity: 0;
+  }
+}
+
 a, a:visited {
   color: var(--accent-bg-color);
 }
 
 .animation_appear {
-  animation-name: var(--animation-type);
-  animation-duration: 0.7s;
+  animation-name: appear;
+  animation-duration: var(--animation-disabled, 0.7s);
   animation-timing-function: ease-in;
   animation-delay: 0s;
   animation-iteration-count: 1;
