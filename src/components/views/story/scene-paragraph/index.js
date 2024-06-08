@@ -1,5 +1,7 @@
 import { h } from 'preact';
 
+import markup from 'src/atrament/markup';
+
 const Paragraph = ( {content, isCurrent} ) => {
   let pStyle;
   if (!isCurrent) {
@@ -8,7 +10,11 @@ const Paragraph = ( {content, isCurrent} ) => {
   if (content === "\n") {
     return '';
   }
-  return (<p style={pStyle} dangerouslySetInnerHTML={{__html: content}} />);
+  const transformedContent = markup(content);
+  if (Array.isArray(transformedContent)) {
+    return (<p style={pStyle}>{transformedContent}</p>);  
+  }
+  return (<p style={pStyle} dangerouslySetInnerHTML={{__html: transformedContent}} />);
 }
 
 export default Paragraph;
