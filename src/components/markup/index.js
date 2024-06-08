@@ -1,3 +1,3 @@
-import Button from './button';
+import InlineButton from './inline-button';
 
-export default [ Button ];
+export default [ InlineButton ];

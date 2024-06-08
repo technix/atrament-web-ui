@@ -1,0 +1,13 @@
+.inline_button {
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    text-decoration: none;
+    border: 1px solid var(--fg-color);
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.inline_button:hover {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+}
