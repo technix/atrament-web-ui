@@ -1,3 +1,5 @@
+import { gameDefaultTheme } from 'src/constants';
+
 const lightTheme = {
   '--bg-color': '#FCFCFC',
   '--fg-color': '#5D576B',
@@ -29,7 +31,7 @@ export const themes = {
 };
 
 export function applyTheme(theme) {
-  Object.entries(themes[theme]).forEach(([prop, value]) => {
+  Object.entries(themes[theme] || themes[gameDefaultTheme]).forEach(([prop, value]) => {
     document.documentElement.style.setProperty(prop, value);
   });
 }

@@ -1,4 +1,6 @@
 // font styles
+import { gameDefaultFont } from 'src/constants';
+
 import 'src/fonts/fira-sans';
 import 'src/fonts/lora';
 import 'src/fonts/merriweather';
@@ -13,5 +15,5 @@ export const fonts = {
 };
   
 export function applyFont(font) {
-  document.documentElement.style.setProperty('--font-game', fonts[font]);
+  document.documentElement.style.setProperty('--font-game', fonts[font] || fonts[gameDefaultFont]);
 }
