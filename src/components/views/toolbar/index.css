@@ -7,3 +7,7 @@
     /*background-color: #EE0000;*/
     border-bottom: 1px solid var(--fg-color);
 }
+
+.toolbar > * {
+    vertical-align: middle;
+}

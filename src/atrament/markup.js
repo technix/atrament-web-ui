@@ -3,28 +3,34 @@ import { h } from 'preact';
 import MarkupComponents from 'src/components/markup';
 
 function replaceWithComponent(text, regexp, replacer) {
+  let result = text;
+  if (typeof text !== 'string') {
+    return result;
+  }
   const splitted = text.split(regexp);
   const mentions = text.match(regexp);
-  let result = text;
   if (mentions) {
     result = splitted.flatMap((fragment, index) => {
-      const htmlFragment = <span dangerouslySetInnerHTML={{__html: fragment}} />
       return (index < mentions.length
-        ? [htmlFragment, replacer(mentions[index])]
-        : [htmlFragment]);
+        ? [fragment, replacer(mentions[index], markup)]
+        : [fragment]);
     });
   }
   return result;
 }
 
 export default function markup(text) {
-  let processedText = text;
+  let processedText = [text];
   MarkupComponents.forEach(component => {
-    processedText = replaceWithComponent(
-      processedText, 
-      component.regexp, 
-      component.replacer
-    );  
+    processedText = processedText.flatMap(
+      (item) => replaceWithComponent(
+        item, 
+        component.regexp, 
+        component.replacer
+      )
+    );
   });
-  return processedText;
+  return processedText.map((item, index) => 
+    typeof item === 'string' ? <span key={index} dangerouslySetInnerHTML={{__html: item}} /> : item
+  );
 }

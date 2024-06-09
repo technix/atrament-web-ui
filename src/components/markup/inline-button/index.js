@@ -19,8 +19,8 @@ const InlineButtonComponent = ({ children, callback }) => {
 
 export default {
   regexp: /<\[.+?\]\[.+?\]>/g,
-  replacer: (el) => {
+  replacer: (el, markup) => {
     const fragments = el.match(/<\[(.+?)\]\[(.+?)\]>/);
-    return (<InlineButtonComponent callback={fragments[2]}>{fragments[1]}</InlineButtonComponent>);
+    return (<InlineButtonComponent callback={fragments[2]}>{markup(fragments[1])}</InlineButtonComponent>);
   }
 }
