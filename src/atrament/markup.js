@@ -30,7 +30,9 @@ export default function markup(text) {
       )
     );
   });
-  return processedText.map((item, index) => 
-    typeof item === 'string' ? <span key={index} dangerouslySetInnerHTML={{__html: item}} /> : item
+  return processedText.filter(item => item).map((item, index) => 
+    typeof item === 'string'
+      ? <span key={index} dangerouslySetInnerHTML={{__html: item}} />
+      : item
   );
 }
