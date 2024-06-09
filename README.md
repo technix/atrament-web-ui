@@ -42,6 +42,7 @@ To build the application bundle for publishing, use `npm run build` command. App
 | `# observe: varName` | Register variable observer for `varName` Ink variable. Variable value is available in `vars` section of Atrament state. |
 | `# autosave: false` | Disables autosaves. |
 | `# single_scene` | Store only last scene in Atrament state. |
+| `# toolbar: toolbar_function` | Use output of this function as a toolbar content. |
 
 ### Knot tags
 | Tag | Description                |
@@ -65,6 +66,43 @@ To build the application bundle for publishing, use `npm run build` command. App
 | `# RESTART_FROM_CHECKPOINT: checkpointName` | Restart game from named checkpoint. |
 
 Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MUSIC/STOP_SOUND/STOP_MUSIC tags. Combining them may lead to unexpected side effects.
+
+### Custom markup
+| Markup | Description                |
+| :-------- | :------------------------- |
+| `[img]path/to/image.jpg[/img]` | Display inline image. |
+| `[button=function]Text[/button]` | Display button, call a function when clicked. If function returns text, it will be displayed as a new card content. If not, existing card content will be updated. |
+| `[pbutton=function]Text[/pbutton]` | Same as `[button]`, but borderless. |
+
+### Cards
+
+Atrament UI can display custom data (inventory, character stats etc.) as a card overlay. 
+
+To display a card, you need to define a button in the toolbar or in the game content, with `[button]` or `[pbutton]` tag. If the function returns text content, it will be displayed as a card overlay. Card overlays can have buttons too.
+
+If the first line of the function is a `[title]Card Title[/title]` tag, this title will be displayed in the toolbar.
+
+Example of toolbar and cards:
+```
+# toolbar: game_toolbar
+
+...
+
+=== function game_toolbar()
+  [button=inventory]Inventory[/button]
+  [button=stats]Stats[/button]
+
+=== function inventory()
+  [title]Inventory[/title]
+  You are carrying:
+  ...
+
+=== function stats()
+  [title]Character: {character_name}[/title]
+  Health: {health}
+  ...
+
+```
 
 ## More documentation
 
