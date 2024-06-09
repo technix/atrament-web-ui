@@ -1,4 +1,4 @@
-import InlineButton from './inline-button';
+import { Button, PlainButton } from './inline-button';
 import InlineImage from './inline-image';
 
-export default [ InlineButton, InlineImage ];
+export default [ Button, PlainButton, InlineImage ];

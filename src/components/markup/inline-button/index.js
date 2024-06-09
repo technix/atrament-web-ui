@@ -19,7 +19,7 @@ function activeCardContent(atrament, card, content) {
   atrament.state.setSubkey('CARD', 'content', content);
 }
 
-const InlineButtonComponent = ({ children, callback }) => {
+const InlineButtonComponent = ({ children, callback, bordered }) => {
   const { atrament, state } = useAtrament();
 
   const clickHandler = useCallback(() => {
@@ -35,13 +35,28 @@ const InlineButtonComponent = ({ children, callback }) => {
       }
     }
   }, [ atrament, callback, state ]);
-  return (<button class={style.inline_button} onClick={clickHandler}>{children}</button>);
+  return (
+    <button
+      class={bordered ? style.bordered_button : style.inline_button}
+      onClick={clickHandler}
+    >
+      {children}
+    </button>
+  );
 }
 
-export default {
+export const Button = {
   regexp: /\[button=.+?\].+?\[\/button\]/ig,
   replacer: (el, markup) => {
     const fragments = el.match(/\[button=(.+?)\](.+?)\[\/button\]/i);
+    return (<InlineButtonComponent callback={fragments[1]} bordered>{markup(fragments[2])}</InlineButtonComponent>);
+  }
+}
+
+export const PlainButton = {
+  regexp: /\[pbutton=.+?\].+?\[\/pbutton\]/ig,
+  replacer: (el, markup) => {
+    const fragments = el.match(/\[pbutton=(.+?)\](.+?)\[\/pbutton\]/i);
     return (<InlineButtonComponent callback={fragments[1]}>{markup(fragments[2])}</InlineButtonComponent>);
   }
 }
