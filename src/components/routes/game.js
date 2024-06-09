@@ -9,6 +9,7 @@ import ErrorModal from 'src/components/ui/error-modal'
 
 import Toolbar from 'src/components/views/toolbar';
 import StoryView from 'src/components/views/story';
+import CardView from 'src/components/views/card';
 
 const GameRoute = () => {
   const { continueStory } = useAtrament();
@@ -22,6 +23,7 @@ const GameRoute = () => {
       <Settings />
       <ErrorModal />
       <Toolbar />
+      <CardView />
       <StoryView />
     </Container>
   );

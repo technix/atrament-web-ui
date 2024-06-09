@@ -1,0 +1,31 @@
+.card_container {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	background: var(--bg-color);
+	z-index: 80;
+}
+
+.card_header {
+	height: 2.5em;
+    padding: 0.5em;
+    flex-grow: 0;
+    flex-shrink: 1;
+    flex-basis: auto;
+    border-bottom: 1px solid var(--fg-color);
+}
+
+.card {
+	padding: 1rem;
+	flex-grow: 1; 
+	overflow: auto;
+}
+
+.button_back {
+	cursor: pointer;
+    border: none;
+    background: none;
+    color: var(--font-color);
+}
