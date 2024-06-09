@@ -40,7 +40,7 @@ a, a:visited {
 
 .animation_appear {
   animation-name: appear;
-  animation-duration: var(--animation-disabled, 0.7s);
+  animation-duration: var(--animation-disabled, 0.5s);
   animation-timing-function: ease-in;
   animation-delay: 0s;
   animation-iteration-count: 1;

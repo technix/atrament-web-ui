@@ -16,7 +16,7 @@ const ChoiceGroup = ({ currentScene, isReady, setReady }) => {
   const numberOfChoices = (currentScene && currentScene.choices) ? currentScene.choices.length : -1;
 
   const selectChoice = useCallback((id) => {
-    const delay = numberOfChoices > 1 ? 500 : 200;
+    const delay = numberOfChoices > 1 ? 350 : 150;
     setChosen(id);
     setTimeout(() => {
       // pass choice to Atrament

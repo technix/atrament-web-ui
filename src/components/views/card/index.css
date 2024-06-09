@@ -23,6 +23,10 @@
 	overflow: auto;
 }
 
+.card p {
+	margin-top: 0;
+}
+
 .button_back {
 	cursor: pointer;
     border: none;
