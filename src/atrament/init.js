@@ -9,6 +9,7 @@ import { loadDefaultFont, loadDefaultTheme } from 'src/atrament/load-defaults';
 import { registerSettingsHandlers } from 'src/atrament/settings-handlers'
 import { sceneListImages } from 'src/atrament/scene-processors';
 
+import onGameStart from 'src/atrament/on-game-start';
 
 export default async function atramentInit(atrament, Story) {
   // show all events in console
@@ -28,6 +29,7 @@ export default async function atramentInit(atrament, Story) {
       fontSize: 100
     }
   });
+  atrament.on('game/start', () => onGameStart(atrament));
   // register getAssetPath function
   registerGetAssetPath(atrament.game.getAssetPath);
   // initialize game

@@ -10,19 +10,10 @@ import Header from '../ui/header';
 import LinkMenu from '../ui/link-menu';
 
 import Settings from 'src/components/settings';
-import atrament from '@atrament/web';
 
 const HomeRoute = () => {
   const { state, canResume, gameStart, gameResume } = useAtrament();
-
   const { title, author } = state.metadata;
-
-  const registerErrorHandler = () => {
-    // register error handler
-    atrament.ink.story().onError = (error) => {
-      atrament.state.setKey('ERROR', error);
-    };
-  };
 
   const [ canBeResumed, setResumeState ] = useState(false);
   useEffect(() => {
@@ -35,13 +26,11 @@ const HomeRoute = () => {
 
   const newGame = useCallback(async () => {
     await gameStart();
-    registerErrorHandler();
     route('/game');
   }, [ gameStart ]);
 
   const resumeGame = useCallback(async () => {
     await gameResume();
-    registerErrorHandler();
     route('/game');
   }, [ gameResume ]);
 
