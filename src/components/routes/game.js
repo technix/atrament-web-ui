@@ -5,27 +5,23 @@ import useAtrament from 'src/atrament/hooks';
 
 import Container from 'src/components/ui/container';
 import Settings from 'src/components/settings';
-import Toolbar from 'src/components/ui/toolbar';
 import ErrorModal from 'src/components/ui/error-modal'
+
+import Toolbar from 'src/components/views/toolbar';
 import StoryView from 'src/components/views/story';
 
 const GameRoute = () => {
-  const { atrament, state, continueStory } = useAtrament();
+  const { continueStory } = useAtrament();
 
   useEffect(() => {
-    // register error handler
-    atrament.ink.story().onError = (error) => {
-      atrament.state.setKey('ERROR', error);
-    };
-    // continue ink story
     continueStory();
-  }, [ atrament, continueStory ]);
+  }, [ continueStory ]);
 
   return (
     <Container>
       <Settings />
       <ErrorModal />
-      <Toolbar>{state.metadata.title}</Toolbar>
+      <Toolbar />
       <StoryView />
     </Container>
   );

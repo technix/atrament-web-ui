@@ -12,4 +12,5 @@
 .error_message {
     color: var(--accent-bg-color);
     font-family: monospace;
+    margin-top: 0;
 }
