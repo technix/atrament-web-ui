@@ -20,11 +20,13 @@ const CardView = () => {
   }
   
   const content = state.CARD.content.split('\n');
+  const title = state.CARD.title;
     
   return (
     <div class={style.card_container}>
       <div class={style.card_header}>
         <button class={style.button_back} onClick={closeCard}>❮</button>
+        {title && <div class={style.card_title}>{title}</div>}
       </div>
       <div class={[style.card, 'atrament-toolbar-card'].join(' ')}>
         <ContainerText fontSize={state.settings.fontSize}>

@@ -16,7 +16,15 @@ function evaluateInkFunction(atrament, fn) {
 
 function activeCardContent(atrament, card, content) {
   atrament.state.setSubkey('CARD', 'activeCard', card);
-  atrament.state.setSubkey('CARD', 'content', content);
+  let textContent = content;
+  const contentArray = content.split('\n');
+  const firstLine = contentArray.shift();
+  const title = firstLine.match(/\[title\](.+?)\[\/title\]/i);
+  if (title) {
+    atrament.state.setSubkey('CARD', 'title', title[1]);
+    textContent = contentArray.join('\n');
+  }
+  atrament.state.setSubkey('CARD', 'content', textContent);
 }
 
 const InlineButtonComponent = ({ children, callback, bordered }) => {
