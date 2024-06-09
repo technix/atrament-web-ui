@@ -3,9 +3,9 @@ import style from './index.css';
 import { getAssetPath } from "src/utils/get-asset-path";
 
 export default {
-  regexp: /<IMAGE\[.+?\]>/g,
+  regexp: /\[img\].+?\[\/img\]/ig,
   replacer: (el) => {
-    const fragments = el.match(/<IMAGE\[(.+?)\]>/);
+    const fragments = el.match(/\[img\](.+?)\[\/img\]/i);
     return (<img class={style.inline_image} src={getAssetPath(fragments[1])} />);
   }
 }

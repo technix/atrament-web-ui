@@ -1,6 +1,6 @@
 .toolbar {
     max-height: 2.5em;
-    overflow: auto;
+    overflow: hidden;
     padding: 0.5em;
     flex-grow: 0;
     flex-shrink: 1;

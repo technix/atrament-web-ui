@@ -20,9 +20,7 @@ const CardView = () => {
   }
   
   const content = state.CARD.content.split('\n');
-  
-  console.log(content);
-  
+    
   return (
     <div class={style.card_container}>
       <div class={style.card_header}>
