@@ -38,6 +38,11 @@
 	margin-top: 0;
 }
 
+.card p ul {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
 .button_back {
 	cursor: pointer;
     border: none;
