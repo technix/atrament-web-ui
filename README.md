@@ -1,23 +1,36 @@
 # Atrament Preact UI
 
-`atrament-preact-ui` is an example application for playing Ink games, built with inkjs, Atrament, and Preact.
+`atrament-preact-ui` is a web application to run Ink games.
+
+It uses [inkjs](https://github.com/y-lohse/inkjs) to interpret Ink scripts, [Atrament](https://github.com/technix/atrament-core) as a game engine, and [Preact](https://preactjs.com/) as a Web UI framework.
 
 [Live Demo](https://technix.github.io/atrament-preact-ui/)
 
-## Run application locally
+## Getting started
+
+### Get source code and install dependencies
 
 ```
 git clone https://github.com/technix/atrament-preact-ui.git
 cd atrament-preact-ui
 npm install
+```
+
+### Run application locally in dev mode
+```
 npm start
 ```
 
-The application is available at `http://localhost:8900`
+The application is available at `http://localhost:8900`. If any source file (Ink or Javascript) is edited, the application automatically restarts with these changes.
 
-To build the application bundle for publishing, use `npm run build` command. Application will be in `build` folder.
+### Build application for publishing to web
+```
+npm run build
+```
 
-## Building your own game
+The standalone web application files will be in `build` folder.
+
+## Create your own game with Atrament Preact UI
 
 1. Remove all files from `src/assets/game` and put your game files there (ink script, images, music etc).
 2. Edit `atrament.config.json`, change the following parameters in `game` section:
@@ -104,14 +117,12 @@ Example of toolbar and cards:
 
 ```
 
-## More documentation
-
-See [Atrament core documentation](https://github.com/technix/atrament-core/blob/master/README.md).
-
 ## Atrament repositories
 
 - [atrament-web](https://github.com/technix/atrament-web)
 - [atrament-core](https://github.com/technix/atrament-core)
+
+See also [Atrament core documentation](https://github.com/technix/atrament-core/blob/master/README.md) for additional info on Atrament API.
 
 ## LICENSE
 
