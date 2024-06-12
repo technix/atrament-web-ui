@@ -14,17 +14,17 @@ function evaluateInkFunction(atrament, fn) {
   return result;
 }
 
-function activeCardContent(atrament, card, content) {
-  atrament.state.setSubkey('CARD', 'activeCard', card);
+function setActiveOverlayContent(atrament, overlayName, content) {
+  atrament.state.setSubkey('OVERLAY', 'activeOverlay', overlayName);
   let textContent = content;
   const contentArray = content.split('\n');
   const firstLine = contentArray.shift();
   const title = firstLine.match(/\[title\](.+?)\[\/title\]/i);
   if (title) {
-    atrament.state.setSubkey('CARD', 'title', title[1]);
+    atrament.state.setSubkey('OVERLAY', 'title', title[1]);
     textContent = contentArray.join('\n');
   }
-  atrament.state.setSubkey('CARD', 'content', textContent);
+  atrament.state.setSubkey('OVERLAY', 'content', textContent);
 }
 
 const InlineButtonComponent = ({ children, callback, bordered }) => {
@@ -33,13 +33,13 @@ const InlineButtonComponent = ({ children, callback, bordered }) => {
   const clickHandler = useCallback(() => {
     const result = evaluateInkFunction(atrament, callback);
     if (result.output) {
-      activeCardContent(atrament, callback, result.output);
+      setActiveOverlayContent(atrament, callback, result.output);
     } else {
-      const activeCard = state.CARD.activeCard;
-      if (activeCard) {
-        // refresh activeCard
-        const result = evaluateInkFunction(atrament, activeCard);
-        activeCardContent(atrament, activeCard, result.output);
+      const activeOverlay = state.OVERLAY.activeOverlay;
+      if (activeOverlay) {
+        // refresh active overlay
+        const result = evaluateInkFunction(atrament, activeOverlay);
+        setActiveOverlayContent(atrament, activeOverlay, result.output);
       }
     }
   }, [ atrament, callback, state ]);

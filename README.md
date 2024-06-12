@@ -84,18 +84,18 @@ Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MU
 | Markup | Description                |
 | :-------- | :------------------------- |
 | `[img]path/to/image.jpg[/img]` | Display inline image. |
-| `[button=function]Text[/button]` | Display button, call a function when clicked. If function returns text, it will be displayed as a new card content. If not, existing card content will be updated. |
+| `[button=function]Text[/button]` | Display button, call a function when clicked. If function returns text, it will be displayed as a new overlay content. If not, existing overlay content will be updated. |
 | `[pbutton=function]Text[/pbutton]` | Same as `[button]`, but borderless. |
 
-### Cards
+### Overlay
 
-Atrament UI can display custom data (inventory, character stats etc.) as a card overlay. 
+Atrament UI can display custom data (inventory, character stats etc.) as an overlay. 
 
-To display a card, you need to define a button in the toolbar or in the game content, with `[button]` or `[pbutton]` tag. If the function returns text content, it will be displayed as a card overlay. Card overlays can have buttons too.
+To display an overlay, you need to define a button in the toolbar or in the game content, with `[button]` or `[pbutton]` tag. If the function returns text content, it will be displayed as an overlay. Overlay content can have buttons too.
 
-If the first line of the function is a `[title]Card Title[/title]` tag, this title will be displayed in the toolbar.
+If the first line of the function is a `[title]Overlay Title[/title]` tag, this title will be displayed in the toolbar.
 
-Example of toolbar and cards:
+Example of toolbar and overlays:
 ```
 # toolbar: game_toolbar
 

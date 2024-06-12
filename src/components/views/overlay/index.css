@@ -1,4 +1,4 @@
-.card_container {
+.overlay_container {
 	position: absolute;
 	width: 100%;
 	height: 100%;
@@ -8,7 +8,7 @@
 	z-index: 80;
 }
 
-.card_header {
+.overlay_header {
 	height: 2.5em;
     padding: 0.25em;
 	line-height: 1.5em;
@@ -18,27 +18,27 @@
     border-bottom: 1px solid var(--fg-color);
 }
 
-.card_header > * {
+.overlay_header > * {
     vertical-align: middle;
 }
 
-.card_title {
+.overlay_title {
 	display: inline-block;
 	text-align: center;
 	width: 90%;
 }
 
-.card {
+.overlay_content {
 	padding: 1rem;
 	flex-grow: 1; 
 	overflow: auto;
 }
 
-.card p {
+.overlay_content p {
 	margin-top: 0;
 }
 
-.card p ul {
+.overlay_content p ul {
 	margin-top: 0;
 	margin-bottom: 0;
 }
