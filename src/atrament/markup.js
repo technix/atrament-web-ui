@@ -1,8 +1,16 @@
 import { h } from 'preact';
+import sanitizeHtml from 'sanitize-html';
 
 import MarkupComponents from 'src/components/markup';
 
 const containsHTML = (str) => /<\/?[a-z][\s\S]*>/i.test(str);
+
+const scrubHTML = (str) => {
+  return sanitizeHtml(str, {
+    allowedTags: sanitizeHtml.defaults.allowedTags.concat([ 'img' ])
+  });
+};
+
 
 function replaceWithComponent(text, regexp, replacer) {
   let result = text;
@@ -34,7 +42,7 @@ export default function markup(text) {
   });
   return processedText.filter(item => item).map((item, index) => 
     typeof item === 'string' && containsHTML(item)
-      ? <span key={index} dangerouslySetInnerHTML={{__html: item}} />
+      ? <span key={index} dangerouslySetInnerHTML={{__html: scrubHTML(item)}} />
       : item
   );
 }
