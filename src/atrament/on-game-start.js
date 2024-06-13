@@ -4,7 +4,7 @@ export default function onGameStart(atrament) {
     atrament.state.setKey('ERROR', error);
   };
   // add cards to state
-  atrament.state.setKey('CARD', {
+  atrament.state.setKey('OVERLAY', {
     activeCard: null,
     content: ''
   });
