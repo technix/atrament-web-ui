@@ -10,8 +10,7 @@ const Paragraph = ( {content, isCurrent} ) => {
   if (content === "\n") {
     return '';
   }
-  const transformedContent = markup(content);
-  return (<p style={pStyle}>{transformedContent}</p>);
+  return (<p style={pStyle}>{markup(content)}</p>);
 }
 
 export default Paragraph;

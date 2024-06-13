@@ -1,6 +1,8 @@
 import { h } from 'preact';
 import style from './index.css';
 
+import markup from 'src/atrament/markup';
+
 const ChoiceButton = ({ choice, chosen, handleClick }) => {
   const choiceIsMade = chosen !== null; // something is chosen
   const activeChoice = chosen === choice.id; // this is the active choice
@@ -13,8 +15,9 @@ const ChoiceButton = ({ choice, chosen, handleClick }) => {
     <button
       class={`${style.choice_button} ${choiceIsMade ? (activeChoice ? style.choice_active : style.choice_inactive) : ''}`}
       onClick={onClick}
-      dangerouslySetInnerHTML={{__html: choice.choice}}
-    />
+    >
+      {markup(choice.choice)}
+    </button>
   );
 };
 
