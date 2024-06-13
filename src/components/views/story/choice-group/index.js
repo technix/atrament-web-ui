@@ -9,10 +9,12 @@ import LinkHome from 'src/components/ui/link-home';
 import ContainerChoices from '../container-choices';
 import ChoiceButton from '../choice-button';
 
-const ChoiceGroup = ({ currentScene, isReady, setReady }) => {
-  const { atrament, makeChoice, continueStory } = useAtrament();
+const ChoiceGroup = ({ isReady, setReady }) => {
+  const { atrament, state, makeChoice, continueStory } = useAtrament();
   const [ chosen, setChosen ] = useState(null);
 
+  const lastSceneIndex = state.scenes.length - 1;
+  const currentScene = state.scenes[lastSceneIndex];
   const numberOfChoices = (currentScene && currentScene.choices) ? currentScene.choices.length : -1;
 
   const selectChoice = useCallback((id) => {
@@ -34,7 +36,9 @@ const ChoiceGroup = ({ currentScene, isReady, setReady }) => {
     route('/');
   };
 
-  if (numberOfChoices >= 0) {
+  if (state.metadata.hypertext) {
+    return numberOfChoices === 0 ? <ContainerChoices isReady><LinkHome onClick={endGame} /></ContainerChoices> : <></>;
+  } else if (numberOfChoices >= 0) {
     const key = `choices-${currentScene.uuid}`;
     return (
       <ContainerChoices isReady={isReady} key={key}>

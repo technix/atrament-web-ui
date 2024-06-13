@@ -55,6 +55,8 @@ The standalone web application files will be in `build` folder.
 | `# observe: varName` | Register variable observer for `varName` Ink variable. Variable value is available in `vars` section of Atrament state. |
 | `# autosave: false` | Disables autosaves. |
 | `# single_scene` | Store only last scene in Atrament state. |
+| `# scenes_align: center` | Scene alignment on the screen. Can be set to `top`, `center`, or `bottom`. |
+| `# hypertext` | Use links instead of choices. See "[Hypertext mode](#hypertext-mode)". |
 | `# toolbar: toolbar_function` | Use output of this function as a toolbar content. |
 
 ### Knot tags
@@ -80,14 +82,33 @@ The standalone web application files will be in `build` folder.
 
 Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MUSIC/STOP_SOUND/STOP_MUSIC tags. Combining them may lead to unexpected side effects.
 
-### Custom markup
+
+## Hypertext mode
+
+When global tag `hypertext` is set, Atrament UI switches to hypertext mode. In this mode choice options are not displayed. However, author can use `[link=target choice text]link text[/link]` to link specific phrases to scene choices.
+
+For better use experience in hypertext mode authors can set global tags `single_scene` and `scenes_align: top`.
+
+```
+# hypertext
+# single_scene
+# scenes_align: top
+
+You are standing in an open field west of a white house, with a boarded [link=Open door]front door[/door]. There is a [link=Examine mailbox]small mailbox[/link] here.
+
++ [Examine mailbox] -> examine_mailbox
++ [Open door] -> inside_house
+```
+
+## Custom markup
 | Markup | Description                |
 | :-------- | :------------------------- |
 | `[img]path/to/image.jpg[/img]` | Display inline image. |
 | `[button=function]Text[/button]` | Display button, call a function when clicked. If function returns text, it will be displayed as a new overlay content. If not, existing overlay content will be updated. |
 | `[pbutton=function]Text[/pbutton]` | Same as `[button]`, but borderless. |
+| `[link=target choice text]Text[/link]` | Creates a link. When clicked, the target choice is activated, and game continues. |
 
-### Overlay
+## Overlay
 
 Atrament UI can display custom data (inventory, character stats etc.) as an overlay. 
 
@@ -116,6 +137,7 @@ Example of toolbar and overlays:
   ...
 
 ```
+
 
 ## Atrament repositories
 

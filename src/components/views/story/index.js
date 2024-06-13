@@ -14,11 +14,10 @@ const StoryView = () => {
   const [ isReady, setReady ] = useState(false);
   
   const lastSceneIndex = state.scenes.length - 1;
-  const currentScene = state.scenes[lastSceneIndex];
 
   return (
     <ContainerText fontSize={state.settings.fontSize}>
-      <ContainerScenes>
+      <ContainerScenes align={state.metadata.scenes_align}>
         {state.scenes.map((s, i) => 
           <Scene
             key={s.uuid}
@@ -30,7 +29,6 @@ const StoryView = () => {
         )}
       </ContainerScenes>
       <ChoiceGroup
-        currentScene={currentScene}
         isReady={isReady}
         setReady={setReady}
       />
