@@ -11,10 +11,7 @@ const Paragraph = ( {content, isCurrent} ) => {
     return '';
   }
   const transformedContent = markup(content);
-  if (Array.isArray(transformedContent)) {
-    return (<p style={pStyle}>{transformedContent}</p>);  
-  }
-  return (<p style={pStyle} dangerouslySetInnerHTML={{__html: transformedContent}} />);
+  return (<p style={pStyle}>{transformedContent}</p>);
 }
 
 export default Paragraph;

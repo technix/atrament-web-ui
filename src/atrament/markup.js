@@ -2,6 +2,8 @@ import { h } from 'preact';
 
 import MarkupComponents from 'src/components/markup';
 
+const containsHTML = (str) => /<\/?[a-z][\s\S]*>/i.test(str);
+
 function replaceWithComponent(text, regexp, replacer) {
   let result = text;
   if (typeof text !== 'string') {
@@ -31,7 +33,7 @@ export default function markup(text) {
     );
   });
   return processedText.filter(item => item).map((item, index) => 
-    typeof item === 'string'
+    typeof item === 'string' && containsHTML(item)
       ? <span key={index} dangerouslySetInnerHTML={{__html: item}} />
       : item
   );
