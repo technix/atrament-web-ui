@@ -94,7 +94,7 @@ For better use experience in hypertext mode authors can set global tags `single_
 # single_scene
 # scenes_align: top
 
-You are standing in an open field west of a white house, with a boarded [link=Open door]front door[/door]. There is a [link=Examine mailbox]small mailbox[/link] here.
+You are standing in an open field west of a white house, with a boarded [link=Open door]front door[/link]. There is a [link=Examine mailbox]small mailbox[/link] here.
 
 + [Examine mailbox] -> examine_mailbox
 + [Open door] -> inside_house
