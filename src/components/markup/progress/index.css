@@ -1,0 +1,24 @@
+.progress_frame {
+  border: 1px solid var(--fg-color);
+  border-radius: 0.25rem;
+  position: relative;
+}
+
+.progress_bar {
+  position: absolute;
+  height: 100%;
+  text-align: left;
+  opacity: 0.3;
+}
+
+.standard {
+  background-color: var(--fg-color);  
+}
+
+.accent {
+  background-color: var(--accent-bg-color);
+}
+
+.progress_content {
+  padding: 0.25rem;
+}
