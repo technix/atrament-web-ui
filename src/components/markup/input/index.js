@@ -12,21 +12,21 @@ function setInkVariable(atrament, name, value) {
   }
 }
 
-const Input = ({options}) => {
+const Input = ({inactive, options}) => {
   const { atrament } = useAtrament();
   const onInput = (e) => {
     setInkVariable(atrament, options.var, e.srcElement.value);
   };
   return (
-    <input class={style.input} value={options.value} placeholder={options.placeholder} onInput={onInput} />
+    <input disabled={inactive} class={style.input} value={options.value} placeholder={options.placeholder} onInput={onInput} />
   );
 };
 
 export default {
   regexp: /\[input.+?\]/ig,
-  replacer: (el) => {
+  replacer: (el, markup, isInactive) => {
     const fragments = el.match(/\[input(.+?)\]/i);
     const options = getTagAttributes(fragments[1]);
-    return (<Input options={options} />);
+    return (<Input inactive={isInactive} options={options} />);
   }
 }
