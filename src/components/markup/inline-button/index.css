@@ -8,7 +8,13 @@
 
 .inline_button:hover {
     border: 1px solid var(--fg-color);
-    border-radius: 0.25rem;  
+    border-radius: 0.25rem;
+}
+
+.inline_button:disabled {
+    border: 1px solid var(--bg-color);
+    border-radius: 0.25rem;
+    opacity: 0.5;
 }
 
 .bordered_button {
@@ -24,3 +30,10 @@
     background-color: var(--fg-color);
     color: var(--bg-color);
 }
+
+.bordered_button:disabled {
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    opacity: 0.5;
+}
+

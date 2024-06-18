@@ -2,6 +2,7 @@ import { h } from 'preact';
 import style from './index.css';
 import { useCallback } from "preact/hooks";
 
+import getTagAttributes from 'src/utils/get-tag-attributes';
 import useAtrament from 'src/atrament/hooks';
 
 function evaluateInkFunction(atrament, fn) {
@@ -27,13 +28,14 @@ function setActiveOverlayContent(atrament, overlayName, content) {
   atrament.state.setSubkey('OVERLAY', 'content', textContent);
 }
 
-const InlineButtonComponent = ({ children, callback, bordered }) => {
+const InlineButtonComponent = ({ children, options }) => {
   const { atrament, state } = useAtrament();
+  console.log(options);
 
   const clickHandler = useCallback(() => {
-    const result = evaluateInkFunction(atrament, callback);
+    const result = evaluateInkFunction(atrament, options.onclick);
     if (result.output) {
-      setActiveOverlayContent(atrament, callback, result.output);
+      setActiveOverlayContent(atrament, options.onclick, result.output);
     } else {
       const activeOverlay = state.OVERLAY.activeOverlay;
       if (activeOverlay) {
@@ -42,29 +44,28 @@ const InlineButtonComponent = ({ children, callback, bordered }) => {
         setActiveOverlayContent(atrament, activeOverlay, result.output);
       }
     }
-  }, [ atrament, callback, state ]);
+  }, [ atrament, options.onclick, state ]);
+  let buttonStyle = options.bordered === false ? style.inline_button : style.bordered_button;
   return (
     <button
-      class={bordered ? style.bordered_button : style.inline_button}
+      class={buttonStyle}
       onClick={clickHandler}
+      disabled={options.disabled}
     >
       {children}
     </button>
   );
 }
 
-export const Button = {
-  regexp: /\[button=.+?\].+?\[\/button\]/ig,
+export default {
+  regexp: /\[button.+?\].+?\[\/button\]/ig,
   replacer: (el, markup) => {
-    const fragments = el.match(/\[button=(.+?)\](.+?)\[\/button\]/i);
-    return (<InlineButtonComponent callback={fragments[1]} bordered>{markup(fragments[2])}</InlineButtonComponent>);
-  }
-}
-
-export const PlainButton = {
-  regexp: /\[pbutton=.+?\].+?\[\/pbutton\]/ig,
-  replacer: (el, markup) => {
-    const fragments = el.match(/\[pbutton=(.+?)\](.+?)\[\/pbutton\]/i);
-    return (<InlineButtonComponent callback={fragments[1]}>{markup(fragments[2])}</InlineButtonComponent>);
+    const fragments = el.match(/\[button(.+?)\](.+?)\[\/button\]/i);
+    let attributes = fragments[1];
+    if (attributes.startsWith('=')) {
+      attributes = `onclick${attributes}`;
+    }
+    const options = getTagAttributes(attributes);
+    return (<InlineButtonComponent options={options}>{markup(fragments[2])}</InlineButtonComponent>);
   }
 }
