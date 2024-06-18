@@ -10,7 +10,7 @@ const Paragraph = ( {content, isCurrent} ) => {
   if (content === "\n") {
     return '';
   }
-  return (<p style={pStyle}>{markup(content)}</p>);
+  return (<p style={pStyle}>{markup(content, !isCurrent)}</p>);
 }
 
 export default Paragraph;
