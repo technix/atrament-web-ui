@@ -5,7 +5,7 @@ export default function onGameStart(atrament) {
   };
   // add cards to state
   atrament.state.setKey('OVERLAY', {
-    activeCard: null,
+    activeOverlay: null,
     content: ''
   });
 }
