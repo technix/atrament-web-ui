@@ -1,5 +1,5 @@
 export default function getTagAttributes(tag) {
-  const attrs = tag.match(/(\w+)=["']?((?:.*(?!["']?\s+(?:\S+)=|\s*\/?[>"']))+.)["']?/g);
+  const attrs = tag.match(/(\w+)=["']?((?:.?(?!["']?\s+(?:\S+)=|\s*\/?[>"']))+.)["']?/g);
   const attributes = {};
   attrs.forEach((item) => {
     const [, name, value] = item.match(/(.+)=(.+)/);
