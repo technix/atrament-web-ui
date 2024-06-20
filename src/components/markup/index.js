@@ -3,11 +3,13 @@ import InlineImage from './inline-image';
 import InlineLink from './link';
 import Progress from './progress';
 import Input from './input';
+import Spoiler from './spoiler';
 
 export default [
   Button,
   InlineImage,
   InlineLink,
   Progress,
-  Input
+  Input,
+  Spoiler
 ];

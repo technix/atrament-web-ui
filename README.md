@@ -108,6 +108,7 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 | `[link=target choice text]Text[/link]` | Creates a link. When clicked, the target choice is activated, and game continues. |
 | `[progress value={variable}]Inner text[/link]` | Displays progress bar.<br>Attributes:<br>`value=x` current progressbar value<br>`min=x` minimal progressbar value<br>`max=x` maximal progressbar value<br>`style=accent` highlight progressbar with accent theme color |
 | `[input var=variable]` | Input element, sets value of given variable. Default value of this field is read from the same variable. Disabled on inactive scenes. <br>Attributes:<br>`var=n` variable name to change<br>`placeholder=text` placeholder text |
+| `[spoiler]text[/spoiler]` | Hidden text. Clicking it toggles text visibility. |
 
 ## Overlay
 

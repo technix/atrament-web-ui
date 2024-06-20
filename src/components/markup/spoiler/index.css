@@ -1,0 +1,15 @@
+.hidden {
+    background-color: var(--fg-color);
+    cursor: pointer;
+    border-radius: 0.25em;
+}
+
+.hidden span {
+    opacity: 0;
+    user-select: none;
+}
+
+.revealed {
+    background-color: var(--bg-color);
+    transition: background-color var(--animation-disabled, 0.2s) linear;
+}
