@@ -107,7 +107,7 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 | `[button=function]Text[/button]`<br>`[button onclick=function]Text[/button]` | Display button, call a function when clicked. If function returns text, it will be displayed as a new overlay content. If not, existing overlay content will be updated.<br>Attributes:<br>`onclick=function` function to be called when clicked.<br>`disabled=true` disables the button<br>`bordered=false` hide button borders |
 | `[link=target choice text]Text[/link]` | Creates a link. When clicked, the target choice is activated, and game continues. |
 | `[progress value={variable}]Inner text[/link]` | Displays progress bar.<br>Attributes:<br>`value=x` current progressbar value<br>`min=x` minimal progressbar value<br>`max=x` maximal progressbar value<br>`style=accent` highlight progressbar with accent theme color |
-| `[input var=variable]` | Input element, sets value of given variable. Default value of this field is read from the same variable. Disabled on inactive scenes. <br>Attributes:<br>`var=n` variable name to change<br>`placeholder=text` placeholder text |
+| `[input var=variable]` | Input element, sets value of given variable. Default value of this field is read from the same variable. Disabled on inactive scenes. <br>Attributes:<br>`var=n` variable name to change<br>`type=number` input type. Possible values: `text`, `number`.<br>`placeholder=text` placeholder text |
 | `[spoiler]text[/spoiler]` | Hidden text. Clicking it toggles text visibility. |
 
 ## Overlay

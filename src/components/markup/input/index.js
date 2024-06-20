@@ -5,6 +5,8 @@ import style from './index.css';
 import getTagAttributes from 'src/utils/get-tag-attributes';
 import useAtrament from 'src/atrament/hooks';
 
+// [input var=variable placeholder="placeholder text" type=number]
+
 function setInkVariable(atrament, name, value) {
   try {
     atrament.ink.setVariable(name, value);
@@ -31,11 +33,15 @@ const Input = ({inactive, options}) => {
     [atrament, options.var]
   );
   const onInput = (e) => {
-    const targetValue = e.srcElement.value || defaultValue;
+    let targetValue = e.srcElement.value || defaultValue;
+    if (options.type === 'number') {
+      targetValue = +targetValue;
+    }
     setInkVariable(atrament, options.var, targetValue);
   };
+  const inputType = options.type === 'number' ? 'number' : 'text';
   return (
-    <input disabled={inactive} class={style.input} value={defaultValue} placeholder={options.placeholder} onInput={onInput} />
+    <input disabled={inactive} class={style.input} value={defaultValue} placeholder={options.placeholder} type={inputType} onInput={onInput} />
   );
 };
 
