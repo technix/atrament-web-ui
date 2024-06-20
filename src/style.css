@@ -25,7 +25,7 @@ body {
 }
 
 mark {
-  background-color: var(--bg-color);
+  background-color: inherit;
   color: var(--accent-bg-color);
 }
 
