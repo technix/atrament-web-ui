@@ -1,0 +1,19 @@
+.infoblock {
+    display: block;
+    width: 100%;
+    background-color:rgba(0, 0, 0, 0.1);
+    padding: 0.5em;
+    border-radius: 0.5rem;
+}
+
+.font_ui {
+    font-family: var(--font-interface);
+}
+
+.side_highlight {
+    border-left: 0.3rem solid var(--fg-color);
+}
+
+.side_accent {
+    border-left: 0.3rem solid var(--accent-bg-color);
+}

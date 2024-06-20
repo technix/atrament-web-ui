@@ -4,6 +4,7 @@ import InlineLink from './link';
 import Progress from './progress';
 import Input from './input';
 import Spoiler from './spoiler';
+import Info from './info';
 
 export default [
   Button,
@@ -11,5 +12,6 @@ export default [
   InlineLink,
   Progress,
   Input,
-  Spoiler
+  Spoiler,
+  Info
 ];
