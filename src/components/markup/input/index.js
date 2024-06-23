@@ -38,6 +38,7 @@ const Input = ({inactive, options}) => {
       targetValue = +targetValue;
     }
     setInkVariable(atrament, options.var, targetValue);
+    setDefaultValue(targetValue);
   };
   const inputType = options.type === 'number' ? 'number' : 'text';
   return (
