@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useState, useCallback } from 'preact/hooks';
+import { useState, useCallback, useEffect } from 'preact/hooks';
 import { route } from 'preact-router';
 
 import useAtrament from 'src/atrament/hooks';
@@ -30,6 +30,24 @@ const ChoiceGroup = ({ isReady, setReady }) => {
       }, delay);
     }, 0);
   }, [ makeChoice, continueStory, setReady, numberOfChoices ]);
+
+  const kbdChoiceHandler = useCallback((e) => {
+    const kbdChoice = +e.key;
+    const el = e.target.tagName.toLowerCase();
+    if (el === 'input') {
+      return; // this key is for the input field
+    }
+    if (numberOfChoices > 0 && kbdChoice > 0 && kbdChoice <= numberOfChoices) {
+      selectChoice(kbdChoice - 1);
+    }
+  }, [ numberOfChoices, selectChoice ]);
+
+  useEffect(() => {
+    document.addEventListener("keydown", kbdChoiceHandler, false);
+    return () => {
+      document.removeEventListener("keydown", kbdChoiceHandler, false);
+    }
+  }, [ kbdChoiceHandler ]);
 
   const endGame = async () => {
     await atrament.game.removeSave();
