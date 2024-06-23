@@ -16,6 +16,7 @@ const ChoiceGroup = ({ isReady, setReady }) => {
   const lastSceneIndex = state.scenes.length - 1;
   const currentScene = state.scenes[lastSceneIndex];
   const numberOfChoices = (currentScene && currentScene.choices) ? currentScene.choices.length : -1;
+  const isHypertextMode = !!state.metadata.hypertext;
 
   const selectChoice = useCallback((id) => {
     const delay = numberOfChoices > 1 ? 350 : 150;
@@ -33,14 +34,15 @@ const ChoiceGroup = ({ isReady, setReady }) => {
 
   const kbdChoiceHandler = useCallback((e) => {
     const kbdChoice = +e.key;
-    const el = e.target.tagName.toLowerCase();
-    if (el === 'input') {
-      return; // this key is for the input field
+    const targetElement = e.target.tagName.toLowerCase();
+    if (targetElement === 'input' || isHypertextMode) {
+      // ignore keyboard event
+      return; 
     }
     if (numberOfChoices > 0 && kbdChoice > 0 && kbdChoice <= numberOfChoices) {
       selectChoice(kbdChoice - 1);
     }
-  }, [ numberOfChoices, selectChoice ]);
+  }, [ numberOfChoices, selectChoice, isHypertextMode ]);
 
   useEffect(() => {
     document.addEventListener("keydown", kbdChoiceHandler, false);
@@ -54,7 +56,7 @@ const ChoiceGroup = ({ isReady, setReady }) => {
     route('/');
   };
 
-  if (state.metadata.hypertext) {
+  if (isHypertextMode) {
     return numberOfChoices === 0 ? <ContainerChoices isReady><LinkHome onClick={endGame} /></ContainerChoices> : <></>;
   } else if (numberOfChoices >= 0) {
     const key = `choices-${currentScene.uuid}`;
