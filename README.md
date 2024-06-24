@@ -113,7 +113,7 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 | `[input var=variable]` | Input element, sets value of given variable. Default value of this field is read from the same variable. Disabled on inactive scenes. <br>Attributes:<br>`var=n` variable name to change<br>`type=number` input type. Possible values: `text`, `number`.<br>`placeholder=text` placeholder text |
 | `[spoiler]text[/spoiler]` | Hidden text. Clicking it toggles text visibility. |
 | `[info]text[/info]` | Display text as an information block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`font=system` use system font<br>`side=n` add color to the left infobox side. Possible values: `highlight`, `accent`. |
-
+| `[banner]text[/banner]` | Display text as an banner block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`style=accent` use accent color<br>`allcaps=true` display text in all capitals |
 Note: it is not possible to wrap multiple paragraphs with these tags. Use &lt;br&gt; tag for line breaks if you need multiline text in tags.
 
 ## Overlay

@@ -5,6 +5,7 @@ import Progress from './progress';
 import Input from './input';
 import Spoiler from './spoiler';
 import Info from './info';
+import Banner from './banner';
 
 export default [
   Button,
@@ -13,5 +14,6 @@ export default [
   Progress,
   Input,
   Spoiler,
-  Info
+  Info,
+  Banner
 ];
