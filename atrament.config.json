@@ -1,9 +1,12 @@
 {
+    "name": "Atrament Preact UI demo",
+    "short_name": "atrament-preact-ui",
+    "description": "Atrament Preact UI - shell for Ink games",
+    "theme": "light",
+    "font": "System",
     "game": {
-        "path": "assets/game",
+        "path": "game",
         "source": "intercept.ink",
         "script": "intercept.ink.json"
-    },
-    "theme": "light",
-    "font": "System"
+    }
 }

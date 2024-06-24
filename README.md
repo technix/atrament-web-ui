@@ -32,14 +32,17 @@ The standalone web application files will be in `build` folder.
 
 ## Create your own game with Atrament Preact UI
 
-1. Remove all files from `src/assets/game` and put your game files there (ink script, images, music etc).
-2. Edit `atrament.config.json`, change the following parameters in `game` section:
+1. Remove all files from `root/game` and put your game files there (ink script, images, music etc).
+2. Edit `atrament.config.json`, change the following parameters in `game` section. File paths for these parameters are relative to `root/game` folder.
     * `source`: your main Ink file name
     * `script`: desired compiled Ink file name (JSON extension is mandatory)
-3. You may also change default configuration in `atrament.config.json`:
-    * "`theme`": "`light`", "`sepia`", or "`dark`"
-    * "`font`": "`System`", "`Fira Sans`", "`Lora`", "`Merriweather`", or "`OpenDyslexic`"
-4. (optionally) edit `src/manifest.json` and change `name` and `short_name` parameters.
+3. You may change other configuration options in `atrament.config.json`:
+    * "`name`": your application name
+    * "`short_name`": your application short name, or codename
+    * "`description`": your application description
+    * "`theme`": default app theme, may be "`light`", "`sepia`", or "`dark`"
+    * "`font`": default game font, may be "`System`", "`Fira Sans`", "`Lora`", "`Merriweather`", or "`OpenDyslexic`"
+4. (optionally) replace `root/logo.png` with your project logo.
 5. That's it! You can make a test run with `npm start`, or build standalone web app with `npm run build`.
 
 ## Ink tags handled by Atrament Preact UI

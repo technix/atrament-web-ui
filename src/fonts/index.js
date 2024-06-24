@@ -1,10 +1,10 @@
 // font styles
 import { gameDefaultFont } from 'src/constants';
 
-import 'src/fonts/fira-sans';
-import 'src/fonts/lora';
-import 'src/fonts/merriweather';
-import 'src/fonts/opendyslexic';
+import 'src/fonts/fira-sans/index.css';
+import 'src/fonts/lora/index.css';
+import 'src/fonts/merriweather/index.css';
+import 'src/fonts/opendyslexic/index.css';
 
 export const fonts = {
   System: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"',
