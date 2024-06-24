@@ -30,8 +30,6 @@ function setActiveOverlayContent(atrament, overlayName, content) {
 
 const InlineButtonComponent = ({ children, options }) => {
   const { atrament, state } = useAtrament();
-  console.log(options);
-
   const clickHandler = useCallback(() => {
     const result = evaluateInkFunction(atrament, options.onclick);
     if (result.output) {
