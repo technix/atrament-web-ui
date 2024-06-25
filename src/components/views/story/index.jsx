@@ -5,15 +5,18 @@ import useAtrament from 'src/atrament/hooks';
 
 import ContainerText from 'src/components/ui/container-text';
 import ContainerScenes from './container-scenes';
+import ContainerChoices from './container-choices';
 
 import Scene from './scene';
-import ChoiceGroup from './choice-group';
+import Choices from './choices';
 
 const StoryView = () => {
   const { state } = useAtrament();
   const [ isReady, setReady ] = useState(false);
   
   const lastSceneIndex = state.scenes.length - 1;
+  const isHypertextMode = !!state.metadata.hypertext;
+  const key = `choices-${state.scenes[lastSceneIndex]?.uuid}`;
 
   return (
     <ContainerText fontSize={state.settings.fontSize}>
@@ -28,10 +31,14 @@ const StoryView = () => {
           />
         )}
       </ContainerScenes>
-      <ChoiceGroup
-        isReady={isReady}
-        setReady={setReady}
-      />
+      <ContainerChoices isReady={isReady} key={key}>
+        <Choices
+          key={key}
+          currentScene={state.scenes[lastSceneIndex]}
+          setReady={setReady}
+          isHypertextMode={isHypertextMode}
+        />
+      </ContainerChoices>
     </ContainerText>
   )
 }
