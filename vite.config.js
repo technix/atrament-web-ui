@@ -108,7 +108,7 @@ export default defineConfig({
   resolve: {
     alias: [
 		  { find: 'src', replacement: "/src" },
-		  { find: 'inkjs', replacement: '/node_modules/inkjs/dist/ink-es2015.js' }
+		  { find: 'inkjs', replacement: '/node_modules/inkjs/dist/ink.mjs' }
     ],
   },
   server: {
