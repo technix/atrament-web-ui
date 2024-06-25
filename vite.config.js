@@ -30,17 +30,17 @@ function watchInkFiles() {
 function findFiles(startPath, filter, callback) {
 
   if (!fs.existsSync(startPath)) {
-      console.log("no dir ", startPath);
-      return;
+    console.log("no dir ", startPath);
+    return;
   }
 
   const files = fs.readdirSync(startPath);
   files.forEach((file) => {
-      const filename = path.join(startPath, file);
-      const stat = fs.lstatSync(filename);
-      if (stat.isDirectory()) {
-          findFiles(filename, filter, callback); //recurse
-      } else if (filter.test(filename)) callback(filename);
+    const filename = path.join(startPath, file);
+    const stat = fs.lstatSync(filename);
+    if (stat.isDirectory()) {
+      findFiles(filename, filter, callback); //recurse
+    } else if (filter.test(filename)) callback(filename);
   });
 }
 
@@ -60,10 +60,10 @@ function removeInkFilesFromBuild() {
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [
-		preact(),
-		VitePWA({
-			registerType: 'autoUpdate',
+  plugins: [
+    preact(),
+    VitePWA({
+      registerType: 'autoUpdate',
       includeAssets: ['**/!(*.ink)'],
       workbox: {
         globPatterns: ['**/*.{js,css,html,woff2}'],
@@ -93,7 +93,7 @@ export default defineConfig({
       pwaAssets: {
         config: 'pwa-assets.config.js'
       }
-		}),
+    }),
     createHtmlPlugin({
       inject: {
         data: {
@@ -102,30 +102,30 @@ export default defineConfig({
         },
       },
     }),
-		watchInkFiles(),
+    watchInkFiles(),
     removeInkFilesFromBuild()
-	],
-	resolve: {
-		alias: [
+  ],
+  resolve: {
+    alias: [
 		  { find: 'src', replacement: "/src" },
 		  { find: 'inkjs', replacement: '/node_modules/inkjs/dist/ink-es2015.js' }
-		],
-	},
+    ],
+  },
   server: {
     port: 8900
   },
   build: {
     outDir: 'build'
   },
-	publicDir: 'root',
-	base: './',
-	// apply "base: './'" to HTML template
-	experimental: {
-		renderBuiltUrl(filename, { hostType }) {
+  publicDir: 'root',
+  base: './',
+  // apply "base: './'" to HTML template
+  experimental: {
+    renderBuiltUrl(filename, { hostType }) {
 		  if (hostType === 'html') {
-			return `./${filename}`;
+        return `./${filename}`;
 		  }
 		  return filename;
-		},
-	},
+    },
+  },
 });
