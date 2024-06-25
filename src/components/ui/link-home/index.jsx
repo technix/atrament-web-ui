@@ -1,9 +1,9 @@
 import { h } from 'preact';
 import style from './index.module.css';
 
-const LinkHome = ({ onClick }) => {
+const LinkHome = ({ children, onClick }) => {
   return (
-    <button key="mainmenu" onClick={onClick} class={style.link_home}>The end</button>
+    <button key="mainmenu" onClick={onClick} class={style.link_home}>{children}</button>
   );
 };
 

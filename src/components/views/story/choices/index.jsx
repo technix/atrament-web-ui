@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { Text } from '@eo-locale/preact';
 import { route } from 'preact-router';
 import useAtrament from 'src/atrament/hooks';
 import LinkHome from 'src/components/ui/link-home';
@@ -10,7 +11,7 @@ const EndGameLink = () => {
     await atrament.game.removeSave();
     route('/');
   };
-  return (<LinkHome onClick={endGame} />);
+  return (<LinkHome onClick={endGame}><Text id={'game.end'} /></LinkHome>);
 };
 
 
