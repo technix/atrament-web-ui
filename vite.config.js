@@ -119,12 +119,18 @@ export default defineConfig({
   },
   publicDir: 'root',
   base: './',
-  // apply "base: './'" to HTML template
   experimental: {
-    renderBuiltUrl(filename, { hostType }) {
-		  if (hostType === 'html') {
-        return `./${filename}`;
-		  }
+    renderBuiltUrl(filename, { type, hostType }) {
+      if (type === 'asset') {
+        if (hostType === 'html') {
+          // apply "base: './'" to HTML template
+          return `./${filename}`;
+        }
+        if (hostType === 'css') {
+          // fix issue with CSS fonts
+          return filename.replace('assets/','');
+        }
+      }
 		  return filename;
     },
   },
