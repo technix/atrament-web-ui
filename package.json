@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@atrament/web": "1.2.1",
+    "@eo-locale/preact": "1.7.2",
     "@nanostores/preact": "0.5.1",
     "history": "5.3.0",
     "inkjs": "2.2.4",

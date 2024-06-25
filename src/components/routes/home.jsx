@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { Text, useTranslator } from '@eo-locale/preact';
 import { route } from 'preact-router';
 import { useEffect, useState, useCallback } from 'preact/hooks';
 import useAtrament from 'src/atrament/hooks';
@@ -12,6 +13,7 @@ import LinkMenu from '../ui/link-menu';
 import Settings from 'src/components/settings';
 
 const HomeRoute = () => {
+  const translator = useTranslator();
   const { state, canResume, gameStart, gameResume } = useAtrament();
   const { title, author } = state.metadata;
 
@@ -41,13 +43,13 @@ const HomeRoute = () => {
       <ContainerFlex>
         <Settings />
         <Header>
-          <h1>{title ? title : "Atrament UI"}</h1>
-          <p>{author ? `by ${author}` : "Test application"}</p>
+          <h1>{title ? title : translator.translate('default.title')}</h1>
+          <p>{author ? author : translator.translate('default.author')}</p>
         </Header>
         <Block align='end'>
-          {canBeResumed ? <LinkMenu key="continuegame" onClick={resumeGame}>Continue</LinkMenu> : ''}
-          <LinkMenu key="startgame" onClick={newGame}>New game</LinkMenu>
-          <LinkMenu key="about" onClick={aboutGame}>About</LinkMenu>
+          {canBeResumed ? <LinkMenu key="continuegame" onClick={resumeGame}><Text id={'main.continue'} /></LinkMenu> : ''}
+          <LinkMenu key="startgame" onClick={newGame}><Text id={'main.newgame'} /></LinkMenu>
+          <LinkMenu key="about" onClick={aboutGame}><Text id={'main.about'} /></LinkMenu>
         </Block>
       </ContainerFlex>
     </Container>

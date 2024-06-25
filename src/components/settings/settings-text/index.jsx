@@ -1,8 +1,9 @@
 import { h } from 'preact';
+import { Text } from '@eo-locale/preact';
 import style from './index.module.css';
 import useAtrament from 'src/atrament/hooks';
 
-import { defaultFontSize, stepFontSize, minFontSize, maxFontSize, sampleFontsizeText } from 'src/constants';
+import { defaultFontSize, stepFontSize, minFontSize, maxFontSize } from 'src/constants';
 
 import { fonts } from 'src/fonts';
 
@@ -39,7 +40,7 @@ const SettingsText = () => {
         <div class={style.settings_font_a} style={{'font-size': `${maxFontSize}%`}}>A</div>
       </div>
       <div class={style.settings_font_sample} style={{'font-size': `${fontSize}%`, 'font-family': fonts[font]}}>
-        {sampleFontsizeText}
+        <Text id={'font.sampleText'} />
       </div>
     </div>
   );

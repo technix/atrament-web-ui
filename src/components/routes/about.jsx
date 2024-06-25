@@ -1,5 +1,6 @@
 import { h } from 'preact';
 import { route } from 'preact-router';
+import { Text } from '@eo-locale/preact';
 
 import useAtrament from 'src/atrament/hooks';
 
@@ -36,7 +37,7 @@ const AboutRoute = () => {
           </Block>
         </ContainerFlex>
         <Block>
-          <LinkMenu key="mainmenu" onClick={mainMenu}>Main menu</LinkMenu>
+          <LinkMenu key="mainmenu" onClick={mainMenu}><Text id={'main.menu'} /></LinkMenu>
         </Block>
       </ContainerText>
     </Container>

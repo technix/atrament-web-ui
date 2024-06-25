@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import { Text } from '@eo-locale/preact';
 import Toggle from 'src/components/ui/toggle';
 
 import useAtrament from 'src/atrament/hooks';
@@ -9,7 +10,7 @@ const SettingsAnimation = () => {
 
   return (
     <div class={['atrament-settings-animation'].join(' ')}>
-      <Toggle enabled={state.settings.animation} onChange={handleAnimation} /> Animations
+      <Toggle enabled={state.settings.animation} onChange={handleAnimation} /> <Text id={'settings.animations'} />
     </div>
   );
 };
