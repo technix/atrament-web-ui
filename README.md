@@ -88,7 +88,7 @@ Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MU
 ### Choice tags
 | Tag | Description                |
 | :-------- | :------------------------- |
-| `# UNSELECTABLE` | The choice can't be selected. Alternative names: `#DISABLED`, `#INACTIVE` |
+| `# UNCLICKABLE` | The choice can't be selected. Alternative names: `#DISABLED`, `#INACTIVE` |
 
 ## Hypertext mode
 
@@ -119,7 +119,7 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 | `[info]text[/info]` | Display text as an information block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`font=system` use system font<br>`side=n` add color to the left infobox side. Possible values: `highlight`, `accent`. |
 | `[banner]text[/banner]` | Display text as an banner block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`style=accent` use accent color<br>`allcaps=true` display text in all capitals |
 
-Note: it is not possible to wrap multiple paragraphs with these tags. Use &lt;br&gt; tag for line breaks if you need multiline text in tags.
+Note: it is not possible to wrap multiple paragraphs with these tags. Use `<br>` tag for line breaks if you need multiline text in tags.
 
 ## Overlay
 
