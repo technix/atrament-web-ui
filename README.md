@@ -21,14 +21,14 @@ npm install
 npm start
 ```
 
-The application is available at `http://localhost:8900`. If any source file (Ink or Javascript) is edited, the application automatically restarts with these changes.
+The application is available at http://localhost:8900. If any source file (Ink or Javascript) is edited, the application automatically restarts with these changes.
 
 ### Build application for publishing to web
 ```
 npm run build
 ```
 
-The standalone web application files will be in `build` folder.
+The standalone web application files will be in `build` folder. Use `npm run preview` command to test it in browser at http://localhost:4173/.
 
 ## Create your own game with Atrament Preact UI
 
@@ -42,7 +42,7 @@ The standalone web application files will be in `build` folder.
     * "`description`": your application description
     * "`theme`": default app theme, may be "`light`", "`sepia`", or "`dark`"
     * "`font`": default game font, may be "`System`", "`Fira Sans`", "`Lora`", "`Merriweather`", or "`OpenDyslexic`"
-4. (optionally) replace `root/logo.png` with your project logo.
+4. (optionally) replace `root/logo.png` with your project logo. This image is used to generate favicon and application icon.
 5. That's it! You can make a test run with `npm start`, or build standalone web app with `npm run build`.
 
 ## Ink tags handled by Atrament Preact UI
@@ -118,6 +118,7 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 | `[spoiler]text[/spoiler]` | Hidden text. Clicking it toggles text visibility. |
 | `[info]text[/info]` | Display text as an information block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`font=system` use system font<br>`side=n` add color to the left infobox side. Possible values: `highlight`, `accent`. |
 | `[banner]text[/banner]` | Display text as an banner block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`style=accent` use accent color<br>`allcaps=true` display text in all capitals |
+
 Note: it is not possible to wrap multiple paragraphs with these tags. Use &lt;br&gt; tag for line breaks if you need multiline text in tags.
 
 ## Overlay
@@ -165,6 +166,6 @@ See also [Atrament core documentation](https://github.com/technix/atrament-core/
 
 ## LICENSE
 
-Atrament is distributed under MIT license.
+Atrament is distributed under [MIT license](LICENSE.md).
 
 Copyright (c) 2023 Serhii "techniX" Mozhaiskyi
