@@ -7,7 +7,7 @@ import { registerGetAssetPath } from 'src/utils/get-asset-path';
 
 import { loadDefaultFont, loadDefaultTheme } from 'src/atrament/load-defaults';
 import { registerSettingsHandlers } from 'src/atrament/settings-handlers'
-import { sceneListImages } from 'src/atrament/scene-processors';
+import registerSceneProcessors from 'src/atrament/scene-processors';
 
 import onGameStart from 'src/atrament/on-game-start';
 
@@ -39,7 +39,7 @@ export default async function atramentInit(atrament, Story) {
   loadDefaultTheme(atrament);
   loadDefaultFont(atrament);
   // register scene processors
-  sceneListImages(atrament);
+  registerSceneProcessors(atrament);
   // mute when tab is inactive
   muteWhenInactive(atrament);
   // handle #BACKGROUND tag
