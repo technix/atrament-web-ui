@@ -30,10 +30,15 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
       // ignore keyboard event
       return; 
     }
-    if (numberOfChoices > 0 && kbdChoice > 0 && kbdChoice <= numberOfChoices) {
+    if (
+      numberOfChoices > 0 &&
+      kbdChoice > 0 &&
+      kbdChoice <= numberOfChoices &&
+      !currentScene.choices[kbdChoice-1].disabled
+    ) {
       selectChoice(kbdChoice - 1);
     }
-  }, [ numberOfChoices, selectChoice ]);
+  }, [ numberOfChoices, selectChoice, currentScene.choices ]);
 
   useEffect(() => {
     document.addEventListener("keydown", kbdChoiceHandler, false);
