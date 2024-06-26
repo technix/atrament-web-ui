@@ -7,6 +7,7 @@ import Backdrop from '../ui/backdrop';
 import Modal from '../ui/modal';
 import CloseButton from '../ui/close-button';
 
+import SettingsFullscreen from './settings-fullscreen';
 import SettingsSound from './settings-sound';
 import SettingsText from './settings-text';
 import SettingsFont from './settings-font';
@@ -39,6 +40,7 @@ const Settings = () => {
         <Backdrop onClick={toggleSettings} />
         <Modal>
           <CloseButton onClick={toggleSettings} />
+          <SettingsFullscreen />
           <SettingsAnimation />
           <SettingsSound />
           <SettingsFont />

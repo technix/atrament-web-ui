@@ -17,12 +17,13 @@ export default async function atramentInit(atrament, Story) {
     `%c Atrament > ${event} `, 'color: #111111; background-color: #7FDBFF;',
     message
   ));
-  // handle theme settings
+  // handle settings
   registerSettingsHandlers(atrament);
   // initialize Atrament
   await atrament.init(Story, {
     applicationID,
     settings: {
+      fullscreen: false,
       animation: true,
       mute: false,
       volume: 50,
