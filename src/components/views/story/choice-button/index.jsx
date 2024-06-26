@@ -15,6 +15,7 @@ const ChoiceButton = ({ choice, chosen, handleClick }) => {
     <button
       class={`${style.choice_button} ${choiceIsMade ? (activeChoice ? style.choice_active : style.choice_inactive) : ''}`}
       onClick={onClick}
+      disabled={choice.disabled}
     >
       {markup(choice.choice)}
     </button>

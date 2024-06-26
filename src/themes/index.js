@@ -3,6 +3,7 @@ import { gameDefaultTheme } from 'src/constants';
 const lightTheme = {
   '--bg-color': '#FCFCFC',
   '--fg-color': '#5D576B',
+  '--shade-color': 'rgba(0, 0, 0, 0.1)',
   '--font-color': '#333333',
   '--accent-bg-color': '#F7567C',
   '--accent-fg-color': '#FCFCFC'
@@ -11,6 +12,7 @@ const lightTheme = {
 const sepiaTheme = {
   '--bg-color': '#ffeedb',
   '--fg-color': '#4c3b4d',
+  '--shade-color': 'rgba(0, 0, 0, 0.1)',
   '--font-color': '#333333',
   '--accent-bg-color': '#a53850',
   '--accent-fg-color': '#ffeedb'
@@ -19,6 +21,7 @@ const sepiaTheme = {
 const darkTheme = {
   '--bg-color': '#4c3b4d',
   '--fg-color': '#FCFCFC',
+  '--shade-color': 'rgba(255, 255, 255, 0.1)',
   '--font-color': '#EEEEEE',
   '--accent-bg-color': '#F7567C',
   '--accent-fg-color': '#EEEEEE'
