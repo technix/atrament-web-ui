@@ -22,9 +22,9 @@ const Settings = () => {
 
   const escHandler = useCallback((e) => {
     if (e.key === "Escape") {
-      openSettings(false)
+      toggleSettings();
     }
-  }, []);
+  }, [ toggleSettings ]);
 
   useEffect(() => {
     document.addEventListener("keydown", escHandler, false);
