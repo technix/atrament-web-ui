@@ -85,6 +85,10 @@ The standalone web application files will be in `build` folder.
 
 Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MUSIC/STOP_SOUND/STOP_MUSIC tags. Combining them may lead to unexpected side effects.
 
+### Choice tags
+| Tag | Description                |
+| :-------- | :------------------------- |
+| `# UNSELECTABLE` | The choice can't be selected. Alternative names: `#DISABLED`, `#INACTIVE` |
 
 ## Hypertext mode
 
@@ -146,6 +150,11 @@ Example of toolbar and overlays:
 
 ```
 
+## Keyboard shortcuts
+| Key | Description                |
+| :-------- | :------------------------- |
+| 1,2,3... | Select corresponding choice option. |
+| Esc | Show/hide settings dialog. |
 
 ## Atrament repositories
 
