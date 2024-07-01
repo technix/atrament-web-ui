@@ -1,16 +1,16 @@
 .error_modal {
-    position: absolute;
-	display: flex;
-	flex-direction: column;
-    justify-content: flex-start;
-	overflow: auto;
-    width: 100%;
-	height: 100%;
-    z-index: 150;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: auto;
+  width: 100%;
+  height: 100%;
+  z-index: 150;
 }
 
 .error_message {
-    color: var(--accent-bg-color);
-    font-family: monospace;
-    margin-top: 0;
+  color: var(--accent-bg-color);
+  font-family: monospace;
+  margin-top: 0;
 }

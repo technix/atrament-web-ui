@@ -1,63 +1,63 @@
 .choice_button {
-    display: block;
-    background-color: transparent;
-    color: var(--fg-color);
-    margin-top: 0.5em;
-    padding: 0.75em;
-    text-align: center;
-    text-decoration: none;
-    width: 100%;
-    border: 1px solid var(--fg-color);
-    border-radius: 0.5rem;
-    cursor: pointer;
+  display: block;
+  background-color: transparent;
+  color: var(--fg-color);
+  margin-top: 0.5em;
+  padding: 0.75em;
+  text-align: center;
+  text-decoration: none;
+  width: 100%;
+  border: 1px solid var(--fg-color);
+  border-radius: 0.5rem;
+  cursor: pointer;
 }
 
 .choice_button:hover {
-    background-color: var(--fg-color);
-    color: var(--bg-color);
+  background-color: var(--fg-color);
+  color: var(--bg-color);
 }
 
 .choice_active {
-    background-color: var(--fg-color);
-    border: 1px solid var(--fg-color);
-    color: var(--bg-color);
+  background-color: var(--fg-color);
+  border: 1px solid var(--fg-color);
+  color: var(--bg-color);
 }
 
 .choice_active:hover {
-    background-color: var(--fg-color);
-    border: 1px solid var(--fg-color);
-    color: var(--bg-color);
+  background-color: var(--fg-color);
+  border: 1px solid var(--fg-color);
+  color: var(--bg-color);
 }
 
 @keyframes disappear {
-    0% {
-        opacity: 1;
-    }
-    90% {
-        opacity: 0.3;
-    }
-    100% {
-        opacity: 0;
-    }
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+  }
 }
 
 .choice_inactive {
-    filter: blur(4px);
-    animation-name: disappear;
-    animation-duration: var(--animation-disabled, 0.2s);
-    animation-delay: 0s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+  filter: blur(4px);
+  animation-name: disappear;
+  animation-duration: var(--animation-disabled, 0.2s);
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
 
 .choice_button:disabled {
-    background-color: var(--shade-color);
-    color: var(--fg-color);
-    opacity: 0.6;
-    cursor: inherit;
+  background-color: var(--shade-color);
+  color: var(--fg-color);
+  opacity: 0.6;
+  cursor: inherit;
 }
 
 .choice_active:disabled:hover {
-    background-color: var(--shade-color);
-    color: var(--fg-color);
+  background-color: var(--shade-color);
+  color: var(--fg-color);
 }

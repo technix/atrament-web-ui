@@ -1,16 +1,16 @@
 .toolbar {
-    min-height: 2.5em;
-    overflow: hidden;
-    padding: 0.25em;
-    padding-right: 2.25rem;
-    line-height: 1.5em;
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: auto;
-    border-bottom: 1px solid var(--fg-color);
-    font-family: var(--font-game);
+  min-height: 2.5em;
+  overflow: hidden;
+  padding: 0.25em;
+  padding-right: 2.25rem;
+  line-height: 1.5em;
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  border-bottom: 1px solid var(--fg-color);
+  font-family: var(--font-game);
 }
 
 .toolbar > * {
-    vertical-align: middle;
+  vertical-align: middle;
 }

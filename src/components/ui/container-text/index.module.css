@@ -1,16 +1,16 @@
 .container_text {
-    flex-grow: 1;
-    flex-shrink: 1;
-    flex-basis: auto;
-	display: flex;
-	flex-direction: column;
-	overflow: auto;
-    line-height: calc(1ex / 0.32);
-    font-family: var(--font-game);
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: auto;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  line-height: calc(1ex / 0.32);
+  font-family: var(--font-game);
 }
 
 /*
 .container_text::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 */

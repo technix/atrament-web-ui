@@ -16,8 +16,8 @@ function watchInkFiles() {
       if (file.endsWith('.ink')) {
         const res = spawnSync('node', ['ink-compile.cjs']);
         [ res.stdout.toString(), res.stderr.toString() ].forEach(
-			    (item) => item && console.log(item)
-		    );
+          (item) => item && console.log(item)
+        );
         server.hot.send({
           type: 'full-reload',
           path: '*'
@@ -54,7 +54,7 @@ function removeInkFilesFromBuild() {
         console.log(`Removing Ink file from bundle: ${item}`);
         fs.unlinkSync(item);
       });
-	  },
+    },
   };
 }
 
@@ -107,8 +107,8 @@ export default defineConfig({
   ],
   resolve: {
     alias: [
-		  { find: 'src', replacement: "/src" },
-		  { find: 'inkjs', replacement: '/node_modules/inkjs/dist/ink.mjs' }
+      { find: 'src', replacement: "/src" },
+      { find: 'inkjs', replacement: '/node_modules/inkjs/dist/ink.mjs' }
     ],
   },
   server: {
@@ -131,7 +131,7 @@ export default defineConfig({
           return filename.replace('assets/','');
         }
       }
-		  return filename;
+      return filename;
     },
   },
 });

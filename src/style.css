@@ -1,9 +1,9 @@
 :root {
-	--bg-color: #FCFCFC;
-	--fg-color: #5D576B;
+  --bg-color: #FCFCFC;
+  --fg-color: #5D576B;
   --font-color: #333333;
-	--accent-bg-color: #F7567C;
-	--accent-fg-color: #FCFCFC;
+  --accent-bg-color: #F7567C;
+  --accent-fg-color: #FCFCFC;
   --font-interface: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 

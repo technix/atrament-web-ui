@@ -1,19 +1,19 @@
 .bannerblock {
-    padding: 1rem;
-    font-size: 2em;
-    text-align: center;
-    line-height: normal;
-    border-top: 1px solid var(--fg-color);
-    border-bottom: 1px solid var(--fg-color);
-    color: var(--fg-color);
+  padding: 1rem;
+  font-size: 2em;
+  text-align: center;
+  line-height: normal;
+  border-top: 1px solid var(--fg-color);
+  border-bottom: 1px solid var(--fg-color);
+  color: var(--fg-color);
 }
   
 .accent {
-    border-top: 1px solid var(--accent-bg-color);
-    border-bottom: 1px solid var(--accent-bg-color);
-    color: var(--accent-bg-color);
+  border-top: 1px solid var(--accent-bg-color);
+  border-bottom: 1px solid var(--accent-bg-color);
+  color: var(--accent-bg-color);
 }
 
 .allcaps {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
