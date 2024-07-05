@@ -5,14 +5,14 @@
   "type": "module",
   "scripts": {
     "prestart": "node ink-compile.cjs",
-    "start": "vite",
+    "start": "vite --force",
     "prebuild": "node ink-compile.cjs",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint src"
   },
   "dependencies": {
-    "@atrament/web": "1.2.2",
+    "@atrament/web": "1.2.3",
     "@eo-locale/preact": "1.7.2",
     "@nanostores/preact": "0.5.1",
     "history": "5.3.0",

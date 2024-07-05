@@ -14,7 +14,10 @@ if (!cfg.game.source) {
   process.exit(0);
 }
 
-function runInklecate(cmd, ...args) {
+const inputFile = `root/${cfg.game.path}/${cfg.game.source}`;
+const outputFile = `root/${cfg.game.path}/${cfg.game.script}`;
+
+const runInklecate = (cmd, ...args) => {
   console.log('>>>', cmd, args.join(' '));
 
   const inkCompilerProcess = spawn(cmd, args);
@@ -26,10 +29,16 @@ function runInklecate(cmd, ...args) {
   inkCompilerProcess.stderr.on('data', (data) => {
     console.error(data.toString());
   });
-}
 
-const inputFile = `root/${cfg.game.path}/${cfg.game.source}`;
-const outputFile = `root/${cfg.game.path}/${cfg.game.script}`;
+  inkCompilerProcess.on('close', () => {
+    if (cfg.game.script.endsWith('js')) {
+      // convert json output to JS
+      const content = fs.readFileSync(outputFile, { encoding: 'utf8', flag: 'r' });
+      const output = `var storyContent = ${content};`;
+      fs.writeFileSync(outputFile, output);
+    }
+  });
+}
 
 const inklecateRun = {
   js: ['node', 'node_modules/inkjs/dist/inkjs-compiler.js', inputFile, '-o', outputFile],
