@@ -20,12 +20,17 @@ const GameRoute = () => {
     continueStory();
   }, [ continueStory ]);
 
-  return (
-    <Container style={{
+  let containerStyle = {};
+  if (state.game.background) {
+    containerStyle = {
       'background-image': `url(${getAssetPath(state.game.background)})`,
       'background-size': 'cover',
       'background-position': 'center' 
-    }}>
+    }
+  }
+
+  return (
+    <Container style={containerStyle}>
       <Settings />
       <ErrorModal />
       <Toolbar />
