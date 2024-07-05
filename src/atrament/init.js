@@ -11,6 +11,7 @@ import registerSceneProcessors from 'src/atrament/scene-processors';
 import onGameStart from 'src/atrament/on-game-start';
 
 export default async function atramentInit(atrament, Story) {
+  console.log(import.meta.env);
   // show all events in console
   atrament.on('*', (event, message) => console.log(
     `%c Atrament > ${event} `, 'color: #111111; background-color: #7FDBFF;',
