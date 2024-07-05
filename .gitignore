@@ -10,8 +10,13 @@ lerna-debug.log*
 package-lock.json
 node_modules
 build
+build_singlefile
 build-ssr
 *.local
+
+# compiled ink
+root/**/*.js
+root/**/*.json
 
 # Editor directories and files
 .vscode/*
