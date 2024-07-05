@@ -2,7 +2,6 @@
 import { applicationID, gameFile, gamePath } from 'src/constants';
 
 import muteWhenInactive from 'src/utils/mute-when-inactive';
-import handleTagBackground from 'src/utils/tag-background';
 import { registerGetAssetPath } from 'src/utils/get-asset-path';
 
 import { loadDefaultFont, loadDefaultTheme } from 'src/atrament/load-defaults';
@@ -43,7 +42,5 @@ export default async function atramentInit(atrament, Story) {
   registerSceneProcessors(atrament);
   // mute when tab is inactive
   muteWhenInactive(atrament);
-  // handle #BACKGROUND tag
-  handleTagBackground(atrament);
   // done
 }

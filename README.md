@@ -66,6 +66,7 @@ The standalone web application files will be in `build` folder. Use `npm run pre
 | Tag | Description                |
 | :-------- | :------------------------- |
 | `# IMAGE: some/picture.jpg` | Show image before paragraph text. |
+| `# BACKGROUND: some/picture.jpg` | Set background image for the game. |
 | `# CLEAR` | Clear scenes list before saving current scene to Atrament state. |
 | `# AUDIO: sound.mp3` | Play sound (once). |
 | `# AUDIOLOOP: music.mp3` | Play music (looped). |

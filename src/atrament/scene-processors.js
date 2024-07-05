@@ -20,8 +20,15 @@ function tagDisabledChoices(scene) {
   });
 }
 
+function sceneBackground(scene) {
+  const background = scene.tags?.BACKGROUND;
+  if (background) {
+    scene.images.push(background);
+    this.state.setSubkey('game', 'background', background);
+  }
+}
 
 export default function registerSceneProcessors(atrament) {
-  [sceneListImages, tagDisabledChoices]
-    .forEach((p) => atrament.game.defineSceneProcessor(p));
+  [sceneListImages, tagDisabledChoices, sceneBackground]
+    .forEach((p) => atrament.game.defineSceneProcessor(p.bind(atrament)));
 }

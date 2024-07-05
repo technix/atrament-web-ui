@@ -1,8 +1,8 @@
 import { h } from 'preact';
-import style from './index.module.css';
+import componentStyle from './index.module.css';
 
-const Container = ({ children }) => (
-  <div class={[style.container, 'atrament-container'].join(' ')}>
+const Container = ({ children, style }) => (
+  <div style={style} class={[componentStyle.container, 'atrament-container'].join(' ')}>
     {children}
   </div>
 );

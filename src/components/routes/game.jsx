@@ -11,15 +11,21 @@ import Toolbar from 'src/components/views/toolbar';
 import StoryView from 'src/components/views/story';
 import OverlayView from 'src/components/views/overlay';
 
+import { getAssetPath } from "src/utils/get-asset-path";
+
 const GameRoute = () => {
-  const { continueStory } = useAtrament();
+  const { state, continueStory } = useAtrament();
 
   useEffect(() => {
     continueStory();
   }, [ continueStory ]);
 
   return (
-    <Container>
+    <Container style={{
+      'background-image': `url(${getAssetPath(state.game.background)})`,
+      'background-size': 'cover',
+      'background-position': 'center' 
+    }}>
       <Settings />
       <ErrorModal />
       <Toolbar />

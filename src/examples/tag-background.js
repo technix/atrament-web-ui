@@ -1,4 +1,5 @@
 // Example of a plug-in functionality using Atrament events and scene processors
+// should be called from src/atrament/init.js 
 
 function setBackground(bg) {
   if (!bg) {
