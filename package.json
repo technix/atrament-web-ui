@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "prestart": "node ink-compile.cjs",
-    "start": "vite --force",
+    "start": "vite",
     "prebuild": "node ink-compile.cjs",
     "build": "vite build",
     "preview": "vite preview",
