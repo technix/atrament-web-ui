@@ -10,7 +10,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint src",
-    "singlefile": "node ink-compile.cjs && vite --config vite.singlefile.config.js build"
+    "singlefile": "node ink-compile.cjs && vite build --mode singlefile"
   },
   "dependencies": {
     "@atrament/web": "1.2.3",
