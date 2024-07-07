@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { viteSingleFile } from 'vite-plugin-singlefile';
 
-import { watchInkFiles } from './vite/watch-ink-files-plugin';
+import { compileInk, watchInkFiles } from './vite/ink-compiler-plugin';
 import { removeInkFilesFromBuild } from './vite/remove-ink-files-plugin';
 import getPWAConfig from './vite/pwa-config';
 
@@ -22,7 +22,8 @@ export default defineConfig(({ mode }) => {
       },
     }),
     watchInkFiles(),
-    removeInkFilesFromBuild()
+    removeInkFilesFromBuild(),
+    compileInk(),
   ]
 
   let buildDir = 'build';
