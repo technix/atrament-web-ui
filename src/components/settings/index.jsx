@@ -2,10 +2,13 @@ import { h } from 'preact';
 import style from './index.module.css';
 
 import { useCallback, useEffect, useState } from 'preact/hooks';
+import { useTranslator } from '@eo-locale/preact';
 
 import Backdrop from '../ui/backdrop';
 import Modal from '../ui/modal';
 import CloseButton from '../ui/close-button';
+
+import Collapse from '../ui/collapse';
 
 import SettingsFullscreen from './settings-fullscreen';
 import SettingsSound from './settings-sound';
@@ -18,6 +21,7 @@ import SettingsVersion from './settings-version';
 
 const Settings = () => {
   //
+  const translator = useTranslator();
   const [ isOpen, openSettings ] = useState(false);
   const toggleSettings = useCallback(() => openSettings(!isOpen), [ isOpen ]);
 
@@ -43,9 +47,11 @@ const Settings = () => {
           <SettingsFullscreen />
           <SettingsAnimation />
           <SettingsSound />
-          <SettingsFont />
-          <SettingsText />
-          <SettingsTheme />
+          <Collapse title={translator.translate('settings.appearance')}>
+            <SettingsFont />
+            <SettingsText />
+            <SettingsTheme />
+          </Collapse>
           <SettingsVersion />
         </Modal>
       </div>
