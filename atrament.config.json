@@ -4,7 +4,7 @@
   "description": "Atrament Preact UI - shell for Ink games",
   "theme": "light",
   "font": "System",
-  "language": "ua",
+  "language": "en",
   "game": {
     "path": "game",
     "source": "intercept.ink",
