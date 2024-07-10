@@ -16,6 +16,7 @@
   flex-shrink: 0;
   flex-basis: auto;
   border-bottom: 1px solid var(--fg-color);
+  display: flex;
 }
 
 .overlay_header > * {
@@ -23,9 +24,9 @@
 }
 
 .overlay_title {
-  display: inline-block;
   text-align: center;
-  width: 90%;
+  flex-grow: 1;
+  margin-right: 2rem;
 }
 
 .overlay_content {
