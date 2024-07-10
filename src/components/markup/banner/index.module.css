@@ -9,9 +9,9 @@
 }
   
 .accent {
-  border-top: 1px solid var(--accent-bg-color);
-  border-bottom: 1px solid var(--accent-bg-color);
-  color: var(--accent-bg-color);
+  border-top: 1px solid var(--accent-fg-color);
+  border-bottom: 1px solid var(--accent-fg-color);
+  color: var(--accent-fg-color);
 }
 
 .allcaps {

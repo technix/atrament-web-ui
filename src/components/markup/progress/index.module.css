@@ -16,7 +16,7 @@
 }
 
 .accent {
-  background-color: var(--accent-bg-color);
+  background-color: var(--accent-fg-color);
 }
 
 .progress_content {

@@ -15,5 +15,5 @@
 }
 
 .side_accent {
-  border-left: 0.3rem solid var(--accent-bg-color);
+  border-left: 0.3rem solid var(--accent-fg-color);
 }
