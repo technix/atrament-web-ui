@@ -8,7 +8,7 @@
   text-align: center;
   text-decoration: none;
   border: 1px solid var(--fg-color);
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   cursor: pointer;
   font-family: var(--font-game);
 }

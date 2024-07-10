@@ -1,6 +1,6 @@
 .progress_frame {
   border: 1px solid var(--fg-color);
-  border-radius: 0.25rem;
+  border-radius: var(--border-radius-inline);
   position: relative;
 }
 

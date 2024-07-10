@@ -7,7 +7,7 @@
   text-decoration: none;
   width: 100%;
   border: 1px solid var(--accent-fg-color);
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
   cursor: pointer;
 }
 

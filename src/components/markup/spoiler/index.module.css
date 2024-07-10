@@ -1,7 +1,7 @@
 .hidden {
   background-color: var(--fg-color);
   cursor: pointer;
-  border-radius: 0.25em;
+  border-radius: var(--border-radius-inline);
 }
 
 .hidden span {

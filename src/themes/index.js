@@ -6,7 +6,9 @@ const lightTheme = {
   '--shade-color': 'rgba(0, 0, 0, 0.1)',
   '--font-color': '#333333',
   '--accent-bg-color': '#FCFCFC',
-  '--accent-fg-color': '#F7567C'
+  '--accent-fg-color': '#F7567C',
+  '--border-radius': '0.5rem',
+  '--border-radius-inline': '0.25rem'
 };
 
 const sepiaTheme = {
@@ -15,7 +17,9 @@ const sepiaTheme = {
   '--shade-color': 'rgba(0, 0, 0, 0.1)',
   '--font-color': '#333333',
   '--accent-bg-color': '#ffeedb',
-  '--accent-fg-color': '#a53850'
+  '--accent-fg-color': '#a53850',
+  '--border-radius': '0.5rem',
+  '--border-radius-inline': '0.25rem'
 }
 
 const darkTheme = {
@@ -24,7 +28,9 @@ const darkTheme = {
   '--shade-color': 'rgba(255, 255, 255, 0.1)',
   '--font-color': '#EEEEEE',
   '--accent-bg-color': '#EEEEEE',
-  '--accent-fg-color': '#F7567C'
+  '--accent-fg-color': '#F7567C',
+  '--border-radius': '0.5rem',
+  '--border-radius-inline': '0.25rem'
 };
 
 export const themes = {

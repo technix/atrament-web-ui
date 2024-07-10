@@ -2,7 +2,7 @@
   width: 100%;
   padding: 0.25rem;
   border: 2px solid var(--fg-color);
-  border-radius: 0.25rem;
+  border-radius: var(--border-radius-inline);
   background-color: var(--bg-color);
   color: var(--fg-color);
 }

@@ -1,5 +1,5 @@
 .collapse {
-  border-radius: 0.25em;
+  border-radius: var(--border-radius-inline);
   border: 3px solid var(--shade-color);
 }
 

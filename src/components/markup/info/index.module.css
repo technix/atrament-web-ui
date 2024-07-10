@@ -3,7 +3,7 @@
   width: 100%;
   background-color: var(--shade-color);
   padding: 0.5em;
-  border-radius: 0.5rem;
+  border-radius: var(--border-radius);
 }
 
 .font_ui {
