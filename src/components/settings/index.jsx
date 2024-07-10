@@ -18,6 +18,8 @@ import SettingsTheme from './settings-theme';
 import SettingsAnimation from './settings-animation';
 import SettingsVersion from './settings-version';
 
+import SaveAndQuit from './button-save-and-quit';
+
 
 const Settings = () => {
   //
@@ -52,6 +54,7 @@ const Settings = () => {
             <SettingsText />
             <SettingsTheme />
           </Collapse>
+          <SaveAndQuit />
           <SettingsVersion />
         </Modal>
       </div>
