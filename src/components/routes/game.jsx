@@ -11,10 +11,8 @@ import Toolbar from 'src/components/views/toolbar';
 import StoryView from 'src/components/views/story';
 import OverlayView from 'src/components/views/overlay';
 
-import { getAssetPath } from "src/utils/get-asset-path";
-
 const GameRoute = () => {
-  const { state, continueStory } = useAtrament();
+  const { state, continueStory, getAssetPath } = useAtrament();
 
   useEffect(() => {
     continueStory();

@@ -2,7 +2,6 @@
 import { applicationID, gameFile, gamePath } from 'src/constants';
 
 import muteWhenInactive from 'src/utils/mute-when-inactive';
-import { registerGetAssetPath } from 'src/utils/get-asset-path';
 
 import { loadDefaultFont, loadDefaultTheme } from 'src/atrament/load-defaults';
 import { registerSettingsHandlers } from 'src/atrament/settings-handlers'
@@ -30,8 +29,6 @@ export default async function atramentInit(atrament, Story) {
     }
   });
   atrament.on('game/start', () => onGameStart(atrament));
-  // register getAssetPath function
-  registerGetAssetPath(atrament.game.getAssetPath);
   // initialize game
   await atrament.game.init(gamePath, gameFile);
   await atrament.game.initInkStory();

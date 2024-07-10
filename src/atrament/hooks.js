@@ -1,10 +1,15 @@
-import { useContext } from 'preact/hooks';
+import { useContext, useCallback } from 'preact/hooks';
 import { useStore } from '@nanostores/preact';
 import AtramentContext from 'src/atrament/context';
 
 const useAtrament = () => {
   const atrament = useContext(AtramentContext);
   const state = useStore(atrament.store);
+
+  const getAssetPath = useCallback(
+    (file) => file ? atrament.game.getAssetPath(file) : null,
+    [ atrament ]
+  );
 
   return {
     atrament,
@@ -14,6 +19,7 @@ const useAtrament = () => {
     gameResume: atrament.game.resume,
     makeChoice: atrament.game.makeChoice,
     continueStory: atrament.game.continueStory,
+    getAssetPath,
     updateSettings: (name, value) => {
       atrament.settings.set(name, value);
       atrament.settings.save();

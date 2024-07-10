@@ -6,10 +6,11 @@ import { scrollIntoView } from "seamless-scroll-polyfill";
 import ContainerImage from 'src/components/ui/container-image';
 import Paragraph from '../scene-paragraph';
 // utils
+import useAtrament from 'src/atrament/hooks';
 import preloadImages from 'src/utils/preload-images';
-import { getAssetPath } from "src/utils/get-asset-path";
 
 const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
+  const { getAssetPath } = useAtrament();
   const [ isLoaded, setIsLoaded ] = useState(false);
   const elementRef = useRef(null);
 
@@ -38,7 +39,7 @@ const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
       setIsLoaded(true);
     }
     preloader();
-  }, [ scene, setIsLoaded ]);
+  }, [ scene, setIsLoaded, getAssetPath ]);
 
   return (
     <div class={[style.scene, 'atrament-scene', isCurrent && isLoaded ? 'animation_appear' : ''].join(' ')} ref={elementRef}>
