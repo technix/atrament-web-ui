@@ -2,6 +2,8 @@ import { h } from 'preact';
 import { useCallback } from 'preact/hooks';
 import style from './index.module.css';
 
+import iconChevronLeft from './chevron-left.svg';
+
 import useAtrament from 'src/atrament/hooks';
 import markup from 'src/atrament/markup';
 
@@ -25,7 +27,7 @@ const OverlayView = () => {
   return (
     <div class={style.overlay_container}>
       <div class={style.overlay_header}>
-        <button class={style.button_back} onClick={closeOverlay}>❮</button>
+        <button class={style.button_back} onClick={closeOverlay}><img src={iconChevronLeft} /></button>
         {title && <div class={style.overlay_title}>{title}</div>}
       </div>
       <div class={[style.overlay_content, 'atrament-overlay'].join(' ')}>

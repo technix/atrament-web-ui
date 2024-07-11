@@ -3,6 +3,9 @@ import { Text } from '@eo-locale/preact';
 import style from './index.module.css';
 import Toggle from 'src/components/ui/toggle';
 
+import iconVolumeLow from "./volume-low.svg";
+import iconVolumeHigh from "./volume-high.svg";
+
 import useAtrament from 'src/atrament/hooks';
 
 const SettingsSound = () => {
@@ -17,7 +20,7 @@ const SettingsSound = () => {
         <Toggle enabled={!mute} onChange={handleMute} /> <Text id={'settings.sound'} />
       </div>
       <div class={style.settings_sound_container}>
-        <div class={style.settings_sound_icon}>&#128265;</div>
+        <div class={style.settings_sound_icon}><img src={iconVolumeLow} /></div>
         <div class={style.settings_sound_input_container}>
           <input
             class={style.settings_sound_volume}
@@ -29,7 +32,7 @@ const SettingsSound = () => {
             onChange={handleVolume}
           />
         </div>
-        <div class={style.settings_sound_icon}>&#128266;</div>
+        <div class={style.settings_sound_icon}><img src={iconVolumeHigh} /></div>
       </div>
     </>
   );

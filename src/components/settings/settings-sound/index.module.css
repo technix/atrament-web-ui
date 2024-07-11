@@ -9,13 +9,13 @@
 
 .settings_sound_volume {
   width: 100%;
-  margin-top: 0.3rem;
+  margin-top: 0.1rem;
   vertical-align: top;
   accent-color: var(--fg-color);
 }
 
 .settings_sound_icon {
-  margin: auto;
-  min-width: 2rem;
-  text-align: center;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  min-width: 2.5rem;
 }
