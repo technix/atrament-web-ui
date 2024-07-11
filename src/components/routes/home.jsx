@@ -7,6 +7,7 @@ import useAtrament from 'src/atrament/hooks';
 import Block from '../ui/block';
 import Container from '../ui/container';
 import ContainerFlex from '../ui/container-flex';
+import ContainerImage from '../ui/container-image';
 import Header from '../ui/header';
 import LinkMenu from '../ui/link-menu';
 
@@ -14,8 +15,8 @@ import Settings from 'src/components/settings';
 
 const HomeRoute = () => {
   const translator = useTranslator();
-  const { state, canResume, gameStart, gameResume } = useAtrament();
-  const { title, author } = state.metadata;
+  const { state, canResume, gameStart, gameResume, getAssetPath } = useAtrament();
+  const { title, author, cover } = state.metadata;
 
   const [ canBeResumed, setResumeState ] = useState(false);
   useEffect(() => {
@@ -43,6 +44,7 @@ const HomeRoute = () => {
       <ContainerFlex>
         <Settings />
         <Header>
+          {cover ? <ContainerImage src={getAssetPath(cover)} /> : ''}
           <h1>{title ? title : translator.translate('default.title')}</h1>
           <p>{author ? author : translator.translate('default.author')}</p>
         </Header>
