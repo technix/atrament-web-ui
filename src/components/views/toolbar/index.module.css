@@ -2,15 +2,16 @@
   min-height: 2.5em;
   overflow: hidden;
   padding: 0.25em;
-  padding-right: 2.25rem;
-  line-height: 1.5em;
+  padding-right: 3rem;
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: auto;
   border-bottom: 1px solid var(--fg-color);
   font-family: var(--font-game);
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  gap: 0.25rem;
+  flex-wrap: wrap;
 }
 
-.toolbar > * {
-  vertical-align: middle;
-}

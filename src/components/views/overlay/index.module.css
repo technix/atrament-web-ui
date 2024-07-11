@@ -9,9 +9,7 @@
 }
 
 .overlay_header {
-  height: 2.5em;
-  padding: 0.25em;
-  line-height: 1.5em;
+  min-height: 2.5em;
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: auto;
@@ -24,9 +22,12 @@
 }
 
 .overlay_title {
-  text-align: center;
   flex-grow: 1;
-  margin-right: 2rem;
+  margin-right: 3rem;
+  padding: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .overlay_content {
@@ -49,4 +50,6 @@
   border: none;
   background: none;
   color: var(--font-color);
+  flex-shrink: 0;
+  width: 3rem;
 }
