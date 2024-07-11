@@ -18,7 +18,7 @@ const GameRoute = () => {
     continueStory();
   }, [ continueStory ]);
 
-  let containerStyle = {};
+  let containerStyle;
   if (state.game.background) {
     containerStyle = {
       'background-image': `url(${getAssetPath(state.game.background)})`,
