@@ -2,6 +2,7 @@
   min-height: 2.5em;
   overflow: hidden;
   padding: 0.25em;
+  padding-left: 0.5em;
   padding-right: 3rem;
   flex-grow: 0;
   flex-shrink: 0;

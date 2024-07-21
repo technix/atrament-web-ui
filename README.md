@@ -62,6 +62,7 @@ The standalone web application files will be in `build` folder. Use `npm run pre
 | `# hypertext` | Use links instead of choices. See "[Hypertext mode](#hypertext-mode)". |
 | `# toolbar: toolbar_function` | Use output of this function as a toolbar content. |
 | `# cover: some/image.jpg` | Cover image to display at the main menu screen |
+| `# background: some/picture.jpg` | Set background image for the game backdrop. |
 
 ### Knot tags
 | Tag | Description                |

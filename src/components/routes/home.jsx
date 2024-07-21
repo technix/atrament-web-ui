@@ -16,7 +16,7 @@ import Settings from 'src/components/settings';
 const HomeRoute = () => {
   const translator = useTranslator();
   const { state, canResume, gameStart, gameResume, getAssetPath } = useAtrament();
-  const { title, author, cover } = state.metadata;
+  const { title, author, cover, background } = state.metadata;
 
   const [ canBeResumed, setResumeState ] = useState(false);
   useEffect(() => {
@@ -25,7 +25,12 @@ const HomeRoute = () => {
       setResumeState(!!canResumeGame);
     }
     initHome();
-  }, [ canResume ]);
+    if (background) {
+      document.body.style.backgroundImage = `url(${getAssetPath(background)})`
+      document.body.style.backgroundSize = 'cover';
+      document.body.style.backgroundPosition = 'center';
+    }
+  }, [ canResume, background, getAssetPath ]);
 
   const newGame = useCallback(async () => {
     await gameStart();
