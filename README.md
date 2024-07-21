@@ -67,7 +67,7 @@ The standalone web application files will be in `build` folder. Use `npm run pre
 | Tag | Description                |
 | :-------- | :------------------------- |
 | `# IMAGE: some/picture.jpg` | Show image before paragraph text. |
-| `# BACKGROUND: some/picture.jpg` | Set background image for the game. |
+| `# BACKGROUND: some/picture.jpg` | Set background image for the game text. |
 | `# CLEAR` | Clear scenes list before saving current scene to Atrament state. |
 | `# AUDIO: sound.mp3` | Play sound (once). |
 | `# AUDIOLOOP: music.mp3` | Play music (looped). |
@@ -84,6 +84,7 @@ The standalone web application files will be in `build` folder. Use `npm run pre
 | `# RESTART` | Start game from beginning. |
 | `# RESTART_FROM_CHECKPOINT` | Restart game from latest checkpoint. |
 | `# RESTART_FROM_CHECKPOINT: checkpointName` | Restart game from named checkpoint. |
+| `# CLASS: classname` | Apply CSS class to the paragraph `<p>` element. |
 
 Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MUSIC/STOP_SOUND/STOP_MUSIC tags. Combining them may lead to unexpected side effects.
 
@@ -91,6 +92,7 @@ Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MU
 | Tag | Description                |
 | :-------- | :------------------------- |
 | `# UNCLICKABLE` | The choice can't be selected. Alternative names: `#DISABLED`, `#INACTIVE` |
+| `# CLASS: classname` | Apply CSS class to the choice `<button>` element. |
 
 ## Hypertext mode
 

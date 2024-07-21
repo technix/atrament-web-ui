@@ -11,9 +11,17 @@ const ChoiceButton = ({ choice, chosen, handleClick }) => {
       handleClick(choice.id);
     }
   };
+
+  const choiceStateClass = choiceIsMade ? (activeChoice ? style.choice_active : style.choice_inactive) : '';
+
+  let choiceCustomClass = choice.tags.CLASS;
+  if (Array.isArray(choiceCustomClass)) {
+    choiceCustomClass = choiceCustomClass.join(' ');
+  }
+
   return (
     <button
-      class={`${style.choice_button} ${choiceIsMade ? (activeChoice ? style.choice_active : style.choice_inactive) : ''}`}
+      class={`${style.choice_button} ${choiceStateClass} ${choiceCustomClass}`}
       onClick={onClick}
       disabled={choice.disabled}
     >
