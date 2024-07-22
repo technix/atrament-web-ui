@@ -163,6 +163,14 @@ Example of toolbar and overlays:
 | 1,2,3... | Select corresponding choice option. |
 | Esc | Show/hide settings dialog. |
 
+## Single file build
+Default Atrament UI build is designed as web application for web server deployment. However, you may want to build your game as a standalone web page, which can be opened locally too - similar to Inky or Twine web export.
+
+1. Edit `atrament.config.json` and change `script` file extension to `js` - i.e. `yourgame.ink.js`. This is required, because local app can't load JSON stories.
+2. Remove compiled JSON story from `root/game` folder.
+3. Build your game with `npm run singlefile` command.
+The resulting web page will be in the `build_singlefile` folder. 
+
 ## Atrament repositories
 
 - [atrament-web](https://github.com/technix/atrament-web)
