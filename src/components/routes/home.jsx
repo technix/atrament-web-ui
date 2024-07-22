@@ -16,14 +16,14 @@ import { setPageBackground } from 'src/utils/page-background';
 
 const HomeRoute = () => {
   const translator = useTranslator();
-  const { atrament, canResume, gameStart, gameResume, getAssetPath } = useAtrament();
+  const { setStateSubkey, canResume, gameStart, gameResume, getAssetPath } = useAtrament();
   const atramentState = useAtramentState();
   const { title, author, cover, background } = atramentState.metadata;
 
   const resetBackground = useCallback(() => {
-    atrament.state.setSubkey('game', 'background', null);
-    atrament.state.setSubkey('game', 'background_page', null);
-  }, [ atrament ]);
+    setStateSubkey('game', 'background', null);
+    setStateSubkey('game', 'background_page', null);
+  }, [ setStateSubkey ]);
 
   const [ canBeResumed, setResumeState ] = useState(false);
   useEffect(() => {

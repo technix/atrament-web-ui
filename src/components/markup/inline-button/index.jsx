@@ -15,26 +15,26 @@ function evaluateInkFunction(atrament, fn) {
   return result;
 }
 
-function setActiveOverlayContent(atrament, overlayName, content) {
-  atrament.state.setSubkey('OVERLAY', 'activeOverlay', overlayName);
+function setActiveOverlayContent(setStateSubkey, overlayName, content) {
+  setStateSubkey('OVERLAY', 'activeOverlay', overlayName);
   let textContent = content;
   const contentArray = content.split('\n');
   const firstLine = contentArray.shift();
   const title = firstLine.match(/\[title\](.+?)\[\/title\]/i);
   if (title) {
-    atrament.state.setSubkey('OVERLAY', 'title', title[1]);
+    setStateSubkey('OVERLAY', 'title', title[1]);
     textContent = contentArray.join('\n');
   }
-  atrament.state.setSubkey('OVERLAY', 'content', textContent);
+  setStateSubkey('OVERLAY', 'content', textContent);
 }
 
 const InlineButtonComponent = ({ children, options }) => {
-  const { atrament } = useAtrament();
+  const { atrament, setStateSubkey } = useAtrament();
   const atramentState = useAtramentState();
   const clickHandler = useCallback(() => {
     const result = evaluateInkFunction(atrament, options.onclick);
     if (result.output) {
-      setActiveOverlayContent(atrament, options.onclick, result.output);
+      setActiveOverlayContent(setStateSubkey, options.onclick, result.output);
     } else {
       const activeOverlay = atramentState.OVERLAY.activeOverlay;
       if (activeOverlay) {
@@ -43,7 +43,7 @@ const InlineButtonComponent = ({ children, options }) => {
         setActiveOverlayContent(atrament, activeOverlay, result.output);
       }
     }
-  }, [ atrament, options.onclick, atramentState ]);
+  }, [ atrament, setStateSubkey, options.onclick, atramentState ]);
   let buttonStyle = options.bordered === false ? style.inline_button : style.bordered_button;
   return (
     <button

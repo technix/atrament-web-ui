@@ -10,13 +10,13 @@ import markup from 'src/atrament/markup';
 import ContainerText from 'src/components/ui/container-text';
 
 const OverlayView = () => {
-  const { atrament } = useAtrament();
+  const { setStateSubkey } = useAtrament();
   const atramentState = useAtramentState();
 
   const closeOverlay = useCallback(() => {
-    atrament.state.setSubkey('OVERLAY', 'activeOverlay', null);
-    atrament.state.setSubkey('OVERLAY', 'content', '');
-  }, [ atrament ]);
+    setStateSubkey('OVERLAY', 'activeOverlay', null);
+    setStateSubkey('OVERLAY', 'content', '');
+  }, [ setStateSubkey ]);
 
   if (!atramentState.OVERLAY.activeOverlay) {
     return <></>;
