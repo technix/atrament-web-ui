@@ -26,6 +26,11 @@ function sceneBackground(scene) {
     scene.images.push(background);
     this.state.setSubkey('game', 'background', background);
   }
+  const backgroundPage = scene.tags?.PAGE_BACKGROUND;
+  if (backgroundPage) {
+    scene.images.push(backgroundPage);
+    this.state.setSubkey('game', 'background_page', backgroundPage);
+  }
 }
 
 export default function registerSceneProcessors(atrament) {

@@ -12,11 +12,17 @@ import Header from '../ui/header';
 import LinkMenu from '../ui/link-menu';
 
 import Settings from 'src/components/settings';
+import { setPageBackground } from 'src/utils/page-background';
 
 const HomeRoute = () => {
   const translator = useTranslator();
-  const { state, canResume, gameStart, gameResume, getAssetPath } = useAtrament();
+  const { atrament, state, canResume, gameStart, gameResume, getAssetPath } = useAtrament();
   const { title, author, cover, background } = state.metadata;
+
+  const resetBackground = useCallback(() => {
+    atrament.state.setSubkey('game', 'background', null);
+    atrament.state.setSubkey('game', 'background_page', null);
+  }, [ atrament ]);
 
   const [ canBeResumed, setResumeState ] = useState(false);
   useEffect(() => {
@@ -25,22 +31,23 @@ const HomeRoute = () => {
       setResumeState(!!canResumeGame);
     }
     initHome();
-    if (background) {
-      document.body.style.backgroundImage = `url(${getAssetPath(background)})`
-      document.body.style.backgroundSize = 'cover';
-      document.body.style.backgroundPosition = 'center';
-    }
-  }, [ canResume, background, getAssetPath ]);
+    // reset game background
+    resetBackground();
+    // set page background
+    setPageBackground(background, getAssetPath);
+  }, [ resetBackground, canResume, background, getAssetPath ]);
 
   const newGame = useCallback(async () => {
+    resetBackground();
     await gameStart();
     route('/game');
-  }, [ gameStart ]);
+  }, [ resetBackground, gameStart ]);
 
   const resumeGame = useCallback(async () => {
+    resetBackground();
     await gameResume();
     route('/game');
-  }, [ gameResume ]);
+  }, [ resetBackground, gameResume ]);
 
   const aboutGame = () => route('/about');
 
