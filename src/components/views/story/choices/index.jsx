@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { Text } from '@eo-locale/preact';
 import { route } from 'preact-router';
-import useAtrament from 'src/atrament/hooks';
+import { useAtrament } from 'src/atrament/hooks';
 import LinkHome from 'src/components/ui/link-home';
 import ChoiceButtonGroup from '../choice-button-group';
 

@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { Text, useTranslator } from '@eo-locale/preact';
 import { route } from 'preact-router';
 import { useEffect, useState, useCallback } from 'preact/hooks';
-import useAtrament from 'src/atrament/hooks';
+import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import Block from '../ui/block';
 import Container from '../ui/container';
@@ -16,8 +16,9 @@ import { setPageBackground } from 'src/utils/page-background';
 
 const HomeRoute = () => {
   const translator = useTranslator();
-  const { atrament, state, canResume, gameStart, gameResume, getAssetPath } = useAtrament();
-  const { title, author, cover, background } = state.metadata;
+  const { atrament, canResume, gameStart, gameResume, getAssetPath } = useAtrament();
+  const atramentState = useAtramentState();
+  const { title, author, cover, background } = atramentState.metadata;
 
   const resetBackground = useCallback(() => {
     atrament.state.setSubkey('game', 'background', null);

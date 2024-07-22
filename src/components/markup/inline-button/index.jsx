@@ -3,7 +3,7 @@ import style from './index.module.css';
 import { useCallback } from "preact/hooks";
 
 import getTagAttributes from 'src/utils/get-tag-attributes';
-import useAtrament from 'src/atrament/hooks';
+import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 function evaluateInkFunction(atrament, fn) {
   let result;
@@ -29,20 +29,21 @@ function setActiveOverlayContent(atrament, overlayName, content) {
 }
 
 const InlineButtonComponent = ({ children, options }) => {
-  const { atrament, state } = useAtrament();
+  const { atrament } = useAtrament();
+  const atramentState = useAtramentState();
   const clickHandler = useCallback(() => {
     const result = evaluateInkFunction(atrament, options.onclick);
     if (result.output) {
       setActiveOverlayContent(atrament, options.onclick, result.output);
     } else {
-      const activeOverlay = state.OVERLAY.activeOverlay;
+      const activeOverlay = atramentState.OVERLAY.activeOverlay;
       if (activeOverlay) {
         // refresh active overlay
         const result = evaluateInkFunction(atrament, activeOverlay);
         setActiveOverlayContent(atrament, activeOverlay, result.output);
       }
     }
-  }, [ atrament, options.onclick, state ]);
+  }, [ atrament, options.onclick, atramentState ]);
   let buttonStyle = options.bordered === false ? style.inline_button : style.bordered_button;
   return (
     <button

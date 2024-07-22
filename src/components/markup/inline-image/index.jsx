@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import style from './index.module.css';
-import useAtrament from 'src/atrament/hooks';
+import { useAtrament } from 'src/atrament/hooks';
 
 const InlineImage = ({ src }) => {
   const { getAssetPath } = useAtrament();

@@ -3,7 +3,7 @@ import { useEffect, useState } from 'preact/hooks';
 import style from './index.module.css';
 
 import getTagAttributes from 'src/utils/get-tag-attributes';
-import useAtrament from 'src/atrament/hooks';
+import { useAtrament } from 'src/atrament/hooks';
 
 // [input var=variable placeholder="placeholder text" type=number]
 

@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { route } from 'preact-router';
 import { Text } from '@eo-locale/preact';
 
-import useAtrament from 'src/atrament/hooks';
+import { useAtrament } from 'src/atrament/hooks';
 import LinkHome from 'src/components/ui/link-home';
 import { autosaveSlot } from 'src/constants';
 

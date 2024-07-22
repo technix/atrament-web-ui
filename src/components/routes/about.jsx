@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { route } from 'preact-router';
 import { Text } from '@eo-locale/preact';
 
-import useAtrament from 'src/atrament/hooks';
+import { useAtramentState } from 'src/atrament/hooks';
 
 import Settings from 'src/components/settings';
 
@@ -13,13 +13,13 @@ import ContainerFlex from '../ui/container-flex';
 import LinkMenu from '../ui/link-menu';
 
 const AboutRoute = () => {
-  const { state } = useAtrament();
+  const atramentState = useAtramentState();
   const mainMenu = () => route('/');
 
   return (
     <Container>
       <Settings />
-      <ContainerText fontSize={state.settings.fontSize}>
+      <ContainerText fontSize={atramentState.settings.fontSize}>
         <ContainerFlex>
           <Block>
             <img src="logo.png" style={{margin: 'auto', display: 'block', width: '50%'}} />

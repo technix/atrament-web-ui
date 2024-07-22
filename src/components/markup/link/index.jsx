@@ -2,14 +2,15 @@ import { h } from 'preact';
 import style from './index.module.css';
 import { useCallback } from "preact/hooks";
 
-import useAtrament from 'src/atrament/hooks';
+import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 const InlineLink = ({ children, choice }) => {
-  const { atrament, state, makeChoice, continueStory } = useAtrament();
+  const { atrament, makeChoice, continueStory } = useAtrament();
+  const atramentState = useAtramentState();
 
   const clickHandler = useCallback(() => {
-    const lastSceneIndex = state.scenes.length - 1;
-    const currentScene = state.scenes[lastSceneIndex];
+    const lastSceneIndex = atramentState.scenes.length - 1;
+    const currentScene = atramentState.scenes[lastSceneIndex];
     const chosen = currentScene.choices.findIndex((item) => item.choice === choice);
     if (chosen < 0) {
       atrament.state.setKey('ERROR', `[link=${choice}] leads to nonexistent choice!`);
@@ -17,7 +18,7 @@ const InlineLink = ({ children, choice }) => {
     }
     makeChoice(chosen);
     continueStory();
-  }, [ atrament, continueStory, makeChoice, choice, state ]);
+  }, [ atrament, continueStory, makeChoice, choice, atramentState ]);
 
   return (
     <a

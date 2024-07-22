@@ -5,13 +5,14 @@ import Toggle from 'src/components/ui/toggle';
 
 import { IconVolumeLow, IconVolumeHigh } from 'src/components/ui/icons';
 
-import useAtrament from 'src/atrament/hooks';
+import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 const SettingsSound = () => {
-  const { state, updateSettings } = useAtrament();
+  const { updateSettings } = useAtrament();
+  const atramentState = useAtramentState();
   const handleMute = (e) => updateSettings('mute', !e.target.checked);
   const handleVolume = (e) => updateSettings('volume', e.target.value);
-  const { mute, volume } = state.settings;
+  const { mute, volume } = atramentState.settings;
 
   return (
     <>

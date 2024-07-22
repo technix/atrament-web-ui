@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { Text } from '@eo-locale/preact';
 import style from './index.module.css';
-import useAtrament from 'src/atrament/hooks';
+import { useAtrament } from 'src/atrament/hooks';
 
 import { themes } from 'src/themes';
 

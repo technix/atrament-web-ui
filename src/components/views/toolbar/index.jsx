@@ -3,18 +3,19 @@ import { useTranslator } from '@eo-locale/preact';
 import { useState } from 'preact/hooks';
 import style from './index.module.css';
 
-import useAtrament from 'src/atrament/hooks';
+import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 import markup from 'src/atrament/markup';
 
 const Toolbar = () => {
   const translator = useTranslator();
-  const { atrament, state } = useAtrament();
+  const { atrament } = useAtrament();
+  const atramentState = useAtramentState();
   const [ hasError, setError ] = useState(false);
 
-  let toolbarContent = state.metadata.title || translator.translate('default.title');
-  if (state.metadata.toolbar && !hasError) {
+  let toolbarContent = atramentState.metadata.title || translator.translate('default.title');
+  if (atramentState.metadata.toolbar && !hasError) {
     try {
-      const result = atrament.ink.evaluateFunction(state.metadata.toolbar, [], true);
+      const result = atrament.ink.evaluateFunction(atramentState.metadata.toolbar, [], true);
       if (result.output) {
         toolbarContent = result.output;
       }

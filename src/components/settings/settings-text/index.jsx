@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { Text } from '@eo-locale/preact';
 import style from './index.module.css';
-import useAtrament from 'src/atrament/hooks';
+import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import { defaultFontSize, stepFontSize, minFontSize, maxFontSize } from 'src/constants';
 
@@ -13,8 +13,9 @@ for (let s=minFontSize; s <= maxFontSize; s+= stepFontSize) {
 }
 
 const SettingsText = () => {
-  const { state, updateSettings } = useAtrament();
-  const { font, fontSize } = state.settings;
+  const { updateSettings } = useAtrament();
+  const atramentState = useAtramentState();
+  const { font, fontSize } = atramentState.settings;
 
   const handleFontSize = (e) => updateSettings('fontSize', e.target.value);
 

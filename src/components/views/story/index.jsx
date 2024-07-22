@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
 
-import useAtrament from 'src/atrament/hooks';
+import { useAtramentState } from 'src/atrament/hooks';
 
 import ContainerText from 'src/components/ui/container-text';
 import ContainerScenes from './container-scenes';
@@ -11,17 +11,17 @@ import Scene from './scene';
 import Choices from './choices';
 
 const StoryView = () => {
-  const { state } = useAtrament();
+  const atramentState = useAtramentState();
   const [ isReady, setReady ] = useState(false);
   
-  const lastSceneIndex = state.scenes.length - 1;
-  const isHypertextMode = !!state.metadata.hypertext;
-  const key = `choices-${state.scenes[lastSceneIndex]?.uuid}`;
+  const lastSceneIndex = atramentState.scenes.length - 1;
+  const isHypertextMode = !!atramentState.metadata.hypertext;
+  const key = `choices-${atramentState.scenes[lastSceneIndex]?.uuid}`;
 
   return (
-    <ContainerText fontSize={state.settings.fontSize}>
-      <ContainerScenes align={state.metadata.scenes_align}>
-        {state.scenes.map((s, i) => 
+    <ContainerText fontSize={atramentState.settings.fontSize}>
+      <ContainerScenes align={atramentState.metadata.scenes_align}>
+        {atramentState.scenes.map((s, i) => 
           <Scene
             key={s.uuid}
             scene={s}
@@ -34,7 +34,7 @@ const StoryView = () => {
       <ContainerChoices isReady={isReady} key={key}>
         <Choices
           key={key}
-          currentScene={state.scenes[lastSceneIndex]}
+          currentScene={atramentState.scenes[lastSceneIndex]}
           setReady={setReady}
           isHypertextMode={isHypertextMode}
         />

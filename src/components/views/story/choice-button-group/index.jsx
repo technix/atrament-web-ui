@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { useState, useCallback, useEffect } from 'preact/hooks';
-import useAtrament from 'src/atrament/hooks';
+import { useAtrament } from 'src/atrament/hooks';
 import ChoiceButton from '../choice-button';
 
 const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {

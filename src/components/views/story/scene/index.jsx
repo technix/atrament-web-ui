@@ -6,7 +6,7 @@ import { scrollIntoView } from "seamless-scroll-polyfill";
 import ContainerImage from 'src/components/ui/container-image';
 import Paragraph from '../scene-paragraph';
 // utils
-import useAtrament from 'src/atrament/hooks';
+import { useAtrament } from 'src/atrament/hooks';
 import preloadImages from 'src/utils/preload-images';
 
 const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
