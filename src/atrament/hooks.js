@@ -18,6 +18,11 @@ export const useAtrament = () => {
     [ atrament ]
   );
 
+  const setStateSubkey = useCallback(
+    (...args) => atrament.state.setSubkey(...args),
+    [ atrament ]
+  )
+
   return {
     atrament,
     canResume: atrament.game.canResume,
@@ -26,7 +31,8 @@ export const useAtrament = () => {
     makeChoice: atrament.game.makeChoice,
     continueStory: atrament.game.continueStory,
     getAssetPath,
-    updateSettings
+    updateSettings,
+    setStateSubkey
   };
 };
 
