@@ -20,7 +20,7 @@ import SettingsVersion from './settings-version';
 
 import SaveAndQuit from './button-save-and-quit';
 
-import iconMenu from './menu.svg';
+import { IconMenu } from '../ui/icons';
 
 const Settings = () => {
   //
@@ -62,7 +62,7 @@ const Settings = () => {
     );
   }
   return (
-    <button class={style.settings_toggle} onClick={toggleSettings}><img src={iconMenu} /></button>
+    <button class={style.settings_toggle} onClick={toggleSettings}><IconMenu /></button>
   );
 };
 
