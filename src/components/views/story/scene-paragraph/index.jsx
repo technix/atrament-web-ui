@@ -4,7 +4,7 @@ import markup from 'src/atrament/markup';
 
 const Paragraph = ( {content, isCurrent} ) => {
   if (content.text === "\n") {
-    return '';
+    return <></>;
   }
 
   let pStyle;

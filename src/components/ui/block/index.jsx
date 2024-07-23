@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import style from './index.module.css';
 
-const Block = ({ children, align }) => {
+const Block = ({ children, align = null }) => {
   const cssStyles = [style.block];
   if (align === 'start') {
     cssStyles.push(style.block_start);
