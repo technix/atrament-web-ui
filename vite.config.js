@@ -31,7 +31,7 @@ export default defineConfig(({ mode }) => {
   if (mode === 'singlefile') {
     plugins.push(viteSingleFile());
     buildDir = 'build_singlefile';
-  } else {
+  } else if (mode === 'production') {
     plugins.push(VitePWA(getPWAConfig(atramentCfg)));
   }
 
