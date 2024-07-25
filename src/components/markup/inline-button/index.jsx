@@ -40,7 +40,7 @@ const InlineButtonComponent = ({ children, options }) => {
       if (activeOverlay) {
         // refresh active overlay
         const result = evaluateInkFunction(atrament, activeOverlay);
-        setActiveOverlayContent(atrament, activeOverlay, result.output);
+        setActiveOverlayContent(setStateSubkey, activeOverlay, result.output);
       }
     }
   }, [ atrament, setStateSubkey, options.onclick, atramentState ]);
