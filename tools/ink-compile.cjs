@@ -4,11 +4,11 @@
     "inkjscompiler": true
 */
 
-const  { spawn } = require('node:child_process');
+const  { spawn, spawnSync } = require('node:child_process');
 const os = require('node:os');
 const fs = require('node:fs');
 
-const cfg = require('./atrament.config.json');
+const cfg = require('../atrament.config.json');
 
 if (!cfg.game.source) {
   process.exit(0);
@@ -16,6 +16,21 @@ if (!cfg.game.source) {
 
 const inputFile = `root/${cfg.game.path}/${cfg.game.source}`;
 const outputFile = `root/${cfg.game.path}/${cfg.game.script}`;
+
+function checkInstallInklecate(compiler) {
+  if (!fs.existsSync(compiler)) {
+    // let's try to install inklecate
+    console.log("Inklecate compiler is not found, installing from GitHub...");
+    const res = spawnSync('node', ['tools/install-inklecate.cjs']);
+    [ res.stdout.toString(), res.stderr.toString() ].forEach(
+      (item) => item && console.log(item)
+    );
+  }
+  if (!fs.existsSync(compiler)) {
+    console.error("Failed to install Inklecate");
+    process.exit(1);
+  }
+}
 
 const runInklecate = (cmd, ...args) => {
   console.log('>>>', cmd, args.join(' '));
@@ -42,9 +57,9 @@ const runInklecate = (cmd, ...args) => {
 
 const inklecateRun = {
   js: ['node', 'node_modules/inkjs/dist/inkjs-compiler.js', inputFile, '-o', outputFile],
-  win32: ['tools/inklecate_windows/inklecate.exe', '-o', outputFile, inputFile],
-  linux: ['tools/inklecate_linux/inklecate', '-o', outputFile, inputFile],
-  darwin: ['tools/inklecate_mac/inklecate', '-o', outputFile, inputFile]
+  win32: ['tools/inklecate/inklecate.exe', '-o', outputFile, inputFile],
+  linux: ['tools/inklecate/inklecate', '-o', outputFile, inputFile],
+  darwin: ['tools/inklecate/inklecate', '-o', outputFile, inputFile]
 }
 
 let env = 'js';
@@ -54,6 +69,8 @@ if (!cfg.inkjscompiler) {
     console.log(`Unsupported OS (${env}), falling back to JS compiler.`);
     env = 'js';
   } else {
+    // check if compiler is installed
+    checkInstallInklecate(inklecateRun[env][0]);
     // ensure Ink compiler is executable
     fs.chmodSync(inklecateRun[env][0], '755');
   }

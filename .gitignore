@@ -18,6 +18,9 @@ build-ssr
 root/**/*.js
 root/**/*.json
 
+# inklecate
+tools/inklecate*
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

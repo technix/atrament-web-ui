@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "lint": "eslint --ext .jsx --ext js src",
     "singlefile": "vite build --mode singlefile",
-    "install-inklecate": "fetch-github-release inkle ink ./tmp"
+    "compile-ink-script": "node tools/ink-compile.cjs",
+    "install-inklecate": "node tools/install-inklecate.cjs"
   },
   "dependencies": {
     "@atrament/web": "1.2.3",
