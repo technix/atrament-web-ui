@@ -8,7 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint --ext .jsx --ext js src",
-    "singlefile": "vite build --mode singlefile"
+    "singlefile": "vite build --mode singlefile",
+    "install-inklecate": "fetch-github-release inkle ink ./tmp"
   },
   "dependencies": {
     "@atrament/web": "1.2.3",
@@ -23,6 +24,7 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "2.8.3",
+    "@terascope/fetch-github-release": "0.8.10",
     "@vite-pwa/assets-generator": "0.2.4",
     "eslint": "8.57.0",
     "eslint-config-preact": "1.4.0",
