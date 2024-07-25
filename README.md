@@ -14,7 +14,7 @@ It uses [inkjs](https://github.com/y-lohse/inkjs) to interpret Ink scripts, [Atr
 git clone https://github.com/technix/atrament-preact-ui.git --depth 1
 cd atrament-preact-ui
 npm install
-npm install-inklecate
+npm run install-inklecate
 ```
 
 ### Run application locally in dev mode
