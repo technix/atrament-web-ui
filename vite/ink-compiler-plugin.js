@@ -13,7 +13,7 @@ function runCompiler() {
 export function compileInk() {
   return {
     name: 'compile-ink',
-    buildStart() {
+    configResolved() {
       runCompiler();
     },
   }
