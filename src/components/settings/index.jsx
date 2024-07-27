@@ -22,7 +22,7 @@ import SaveAndQuit from './button-save-and-quit';
 
 import { IconMenu } from '../ui/icons';
 
-const Settings = () => {
+const Settings = ({ showSaveAndQuit = false }) => {
   //
   const translator = useTranslator();
   const [ isOpen, openSettings ] = useState(false);
@@ -55,7 +55,7 @@ const Settings = () => {
             <SettingsText />
             <SettingsTheme />
           </Collapse>
-          <SaveAndQuit />
+          { showSaveAndQuit ? <SaveAndQuit /> : <></> }
           <SettingsVersion />
         </Modal>
       </div>

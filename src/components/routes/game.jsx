@@ -36,7 +36,7 @@ const GameRoute = () => {
 
   return (
     <Container style={containerStyle}>
-      <Settings />
+      <Settings showSaveAndQuit />
       <ErrorModal />
       <Toolbar />
       <OverlayView />
