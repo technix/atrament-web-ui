@@ -2,6 +2,9 @@ node_modules
 /cache
 /build
 /dist
+/root
+/tools
 /*.log
 *.lock
 size-plugin.json
+package-lock.json
