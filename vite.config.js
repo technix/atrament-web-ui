@@ -39,6 +39,9 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins,
+    define: {
+      __INK_SCRIPT__: JSON.stringify(`${atramentCfg.game.source}.${inkCompileFormat}`)
+    },
     resolve: {
       alias: [
         { find: 'src', replacement: "/src" },

@@ -1,9 +1,8 @@
 import cfg from '../atrament.config.json';
 
 // Ink file
-
 export const gamePath = cfg.game.path;
-export const gameFile = cfg.game.script;
+export const gameFile = __INK_SCRIPT__;
 
 // Application ID
 // - uses page URL to make sure it's unique
