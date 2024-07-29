@@ -1,7 +1,7 @@
 import { spawnSync } from 'child_process';
 
-function runCompiler() {
-  const res = spawnSync('node', ['tools/ink-compile.cjs']);
+function runCompiler(format = 'json') {
+  const res = spawnSync('node', ['tools/ink-compile.cjs', format]);
   [ res.stdout.toString(), res.stderr.toString() ].forEach(
     (item) => item && console.log(item)
   );
@@ -10,22 +10,22 @@ function runCompiler() {
   }
 }
 
-export function compileInk() {
+export function compileInk(format) {
   return {
     name: 'compile-ink',
     configResolved() {
-      runCompiler();
+      runCompiler(format);
     },
   }
 }
 
-export function watchInkFiles() {
+export function watchInkFiles(format) {
   return {
     name: 'watch-ink-files-hmr',
     enforce: 'post',
     handleHotUpdate({ file, server }) {
       if (file.endsWith('.ink')) {
-        runCompiler();
+        runCompiler(format);
         server.hot.send({
           type: 'full-reload',
           path: '*'

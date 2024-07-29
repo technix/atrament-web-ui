@@ -34,9 +34,7 @@ The standalone web application files will be in `build` folder. Use `npm run pre
 ## Create your own game with Atrament Preact UI
 
 1. Remove all files from `root/game` and put your game files there (ink script, images, music etc).
-2. Edit `atrament.config.json`, change the following parameters in `game` section. File paths for these parameters are relative to `root/game` folder.
-    * `source`: your main Ink file name
-    * `script`: desired compiled Ink file name (JSON extension is mandatory)
+2. Edit `atrament.config.json`, change the `source` parameter in `game` section to name of your main Ink file. File path for this file is relative to `root/game` folder.
 3. You may change other configuration options in `atrament.config.json`:
     * "`name`": your application name
     * "`short_name`": your application short name, or codename
@@ -167,10 +165,7 @@ Example of toolbar and overlays:
 ## Single file build
 Default Atrament UI build is designed as web application for web server deployment. However, you may want to build your game as a standalone web page, which can be opened locally too - similar to Inky or Twine web export.
 
-1. Edit `atrament.config.json` and change `script` file extension to `js` - i.e. `yourgame.ink.js`. This is required, because local app can't load JSON stories.
-2. Remove compiled JSON story from `root/game` folder.
-3. Build your game with `npm run singlefile` command.
-The resulting web page will be in the `build_singlefile` folder. 
+All you need to do is to build your game with `npm run singlefile` command. The resulting web page will be in the `build_singlefile` folder.
 
 ## Atrament repositories
 

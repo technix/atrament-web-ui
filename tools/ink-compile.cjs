@@ -14,8 +14,16 @@ if (!cfg.game.source) {
   process.exit(0);
 }
 
+const format = process.argv[2] || 'json';
+
 const inputFile = `root/${cfg.game.path}/${cfg.game.source}`;
-const outputFile = `root/${cfg.game.path}/${cfg.game.script}`;
+const outputFile = `root/${cfg.game.path}/${cfg.game.source}.${format}`;
+
+function removeOldCompiledScript(name) {
+  if (fs.existsSync(name)) {
+    fs.unlinkSync(name);
+  }
+}
 
 function checkInstallInklecate(compiler) {
   if (!fs.existsSync(compiler)) {
@@ -46,7 +54,7 @@ const runInklecate = (cmd, ...args) => {
   });
 
   inkCompilerProcess.on('close', () => {
-    if (cfg.game.script.endsWith('js')) {
+    if (format === 'js') {
       // convert json output to JS
       const content = fs.readFileSync(outputFile, { encoding: 'utf8', flag: 'r' });
       const output = `var storyContent = ${content};`;
@@ -76,4 +84,8 @@ if (!cfg.inkjscompiler) {
   }
 }
 
+// clean old compiles
+removeOldCompiledScript(`${inputFile}.js`);
+removeOldCompiledScript(`${inputFile}.json`);
+// run compiler
 runInklecate(...inklecateRun[env]);

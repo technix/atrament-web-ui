@@ -11,6 +11,8 @@ import getPWAConfig from './vite/pwa-config';
 import atramentCfg from './atrament.config.json';
 
 export default defineConfig(({ mode }) => {
+  const inkCompileFormat = atramentCfg.game.format || (mode === 'singlefile' ? 'js' : 'json');
+
   const plugins = [
     preact(),
     createHtmlPlugin({
@@ -21,9 +23,9 @@ export default defineConfig(({ mode }) => {
         },
       },
     }),
-    watchInkFiles(),
+    watchInkFiles(inkCompileFormat),
+    compileInk(inkCompileFormat),
     removeInkFilesFromBuild(),
-    compileInk(),
   ]
 
   let buildDir = 'build';
