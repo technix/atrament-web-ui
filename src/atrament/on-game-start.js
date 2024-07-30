@@ -3,9 +3,10 @@ export default function onGameStart(atrament) {
   atrament.ink.story().onError = (error) => {
     atrament.state.setKey('ERROR', error);
   };
-  // add cards to state
+  // reset overlay state
   atrament.state.setKey('OVERLAY', {
     activeOverlay: null,
-    content: ''
+    content: '',
+    title: null
   });
 }

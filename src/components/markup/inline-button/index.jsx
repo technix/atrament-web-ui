@@ -3,47 +3,11 @@ import style from './index.module.css';
 import { useCallback } from "preact/hooks";
 
 import getTagAttributes from 'src/utils/get-tag-attributes';
-import { useAtrament, useAtramentState } from 'src/atrament/hooks';
-
-function evaluateInkFunction(atrament, fn) {
-  let result;
-  try {
-    result = atrament.ink.evaluateFunction(fn, [], true); 
-  } catch (e) {
-    atrament.ink.story().onError(e.toString());
-  }
-  return result;
-}
-
-function setActiveOverlayContent(setStateSubkey, overlayName, content) {
-  setStateSubkey('OVERLAY', 'activeOverlay', overlayName);
-  let textContent = content;
-  const contentArray = content.split('\n');
-  const firstLine = contentArray.shift();
-  const title = firstLine.match(/\[title\](.+?)\[\/title\]/i);
-  if (title) {
-    setStateSubkey('OVERLAY', 'title', title[1]);
-    textContent = contentArray.join('\n');
-  }
-  setStateSubkey('OVERLAY', 'content', textContent);
-}
+import { useAtramentOverlay } from 'src/atrament/hooks';
 
 const InlineButtonComponent = ({ children, options }) => {
-  const { atrament, setStateSubkey } = useAtrament();
-  const atramentState = useAtramentState();
-  const clickHandler = useCallback(() => {
-    const result = evaluateInkFunction(atrament, options.onclick);
-    if (result.output) {
-      setActiveOverlayContent(setStateSubkey, options.onclick, result.output);
-    } else {
-      const activeOverlay = atramentState.OVERLAY.activeOverlay;
-      if (activeOverlay) {
-        // refresh active overlay
-        const result = evaluateInkFunction(atrament, activeOverlay);
-        setActiveOverlayContent(setStateSubkey, activeOverlay, result.output);
-      }
-    }
-  }, [ atrament, setStateSubkey, options.onclick, atramentState ]);
+  const { openOverlay } = useAtramentOverlay();
+  const clickHandler = useCallback(() => openOverlay(options.onclick), [ openOverlay, options.onclick ]);
   let buttonStyle = options.bordered === false ? style.inline_button : style.bordered_button;
   return (
     <button
