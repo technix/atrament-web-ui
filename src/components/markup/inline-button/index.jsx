@@ -3,11 +3,22 @@ import style from './index.module.css';
 import { useCallback } from "preact/hooks";
 
 import getTagAttributes from 'src/utils/get-tag-attributes';
-import { useAtramentOverlay } from 'src/atrament/hooks';
+import { useAtrament, useAtramentOverlay } from 'src/atrament/hooks';
 
 const InlineButtonComponent = ({ children, options }) => {
-  const { openOverlay } = useAtramentOverlay();
-  const clickHandler = useCallback(() => openOverlay(options.onclick), [ openOverlay, options.onclick ]);
+  const { evaluateInkFunction } = useAtrament();
+  const { setOverlayContent, refreshOverlay } = useAtramentOverlay();
+
+  const clickHandler = useCallback(() => {
+    const inkFn = options.onclick;
+    const result = evaluateInkFunction(inkFn);
+    if (result.output) {
+      setOverlayContent(inkFn, result.output);
+    } else {
+      refreshOverlay();
+    }
+  }, [ evaluateInkFunction, setOverlayContent, refreshOverlay, options.onclick ]);
+
   let buttonStyle = options.bordered === false ? style.inline_button : style.bordered_button;
   return (
     <button

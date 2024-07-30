@@ -99,17 +99,12 @@ export const useAtramentOverlay = () => {
     setStateSubkey('OVERLAY', 'content', textContent);
   }, [ setStateSubkey ]);
 
-  const openOverlay = useCallback((inkFn) => {
-    const result = evaluateInkFunction(inkFn);
-    if (result.output) {
-      setOverlayContent(inkFn, result.output);
-    } else {
-      const activeOverlay = atramentState.OVERLAY.activeOverlay;
-      if (activeOverlay) {
-        // refresh active overlay
-        const result = evaluateInkFunction(activeOverlay);
-        setOverlayContent(activeOverlay, result.output);
-      }
+  const refreshOverlay = useCallback(() => {
+    const activeOverlay = atramentState.OVERLAY.activeOverlay;
+    if (activeOverlay) {
+      // refresh active overlay
+      const result = evaluateInkFunction(activeOverlay);
+      setOverlayContent(activeOverlay, result.output);
     }
   }, [ atramentState.OVERLAY.activeOverlay, setOverlayContent, evaluateInkFunction ]);
 
@@ -120,7 +115,7 @@ export const useAtramentOverlay = () => {
   }, [ setStateSubkey ]);
 
   return {
-    openOverlay,
+    refreshOverlay,
     closeOverlay,
     setOverlayContent,
     overlay: {
