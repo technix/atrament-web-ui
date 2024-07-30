@@ -37,6 +37,30 @@ export const useAtrament = () => {
     [ atrament ]
   );
 
+  const setInkVariable = useCallback(
+    (name, value) => {
+      try {
+        atrament.ink.setVariable(name, value);
+      } catch (e) {
+        atrament.ink.story().onError(e.toString());
+      }
+    },
+    [ atrament ]
+  );
+  
+  const getInkVariable = useCallback(
+    (name) => {
+      let result;
+      try {
+        result = atrament.ink.getVariable(name);
+      } catch (e) {
+        atrament.ink.story().onError(e.toString());
+      }
+      return result;
+    },
+    [ atrament ]
+  );
+
   return {
     atrament,
     canResume: atrament.game.canResume,
@@ -47,7 +71,9 @@ export const useAtrament = () => {
     getAssetPath,
     updateSettings,
     setStateSubkey,
-    evaluateInkFunction
+    evaluateInkFunction,
+    setInkVariable,
+    getInkVariable
   };
 };
 

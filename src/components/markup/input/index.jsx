@@ -7,37 +7,19 @@ import { useAtrament } from 'src/atrament/hooks';
 
 // [input var=variable placeholder="placeholder text" type=number]
 
-function setInkVariable(atrament, name, value) {
-  try {
-    atrament.ink.setVariable(name, value);
-  } catch (e) {
-    atrament.ink.story().onError(e.toString());
-  }
-}
-
-function getInkVariable(atrament, name) {
-  let result;
-  try {
-    result = atrament.ink.getVariable(name);
-  } catch (e) {
-    atrament.ink.story().onError(e.toString());
-  }
-  return result;
-}
-
 const Input = ({inactive, options}) => {
   const [ defaultValue, setDefaultValue ] = useState(null);
-  const { atrament } = useAtrament();
+  const { getInkVariable, setInkVariable } = useAtrament();
   useEffect(
-    () => setDefaultValue(getInkVariable(atrament, options.var)),
-    [atrament, options.var]
+    () => setDefaultValue(getInkVariable(options.var)),
+    [getInkVariable, options.var]
   );
   const onInput = (e) => {
     let targetValue = e.srcElement.value || defaultValue;
     if (options.type === 'number') {
       targetValue = +targetValue;
     }
-    setInkVariable(atrament, options.var, targetValue);
+    setInkVariable(options.var, targetValue);
     setDefaultValue(targetValue);
   };
   const inputType = options.type === 'number' ? 'number' : 'text';
