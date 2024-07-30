@@ -123,6 +123,8 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 | `[spoiler]text[/spoiler]` | Hidden text. Clicking it toggles text visibility. |
 | `[info]text[/info]` | Display text as an information block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`font=system` use system font<br>`side=n` add color to the left infobox side. Possible values: `highlight`, `accent`. |
 | `[banner]text[/banner]` | Display text as an banner block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`style=accent` use accent color<br>`allcaps=true` display text in all capitals |
+| `[font=Courier New]text[/font]` | Applies font to the text. |
+| `[highlight]text[/highlight]`<br>`[highlight color=yellow bgcolor=black]Text[/highlight]` | Highlights text with accent color.<br>Optional parameters `bgcolor` and `color` allow to set both background and foreground color for text. |
 
 Note: it is not possible to wrap multiple paragraphs with these tags. Use `<br>` tag for line breaks if you need multiline text in tags.
 

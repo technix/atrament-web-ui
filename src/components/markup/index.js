@@ -6,6 +6,8 @@ import Input from './input';
 import Spoiler from './spoiler';
 import Info from './info';
 import Banner from './banner';
+import Font from './font';
+import Highlight from './highlight';
 
 export default [
   Button,
@@ -15,5 +17,7 @@ export default [
   Input,
   Spoiler,
   Info,
-  Banner
+  Banner,
+  Font,
+  Highlight
 ];
