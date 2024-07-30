@@ -19,7 +19,7 @@ const StoryView = () => {
   const key = `choices-${atramentState.scenes[lastSceneIndex]?.uuid}`;
 
   return (
-    <ContainerText fontSize={atramentState.settings.fontSize}>
+    <ContainerText>
       <ContainerScenes align={atramentState.metadata.scenes_align}>
         {atramentState.scenes.map((s, i) => 
           <Scene
