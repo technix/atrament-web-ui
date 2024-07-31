@@ -1,6 +1,6 @@
 import { h } from 'preact';
 
-import markup from 'src/atrament/markup';
+import Markup from 'src/components/ui/markup';
 
 const Paragraph = ( {content, isCurrent} ) => {
   if (content.text === "\n") {
@@ -17,7 +17,7 @@ const Paragraph = ( {content, isCurrent} ) => {
     pClass = pClass.join(' ');
   }
 
-  return (<p style={pStyle} class={pClass}>{markup(content.text, !isCurrent)}</p>);
+  return (<p style={pStyle} class={pClass}><Markup content={content.text} isInactive={!isCurrent} /></p>);
 }
 
 export default Paragraph;

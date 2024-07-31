@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import style from './index.module.css';
 
-import markup from 'src/atrament/markup';
+import Markup from 'src/components/ui/markup';
 
 const ChoiceButton = ({ choice, chosen, handleClick }) => {
   const choiceIsMade = chosen !== null; // something is chosen
@@ -25,7 +25,7 @@ const ChoiceButton = ({ choice, chosen, handleClick }) => {
       onClick={onClick}
       disabled={choice.disabled}
     >
-      {markup(choice.choice)}
+      <Markup content={choice.choice} />
     </button>
   );
 };

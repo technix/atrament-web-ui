@@ -4,7 +4,7 @@ import { useState } from 'preact/hooks';
 import style from './index.module.css';
 
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
-import markup from 'src/atrament/markup';
+import Markup from 'src/components/ui/markup';
 
 const Toolbar = () => {
   const translator = useTranslator();
@@ -22,11 +22,10 @@ const Toolbar = () => {
       setError(true);
     }
   }
-  const transformedToolbarContent = markup(toolbarContent);
 
   return (
     <div class={[style.toolbar, 'atrament-toolbar'].join(' ')}>
-      {transformedToolbarContent}
+      <Markup content={toolbarContent} />
     </div>
   )
 };
