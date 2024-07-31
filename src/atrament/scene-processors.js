@@ -3,9 +3,15 @@
 function sceneListImages(scene) {
   scene.images = [];
   scene.content = scene.content.map(item => {
+    item.images = [];
     if (item.tags.IMAGE) {
-      scene.images.push(item.tags.IMAGE);
-      item.image = item.tags.IMAGE;
+      if (Array.isArray(item.tags.IMAGE)) {
+        scene.images = [...scene.images, ...item.tags.IMAGE];
+        item.images = item.tags.IMAGE;
+      } else {
+        scene.images.push(item.tags.IMAGE);
+        item.images = [item.tags.IMAGE];
+      }
     }
     return item;
   });

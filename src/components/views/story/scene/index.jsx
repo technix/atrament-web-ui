@@ -47,7 +47,9 @@ const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
         {
           scene.content.map((item, i) => (
             <Fragment key={`paragraph-${scene.uuid}-${i}`}>
-              {item.image && <ContainerImage src={getAssetPath(item.image)} /> }
+              {item.images.map(
+                (img, i) => <ContainerImage key={`${i}-${img}`} src={getAssetPath(img)} />
+              )}
               <Paragraph isCurrent={isCurrent} content={item} />
             </Fragment>
           ))
