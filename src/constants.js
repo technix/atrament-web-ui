@@ -32,6 +32,3 @@ export const defaultFontSize = 100;
 export const stepFontSize = 10;
 export const minFontSize = defaultFontSize - ( stepFontSize * 3);
 export const maxFontSize = defaultFontSize + ( stepFontSize * 5);
-
-// default checkpoint for "save and quit"
-export const autosaveSlot = '_autosave_';
