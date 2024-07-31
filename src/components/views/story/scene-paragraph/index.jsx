@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import style from './index.module.css';
 
 import Markup from 'src/components/ui/markup';
 
@@ -17,7 +18,11 @@ const Paragraph = ( {content, isCurrent} ) => {
     pClass = pClass.join(' ');
   }
 
-  return (<p style={pStyle} class={pClass}><Markup content={content.text} isInactive={!isCurrent} /></p>);
+  return (
+    <div style={pStyle} class={`${style.paragraph} ${pClass}`}>
+      <Markup content={content.text} isInactive={!isCurrent} />
+    </div>
+  );
 }
 
 export default Paragraph;
