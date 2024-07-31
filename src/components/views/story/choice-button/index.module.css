@@ -50,6 +50,11 @@
   animation-fill-mode: forwards;
 }
 
+.choice_inactive:hover {
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+}
+
 .choice_button:disabled {
   background-color: var(--shade-color);
   color: var(--fg-color);
