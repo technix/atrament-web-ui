@@ -4,7 +4,7 @@ import { Router } from 'preact-router';
 import { createMemoryHistory } from 'history';
 import { TranslationsProvider } from '@eo-locale/preact';
 
-import AtramentContext from 'src/atrament/context';
+import { AtramentContext } from 'src/context';
 import atramentInit from 'src/atrament/init';
 
 import ApplicationWrapper from 'src/components/ui/application-wrapper';

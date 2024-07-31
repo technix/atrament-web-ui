@@ -1,6 +1,6 @@
 import { useContext, useCallback } from 'preact/hooks';
 import { useStore } from '@nanostores/preact';
-import AtramentContext from 'src/atrament/context';
+import { AtramentContext } from 'src/context';
 
 export const useAtrament = () => {
   const atrament = useContext(AtramentContext);

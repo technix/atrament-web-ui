@@ -20,7 +20,7 @@ const Paragraph = ( {content, isCurrent} ) => {
 
   return (
     <div style={pStyle} class={`${style.paragraph} ${pClass}`}>
-      <Markup content={content.text} isInactive={!isCurrent} />
+      <Markup content={content.text} isActive={isCurrent} />
     </div>
   );
 }

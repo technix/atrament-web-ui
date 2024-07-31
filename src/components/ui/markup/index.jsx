@@ -1,13 +1,14 @@
 import { h } from 'preact';
 import { useMemo } from 'preact/hooks';
 import markup from 'src/atrament/markup';
+import { ActiveContentContext } from 'src/context';
 
-const Markup = ({ content, isInactive=false }) => {
-  const transformedContent = useMemo(() => markup(content, isInactive), [ content, isInactive ]);
+const Markup = ({ content, isActive=true }) => {
+  const transformedContent = useMemo(() => markup(content), [ content ]);
   return(
-    <>
+    <ActiveContentContext.Provider value={isActive}>
       {transformedContent}
-    </>
+    </ActiveContentContext.Provider>
   );
 };
 

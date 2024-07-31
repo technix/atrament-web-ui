@@ -3,7 +3,7 @@ import HTMLFragment from 'src/components/markup/html-fragment';
 
 const containsHTML = (str) => /<\/?[a-z][\s\S]*>/i.test(str);
 
-function replaceWithComponent(text, regexp, replacer, isInactive) {
+function replaceWithComponent(text, regexp, replacer) {
   if (typeof text !== 'string') {
     return text;
   }
@@ -14,21 +14,20 @@ function replaceWithComponent(text, regexp, replacer, isInactive) {
   const splitted = text.split(regexp);
   const result = splitted.flatMap((fragment, index) => {
     return (index < mentions.length
-      ? [fragment, replacer(mentions[index], (item) => markup(item, isInactive), isInactive)]
+      ? [fragment, replacer(mentions[index], markup)]
       : [fragment]);
   });
   return result;
 }
 
-export default function markup(text, isInactive) {
+export default function markup(text) {
   let processedText = [text];
   MarkupComponents.forEach(component => {
     processedText = processedText.flatMap(
       (item) => replaceWithComponent(
         item,
         component.regexp,
-        component.replacer,
-        isInactive
+        component.replacer
       )
     );
   });
