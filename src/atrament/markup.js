@@ -1,6 +1,5 @@
-import { h } from 'preact';
-
 import MarkupComponents from 'src/components/markup';
+import HTMLFragment from 'src/components/markup/html-fragment';
 
 const containsHTML = (str) => /<\/?[a-z][\s\S]*>/i.test(str);
 
@@ -35,7 +34,7 @@ export default function markup(text, isInactive) {
   });
   return processedText.filter(item => item).map((item, index) => 
     typeof item === 'string' && containsHTML(item)
-      ? <span key={index} dangerouslySetInnerHTML={{__html: item}} />
+      ? HTMLFragment({index, item})
       : item
   );
 }
