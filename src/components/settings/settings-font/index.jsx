@@ -6,7 +6,7 @@ import { fonts } from 'src/fonts';
 
 const SettingsFont = () => {
   const { updateSettings } = useAtrament();
-  const atramentState = useAtramentState();
+  const atramentState = useAtramentState(['settings']);
   const handleFont = (e) => updateSettings('font', e.target.value);
   const font = atramentState.settings.font;
   return (

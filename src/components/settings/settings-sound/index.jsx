@@ -9,7 +9,7 @@ import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 const SettingsSound = () => {
   const { updateSettings } = useAtrament();
-  const atramentState = useAtramentState();
+  const atramentState = useAtramentState(['settings']);
   const handleMute = (e) => updateSettings('mute', !e.target.checked);
   const handleVolume = (e) => updateSettings('volume', e.target.value);
   const { mute, volume } = atramentState.settings;

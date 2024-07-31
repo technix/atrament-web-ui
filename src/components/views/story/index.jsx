@@ -11,7 +11,7 @@ import Scene from './scene';
 import Choices from './choices';
 
 const StoryView = () => {
-  const atramentState = useAtramentState();
+  const atramentState = useAtramentState(['scenes', 'metadata']);
   const [ isReady, setReady ] = useState(false);
   
   const lastSceneIndex = atramentState.scenes.length - 1;

@@ -9,7 +9,7 @@ import Markup from 'src/components/ui/markup';
 const Toolbar = () => {
   const translator = useTranslator();
   const { evaluateInkFunction } = useAtrament();
-  const atramentState = useAtramentState();
+  const atramentState = useAtramentState(['metadata']);
   const [ hasError, setError ] = useState(false);
 
   const { title, toolbar } = atramentState.metadata;

@@ -14,7 +14,7 @@ for (let s=minFontSize; s <= maxFontSize; s+= stepFontSize) {
 
 const SettingsText = () => {
   const { updateSettings } = useAtrament();
-  const atramentState = useAtramentState();
+  const atramentState = useAtramentState(['settings']);
   const { font, fontSize } = atramentState.settings;
 
   const handleFontSize = (e) => updateSettings('fontSize', e.target.value);

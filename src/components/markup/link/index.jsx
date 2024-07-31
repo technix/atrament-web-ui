@@ -6,7 +6,7 @@ import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 const InlineLink = ({ children, choice }) => {
   const { atrament, makeChoice, continueStory } = useAtrament();
-  const atramentState = useAtramentState();
+  const atramentState = useAtramentState(['scenes']);
 
   const clickHandler = useCallback(() => {
     const lastSceneIndex = atramentState.scenes.length - 1;
@@ -18,7 +18,7 @@ const InlineLink = ({ children, choice }) => {
     }
     makeChoice(chosen);
     continueStory();
-  }, [ atrament, continueStory, makeChoice, choice, atramentState ]);
+  }, [ atrament, continueStory, makeChoice, choice, atramentState.scenes ]);
 
   return (
     <a

@@ -6,7 +6,7 @@ import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 const SettingsAnimation = () => {
   const { updateSettings } = useAtrament();
-  const atramentState = useAtramentState();
+  const atramentState = useAtramentState(['settings']);
   const handleAnimation = (e) => updateSettings('animation', e.target.checked);
 
   return (

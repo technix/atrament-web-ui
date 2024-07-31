@@ -6,7 +6,7 @@ import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 const SettingsFullscreen = () => {
   const { updateSettings } = useAtrament();
-  const atramentState = useAtramentState();
+  const atramentState = useAtramentState(['settings']);
   const handleFullscreen = (e) => updateSettings('fullscreen', e.target.checked);
 
   return (

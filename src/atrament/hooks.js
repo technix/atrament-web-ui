@@ -77,14 +77,14 @@ export const useAtrament = () => {
   };
 };
 
-export const useAtramentState = () => {
+export const useAtramentState = (keys = undefined) => {
   const atrament = useContext(AtramentContext);
-  return useStore(atrament.store);
+  return useStore(atrament.store, {keys});
 };
 
 export const useAtramentOverlay = () => {
   const { evaluateInkFunction, setStateSubkey } = useAtrament();
-  const atramentState = useAtramentState();
+  const atramentState = useAtramentState(['OVERLAY']);
 
   const setOverlayContent = useCallback((overlayName, content) => {
     setStateSubkey('OVERLAY', 'activeOverlay', overlayName);

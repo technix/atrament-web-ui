@@ -17,7 +17,7 @@ import { setPageBackground } from 'src/utils/page-background';
 const HomeRoute = () => {
   const translator = useTranslator();
   const { setStateSubkey, canResume, gameStart, gameResume, getAssetPath } = useAtrament();
-  const atramentState = useAtramentState();
+  const atramentState = useAtramentState(['metadata']);
   const { title, author, cover, background } = atramentState.metadata;
 
   const resetBackground = useCallback(() => {

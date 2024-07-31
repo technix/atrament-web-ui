@@ -14,7 +14,7 @@ import { setPageBackground } from 'src/utils/page-background';
 
 const GameRoute = () => {
   const { continueStory, getAssetPath } = useAtrament();
-  const atramentState = useAtramentState();
+  const atramentState = useAtramentState(['game']);
 
   useEffect(() => {
     continueStory();
