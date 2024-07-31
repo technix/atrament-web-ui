@@ -1,18 +1,18 @@
-# Atrament Preact UI
+# Atrament Web UI
 
-`atrament-preact-ui` is a web application to run Ink games.
+`atrament-web-ui` is a web application to run Ink games.
 
 It uses [inkjs](https://github.com/y-lohse/inkjs) to interpret Ink scripts, [Atrament](https://github.com/technix/atrament-core) as a game engine, and [Preact](https://preactjs.com/) as a Web UI framework.
 
-[Live Demo](https://technix.github.io/atrament-preact-ui/)
+[Live Demo](https://technix.github.io/atrament-web-ui/)
 
 ## Getting started
 
 ### Get source code and install dependencies
 
 ```
-git clone https://github.com/technix/atrament-preact-ui.git --depth 1
-cd atrament-preact-ui
+git clone https://github.com/technix/atrament-web-ui.git --depth 1
+cd atrament-web-ui
 npm install
 npm run install-inklecate
 ```
@@ -31,7 +31,7 @@ npm run build
 
 The standalone web application files will be in `build` folder. Use `npm run preview` command to test it in browser at http://localhost:4173/.
 
-## Create your own game with Atrament Preact UI
+## Create your own game with Atrament Web UI
 
 1. Remove all files from `root/game` and put your game files there (ink script, images, music etc).
 2. Edit `atrament.config.json`, change the `source` parameter in `game` section to name of your main Ink file. File path for this file is relative to `root/game` folder.
@@ -40,11 +40,11 @@ The standalone web application files will be in `build` folder. Use `npm run pre
     * "`short_name`": your application short name, or codename
     * "`description`": your application description
     * "`theme`": default app theme, may be "`light`", "`sepia`", or "`dark`"
-    * "`font`": default game font, may be "`System`", "`Fira Sans`", "`Lora`", "`Merriweather`", or "`OpenDyslexic`"
+    * "`font`": default game font, may be "`System`", "`Sans Serif`", "`Serif`", "`Monospaced`", "`Fira Sans`", "`Lora`", "`Merriweather`", or "`OpenDyslexic`"
 4. (optionally) replace `root/logo.png` with your project logo. This image is used to generate favicon and application icon.
 5. That's it! You can make a test run with `npm start`, or build standalone web app with `npm run build`.
 
-## Ink tags handled by Atrament Preact UI
+## Ink tags handled by Atrament Web UI
 
 ### Global tags
 
@@ -53,7 +53,7 @@ The standalone web application files will be in `build` folder. Use `npm run pre
 | `# title: A Story Written In Ink` | Game title |
 | `# author: John Doe` | Author |
 | `# theme: light` | Game color theme: `light`, `sepia`, or `dark` |
-| `# font: System` | Game font: `System`, `Fira Sans`, `Lora`, `Merriweather`, or `OpenDyslexic` |
+| `# font: System` | Game font: `System`, `Sans Serif`, `Serif`, `Monospaced`, `Fira Sans`, `Lora`, `Merriweather`, or `OpenDyslexic` |
 | `# observe: varName` | Register variable observer for `varName` Ink variable. Variable value is available in `vars` section of Atrament state. |
 | `# autosave: false` | Disables autosaves. |
 | `# single_scene` | Store only last scene in Atrament state. |
@@ -71,12 +71,12 @@ The standalone web application files will be in `build` folder. Use `npm run pre
 | `# PAGE_BACKGROUND: some/picture.jpg` | Set background image for the game backdrop. Use `# PAGE_BACKGROUND: false` to unset it. |
 | `# CLEAR` | Clear scenes list before saving current scene to Atrament state. |
 | `# AUDIO: sound.mp3` | Play sound (once). |
-| `# AUDIOLOOP: music.mp3` | Play music (looped). |
+| `# AUDIOLOOP: music.mp3` | Play background music (looped). There can be only one background music track. |
 | `# AUDIOLOOP: false` | Stop playing music. |
 | `# PLAY_SOUND: sound.mp3` | Play sound (once). |
 | `# STOP_SOUND: sound.mp3` | Stop playing specific sound. |
 | `# STOP_SOUND` | Stop playing all sounds. |
-| `# PLAY_MUSIC: music.mp3` | Play background music (looped). |
+| `# PLAY_MUSIC: music.mp3` | Play background music (looped). There can be multiple background music tracks, played simultaneously. |
 | `# STOP_MUSIC: music.mp3` | Stop playing specific background music. |
 | `# STOP_MUSIC` | Stop playing all background music. |
 | `# CHECKPOINT` | Save game to 'default' checkpoint. |
@@ -130,7 +130,7 @@ Note: it is not possible to wrap multiple paragraphs with these tags. Use `<br>`
 
 ## Overlay
 
-Atrament UI can display custom data (inventory, character stats etc.) as an overlay. 
+Atrament Web UI can display custom data (inventory, character stats etc.) as an overlay. 
 
 To display an overlay, you need to define a button in the toolbar or in the game content with the `[button]` tag. If the function returns text content, it will be displayed as an overlay. Overlay content can have buttons too.
 
@@ -165,7 +165,7 @@ Example of toolbar and overlays:
 | Esc | Show/hide settings dialog. |
 
 ## Single file build
-Default Atrament UI build is designed as web application for web server deployment. However, you may want to build your game as a standalone web page, which can be opened locally too - similar to Inky or Twine web export.
+Atrament Web UI build is designed as web application for web server deployment. However, you may want to build your game as a standalone web page, which can be opened locally too - similar to Inky or Twine web export.
 
 All you need to do is to build your game with `npm run singlefile` command. The resulting web page will be in the `build_singlefile` folder.
 
