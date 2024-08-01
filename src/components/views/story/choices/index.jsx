@@ -4,6 +4,7 @@ import { route } from 'preact-router';
 import { useAtrament } from 'src/atrament/hooks';
 import LinkHome from 'src/components/ui/link-home';
 import ChoiceButtonGroup from '../choice-button-group';
+import ClickToContinue from '../click-to-continue';
 
 const EndGameLink = () => {
   const { atrament } = useAtrament();
@@ -14,12 +15,13 @@ const EndGameLink = () => {
   return (<LinkHome onClick={endGame}><Text id={'game.end'} /></LinkHome>);
 };
 
-
 const Choices = ({ key, currentScene, setReady, isHypertextMode }) => {
   const numberOfChoices = (currentScene && currentScene.choices) ? currentScene.choices.length : -1;
-  
+  console.log(currentScene?.choices[0]);
   if (numberOfChoices === 0) {
-    return (<EndGameLink />)
+    return (<EndGameLink />);
+  } else if  (numberOfChoices === 1 && currentScene.choices[0].choice === '') {
+    return (<ClickToContinue setReady={setReady} />);
   } else if (numberOfChoices >= 0 && !isHypertextMode) {
     return (
       <ChoiceButtonGroup

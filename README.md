@@ -95,6 +95,16 @@ Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MU
 | `# UNCLICKABLE` | The choice can't be selected. Alternative names: `#DISABLED`, `#INACTIVE` |
 | `# CLASS: classname` | Apply CSS class to the choice `<button>` element. |
 
+## "Click to continue"
+
+When there is a single empty choice (see example below), it is treated as "click to continue". Choice list is not shown, and player can continue story by clicking the screen or pressing "Space" or "Enter" key. After 3 seconds of inactivity, hint is displayed in the bottom of the screen.
+
+```
+This story will proceed when user clicks screen.
+
++ [] -> next_knot
+```
+
 ## Hypertext mode
 
 When global tag `hypertext` is set, Atrament UI switches to hypertext mode. In this mode choice options are not displayed. However, author can use `[link=target choice text]link text[/link]` to link specific phrases to scene choices.
@@ -162,6 +172,7 @@ Example of toolbar and overlays:
 | Key | Description                |
 | :-------- | :------------------------- |
 | 1,2,3... | Select corresponding choice option. |
+| Space, Enter | Continue story. |
 | Esc | Show/hide settings dialog. |
 
 ## Single file build

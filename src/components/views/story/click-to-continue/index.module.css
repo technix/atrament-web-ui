@@ -1,0 +1,57 @@
+@keyframes circle {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+.container {
+    position: relative;
+    height: 5em;
+    max-height: 5em;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.circle {
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 2em;
+    height: 2em;
+    background-color: var(--fg-color);
+    border-radius: 50%;
+    opacity: 0.3;
+}
+  
+.circle:before,
+.circle:after {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    border: solid 3px var(--fg-color);
+    border-radius: 50%;
+}
+  
+.circle:before {
+    animation: ripple 4s linear infinite;
+}
+  
+.circle:after {
+    animation: ripple 4s 1s linear infinite;
+}
+  
+@keyframes ripple {
+    to {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
