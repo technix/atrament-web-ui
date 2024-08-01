@@ -18,7 +18,19 @@
       "themes.light": "light",
       "themes.sepia": "sepia",
       "themes.dark": "dark",
-      "font.sampleText": "The quick brown fox jumps over the lazy dog. Jackdaws love my big sphinx of quartz."
+      "font.sampleText": "The quick brown fox jumps over the lazy dog. Jackdaws love my big sphinx of quartz.",
+      "debug.info": "Info",
+      "debug.info.ink-file": "Ink file",
+      "debug.info.story-seed": "Story seed",
+      "debug.info.current-turn-index": "Current turn index",
+      "debug.global-tags": "Global tags",
+      "debug.variables": "Variables",
+      "debug.variables.name": "Name",
+      "debug.variables.value": "Value",
+      "debug.variables.cancel": "Cancel",
+      "debug.variables.save": "Save",
+      "debug.visits": "Visits",
+      "debug.go-to-path": "Go to path"
     }
   },
   {
@@ -40,7 +52,19 @@
       "themes.light": "Світла",
       "themes.sepia": "Сепія",
       "themes.dark": "Темна",
-      "font.sampleText": "Хвацький юшковар Філіп щодня на ґанку готує сім'ї вечерю з жаб."
+      "font.sampleText": "Хвацький юшковар Філіп щодня на ґанку готує сім'ї вечерю з жаб.",
+      "debug.info": "Інформація",
+      "debug.info.ink-file": "Ink-скрипт",
+      "debug.info.story-seed": "RNG-сід історії",
+      "debug.info.current-turn-index": "Індекс поточного ходу",
+      "debug.global-tags": "Глобальні теги",
+      "debug.variables": "Змінні",
+      "debug.variables.name": "Ім'я",
+      "debug.variables.value": "Значення",
+      "debug.variables.cancel": "Скасувати",
+      "debug.variables.save": "Зберегти",
+      "debug.visits": "Візити",
+      "debug.go-to-path": "Перейти до"
     }
   }
 ]

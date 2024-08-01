@@ -7,6 +7,7 @@ import Container from 'src/components/ui/container';
 import Settings from 'src/components/settings';
 import ErrorModal from 'src/components/ui/error-modal'
 
+import DebuggerView from 'src/components/views/debugger';
 import Toolbar from 'src/components/views/toolbar';
 import StoryView from 'src/components/views/story';
 import OverlayView from 'src/components/views/overlay';
@@ -36,6 +37,7 @@ const GameRoute = () => {
 
   return (
     <Container style={containerStyle}>
+      {import.meta.env.MODE === 'development' && <DebuggerView />}
       <Settings showSaveAndQuit />
       <ErrorModal />
       <Toolbar />

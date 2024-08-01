@@ -180,6 +180,17 @@ Atrament Web UI build is designed as web application for web server deployment. 
 
 All you need to do is to build your game with `npm run singlefile` command. The resulting web page will be in the `build_singlefile` folder.
 
+## Debugger
+When Atrament UI is run in development mode (i.e. via `npm start`), debugger can be invoked with double pressing of `~` button.
+
+Debugger provides the following functionality:
+
+* General information on ink script
+* List of global tags
+* List of ink variables (view and edit)
+* List of visit counts
+* Navigation to knot/stich path
+
 ## Atrament repositories
 
 - [atrament-web](https://github.com/technix/atrament-web)

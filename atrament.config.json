@@ -4,7 +4,7 @@
   "description": "Atrament Web UI - shell for Ink games",
   "theme": "light",
   "font": "System",
-  "language": "en",
+  "language": "ua",
   "game": {
     "path": "game",
     "source": "intercept.ink"

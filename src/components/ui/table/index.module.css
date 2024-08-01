@@ -1,0 +1,21 @@
+.table {
+    border-collapse: collapse;
+    color: var(--fg-color);
+}
+
+.table th,
+.table td {
+    padding: 0.5em 0.5em;
+}
+
+.table thead tr {
+    border-bottom: 2px solid var(--shade-color);
+}
+
+.table tbody tr {
+    border-bottom: 1px solid var(--shade-color);
+}
+
+.table tbody tr:last-of-type {
+    border-bottom: none;
+}

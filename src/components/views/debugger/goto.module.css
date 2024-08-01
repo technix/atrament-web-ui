@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.container div {
+    padding: 0.2rem;
+}
+
+.input_div {
+    flex-grow: 1;
+}
+
+.button {
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    border: 2px solid var(--fg-color);
+    border-radius: var(--border-radius-inline);
+}
+  
+.button:hover {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+}
+
+.input {
+    width: 100%;
+    padding: 0.25rem;
+    border: 2px solid var(--fg-color);
+    border-radius: var(--border-radius-inline);
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+}
+
+.errormsg {
+    color: var(--accent-fg-color);
+}

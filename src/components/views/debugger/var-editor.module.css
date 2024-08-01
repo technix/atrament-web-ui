@@ -1,0 +1,50 @@
+.button {
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.25rem;
+    border: 1px solid var(--fg-color);
+    border-radius: var(--border-radius-inline);
+}
+  
+.button:hover {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+}
+
+.button_close {
+    background-color: var(--bg-color);
+    color: var(--accent-fg-color);
+    text-decoration: none;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0.25rem;
+    border: 1px solid var(--fg-color);
+    border-radius: var(--border-radius-inline);
+}
+  
+.button_close:hover {
+    background-color: var(--accent-fg-color);
+    color: var(--accent-bg-color);
+}
+
+.input {
+    width: 10rem;
+    padding: 0.25rem;
+    border: 1px solid var(--fg-color);
+    border-radius: var(--border-radius-inline);
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+}
+
+.checkbox {
+    width: 2rem;
+}
+
+.toggle {
+    display: inline-block;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
