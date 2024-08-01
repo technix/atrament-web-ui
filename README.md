@@ -102,7 +102,7 @@ When there is a single empty choice (see example below), it is treated as "click
 ```
 This story will proceed when user clicks screen.
 
-+ [] -> next_knot
++ [ ] -> next_knot
 ```
 
 ## Hypertext mode

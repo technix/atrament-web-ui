@@ -28,7 +28,7 @@ export default function getPWAConfig(atramentCfg) {
       ]
     },
     pwaAssets: {
-      config: 'pwa-assets.config.js'
+      config: 'vite/pwa-assets.config.js'
     }
   };
 }
