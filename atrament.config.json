@@ -1,7 +1,7 @@
 {
-  "name": "Atrament Preact UI demo",
-  "short_name": "atrament-preact-ui",
-  "description": "Atrament Preact UI - shell for Ink games",
+  "name": "Atrament Web UI demo",
+  "short_name": "atrament-web-ui",
+  "description": "Atrament Web UI - shell for Ink games",
   "theme": "light",
   "font": "System",
   "language": "en",
