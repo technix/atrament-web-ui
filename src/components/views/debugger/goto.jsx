@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import style from './goto.module.css';
+import style from './index.module.css';
 import { Text } from '@eo-locale/preact';
 import { useState } from 'preact/hooks';
 import { useAtrament } from 'src/atrament/hooks';

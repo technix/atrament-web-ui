@@ -9,6 +9,7 @@ import DebugGoto from './goto';
 import DebugGlobaltags from './globaltags';
 import DebugVariables from './variables';
 import DebugVisits from './visits';
+import DebugFunctions from './functions';
 
 const DebuggerView = () => {
   const [ isOpen, openDebugger ] = useState(false);
@@ -17,7 +18,7 @@ const DebuggerView = () => {
   const toggleDebugger = useCallback(() => openDebugger(!isOpen), [ isOpen ]);
 
   const debugHandler = useCallback((e) => {
-    if (e.keyCode === 192) {
+    if (e.code === 'Backquote') {
       if (keyWait) {
         toggleDebugger();
         setKeyWait(false);
@@ -46,6 +47,7 @@ const DebuggerView = () => {
       <DebugGlobaltags />
       <DebugVariables />
       <DebugVisits />
+      <DebugFunctions />
       <DebugGoto closeFn={toggleDebugger} />
     </div>
   );

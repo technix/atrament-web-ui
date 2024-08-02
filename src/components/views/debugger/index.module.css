@@ -11,7 +11,56 @@
     z-index: 1500;
     gap: 1em;
     overflow: auto;
-    font-size: 0.8em;
 }
 
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
 
+.container div {
+    vertical-align: middle;
+    padding: 0.2rem;
+}
+
+.container pre {
+    margin-bottom: 0;
+}
+
+.input_div {
+    flex-grow: 1;
+}
+
+.button {
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+    text-decoration: none;
+    cursor: pointer;
+    padding: 0.25rem;
+    border: 2px solid var(--fg-color);
+    border-radius: var(--border-radius-inline);
+}
+  
+.button:hover {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+}
+
+.input {
+    width: 100%;
+    padding: 0.25rem;
+    border: 2px solid var(--fg-color);
+    border-radius: var(--border-radius-inline);
+    background-color: var(--bg-color);
+    color: var(--fg-color);
+}
+
+.errormsg {
+    color: var(--accent-fg-color);
+}
+
+.outputmsg {
+    font-family: monospace;
+}

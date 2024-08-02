@@ -1,6 +1,7 @@
 .table {
     border-collapse: collapse;
     color: var(--fg-color);
+    width: 100%;
 }
 
 .table th,

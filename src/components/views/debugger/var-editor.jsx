@@ -60,7 +60,7 @@ const DebugVariableEditor = ({name, value}) => {
         <button class={style.button} onClick={saveValue} title={translator.translate('debug.variables.save')}>&gt;</button>
       </>
       :
-      <a href="#" onClick={handleEdit}>{JSON.stringify(newValue)}</a>
+      <button class={style.button} onClick={handleEdit}>{JSON.stringify(newValue)}</button>
   );
 }
 

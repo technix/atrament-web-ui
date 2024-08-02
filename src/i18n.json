@@ -30,7 +30,14 @@
       "debug.variables.cancel": "Cancel",
       "debug.variables.save": "Save",
       "debug.visits": "Visits",
-      "debug.go-to-path": "Go to path"
+      "debug.go-to-path": "Go to path",
+      "debug.functions": "Functions",
+      "debug.functions.arguments": "Arguments",
+      "debug.functions.arguments_placeholder": "JSON-formatted agruments, i.e. [\"arg1\", 5]",
+      "debug.functions.run-function": "Run function",
+      "debug.functions.returned-value": "Returned value",
+      "debug.functions.output": "Output"
+
     }
   },
   {
@@ -64,7 +71,13 @@
       "debug.variables.cancel": "Скасувати",
       "debug.variables.save": "Зберегти",
       "debug.visits": "Візити",
-      "debug.go-to-path": "Перейти до"
+      "debug.go-to-path": "Перейти до",
+      "debug.functions": "Функції",
+      "debug.functions.arguments": "Аргументи",
+      "debug.functions.arguments_placeholder": "Аргументи у JSON-форматі, наприклад: [\"arg1\", 5]",
+      "debug.functions.run-function": "Виконати функцію",
+      "debug.functions.returned-value": "Повернене значення",
+      "debug.functions.output": "Вивід"
     }
   }
 ]
