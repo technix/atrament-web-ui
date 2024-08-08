@@ -4,7 +4,7 @@ import { useEffect } from 'preact/hooks';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import Container from 'src/components/ui/container';
-import Settings from 'src/components/settings';
+import Menu from 'src/components/menu';
 import ErrorModal from 'src/components/ui/error-modal'
 
 import DebuggerView from 'src/components/views/debugger';
@@ -38,7 +38,7 @@ const GameRoute = () => {
   return (
     <Container style={containerStyle}>
       {import.meta.env.MODE === 'development' && <DebuggerView />}
-      <Settings showSaveAndQuit />
+      <Menu showSaveAndQuit />
       <ErrorModal />
       <Toolbar />
       <OverlayView />

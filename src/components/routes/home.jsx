@@ -11,7 +11,7 @@ import ContainerImage from '../ui/container-image';
 import Header from '../ui/header';
 import LinkMenu from '../ui/link-menu';
 
-import Settings from 'src/components/settings';
+import Menu from 'src/components/menu';
 import { setPageBackground } from 'src/utils/page-background';
 
 const HomeRoute = () => {
@@ -55,7 +55,7 @@ const HomeRoute = () => {
   return (
     <Container>
       <ContainerFlex>
-        <Settings />
+        <Menu />
         <Header>
           {cover ? <ContainerImage src={getAssetPath(cover)} /> : ''}
           <h1>{title ? title : translator.translate('default.title')}</h1>

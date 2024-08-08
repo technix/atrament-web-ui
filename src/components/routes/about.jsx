@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { route } from 'preact-router';
 import { Text } from '@eo-locale/preact';
 
-import Settings from 'src/components/settings';
+import Menu from 'src/components/menu';
 
 import Block from '../ui/block';
 import Container from '../ui/container';
@@ -15,7 +15,7 @@ const AboutRoute = () => {
 
   return (
     <Container>
-      <Settings />
+      <Menu />
       <ContainerText>
         <ContainerFlex>
           <Block>
