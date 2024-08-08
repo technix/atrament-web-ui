@@ -6,7 +6,7 @@
   "font": "System",
   "language": "en",
   "game": {
-    "path": "game",
-    "source": "intercept.ink"
+    "path": "the-coiled-crown",
+    "source": "game/the-coiled/crown.ink"
   }
 }
