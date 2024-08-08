@@ -8,7 +8,7 @@ import LinkHome from 'src/components/ui/link-home';
 const SaveAndQuit = () => {
   const { atrament } = useAtrament();
   const handleClick = async () => {
-    await atrament.game.save(atrament.game.getAutosaveSlot());
+    await atrament.game.saveAutosave();
     route('/');
   }
   return (<LinkHome onClick={handleClick}><Text id={'game.save-and-quit'} /></LinkHome>);
