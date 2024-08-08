@@ -55,6 +55,7 @@ The standalone web application files will be in `build` folder. Use `npm run pre
 | `# theme: light` | Game color theme: `light`, `sepia`, or `dark` |
 | `# font: System` | Game font: `System`, `Sans Serif`, `Serif`, `Monospaced`, `Fira Sans`, `Lora`, `Merriweather`, or `OpenDyslexic` |
 | `# observe: varName` | Register variable observer for `varName` Ink variable. Variable value is available in `vars` section of Atrament state. |
+| `# persist: varName` | Save `varName` Ink variable value to persistent storage, restore before game starts. |
 | `# autosave: false` | Disables autosaves. |
 | `# single_scene` | Store only last scene in Atrament state. |
 | `# scenes_align: center` | Scene alignment on the screen. Can be set to `top`, `center`, or `bottom`. |
