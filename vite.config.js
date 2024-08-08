@@ -45,7 +45,8 @@ export default defineConfig(({ mode }) => {
     resolve: {
       alias: [
         { find: 'src', replacement: "/src" },
-        { find: 'inkjs', replacement: '/node_modules/inkjs/dist/ink.mjs' }
+        { find: 'inkjs', replacement: '/node_modules/inkjs/dist/ink.mjs' },
+        { find: '@atrament/core', replacement: './atrament-core/index.js' }
       ],
     },
     server: {
