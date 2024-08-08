@@ -5,8 +5,10 @@ import { useCallback, useEffect, useState } from 'preact/hooks';
 
 import Backdrop from 'src/components/ui/backdrop';
 import Modal from 'src/components/ui/modal';
+import { Tab, Tabs } from 'src/components/ui/tabs';
 import CloseButton from 'src/components/ui/close-button';
 import { IconMenu } from 'src/components/ui/icons';
+
 
 import Settings from 'src/components/views/settings';
 
@@ -33,7 +35,17 @@ const Menu = ({ showSaveAndQuit = false }) => {
         <Backdrop onClick={toggleMenu} />
         <Modal>
           <CloseButton onClick={toggleMenu} />
-          <Settings showSaveAndQuit={showSaveAndQuit} />
+          <Tabs>
+            <Tab title="Save">
+              <div>Save Game</div>
+            </Tab>
+            <Tab title="Load">
+              <div>Load Game</div>
+            </Tab>
+            <Tab title="Settings">
+              <Settings showSaveAndQuit={showSaveAndQuit} />
+            </Tab>
+          </Tabs>
         </Modal>
       </div>
     );

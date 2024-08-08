@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import style from './index.module.css';
 import { useTranslator } from '@eo-locale/preact';
 
 import Collapse from '../../ui/collapse';
@@ -16,7 +17,7 @@ import SaveAndQuit from './button-save-and-quit';
 const Settings = ({ showSaveAndQuit = false }) => {
   const translator = useTranslator();
   return (
-    <>
+    <div class={style.settings_container}>
       <SettingsFullscreen />
       <SettingsAnimation />
       <SettingsSound />
@@ -27,7 +28,7 @@ const Settings = ({ showSaveAndQuit = false }) => {
       </Collapse>
       { showSaveAndQuit ? <SaveAndQuit /> : <></> }
       <SettingsVersion />
-    </>
+    </div>
   );
 };
 
