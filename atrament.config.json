@@ -7,6 +7,6 @@
   "language": "en",
   "game": {
     "path": "the-coiled-crown",
-    "source": "game/the-coiled/crown.ink"
+    "source": "the-coiled-crown.ink"
   }
 }
