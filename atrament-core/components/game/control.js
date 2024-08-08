@@ -12,6 +12,15 @@ import { playMusic, stopMusic } from '../sound';
 let expectedInkScriptUUID = null;
 let currentInkScriptUUID = null;
 
+
+function $clearGameState() {
+  const { state } = interfaces();
+  // reset state
+  state.setKey('scenes', []);
+  state.setKey('vars', {});
+}
+
+
 function $iterateObservers(observerHandler) {
   const { state } = interfaces();
   const observers = state.get().metadata.observe;
@@ -20,35 +29,32 @@ function $iterateObservers(observerHandler) {
   }
 }
 
+
+const persistentVarState = {};
+
 async function $handlePersistent() {
   const { state, persistent } = interfaces();
-  const persistentVars = state.get().metadata.persist;
+  const { game, metadata } = state.get();
+  const persistentVars = metadata.persist;
   if (persistentVars) {
     const storeID = persistentPrefix('persist');
-    let persistentVarState = {};
     // load persistent data, if possible
     if (await persistent.exists(storeID)) {
-      persistentVarState = await persistent.get(storeID);
-      Object.entries(persistentVarState).forEach(
+      persistentVarState[game.$gameUUID] = await persistent.get(storeID);
+      Object.entries(persistentVarState[game.$gameUUID]).forEach(
         ([k, v]) => ink.setVariable(k, v)
       );
+    } else if (!persistentVarState[game.$gameUUID]) {
+      persistentVarState[game.$gameUUID] = {};
     }
     // register observers for persistent vars
     toArray(persistentVars).forEach((variable) => {
       ink.observeVariable(variable, async (name, value) => {
-        persistentVarState[name] = value;
-        await persistent.set(storeID, persistentVarState);
+        persistentVarState[game.$gameUUID][name] = value;
+        await persistent.set(storeID, persistentVarState[game.$gameUUID]);
       });
     });
   }
-}
-
-
-function $clearGameState() {
-  const { state } = interfaces();
-  // reset state
-  state.setKey('scenes', []);
-  state.setKey('vars', {});
 }
 
 // ===========================================================
