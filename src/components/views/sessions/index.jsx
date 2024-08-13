@@ -16,7 +16,8 @@ const SessionsView = ({ newGame, resumeGame, canResume }) => {
   const initSessions = useCallback(async () => {
     const existingSessions = await atrament.game.getSessions();
     let firstEmptySlot = true;
-    setSessions([...Array(+metadata.sessions).keys()].map((id) => {
+    setSessions([...Array(+metadata.sessions).keys()].map((s) => {
+      const id = s + 1;
       const name = `session${id}`;
       const hasSaves = !!existingSessions[`session${id}`];
       const canStart = hasSaves || firstEmptySlot;
@@ -68,7 +69,7 @@ const SessionsView = ({ newGame, resumeGame, canResume }) => {
           }}
         >
           {s.hasSaves
-            ? <Text id='main.continue' />
+            ? <Text id='main.continue-session' session={s.id} />
             : (s.canStart
               ? <Text id='main.newgame' />
               : <Text id='main.emptyslot' />
