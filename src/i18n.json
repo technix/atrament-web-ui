@@ -2,11 +2,15 @@
   {
     "language": "en",
     "messages": {
+      "yes": "Yes",
+      "no": "No",
       "default.title": "Atrament UI",
       "default.author": "Test Application",
       "main.menu": "Main menu",
       "main.newgame": "New game",
       "main.continue": "Continue",
+      "main.emptyslot": "Empty slot",
+      "main.delete-session": "Delete session?",
       "main.about": "About",
       "game.end": "The end",
       "game.save-and-quit": "Save game and quit",
@@ -43,11 +47,15 @@
   {
     "language": "ua",
     "messages": {
+      "yes": "Так",
+      "no": "Ні",
       "default.title": "Atrament UI",
       "default.author": "Тестовий застосунок",
       "main.menu": "Головне меню",
       "main.newgame": "Нова гра",
       "main.continue": "Продовжити",
+      "main.emptyslot": "Пусто",
+      "main.delete-session": "Видалити сесію?",
       "main.about": "Про застосунок",
       "game.end": "Кінець",
       "game.save-and-quit": "Зберегти гру та вийти",

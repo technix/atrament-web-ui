@@ -13,12 +13,21 @@ import LinkMenu from '../ui/link-menu';
 
 import Menu from 'src/components/menu';
 import { setPageBackground } from 'src/utils/page-background';
+import SessionsView from '../views/sessions';
+
+const HomeMenu = ({ canBeResumed, resumeGame, newGame }) => (
+  <>
+    {canBeResumed ? <LinkMenu key="continuegame" onClick={resumeGame}><Text id={'main.continue'} /></LinkMenu> : ''}
+    <LinkMenu key="startgame" onClick={newGame}><Text id={'main.newgame'} /></LinkMenu>
+  </>
+)
+
 
 const HomeRoute = () => {
   const translator = useTranslator();
-  const { setStateSubkey, canResume, gameStart, gameResume, getAssetPath } = useAtrament();
+  const { atrament, setStateSubkey, canResume, gameStart, gameResume, getAssetPath } = useAtrament();
   const atramentState = useAtramentState(['metadata']);
-  const { title, author, cover, background } = atramentState.metadata;
+  const { title, author, cover, background, sessions } = atramentState.metadata;
 
   const resetBackground = useCallback(() => {
     setStateSubkey('game', 'background', null);
@@ -62,8 +71,11 @@ const HomeRoute = () => {
           <p>{author ? author : translator.translate('default.author')}</p>
         </Header>
         <Block align='end'>
-          {canBeResumed ? <LinkMenu key="continuegame" onClick={resumeGame}><Text id={'main.continue'} /></LinkMenu> : ''}
-          <LinkMenu key="startgame" onClick={newGame}><Text id={'main.newgame'} /></LinkMenu>
+          {sessions && !atrament.game.getSession() ?
+            <SessionsView newGame={newGame} resumeGame={resumeGame} canResume={canResume} />
+            :
+            <HomeMenu newGame={newGame} resumeGame={resumeGame} canBeResumed={canBeResumed} />
+          }
           <LinkMenu key="about" onClick={aboutGame}><Text id={'main.about'} /></LinkMenu>
         </Block>
       </ContainerFlex>
