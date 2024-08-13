@@ -56,7 +56,10 @@ The standalone web application files will be in `build` folder. Use `npm run pre
 | `# font: System` | Game font: `System`, `Sans Serif`, `Serif`, `Monospaced`, `Fira Sans`, `Lora`, `Merriweather`, or `OpenDyslexic` |
 | `# observe: varName` | Register variable observer for `varName` Ink variable. Variable value is available in `vars` section of Atrament state. |
 | `# persist: varName` | Save `varName` Ink variable value to persistent storage, restore before game starts. |
+| `# sessions: 3` | Amount of game sessions. Each session has its own set of saves. |
 | `# autosave: false` | Disables autosaves. |
+| `# saves: 5` | Amount of available slots for saves. |
+| `# load_from_checkpoints` | Show checkpoints in the list of games to load. |
 | `# single_scene` | Store only last scene in Atrament state. |
 | `# scenes_align: center` | Scene alignment on the screen. Can be set to `top`, `center`, or `bottom`. |
 | `# hypertext` | Use links instead of choices. See "[Hypertext mode](#hypertext-mode)". |
@@ -81,7 +84,7 @@ The standalone web application files will be in `build` folder. Use `npm run pre
 | `# STOP_MUSIC: music.mp3` | Stop playing specific background music. |
 | `# STOP_MUSIC` | Stop playing all background music. |
 | `# CHECKPOINT` | Save game to 'default' checkpoint. |
-| `# CHECKPOINT: checkpointName` | Save game to  checkpoint `checkpointName`. |
+| `# CHECKPOINT: checkpointName` | Save game to checkpoint `checkpointName`. |
 | `# SAVEGAME: saveslot` | Save game to `saveslot`. |
 | `# RESTART` | Start game from beginning. |
 | `# RESTART_FROM_CHECKPOINT` | Restart game from latest checkpoint. |
@@ -95,6 +98,16 @@ Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MU
 | :-------- | :------------------------- |
 | `# UNCLICKABLE` | The choice can't be selected. Alternative names: `#DISABLED`, `#INACTIVE` |
 | `# CLASS: classname` | Apply CSS class to the choice `<button>` element. |
+
+## Save management
+
+Atrament Web UI supports the following save types:
+
+1. **Autosave**. By default, game saves its progress after each choice. If autosave is present for the game, player can continue playing by clicking "Continue" in the main menu. When global tag `autosave: false` is present, autosaving is disabled. If autosaving is disabled and there are no saved checkpoints, "Continue" button will not be available.
+2. **Checkpoints**. They are controlled by knot tags `#CHECKPOINT` and `#RESTART_FROM_CHECKPOINT`. Authors can use named checkpoints, adding names to these tags. If there are no autosave, players can continue playing from latest saved checkpoint by clicking "Continue" in the main menu.
+3. **Saves**. They are disabled by default. Authors can set global tag `#saves` to define amount of available save slots. Players can save and load games using the slots provided. If global tag `#load_from_checkpoints` is set, players can also load game from any saved checkpoint.
+
+In addition to above, Atrament Web UI supports **sessions**, which can be enabled by global tag `#sessions`. If they are enabled, players have to choose game session before starting a game. Each session has its own autosaves, checkpoints, and saves.
 
 ## "Click to continue"
 
