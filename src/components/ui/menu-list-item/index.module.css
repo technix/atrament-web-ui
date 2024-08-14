@@ -9,7 +9,7 @@
   width: 100%;
   margin-top: 1rem;
   padding: 1rem;
-  padding-left: 0;
+  padding-left: 0.5rem;
 }
 
 .menu_item {
@@ -19,6 +19,8 @@
   color: var(--fg-color);
   margin-top: 1rem;
   padding: 1rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
   text-align: center;
   text-decoration: none;
   border: 1px solid var(--fg-color);
@@ -51,6 +53,7 @@
 .delete_button {
   position: absolute;
   width: 2em;
+  height: calc(100% - 1rem);
   padding-left: 0;
   padding-right: 0;
   right: 0px;
