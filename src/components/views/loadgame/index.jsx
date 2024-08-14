@@ -10,7 +10,7 @@ import MenuListItem from 'src/components/ui/menu-list-item';
 const datefmt = (date) => new Date(date).toLocaleString(appLocale);
 
 
-const LoadGameView = ({ loadGame }) => {
+const LoadGameView = ({ loadGame, hasConfirmation = false }) => {
   const [ saveslots, setSaveslots ] = useState([]);
   const translator = useTranslator();
   const { atrament } = useAtrament();
@@ -77,6 +77,8 @@ const LoadGameView = ({ loadGame }) => {
           isDisabled={!s.type}
           isDeletable={s.type}
           deletePrompt={translator.translate('main.delete-save')}
+          hasConfirmation={hasConfirmation}
+          confirmPrompt={translator.translate('main.confirm-load')}
           attributes={{
             "data-save": s.id
           }}

@@ -46,6 +46,11 @@
   color: var(--fg-color);
 }
 
+.small {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .is_deletable {
   border-right: 0px;
 }

@@ -11,9 +11,12 @@ const MenuListItem = ({
   isDeletable = false,
   onDelete = ()=>{},
   deletePrompt = '',
+  hasConfirmation = false,
+  confirmPrompt = '',
   attributes={}
 }) => {
   const [ isDeleteDialog, displayDeleteDialog ] = useState(false);
+  const [ isConfirmDialog, displayConfirmDialog ] = useState(false);
   
   const showDeleteDialog = () => displayDeleteDialog(true);
   const hideDeleteDialog = () => displayDeleteDialog(false);
@@ -21,15 +24,34 @@ const MenuListItem = ({
     onDelete(ev);
     hideDeleteDialog();
   }
-  
-  if (isDeleteDialog) {
+
+  const showConfirmDialog = () => displayConfirmDialog(true);
+  const hideConfirmDialog = () => displayConfirmDialog(false);
+  const handleConfirm = (ev) => {
+    onSelect(ev);
+    hideConfirmDialog();
+  }
+
+  if (isConfirmDialog) {
+    return (
+      <div class={style.container}>
+        <div class={style.prompt}>{confirmPrompt}</div>
+        <button onClick={handleConfirm} class={`${style.menu_item} ${style.delete_item} ${style.small}`} {...attributes}>
+          <Text id='yes' />
+        </button>
+        <button key={key} onClick={hideConfirmDialog} class={`${style.menu_item} ${style.small}`} {...attributes}>
+          <Text id='no' />
+        </button>
+      </div>
+    );
+  } else if (isDeleteDialog) {
     return (
       <div class={style.container}>
         <div class={style.prompt}>{deletePrompt}</div>
-        <button onClick={handleDelete} class={`${style.menu_item} ${style.delete_item}`} {...attributes}>
+        <button onClick={handleDelete} class={`${style.menu_item} ${style.delete_item} ${style.small}`} {...attributes}>
           <Text id='yes' />
         </button>
-        <button key={key} onClick={hideDeleteDialog} class={style.menu_item} {...attributes}>
+        <button key={key} onClick={hideDeleteDialog} class={`${style.menu_item} ${style.small}`} {...attributes}>
           <Text id='no' />
         </button>
       </div>
@@ -40,7 +62,7 @@ const MenuListItem = ({
     <div class={style.container}>
       <button
         key={key}
-        onClick={onSelect}
+        onClick={hasConfirmation ? showConfirmDialog : onSelect}
         disabled={isDisabled}
         class={`${style.menu_item} ${isDeletable && style.is_deletable}`}
         {...attributes}

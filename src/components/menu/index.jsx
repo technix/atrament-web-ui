@@ -47,7 +47,7 @@ const Menu = ({ showSaveAndQuit = false }) => {
               <div>Save Game</div>
             </Tab>
             <Tab title="Load">
-              <LoadGameView loadGame={loadGame} />
+              <LoadGameView loadGame={loadGame} hasConfirmation />
             </Tab>
             <Tab title="Settings">
               <Settings showSaveAndQuit={showSaveAndQuit} />
