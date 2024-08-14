@@ -3,6 +3,19 @@ import { useState } from 'preact/hooks';
 import { Text } from '@eo-locale/preact';
 import style from './index.module.css';
 
+const DialogYesNo = ({ prompt, onAccept, onReject, attributes}) => (
+  <div class={style.container}>
+    <div class={style.prompt}>{prompt}</div>
+    <button onClick={onAccept} class={`${style.menu_item} ${style.delete_item} ${style.small}`} {...attributes}>
+      <Text id='yes' />
+    </button>
+    <button onClick={onReject} class={`${style.menu_item} ${style.small}`} {...attributes}>
+      <Text id='no' />
+    </button>
+  </div>
+);
+
+
 const MenuListItem = ({
   children,
   key,
@@ -33,29 +46,9 @@ const MenuListItem = ({
   }
 
   if (isConfirmDialog) {
-    return (
-      <div class={style.container}>
-        <div class={style.prompt}>{confirmPrompt}</div>
-        <button onClick={handleConfirm} class={`${style.menu_item} ${style.delete_item} ${style.small}`} {...attributes}>
-          <Text id='yes' />
-        </button>
-        <button key={key} onClick={hideConfirmDialog} class={`${style.menu_item} ${style.small}`} {...attributes}>
-          <Text id='no' />
-        </button>
-      </div>
-    );
+    return (<DialogYesNo prompt={confirmPrompt} onAccept={handleConfirm} onReject={hideConfirmDialog} attributes={attributes} />);
   } else if (isDeleteDialog) {
-    return (
-      <div class={style.container}>
-        <div class={style.prompt}>{deletePrompt}</div>
-        <button onClick={handleDelete} class={`${style.menu_item} ${style.delete_item} ${style.small}`} {...attributes}>
-          <Text id='yes' />
-        </button>
-        <button key={key} onClick={hideDeleteDialog} class={`${style.menu_item} ${style.small}`} {...attributes}>
-          <Text id='no' />
-        </button>
-      </div>
-    );
+    return (<DialogYesNo prompt={deletePrompt} onAccept={handleDelete} onReject={hideDeleteDialog} attributes={attributes} />);
   }
 
   return (
