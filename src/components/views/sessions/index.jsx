@@ -29,10 +29,13 @@ const SessionsView = ({ newGame, resumeGame, canResume }) => {
   }, [ atrament, metadata, setSessions ]);
 
   const startSession = useCallback(async (ev) => {
-    const chosenSessionId = ev.target.getAttribute('data-id');
     const chosenSession = ev.target.getAttribute('data-session');
+    const sessionData = sessions.filter(item => item.name === chosenSession)[0];
+    if (!sessionData) {
+      return;
+    }
     atrament.game.setSession(chosenSession);
-    if (sessions[chosenSessionId].hasSaves) {
+    if (sessionData.hasSaves) {
       if (await canResume()) {
         await resumeGame();
       }
@@ -64,7 +67,6 @@ const SessionsView = ({ newGame, resumeGame, canResume }) => {
           isDeletable={s.hasSaves}
           deletePrompt={translator.translate('main.delete-session')}
           attributes={{
-            "data-id": s.id,
             "data-session": s.name
           }}
         >
