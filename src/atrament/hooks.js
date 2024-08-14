@@ -25,7 +25,7 @@ export const useAtrament = () => {
 
   const evaluateInkFunction = useCallback(
     (fn, args=[]) => {
-      let result;
+      let result = {};
       try {
         result = atrament.ink.evaluateFunction(fn, args, true);
       } catch (e) {

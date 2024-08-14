@@ -11,7 +11,7 @@ import CloseButton from 'src/components/ui/close-button';
 
 const ErrorModal = () => {
   const { atrament } = useAtrament();
-  const atramentState = useAtramentState('ERROR');
+  const atramentState = useAtramentState(['ERROR']);
 
   const closeModal = useCallback(() => atrament.state.setKey('ERROR', null), [ atrament ]);
 
