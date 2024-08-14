@@ -7,7 +7,7 @@ async function $iteratePersistent(callback) {
   await Promise.all(
     keys.map(
       async (key) => {
-        if (key === 'settings') {
+        if (!key.includes('save')) {
           return; // this is not a saved game
         }
         const saveData = await persistent.get(key);
