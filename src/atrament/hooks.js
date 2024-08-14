@@ -61,6 +61,11 @@ export const useAtrament = () => {
     [ atrament ]
   );
 
+  const resetBackground = useCallback(() => {
+    atrament.state.setSubkey('game', 'background', null);
+    atrament.state.setSubkey('game', 'background_page', null);
+  }, [ atrament ]);
+
   return {
     atrament,
     canResume: atrament.game.canResume,
@@ -73,7 +78,8 @@ export const useAtrament = () => {
     setStateSubkey,
     evaluateInkFunction,
     setInkVariable,
-    getInkVariable
+    getInkVariable,
+    resetBackground
   };
 };
 

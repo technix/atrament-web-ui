@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useEffect, useState, useCallback } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import Container from 'src/components/ui/container';
@@ -11,14 +11,9 @@ import HomeMenuView from 'src/components/views/home-menu';
 import { setPageBackground } from 'src/utils/page-background';
 
 const HomeRoute = () => {
-  const { setStateSubkey, canResume, getAssetPath } = useAtrament();
+  const { canResume, getAssetPath, resetBackground } = useAtrament();
   const atramentState = useAtramentState(['metadata']);
   const { background } = atramentState.metadata;
-
-  const resetBackground = useCallback(() => {
-    setStateSubkey('game', 'background', null);
-    setStateSubkey('game', 'background_page', null);
-  }, [ setStateSubkey ]);
 
   const [ canBeResumed, setResumeState ] = useState(false);
   useEffect(() => {
@@ -37,7 +32,7 @@ const HomeRoute = () => {
     <Container>
       <ContainerFlex>
         <Menu />
-        <HomeMenuView canBeResumed={canBeResumed} resetBackground={resetBackground} />
+        <HomeMenuView canBeResumed={canBeResumed} />
       </ContainerFlex>
     </Container>
   );
