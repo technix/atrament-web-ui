@@ -14,6 +14,7 @@ const SaveGameView = ({ saveGame }) => {
   const translator = useTranslator();
   const { atrament } = useAtrament();
   const { metadata } = useAtramentState(['metadata']);
+  const numberOfSaveSlots = +metadata.saves;
   
   const initSavegame = useCallback(async () => {
     const existingSaves = await atrament.game.listSaves();
@@ -21,11 +22,11 @@ const SaveGameView = ({ saveGame }) => {
     const saves = existingSaves
       .filter((s) => s.type === atrament.game.SAVE_GAME)
       .map((s) => ({ ...s, slot: datefmt(s.date) }));
-    if (saves.length < +metadata.saveslots) {
+    if (saves.length < numberOfSaveSlots) {
       saves.push({ name: saves.length + 1 });
     }
     setSaveslots(saves);
-  }, [ atrament, metadata ]);
+  }, [ atrament, numberOfSaveSlots ]);
 
   const saveGameToSlot = useCallback(async (ev) => {
     const chosenSaveslot = ev.target.getAttribute('data-savename');
