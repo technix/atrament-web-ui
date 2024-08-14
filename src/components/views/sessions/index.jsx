@@ -7,7 +7,7 @@ import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 import MenuListItem from 'src/components/ui/menu-list-item';
 
 
-const SessionsView = ({ newGame, resumeGame, canResume }) => {
+const SessionsView = ({ newGame, loadGame, resumeGame, canResume }) => {
   const [ sessions, setSessions ] = useState([]);
   const translator = useTranslator();
   const { atrament } = useAtrament();
@@ -38,11 +38,13 @@ const SessionsView = ({ newGame, resumeGame, canResume }) => {
     if (sessionData.hasSaves) {
       if (await canResume()) {
         await resumeGame();
+      } else {
+        await loadGame();
       }
     } else {
       await newGame();
     }
-  }, [ atrament, sessions, newGame, canResume, resumeGame ]);
+  }, [ atrament, sessions, newGame, canResume, resumeGame, loadGame ]);
 
   const deleteSession = useCallback(async (ev) => {
     const chosenSession = ev.target.getAttribute('data-session');

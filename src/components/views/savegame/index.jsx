@@ -14,7 +14,7 @@ const SaveGameView = ({ saveGame }) => {
   const translator = useTranslator();
   const { atrament } = useAtrament();
   const { metadata } = useAtramentState(['metadata']);
-  const numberOfSaveSlots = +metadata.saves;
+  const numberOfSaveSlots = metadata.saves ? +metadata.saves : 0;
   
   const initSavegame = useCallback(async () => {
     const existingSaves = await atrament.game.listSaves();
