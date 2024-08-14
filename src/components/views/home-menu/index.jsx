@@ -30,18 +30,15 @@ const useGameControls = () => {
 
 const AboutGame = () => (<LinkMenu key="about" onClick={() => route('/about')}><Text id={'main.about'} /></LinkMenu>);
 
-const MainMenu = ({ canBeResumed, openLoadGameMenu }) => {
-  const { newGame, resumeGame } = useGameControls();  
-  const atramentState = useAtramentState(['metadata']);
-  const { saves } = atramentState.metadata;
-
+const MainMenu = ({ canBeResumed, canBeLoaded, openLoadGameMenu }) => {
+  const { newGame, resumeGame } = useGameControls();
   return (
     <>
       <GameCover />
       <Block align='end'>
         {canBeResumed ? <LinkMenu key="continuegame" onClick={resumeGame}><Text id={'main.continue'} /></LinkMenu> : ''}
         <LinkMenu key="startgame" onClick={newGame}><Text id={'main.newgame'} /></LinkMenu>
-        {saves ? <LinkMenu key="loadgame" onClick={openLoadGameMenu}><Text id={'main.loadgame'} /></LinkMenu> : ''}
+        {canBeLoaded ? <LinkMenu key="loadgame" onClick={openLoadGameMenu}><Text id={'main.loadgame'} /></LinkMenu> : ''}
         <AboutGame />
       </Block>
     </>
@@ -80,7 +77,9 @@ export const SessionsMenuView = () => {
 export const HomeMenuView = () => {
   const [ loadGameMenuVisible, setLoadGameMenuVisible ] = useState(false);
   const [ canBeResumed, setResumeState ] = useState(false);
-  const { canResume } = useAtrament();
+  const [ canBeLoaded, setLoadedState ] = useState(false);
+  const { atrament, canResume } = useAtrament();
+  const { metadata } = useAtramentState(['metadata']);
 
   const openLoadGameMenu = () => setLoadGameMenuVisible(true);
   const closeLoadGameMenu = () => setLoadGameMenuVisible(false);
@@ -89,15 +88,27 @@ export const HomeMenuView = () => {
     const initHome = async () => {
       const canResumeGame = await canResume();
       setResumeState(!!canResumeGame);
+      const existingSaves = await atrament.game.listSaves();
+      const saves = existingSaves.filter(
+        (s) => {
+          if (metadata.load_from_checkpoints && s.type === atrament.game.SAVE_CHECKPOINT) {
+            return true;
+          }
+          return s.type === atrament.game.SAVE_GAME;
+        }
+      );
+      if (saves.length) {
+        setLoadedState(true);
+      }
     }
     initHome();
-  }, [ canResume ]);
+  }, [ atrament.game, canResume, metadata, setLoadedState ]);
 
   return (
     <>
       {loadGameMenuVisible
         ? <LoadGameMenu><LinkMenu key='go-back' onClick={closeLoadGameMenu}><Text id={'main.menu'} /></LinkMenu></LoadGameMenu>
-        : <MainMenu canBeResumed={canBeResumed} openLoadGameMenu={openLoadGameMenu} />
+        : <MainMenu canBeResumed={canBeResumed} canBeLoaded={canBeLoaded} openLoadGameMenu={openLoadGameMenu} />
       }
     </>
   );

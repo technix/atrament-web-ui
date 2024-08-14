@@ -8,6 +8,7 @@ import { useAtrament } from 'src/atrament/hooks';
 
 import Block from 'src/components/ui/block';
 import Header from 'src/components/ui/header';
+import Break from 'src/components/ui/break';
 
 import LoadGameView from 'src/components/views/loadgame';
 
@@ -22,7 +23,7 @@ const LoadGameMenu = ({ children }) => {
     <Block align='end'>
       <Header><h2><Text id={'main.loadgame'} /></h2></Header>
       <LoadGameView loadGame={loadGame} />
-      <div>&nbsp;<br />&nbsp;</div>
+      <Break />
       {children}
     </Block>
   );
