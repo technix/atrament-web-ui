@@ -38,7 +38,7 @@ const GameRoute = () => {
   return (
     <Container style={containerStyle}>
       {import.meta.env.MODE === 'development' && <DebuggerView />}
-      <Menu showSaveAndQuit />
+      <Menu />
       <ErrorModal />
       <Toolbar />
       <OverlayView />

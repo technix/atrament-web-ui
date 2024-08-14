@@ -13,24 +13,27 @@ import SessionsView from 'src/components/views/sessions';
 import LoadGameMenu from './load-game';
 import GameCover from './game-cover';
 
-const MainMenu = ({ canBeResumed, openLoadGameMenu }) => {
+const useGameControls = () => {
   const { resetBackground, gameStart, gameResume } = useAtrament();
-  const atramentState = useAtramentState(['metadata']);
-  const { saves } = atramentState.metadata;
-
   const newGame = useCallback(async () => {
     resetBackground();
     await gameStart();
     route('/game');
   }, [ resetBackground, gameStart ]);
-
   const resumeGame = useCallback(async () => {
     resetBackground();
     await gameResume();
     route('/game');
   }, [ resetBackground, gameResume ]);
+  return { newGame, resumeGame };
+};
 
-  const aboutGame = () => route('/about');
+const AboutGame = () => (<LinkMenu key="about" onClick={() => route('/about')}><Text id={'main.about'} /></LinkMenu>);
+
+const MainMenu = ({ canBeResumed, openLoadGameMenu }) => {
+  const { newGame, resumeGame } = useGameControls();  
+  const atramentState = useAtramentState(['metadata']);
+  const { saves } = atramentState.metadata;
 
   return (
     <>
@@ -39,7 +42,7 @@ const MainMenu = ({ canBeResumed, openLoadGameMenu }) => {
         {canBeResumed ? <LinkMenu key="continuegame" onClick={resumeGame}><Text id={'main.continue'} /></LinkMenu> : ''}
         <LinkMenu key="startgame" onClick={newGame}><Text id={'main.newgame'} /></LinkMenu>
         {saves ? <LinkMenu key="loadgame" onClick={openLoadGameMenu}><Text id={'main.loadgame'} /></LinkMenu> : ''}
-        <LinkMenu key="about" onClick={aboutGame}><Text id={'main.about'} /></LinkMenu>
+        <AboutGame />
       </Block>
     </>
   );
@@ -48,27 +51,14 @@ const MainMenu = ({ canBeResumed, openLoadGameMenu }) => {
 
 export const SessionsMenuView = () => {
   const [ loadGameMenuVisible, setLoadGameMenuVisible ] = useState(false);
-  const { atrament, canResume, resetBackground, gameStart, gameResume } = useAtrament();
+  const { atrament, canResume } = useAtrament();
+  const { newGame, resumeGame } = useGameControls();
 
   const openLoadGameMenu = () => setLoadGameMenuVisible(true);
   const closeLoadGameMenu = () => {
     atrament.game.setSession();
     setLoadGameMenuVisible(false);
   }
-
-  const newGame = useCallback(async () => {
-    resetBackground();
-    await gameStart();
-    route('/game');
-  }, [ resetBackground, gameStart ]);
-
-  const resumeGame = useCallback(async () => {
-    resetBackground();
-    await gameResume();
-    route('/game');
-  }, [ resetBackground, gameResume ]);
-
-  const aboutGame = () => route('/about');
 
   return (
     <>
@@ -78,7 +68,7 @@ export const SessionsMenuView = () => {
           <GameCover />
           <Block align='end'>
             <SessionsView newGame={newGame} resumeGame={resumeGame} canResume={canResume} loadGame={openLoadGameMenu} />
-            <LinkMenu key="about" onClick={aboutGame}><Text id={'main.about'} /></LinkMenu>
+            <AboutGame />
           </Block>
         </>
       }
@@ -95,7 +85,6 @@ export const HomeMenuView = () => {
   const openLoadGameMenu = () => setLoadGameMenuVisible(true);
   const closeLoadGameMenu = () => setLoadGameMenuVisible(false);
   
-
   useEffect(() => {
     const initHome = async () => {
       const canResumeGame = await canResume();

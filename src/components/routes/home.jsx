@@ -25,7 +25,7 @@ const HomeRoute = () => {
   return (
     <Container>
       <ContainerFlex>
-        <Menu />
+        <Menu isHomeScreen />
         { sessions? <SessionsMenuView /> : <HomeMenuView /> }
       </ContainerFlex>
     </Container>

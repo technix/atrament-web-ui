@@ -10,11 +10,8 @@ import SettingsText from './settings-text';
 import SettingsFont from './settings-font';
 import SettingsTheme from './settings-theme';
 import SettingsAnimation from './settings-animation';
-import SettingsVersion from './settings-version';
 
-import SaveAndQuit from './button-save-and-quit';
-
-const Settings = ({ showSaveAndQuit = false }) => {
+const Settings = () => {
   const translator = useTranslator();
   return (
     <div class={style.settings_container}>
@@ -26,8 +23,6 @@ const Settings = ({ showSaveAndQuit = false }) => {
         <SettingsText />
         <SettingsTheme />
       </Collapse>
-      { showSaveAndQuit ? <SaveAndQuit /> : <></> }
-      <SettingsVersion />
     </div>
   );
 };
