@@ -45,9 +45,7 @@ const MenuGameScreen = ({ toggleMenu }) => {
 
   const saveGame = useCallback(async (saveslot) => {
     await atrament.game.saveGame(saveslot);
-    toggleSaveMenu();
-    toggleMenu();
-  }, [ atrament, toggleMenu, toggleSaveMenu ]);
+  }, [ atrament ]);
 
   if (isSaveMenuOpen) {
     return (<>
