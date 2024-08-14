@@ -4,6 +4,7 @@
     "messages": {
       "yes": "Yes",
       "no": "No",
+      "cancel": "Cancel",
       "default.title": "Atrament UI",
       "default.author": "Test Application",
       "main.menu": "Main menu",
@@ -58,6 +59,7 @@
     "messages": {
       "yes": "Так",
       "no": "Ні",
+      "cancel": "Скасувати",
       "default.title": "Atrament UI",
       "default.author": "Тестовий застосунок",
       "main.menu": "Головне меню",

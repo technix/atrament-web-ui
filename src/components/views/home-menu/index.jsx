@@ -6,12 +6,11 @@ import { Text } from '@eo-locale/preact';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import Block from 'src/components/ui/block';
-import Header from 'src/components/ui/header';
 import LinkMenu from 'src/components/ui/link-menu';
 
 import SessionsView from 'src/components/views/sessions';
-import LoadGameView from 'src/components/views/loadgame';
 
+import LoadGameMenu from './load-game';
 import GameCover from './game-cover';
 
 
@@ -57,23 +56,6 @@ const MainMenu = ({ canBeResumed, openLoadGameMenu }) => {
   );
 };
 
-const LoadGameMenu = ({ closeLoadGameMenu }) => {
-  const { gameStart, resetBackground } = useAtrament();
-  const loadGame = useCallback(async (saveslot) => {
-    resetBackground();
-    await gameStart(saveslot);
-    route('/game');
-  }, [ resetBackground, gameStart ]);
-  return (
-    <Block align='end'>
-      <Header><h2><Text id={'main.loadgame'} /></h2></Header>
-      <LoadGameView loadGame={loadGame} />
-      <div>&nbsp;<br />&nbsp;</div>
-      <LinkMenu key="startgame" onClick={closeLoadGameMenu}><Text id={'main.menu'} /></LinkMenu>
-    </Block>
-  );
-}
-
 
 const HomeMenuView = ({ canBeResumed }) => {
   const [ loadGameMenuVisible, setLoadGameMenuVisible ] = useState(false);
@@ -82,7 +64,7 @@ const HomeMenuView = ({ canBeResumed }) => {
   return (
     <>
       {loadGameMenuVisible
-        ? <LoadGameMenu closeLoadGameMenu={closeLoadGameMenu} />
+        ? <LoadGameMenu><LinkMenu key='go-back' onClick={closeLoadGameMenu}><Text id={'main.menu'} /></LinkMenu></LoadGameMenu>
         : <MainMenu canBeResumed={canBeResumed} openLoadGameMenu={openLoadGameMenu} />
       }
     </>
@@ -90,4 +72,3 @@ const HomeMenuView = ({ canBeResumed }) => {
 };
 
 export default HomeMenuView;
-
