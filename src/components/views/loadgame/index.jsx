@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { Text, useTranslator } from '@eo-locale/preact';
+import { useTranslator } from '@eo-locale/preact';
 import { useEffect, useState, useCallback } from 'preact/hooks';
 
 import { appLocale } from 'src/constants';
@@ -40,14 +40,11 @@ const LoadGameView = ({ loadGame, hasConfirmation = false }) => {
       }
     }
     // saved games
-    const saves = existingSaves.filter((s) => s.type === atrament.game.SAVE_GAME);
-    [...Array(+metadata.saveslots).keys()].forEach((s) => {
-      if (saves[s]) {
-        saveSlotList.push({ ...saves[s], slot: datefmt(autosave.date) });
-      } else {
-        saveSlotList.push({});
-      }
-    })
+    const saves = existingSaves
+      .filter((s) => s.type === atrament.game.SAVE_GAME)
+      .map((s) => ({ ...s, slot: datefmt(s.date) }));
+    saveSlotList.push(...saves);
+    // done
     setSaveslots(saveSlotList);
   }, [ atrament, metadata, translator ]);
 
@@ -83,10 +80,7 @@ const LoadGameView = ({ loadGame, hasConfirmation = false }) => {
             "data-save": s.id
           }}
         >
-          {s.type
-            ? s.slot
-            : <Text id='main.emptyslot' />
-          }
+          {s.slot}
         </MenuListItem>
       )}
     </>

@@ -11,6 +11,7 @@ import { IconMenu } from 'src/components/ui/icons';
 
 import { useAtrament } from 'src/atrament/hooks';
 import LoadGameView from 'src/components/views/loadgame';
+import SaveGameView from 'src/components/views/savegame';
 import Settings from 'src/components/views/settings';
 
 const Menu = ({ showSaveAndQuit = false }) => {
@@ -36,6 +37,10 @@ const Menu = ({ showSaveAndQuit = false }) => {
     toggleMenu();
   }, [ atrament, toggleMenu ]);
 
+  const saveGame = useCallback(async (saveslot) => {
+    await atrament.game.saveGame(saveslot);
+  }, [ atrament ]);
+
   if (isOpen) {
     return (
       <div class={style.menu_container}>
@@ -44,7 +49,7 @@ const Menu = ({ showSaveAndQuit = false }) => {
           <CloseButton onClick={toggleMenu} />
           <Tabs>
             <Tab title="Save">
-              <div>Save Game</div>
+              <SaveGameView saveGame={saveGame} />
             </Tab>
             <Tab title="Load">
               <LoadGameView loadGame={loadGame} hasConfirmation />
