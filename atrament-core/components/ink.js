@@ -4,11 +4,13 @@ import { emit } from '../utils/emitter';
 
 let inkStory = null;
 
+
 function initStory(content) {
   const { InkStory } = getConfig();
   inkStory = new InkStory(content);
   emit('ink/initStory');
 }
+
 
 function resetStory() {
   let success = false;
@@ -19,19 +21,20 @@ function resetStory() {
   emit('ink/resetStory', success);
 }
 
-function $continue(inkStory, scene) {
-  inkStory.Continue();
-  const currentText = inkStory.currentText;
+
+function $continue(story, scene) {
+  story.Continue();
+  const text = story.currentText;
   // add story text
-  scene.text.push(currentText);
+  scene.text.push(text);
   // add tags
-  const tags = parseTags(inkStory.currentTags);
+  const tags = parseTags(story.currentTags);
   scene.tags = { ...scene.tags, ...tags };
   // save content - text along with tags
-  scene.content.push({ text: currentText, tags });
-  if (currentText === '\n') {
+  scene.content.push({ text, tags });
+  if (text === '\n') {
     // there was an empty line, try again to get some text
-    $continue(inkStory, scene);
+    $continue(story, scene);
   }
 }
 
@@ -63,6 +66,7 @@ function getScene(continueMaximally) {
   emit('ink/getScene', scene);
   return scene;
 }
+
 
 export default {
   initStory,

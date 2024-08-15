@@ -84,6 +84,7 @@ const tagHandlers = {
   SAVEGAME: (v) => saveGame(v)
 };
 
+
 function $processTags(list, tags) {
   list.forEach((tag) => {
     if (tag in tags && tag in tagHandlers) {
@@ -136,7 +137,6 @@ function continueStory() {
     tags
   );
 
-  
   if (metadata.single_scene) {
     // put single scene to state
     state.setKey('scenes', [scene]);
