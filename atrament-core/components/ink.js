@@ -21,13 +21,18 @@ function resetStory() {
 
 function $continue(inkStory, scene) {
   inkStory.Continue();
+  const currentText = inkStory.currentText;
   // add story text
-  scene.text.push(inkStory.currentText);
+  scene.text.push(currentText);
   // add tags
   const tags = parseTags(inkStory.currentTags);
   scene.tags = { ...scene.tags, ...tags };
   // save content - text along with tags
-  scene.content.push({ text: inkStory.currentText, tags });
+  scene.content.push({ text: currentText, tags });
+  if (currentText === '\n') {
+    // there was an empty line, try again to get some text
+    $continue(inkStory, scene);
+  }
 }
 
 
