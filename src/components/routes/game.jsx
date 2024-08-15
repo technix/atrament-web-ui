@@ -14,12 +14,8 @@ import OverlayView from 'src/components/views/overlay';
 import { setPageBackground } from 'src/utils/page-background';
 
 const GameRoute = () => {
-  const { continueStory, getAssetPath } = useAtrament();
+  const { getAssetPath } = useAtrament();
   const atramentState = useAtramentState(['game']);
-
-  useEffect(() => {
-    continueStory();
-  }, [ continueStory ]);
 
   let containerStyle;
   if (atramentState.game.background) {

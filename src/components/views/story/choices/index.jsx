@@ -17,10 +17,16 @@ const EndGameLink = () => {
 
 const Choices = ({ key, currentScene, setReady, isHypertextMode }) => {
   const numberOfChoices = (currentScene && currentScene.choices) ? currentScene.choices.length : -1;
-  if (numberOfChoices === 0) {
+  if ((numberOfChoices === 1 && currentScene.choices[0].choice === '')) {
+    // empty choice
+    return (<ClickToContinue setReady={setReady} withChoice />);
+  } else if (numberOfChoices === 0) { 
+    if (currentScene.canContinue) {
+      // paragraph mode
+      return (<ClickToContinue setReady={setReady} />);
+    }
+    // end game
     return (<EndGameLink />);
-  } else if  (numberOfChoices === 1 && currentScene.choices[0].choice === '') {
-    return (<ClickToContinue setReady={setReady} />);
   } else if (numberOfChoices >= 0 && !isHypertextMode) {
     return (
       <ChoiceButtonGroup

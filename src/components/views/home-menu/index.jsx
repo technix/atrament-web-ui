@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useEffect, useState, useCallback } from 'preact/hooks';
+import { useEffect, useState } from 'preact/hooks';
 import { route } from 'preact-router';
 import { Text } from '@eo-locale/preact';
 
@@ -12,21 +12,8 @@ import SessionsView from 'src/components/views/sessions';
 
 import LoadGameMenu from './load-game';
 import GameCover from './game-cover';
+import useGameControls from './use-game-controls';
 
-const useGameControls = () => {
-  const { resetBackground, gameStart, gameResume } = useAtrament();
-  const newGame = useCallback(async () => {
-    resetBackground();
-    await gameStart();
-    route('/game');
-  }, [ resetBackground, gameStart ]);
-  const resumeGame = useCallback(async () => {
-    resetBackground();
-    await gameResume();
-    route('/game');
-  }, [ resetBackground, gameResume ]);
-  return { newGame, resumeGame };
-};
 
 const AboutGame = () => (<LinkMenu key="about" onClick={() => route('/about')}><Text id={'main.about'} /></LinkMenu>);
 
