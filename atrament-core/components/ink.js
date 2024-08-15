@@ -23,6 +23,9 @@ function resetStory() {
 
 
 function $continue(story, scene) {
+  if (!story.canContinue) {
+    return;
+  }
   story.Continue();
   const text = story.currentText;
   // add story text

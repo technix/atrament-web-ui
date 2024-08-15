@@ -53,6 +53,11 @@ async function restart(saveSlot) {
   emit('game/restart', { saveSlot });
   ink.resetStory(); // reset ink story state
   await start(saveSlot);
+}
+
+
+async function restartAndContinue(saveSlot) {
+  await restart(saveSlot);
   continueStory();
 }
 
@@ -121,13 +126,13 @@ function continueStory() {
 
   // RESTART
   if (tags.RESTART) {
-    restart();
+    restartAndContinue();
     return;
   }
 
   // RESTART_FROM_CHECKPOINT
   if (tags.RESTART_FROM_CHECKPOINT) {
-    restart(getSaveSlotKey({ type: 'checkpoint', name: tags.RESTART_FROM_CHECKPOINT }));
+    restartAndContinue(getSaveSlotKey({ type: 'checkpoint', name: tags.RESTART_FROM_CHECKPOINT }));
     return;
   }
 
@@ -171,6 +176,7 @@ export default {
   resume,
   canResume,
   restart,
+  restartAndContinue,
   continueStory,
   makeChoice: (id) => ink.makeChoice(id),
   getAssetPath: (path) => interfaces().loader.getAssetPath(path),
