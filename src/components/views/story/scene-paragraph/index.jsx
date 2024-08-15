@@ -13,7 +13,7 @@ const Paragraph = ( {content, isCurrent} ) => {
     pStyle = {opacity: '70%'};
   }
 
-  let pClass = content.tags.CLASS;
+  let pClass = content.tags.CLASS || '';
   if (Array.isArray(pClass)) {
     pClass = pClass.join(' ');
   }
