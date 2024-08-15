@@ -101,8 +101,9 @@ function defineSceneProcessor(fn) {
 
 function continueStory() {
   const { state } = interfaces();
+  const { metadata } = state.get();
   // get next scene
-  const scene = ink.getScene();
+  const scene = ink.getScene(!!metadata.continue_maximally);
   if (scene.content.length === 0) {
     /*
       if we have a scene with empty content
@@ -135,7 +136,7 @@ function continueStory() {
     tags
   );
 
-  const { metadata } = state.get();
+  
   if (metadata.single_scene) {
     // put single scene to state
     state.setKey('scenes', [scene]);

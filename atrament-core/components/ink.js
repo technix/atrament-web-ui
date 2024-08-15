@@ -19,8 +19,20 @@ function resetStory() {
   emit('ink/resetStory', success);
 }
 
+function $continue(inkStory, scene) {
+  inkStory.Continue();
+  // add story text
+  scene.text.push(inkStory.currentText);
+  // add tags
+  const tags = parseTags(inkStory.currentTags);
+  scene.tags = { ...scene.tags, ...tags };
+  // save content - text along with tags
+  scene.content.push({ text: inkStory.currentText, tags });
+}
+
+
 // get scene from ink
-function getScene() {
+function getScene(continueMaximally) {
   const scene = {
     content: [],
     text: [],
@@ -28,15 +40,13 @@ function getScene() {
     choices: [],
     uuid: Date.now()
   };
-  while (inkStory.canContinue) {
-    inkStory.Continue();
-    // add story text
-    scene.text.push(inkStory.currentText);
-    // add tags
-    const tags = parseTags(inkStory.currentTags);
-    scene.tags = { ...scene.tags, ...tags };
-    // save content - text along with tags
-    scene.content.push({ text: inkStory.currentText, tags });
+  if (continueMaximally) {
+    while (inkStory.canContinue) {
+      $continue(inkStory, scene);
+    }
+  } else {
+    $continue(inkStory, scene);
+    scene.canContinue = inkStory.canContinue;
   }
   inkStory.currentChoices.forEach((choice, id) => {
     scene.choices.push({
