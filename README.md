@@ -60,6 +60,7 @@ The standalone web application files will be in `build` folder. Use `npm run pre
 | `# autosave: false` | Disables autosaves. |
 | `# saves: 5` | Amount of available slots for saves. |
 | `# load_from_checkpoints` | Show checkpoints in the list of games to load. |
+| `# continue_maximally: false` | Pause story after each line. |
 | `# single_scene` | Store only last scene in Atrament state. |
 | `# scenes_align: center` | Scene alignment on the screen. Can be set to `top`, `center`, or `bottom`. |
 | `# hypertext` | Use links instead of choices. See "[Hypertext mode](#hypertext-mode)". |
