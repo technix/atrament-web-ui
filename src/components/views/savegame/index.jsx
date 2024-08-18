@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { Text, useTranslator } from '@eo-locale/preact';
+import { useTranslator } from '@eo-locale/preact';
 import { useEffect, useState, useCallback } from 'preact/hooks';
 
 import { appLocale } from 'src/constants';
@@ -23,10 +23,14 @@ const SaveGameView = ({ saveGame }) => {
       .filter((s) => s.type === atrament.game.SAVE_GAME)
       .map((s) => ({ ...s, slot: datefmt(s.date) }));
     if (saves.length < numberOfSaveSlots) {
-      saves.push({ name: saves.length + 1 });
+      // new save is possible
+      saves.push({
+        name: saves.length + 1,
+        slot: translator.translate('main.new-save')
+      });
     }
     setSaveslots(saves);
-  }, [ atrament, numberOfSaveSlots ]);
+  }, [ atrament, translator, numberOfSaveSlots ]);
 
   const saveGameToSlot = useCallback(async (ev) => {
     const chosenSaveslot = ev.target.getAttribute('data-savename');
@@ -62,10 +66,7 @@ const SaveGameView = ({ saveGame }) => {
             "data-savename": s.name
           }}
         >
-          {s.type
-            ? s.slot
-            : <Text id='main.new-save' />
-          }
+          {s.slot}
         </MenuListItem>
       )}
     </>

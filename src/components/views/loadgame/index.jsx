@@ -20,23 +20,24 @@ const LoadGameView = ({ loadGame, hasConfirmation = false }) => {
     const existingSaves = await atrament.game.listSaves();
     const saveSlotList = [];
     // autosave
-    const autosave = existingSaves.filter((s) => s.type === atrament.game.SAVE_AUTOSAVE)[0];
-    if (autosave) {
-      saveSlotList.push({
-        ...autosave,
-        slot: translator.translate('main.autosave', { date: datefmt(autosave.date)})
-      });
+    const autosave = existingSaves
+      .filter((s) => s.type === atrament.game.SAVE_AUTOSAVE)
+      .map((s) => ({ ...s, slot: translator.translate('main.autosave', { date: datefmt(s.date) }) }));
+    if (autosave.length) {
+      saveSlotList.push(autosave[0]);
     }
     // checkpoints
     if (metadata.load_from_checkpoints) {
-      const checkpoints = existingSaves.filter((s) => s.type === atrament.game.SAVE_CHECKPOINT);
-      if (checkpoints.length) {
-        checkpoints.forEach((c) => saveSlotList.push({
-          ...c,
-          slot: typeof c.name === 'boolean'
+      const checkpoints = existingSaves
+        .filter((s) => s.type === atrament.game.SAVE_CHECKPOINT)
+        .map((s) => ({
+          ...s,
+          slot: typeof s.name === 'boolean'
             ? translator.translate('main.checkpoint')
-            : translator.translate('main.checkpoint-named', { name: c.name })
+            : translator.translate('main.checkpoint-named', { name: s.name })
         }));
+      if (checkpoints.length) {
+        saveSlotList.push(...checkpoints);
       }
     }
     // saved games
