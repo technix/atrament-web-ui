@@ -126,13 +126,13 @@ function continueStory() {
 
   // RESTART
   if (tags.RESTART) {
-    restartAndContinue();
+    restart();
     return;
   }
 
   // RESTART_FROM_CHECKPOINT
   if (tags.RESTART_FROM_CHECKPOINT) {
-    restartAndContinue(getSaveSlotKey({ type: 'checkpoint', name: tags.RESTART_FROM_CHECKPOINT }));
+    restart(getSaveSlotKey({ type: 'checkpoint', name: tags.RESTART_FROM_CHECKPOINT }));
     return;
   }
 
