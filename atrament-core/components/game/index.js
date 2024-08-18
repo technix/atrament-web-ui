@@ -109,7 +109,8 @@ function continueStory() {
   const { state } = interfaces();
   const { metadata } = state.get();
   // get next scene
-  const scene = ink.getScene(!!metadata.continue_maximally);
+  const isContinueMaximally = !(metadata.continue_maximally === false)
+  const scene = ink.getScene(isContinueMaximally);
   if (scene.content.length === 0) {
     /*
       if we have a scene with empty content
