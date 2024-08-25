@@ -9,8 +9,8 @@
 
 .container {
     position: relative;
-    height: 5em;
-    max-height: 5em;
+    height: 3em;
+    max-height: 3em;
     cursor: pointer;
     overflow: hidden;
 }
@@ -22,8 +22,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 2em;
-    height: 2em;
+    width: 1.5em;
+    height: 1.5em;
     background-color: var(--fg-color);
     border-radius: 50%;
     opacity: 0.3;

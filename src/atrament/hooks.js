@@ -25,7 +25,7 @@ export const useAtrament = () => {
 
   const evaluateInkFunction = useCallback(
     (fn, args=[]) => {
-      let result;
+      let result = {};
       try {
         result = atrament.ink.evaluateFunction(fn, args, true);
       } catch (e) {
@@ -61,6 +61,11 @@ export const useAtrament = () => {
     [ atrament ]
   );
 
+  const resetBackground = useCallback(() => {
+    atrament.state.setSubkey('game', 'background', null);
+    atrament.state.setSubkey('game', 'background_page', null);
+  }, [ atrament ]);
+
   return {
     atrament,
     canResume: atrament.game.canResume,
@@ -73,7 +78,8 @@ export const useAtrament = () => {
     setStateSubkey,
     evaluateInkFunction,
     setInkVariable,
-    getInkVariable
+    getInkVariable,
+    resetBackground
   };
 };
 

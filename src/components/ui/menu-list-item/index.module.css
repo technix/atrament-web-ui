@@ -1,0 +1,90 @@
+.container {
+  display: flex;
+  position: relative;
+  gap: 0.5em;
+}
+
+.prompt {
+  flex-grow: 2;
+  width: 100%;
+  margin-top: 1rem;
+  padding: 1rem;
+  padding-left: 0.5rem;
+}
+
+.menu_item {
+  flex-grow: 1;
+  display: block;
+  background-color: var(--bg-color);
+  color: var(--fg-color);
+  margin-top: 1rem;
+  padding: 1rem;
+  padding-left: 2.5rem;
+  padding-right: 2.5rem;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid var(--fg-color);
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-family: var(--font-game);
+}
+
+.menu_item:hover {
+  background-color: var(--fg-color);
+  color: var(--bg-color);
+}
+
+.menu_item:disabled {
+  background-color: var(--shade-color);
+  color: var(--fg-color);
+  opacity: 0.6;
+  cursor: inherit;
+}
+
+.menu_item:disabled:hover {
+  background-color: var(--shade-color);
+  color: var(--fg-color);
+}
+
+.small {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.is_deletable {
+  border-right: 0px;
+}
+
+.delete_button {
+  position: absolute;
+  width: 2em;
+  height: calc(100% - 1rem);
+  padding-left: 0;
+  padding-right: 0;
+  right: 0px;
+  top: 0px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  text-align: center;
+  background-color: var(--accent-fg-color);
+  color: var(--accent-bg-color);
+  border: 1px solid var(--accent-fg-color);
+}
+
+.delete_button:hover {
+  background-color: var(--accent-fg-color);
+  color: var(--accent-bg-color);
+}
+
+.delete_item {
+  flex-grow: 1;
+  text-align: center;
+  background-color: var(--accent-bg-color);
+  color: var(--accent-fg-color);
+  border: 1px solid var(--accent-fg-color);
+}
+
+.delete_item:hover {
+  background-color: var(--accent-fg-color);
+  color: var(--accent-bg-color);
+}

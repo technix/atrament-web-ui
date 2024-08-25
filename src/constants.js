@@ -18,8 +18,9 @@ export const applicationID = [
 
 //// Settings ////
 
-// language
+// i18n
 export const appLanguage = cfg.language || 'en';
+export const appLocale = cfg.locale || 'en-US';
 
 // theme
 export const gameDefaultTheme = cfg.theme;

@@ -5,6 +5,7 @@
   "theme": "light",
   "font": "System",
   "language": "en",
+  "locale": "en-US",
   "game": {
     "path": "game",
     "source": "intercept.ink"

@@ -1,4 +1,4 @@
-.settings_container {
+.menu_container {
   position: absolute;
   display: flex;
   flex-direction: column;
@@ -9,7 +9,7 @@
   z-index: 150;
 }
 
-.settings_toggle {
+.menu_toggle {
   position: absolute;
   vertical-align: top;
   right: 0px;
@@ -21,4 +21,15 @@
   background: none;
   color: var(--font-color);
   z-index: 150;
+}
+
+.menu_content {
+  padding: 1rem;
+}
+
+.atrament_version {
+  margin-top: 1rem;
+  width: 100%;
+  text-align: right;
+  font-size: 0.8rem;
 }

@@ -22,15 +22,29 @@ function replaceWithComponent(text, regexp, replacer) {
 
 export default function markup(text) {
   let processedText = [text];
+  // find matched markup and its length
+  const processingQueue = [];
   MarkupComponents.forEach(component => {
-    processedText = processedText.flatMap(
-      (item) => replaceWithComponent(
-        item,
-        component.regexp,
-        component.replacer
-      )
-    );
+    const mentions = text.match(component.regexp);
+    if (mentions) {
+      mentions.forEach((m) => processingQueue.push({
+        component,
+        size: m.length
+      }));
+    }
   });
+  // start from the longest markup elements, which may contain others
+  processingQueue
+    .sort((a, b) => b.size - a.size)
+    .forEach(({ component }) => {
+      processedText = processedText.flatMap(
+        (item) => replaceWithComponent(
+          item,
+          component.regexp,
+          component.replacer
+        )
+      );
+    });
   return processedText.map((item, index) =>
     typeof item === 'string' && containsHTML(item)
       ? HTMLFragment({index, item})

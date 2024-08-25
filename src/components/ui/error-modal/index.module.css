@@ -9,8 +9,14 @@
   z-index: 150;
 }
 
+.error_modal_content {
+  color: var(--accent-bg-color);
+  background-color: var(--accent-fg-color);
+  padding: 1rem;
+  font-size: 120%;
+}
+
 .error_message {
-  color: var(--accent-fg-color);
   font-family: monospace;
   margin-top: 0;
 }

@@ -1,0 +1,34 @@
+.tab {
+    
+}
+
+.tablist {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    border-bottom: 1px solid var(--fg-color);
+    gap: 1em;
+}
+
+.tabheader {
+    display: flex;
+    color: var(--fg-color);
+}
+
+.tabheader a {
+    display: block;
+    text-decoration: none;
+    padding: 0.5em;
+    color: var(--fg-color);
+}
+
+.tabheader a.active {
+    color: var(--accent-fg-color);
+}
+
+.tabheader a:hover {
+    color: var(--bg-color);
+    background-color: var(--fg-color);
+}
+

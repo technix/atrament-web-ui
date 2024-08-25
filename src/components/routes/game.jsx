@@ -4,7 +4,7 @@ import { useEffect } from 'preact/hooks';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import Container from 'src/components/ui/container';
-import Settings from 'src/components/settings';
+import Menu from 'src/components/menu';
 import ErrorModal from 'src/components/ui/error-modal'
 
 import DebuggerView from 'src/components/views/debugger';
@@ -14,12 +14,8 @@ import OverlayView from 'src/components/views/overlay';
 import { setPageBackground } from 'src/utils/page-background';
 
 const GameRoute = () => {
-  const { continueStory, getAssetPath } = useAtrament();
+  const { getAssetPath } = useAtrament();
   const atramentState = useAtramentState(['game']);
-
-  useEffect(() => {
-    continueStory();
-  }, [ continueStory ]);
 
   let containerStyle;
   if (atramentState.game.background) {
@@ -38,7 +34,7 @@ const GameRoute = () => {
   return (
     <Container style={containerStyle}>
       {import.meta.env.MODE === 'development' && <DebuggerView />}
-      <Settings showSaveAndQuit />
+      <Menu />
       <ErrorModal />
       <Toolbar />
       <OverlayView />

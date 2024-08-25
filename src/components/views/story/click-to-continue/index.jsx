@@ -4,7 +4,7 @@ import { useCallback, useEffect, useState } from 'preact/hooks';
 import { useTranslator } from '@eo-locale/preact';
 import { useAtrament } from 'src/atrament/hooks';
 
-const ClickToContinue = ({ setReady }) => {
+const ClickToContinue = ({ setReady, withChoice = false }) => {
   const { makeChoice, continueStory } = useAtrament();
   const [ isVisible, setIsVisible ] = useState(false);
   const translator = useTranslator();
@@ -12,10 +12,12 @@ const ClickToContinue = ({ setReady }) => {
   const continueGame = useCallback(() => {
     setTimeout(() => {
       setReady(false);
-      makeChoice(0);
+      if (withChoice) {
+        makeChoice(0);
+      }
       continueStory();
     }, 0);
-  }, [ makeChoice, continueStory, setReady ]);
+  }, [ makeChoice, continueStory, setReady, withChoice ]);
 
   const kbdChoiceHandler = useCallback((e) => {
     if (e.key === ' ' || e.key === 'Enter') {
