@@ -8,11 +8,8 @@ import Table from 'src/components/ui/table';
 import DebugVariableEditor from './var-editor';
 
 function listInkVariables(atrament) {
-  const varState = atrament.ink.story().variablesState;
-  const inkVariables = [];
-  for (let key of varState._globalVariables.keys()) {
-    inkVariables.push([key, varState[key]]);
-  }
+  const varState = atrament.ink.getVariables();
+  const inkVariables = Object.entries(varState);
   return inkVariables.sort((a, b) => a[0] > b[0] ? 0 : -1);
 }
 
