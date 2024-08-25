@@ -7,7 +7,7 @@
   "language": "en",
   "locale": "en-US",
   "game": {
-    "path": "the-coiled-crown",
-    "source": "the-coiled-crown.ink"
+    "path": "game",
+    "source": "intercept.ink"
   }
 }
