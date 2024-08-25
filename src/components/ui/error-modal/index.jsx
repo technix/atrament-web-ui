@@ -8,6 +8,8 @@ import style from './index.module.css';
 import Backdrop from 'src/components/ui/backdrop';
 import Modal from 'src/components/ui/modal';
 import CloseButton from 'src/components/ui/close-button';
+import Block from 'src/components/ui/block';
+
 
 const ErrorModal = () => {
   const { atrament } = useAtrament();
@@ -33,8 +35,12 @@ const ErrorModal = () => {
       <div class={style.error_modal}>
         <Backdrop onClick={closeModal} />
         <Modal>
-          <CloseButton onClick={closeModal} />
-          <p class={style.error_message}>{atramentState.ERROR}</p>
+          <div class={style.error_modal_content}>
+            <CloseButton onClick={closeModal} />
+            <Block>
+              <p class={style.error_message}>{atramentState.ERROR}</p>
+            </Block>
+          </div>
         </Modal>
       </div>
     );

@@ -112,9 +112,11 @@ const Menu = ({ isHomeScreen = false }) => {
       <div class={style.menu_container}>
         <Backdrop onClick={toggleMenu} />
         <Modal>
-          <CloseButton onClick={toggleMenu} />
-          {isHomeScreen ? <MenuHomeScreen /> : <MenuGameScreen toggleMenu={toggleMenu} />}
-          <div class={style.atrament_version}>atrament {atrament.version}</div>
+          <div class={style.menu_content}>
+            <CloseButton onClick={toggleMenu} />
+            {isHomeScreen ? <MenuHomeScreen /> : <MenuGameScreen toggleMenu={toggleMenu} />}
+            <div class={style.atrament_version}>atrament {atrament.version}</div>
+          </div>
         </Modal>
       </div>
     );
