@@ -8,6 +8,7 @@ import Info from './info';
 import Banner from './banner';
 import Font from './font';
 import Highlight from './highlight';
+import Block from './block';
 
 export default [
   Button,
@@ -19,5 +20,6 @@ export default [
   Info,
   Banner,
   Font,
-  Highlight
+  Highlight,
+  Block
 ];
