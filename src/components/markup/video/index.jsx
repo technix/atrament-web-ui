@@ -4,9 +4,18 @@ import getTagAttributes from 'src/utils/get-tag-attributes';
 
 const Video = ({ src, options }) => {
   const { getAssetPath } = useAtrament();
-  return (<video width="100%" autoplay disablePictureInPicture loop {...options}>
-    <source src={getAssetPath(src)} />
-  </video>);
+  return (
+    <video
+      style={{ 'pointer-events': 'none' }}
+      width='100%'
+      autoplay
+      disablePictureInPicture
+      loop
+      {...options}
+    >
+      <source src={getAssetPath(src)} />
+    </video>
+  );
 }
 
 export default {
