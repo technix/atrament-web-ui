@@ -9,6 +9,7 @@ import Banner from './banner';
 import Font from './font';
 import Highlight from './highlight';
 import Block from './block';
+import Video from './video';
 
 export default [
   Button,
@@ -21,5 +22,6 @@ export default [
   Banner,
   Font,
   Highlight,
-  Block
+  Block,
+  Video
 ];
