@@ -21,6 +21,24 @@ const BooleanEditor = ({value, setNewValue}) => {
   return (<div class={style.toggle}><Toggle enabled={value} onChange={updateValue} /></div>);
 };
 
+const ListViewer = ({name, value}) => {
+  if (name === value._originNames[0] && value.size === 0) {
+    // empty list, show only possible keys
+    const mapKeys = [...value.origins[0]._itemNameToValues.keys()];
+    return (
+      <span class={style.listview}>{JSON.stringify(mapKeys).replace(/,/g, ', ')}</span>
+    );
+  }
+  const arr = [];
+  value.forEach((v, k) => arr.push([JSON.parse(k), v]));
+  return (
+    <ul class={style.listview}>
+      {arr.map(([k, v]) => <li key={k}><abbr title={k.originName}>{k.itemName}</abbr>: {v}</li>)}
+    </ul>
+  );
+}
+
+
 
 const DebugVariableEditor = ({name, value}) => {
   const { getInkVariable, setInkVariable } = useAtrament();
@@ -60,7 +78,12 @@ const DebugVariableEditor = ({name, value}) => {
         <button class={style.button} onClick={saveValue} title={translator.translate('debug.variables.save')}>&gt;</button>
       </>
       :
-      <button class={style.button} onClick={handleEdit}>{JSON.stringify(newValue)}</button>
+      <>
+        {typeof newValue === 'object'
+          ? <ListViewer name={name} value={newValue} />
+          : <button class={style.button} onClick={handleEdit}>{JSON.stringify(newValue)}</button>
+        }
+      </>
   );
 }
 
