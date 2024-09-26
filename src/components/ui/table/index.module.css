@@ -20,3 +20,24 @@
 .table tbody tr:last-of-type {
     border-bottom: none;
 }
+
+.caption {
+    caption-side: bottom;
+}
+
+.caption button {
+    cursor: pointer;
+    border: none;
+    border-radius: var(--border-radius-inline);
+    background-color: var(--shade-color);
+    margin: 0.25rem;
+    padding: 0.25rem;
+}
+
+.page {
+    color: var(--fg-color);
+}
+
+.page_active {
+    color: var(--accent-fg-color);
+}
