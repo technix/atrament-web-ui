@@ -2,6 +2,7 @@ import { h } from 'preact';
 import { useEffect, useCallback, useState } from 'preact/hooks';
 import style from './index.module.css';
 
+import { useAtramentState } from 'src/atrament/hooks';
 import CloseButton from 'src/components/ui/close-button';
 
 import DebugInfo from './info';
@@ -37,7 +38,7 @@ const DebuggerView = () => {
   }, [ debugHandler ]);
 
   if (!isOpen) {
-    return <></>;
+    return (<button class={style.debug_toggle} onClick={toggleDebugger}>⚙</button>);
   }
 
   return (
@@ -53,4 +54,9 @@ const DebuggerView = () => {
   );
 }
 
-export default DebuggerView;
+const DebuggerMenu = () => {
+  const { metadata } = useAtramentState(['metadata']);
+  return metadata.debug ? <DebuggerView /> : <></>;
+}
+
+export default DebuggerMenu;

@@ -15,6 +15,7 @@ import LinkHome from 'src/components/ui/link-home';
 import Header from 'src/components/ui/header';
 import Break from 'src/components/ui/break';
 
+import DebuggerMenu from 'src/components/views/debugger';
 import LoadGameView from 'src/components/views/loadgame';
 import SaveGameView from 'src/components/views/savegame';
 import Settings from 'src/components/views/settings';
@@ -122,7 +123,10 @@ const Menu = ({ isHomeScreen = false }) => {
     );
   }
   return (
-    <button class={style.menu_toggle} onClick={toggleMenu}><IconMenu /></button>
+    <>
+      <button class={style.menu_toggle} onClick={toggleMenu}><IconMenu /></button>
+      <DebuggerMenu />
+    </>
   );
 };
 
