@@ -67,6 +67,7 @@ The standalone web application files will be in `build` folder. Use `npm run pre
 | `# toolbar: toolbar_function` | Use output of this function as a toolbar content. |
 | `# cover: some/image.jpg` | Cover image to display at the main menu screen |
 | `# background: some/picture.jpg` | Set background image for the game backdrop. |
+| `# debug` | Enable Ink story debugger. |
 
 ### Knot tags
 | Tag | Description                |
@@ -199,7 +200,7 @@ Atrament Web UI build is designed as web application for web server deployment. 
 All you need to do is to build your game with `npm run singlefile` command. The resulting web page will be in the `build_singlefile` folder.
 
 ## Debugger
-When Atrament UI is run in development mode (i.e. via `npm start`), debugger can be invoked with double pressing of `~` button.
+When `#debug` global tag is set, debugger can be invoked with pressing debugger button on the screen or double pressing of `~` button.
 
 Debugger provides the following functionality:
 
