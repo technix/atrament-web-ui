@@ -17,7 +17,7 @@ const EndGameLink = () => {
 
 const Choices = ({ key, currentScene, setReady, isHypertextMode }) => {
   const numberOfChoices = (currentScene && currentScene.choices) ? currentScene.choices.length : -1;
-  if ((numberOfChoices === 1 && currentScene.choices[0].choice === '')) {
+  if (numberOfChoices === 1 && ['', '>>>'].includes(currentScene.choices[0].choice)) {
     // empty choice
     return (<ClickToContinue setReady={setReady} withChoice />);
   } else if (numberOfChoices === 0) { 

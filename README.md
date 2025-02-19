@@ -113,13 +113,21 @@ In addition to above, Atrament Web UI supports **sessions**, which can be enable
 
 ## "Click to continue"
 
-When there is a single empty choice (see example below), it is treated as "click to continue". Choice list is not shown, and player can continue story by clicking the screen or pressing "Space" or "Enter" key. After 3 seconds of inactivity, hint is displayed in the bottom of the screen.
+When there is a single choice, which is either empty or '>>>' (see example below), it is treated as "click to continue". Choice list is not shown, and player can continue story by clicking the screen or pressing "Space" or "Enter" key. After 3 seconds of inactivity, hint is displayed in the bottom of the screen.
 
 ```
 This story will proceed when user clicks screen.
 
 + [ ] -> next_knot
 ```
+
+If you playtest your game with Inky, this notation is preferred:
+```
+This story will proceed when user clicks screen.
+
++ [>>>] -> next_knot
+```
+
 
 ## Hypertext mode
 
