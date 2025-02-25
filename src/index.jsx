@@ -2,7 +2,8 @@ import { render } from 'preact';
 
 // CSS
 import 'normalize.css';
-import 'src/style.css';
+import 'src/styles/app.css';
+import 'src/styles/custom.css';
 
 // App
 import App from './components/app';
