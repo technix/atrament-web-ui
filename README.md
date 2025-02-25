@@ -202,6 +202,24 @@ Example of toolbar and overlays:
 | Space, Enter | Continue story. |
 | Esc | Show/hide settings dialog. |
 
+## Fonts
+To add a font to the application, create a folder in the `src/fonts` with the following files:
+* `index.js` with the following content:
+```
+import('./index.css');
+export default {
+  name: 'Font Name',
+  fallback: 'sans-serif', // fallback font
+};
+```
+* `index.css`, which includes corresponding `@font-face` directives
+* font files, referenced in the `index.css`
+
+To remove fonts from the application, delete the font folder from `src/fonts`.
+
+*Please note: single file build (explained below) uses system fonts only.*
+
+
 ## Single file build
 Atrament Web UI build is designed as web application for web server deployment. However, you may want to build your game as a standalone web page, which can be opened locally too - similar to Inky or Twine web export.
 

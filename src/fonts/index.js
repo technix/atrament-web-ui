@@ -1,15 +1,6 @@
 // font styles
 import { gameDefaultFont } from 'src/constants';
 
-(async () => {
-  if (import.meta.env.MODE !== 'singlefile') {
-    await import('src/fonts/fira-sans/index.css');
-    await import('src/fonts/lora/index.css');
-    await import('src/fonts/merriweather/index.css');
-    await import('src/fonts/opendyslexic/index.css');
-  }
-})();
-
 const emojiFonts = '"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
 const systemFonts = {
@@ -19,14 +10,28 @@ const systemFonts = {
   Monospaced: `"Monaco", "Consolas", "Lucida Console", "Courier New", ${emojiFonts}`
 }
 
-const extraFonts = {
-  'Fira Sans': `"Fira Sans", sans-serif, ${emojiFonts}`,
-  Lora: `"Lora", serif, ${emojiFonts}`,
-  Merriweather: `"Merriweather", serif, ${emojiFonts}`,
-  OpenDyslexic: `"OpenDyslexic", serif, ${emojiFonts}`
-};
+let fonts = systemFonts;
 
-export const fonts = import.meta.env.MODE === 'singlefile' ? systemFonts : { ...systemFonts, ...extraFonts };
+(async () => {
+  if (import.meta.env.MODE !== 'singlefile') {
+    // import font modules
+    const modules = import.meta.glob('./**/*.js');
+    await Promise.all(
+      Object.values(modules).map(
+        (mod) => mod().then((fontmodule) => {
+          const fnt = fontmodule.default;
+          if (fnt.name) {
+            fonts[fnt.name] = `${fnt.name}, ${fnt.fallback || 'serif'}, ${emojiFonts}`;
+          }
+        })
+      )
+    );
+  }
+})();
+
+export {
+  fonts
+};
 
 export function applyFont(font) {
   document.documentElement.style.setProperty('--font-game', fonts[font] || fonts[gameDefaultFont]);
