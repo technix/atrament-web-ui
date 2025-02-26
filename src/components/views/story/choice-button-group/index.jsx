@@ -36,7 +36,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
       kbdChoice <= numberOfChoices &&
       !currentScene.choices[kbdChoice-1].disabled
     ) {
-      selectChoice(kbdChoice - 1);
+      selectChoice(currentScene.choices[kbdChoice-1].id);
     }
   }, [ numberOfChoices, selectChoice, currentScene.choices ]);
 

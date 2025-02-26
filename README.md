@@ -92,6 +92,7 @@ The standalone web application files will be in `build` folder. Use `npm run pre
 | `# RESTART_FROM_CHECKPOINT` | Restart game from latest checkpoint. |
 | `# RESTART_FROM_CHECKPOINT: checkpointName` | Restart game from named checkpoint. |
 | `# CLASS: classname` | Apply CSS class to the paragraph `<p>` element. |
+| `# SHUFFLE_CHOICES` | Shuffle choice order in this knot. |
 
 Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MUSIC/STOP_SOUND/STOP_MUSIC tags. Combining them may lead to unexpected side effects.
 
