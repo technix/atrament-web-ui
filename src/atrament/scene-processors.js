@@ -1,4 +1,6 @@
 // Atrament scene processors
+import arrayShuffle from "src/utils/array-shuffle";
+
 
 function sceneBackground(scene) {
   // BACKGROUND and PAGE_BACKGROUND can be set to false, so we check if variable is defined
@@ -14,7 +16,13 @@ function sceneBackground(scene) {
   }
 }
 
+function shuffleChoices(scene) {
+  if (scene.tags?.SHUFFLE_CHOICES) {
+    scene.choices = arrayShuffle(scene.choices);
+  }
+}
+
 export default function registerSceneProcessors(atrament) {
-  [sceneBackground]
+  [sceneBackground, shuffleChoices]
     .forEach((p) => atrament.game.defineSceneProcessor(p.bind(atrament)));
 }
