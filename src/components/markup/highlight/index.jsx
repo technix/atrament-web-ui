@@ -1,6 +1,8 @@
 import { h } from 'preact';
 import getTagAttributes from 'src/utils/get-tag-attributes';
 
+// [highlight color=black bgcolor=red]highlighted text[/highlight]
+
 export default {
   regexp: /\[highlight.*?\].+?\[\/highlight\]/ig,
   replacer: (el, markup) => {

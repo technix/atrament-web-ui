@@ -5,6 +5,8 @@ import { useCallback } from "preact/hooks";
 import getTagAttributes from 'src/utils/get-tag-attributes';
 import { useAtrament, useAtramentOverlay } from 'src/atrament/hooks';
 
+// [button onclick=function]button text[/button]
+
 const InlineButtonComponent = ({ children, options }) => {
   const { evaluateInkFunction } = useAtrament();
   const { setOverlayContent, refreshOverlay } = useAtramentOverlay();

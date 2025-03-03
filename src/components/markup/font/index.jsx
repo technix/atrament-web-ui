@@ -1,5 +1,7 @@
 import { h } from 'preact';
 
+// [font=Fira Sans]text with font applied[/font]
+
 export default {
   regexp: /\[font=.+?\].+?\[\/font\]/ig,
   replacer: (el, markup) => {
