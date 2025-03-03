@@ -2,6 +2,8 @@ import { h } from 'preact';
 import { useAtrament } from 'src/atrament/hooks';
 import getTagAttributes from 'src/utils/get-tag-attributes';
 
+// [video]path/to/video.mp4[/video]
+
 const Video = ({ src, options }) => {
   const { getAssetPath } = useAtrament();
   return (

@@ -4,6 +4,8 @@ import { useCallback } from "preact/hooks";
 
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
+// [link=target choice text]Text[/link]
+
 const InlineLink = ({ children, choice }) => {
   const { atrament, makeChoice, continueStory } = useAtrament();
   const atramentState = useAtramentState(['scenes']);
