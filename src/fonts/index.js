@@ -15,17 +15,20 @@ let fonts = systemFonts;
 (async () => {
   if (import.meta.env.MODE !== 'singlefile') {
     // import font modules
+    const extFonts = {};
     const modules = import.meta.glob('./**/*.js');
     await Promise.all(
       Object.values(modules).map(
         (mod) => mod().then((fontmodule) => {
           const fnt = fontmodule.default;
           if (fnt.name) {
-            fonts[fnt.name] = `${fnt.name}, ${fnt.fallback || 'serif'}, ${emojiFonts}`;
+            extFonts[fnt.name] = `${fnt.name}, ${fnt.fallback || 'serif'}, ${emojiFonts}`;
           }
         })
       )
     );
+    // add external fonts after the end of system fonts list
+    Object.keys(extFonts).sort().forEach(fnt => (fonts[fnt] = extFonts[fnt]));
   }
 })();
 
