@@ -1,1 +1,21 @@
 /* Write custom CSS classes and rules here */
+
+/*
+Available classes:
+.atrament-ui-app            Application wrapper div
+.atrament-backdrop          Modal backdrop
+.atrament-block             Block
+.atrament-container         Application container div
+.atrament-flex-container    Application flex container div
+.atrament-image-container   Image container div
+.atrament-image             Image inside of a container
+.atrament-text-container    Text container div
+.atrament-header            Header
+.atrament-loading           Loading animation div
+.atrament-modal             Modal div
+.atrament-overlay           Overlay div
+.atrament-toolbar           Toolbar div
+.atrament-container-choices Container for choices list
+.atrament-container-scene   Scene container div
+.atrament-scene             Scene content div
+*/
