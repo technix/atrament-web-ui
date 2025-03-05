@@ -1,0 +1,13 @@
+{
+  "name": "light",
+  "theme": {
+    "bg-color": "#FCFCFC",
+    "fg-color": "#5D576B",
+    "shade-color": "rgba(0, 0, 0, 0.1)",
+    "font-color": "#333333",
+    "accent-bg-color": "#FCFCFC",
+    "accent-fg-color": "#F7567C",
+    "border-radius": "0.5rem",
+    "border-radius-inline": "0.25rem"
+  }
+}

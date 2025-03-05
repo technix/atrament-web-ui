@@ -1,0 +1,13 @@
+{
+  "name": "dark",
+  "theme": {
+    "bg-color": "#4c3b4d",
+    "fg-color": "#FCFCFC",
+    "shade-color": "rgba(255, 255, 255, 0.1)",
+    "font-color": "#EEEEEE",
+    "accent-bg-color": "#EEEEEE",
+    "accent-fg-color": "#F7567C",
+    "border-radius": "0.5rem",
+    "border-radius-inline": "0.25rem"
+  }
+}
