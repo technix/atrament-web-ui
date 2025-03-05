@@ -11,7 +11,8 @@ const InlineButtonComponent = ({ children, options }) => {
   const { evaluateInkFunction } = useAtrament();
   const { setOverlayContent, refreshOverlay } = useAtramentOverlay();
 
-  const clickHandler = useCallback(() => {
+  const clickHandler = useCallback((e) => {
+    e.stopPropagation();
     const inkFn = options.onclick;
     const result = evaluateInkFunction(inkFn);
     if (result.output) {
