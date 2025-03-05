@@ -226,6 +226,22 @@ Atrament Web UI build is designed as web application for web server deployment. 
 
 All you need to do is to build your game with `npm run singlefile` command. The resulting web page will be in the `build_singlefile` folder.
 
+## Zipped game content
+Atrament UI supports zipped game content, when whole game is loaded into browser as a single zip file. The advantage of this mode is instant asset loading at the cost of increased startup time.
+
+To enable this, edit `atrament.config.json` and add `zip` option to it with the name of zip file:
+```
+{
+  ...
+  "game": {
+    "path": "game",
+    "source": "gamefile.ink",
+    "zip": "yourgame.zip"
+  }
+}
+```
+*Please note: this option is ignored for development and single file builds.*
+
 ## Debugger
 When `#debug` global tag is set, debugger can be invoked with pressing debugger button on the screen or double pressing of `~` button.
 

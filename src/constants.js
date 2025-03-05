@@ -1,7 +1,9 @@
 import cfg from '../atrament.config.json';
 
 // Ink file
-export const gamePath = cfg.game.path;
+export const gamePath = import.meta.env.MODE === 'production' && cfg.game?.zip
+  ? cfg.game?.zip // only for production build, not available for "development" and "singlefile"
+  : cfg.game?.path;
 export const gameFile = __INK_SCRIPT__;
 
 // Application ID
