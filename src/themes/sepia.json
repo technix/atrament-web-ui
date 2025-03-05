@@ -1,0 +1,13 @@
+{
+  "name": "sepia",
+  "theme": {
+    "bg-color": "#ffeedb",
+    "fg-color": "#4c3b4d",
+    "shade-color": "rgba(0, 0, 0, 0.1)",
+    "font-color": "#333333",
+    "accent-bg-color": "#ffeedb",
+    "accent-fg-color": "#a53850",
+    "border-radius": "0.5rem",
+    "border-radius-inline": "0.25rem"
+  }
+}

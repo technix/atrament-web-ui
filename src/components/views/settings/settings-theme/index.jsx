@@ -7,8 +7,8 @@ import { themes } from 'src/themes';
 
 const SettingButton = ({themeId, themeConfig, onClick }) =>  {
   const buttonStyle={
-    color: themeConfig['--fg-color'],
-    'background-color': themeConfig['--bg-color']
+    color: themeConfig['fg-color'],
+    'background-color': themeConfig['bg-color']
   }
   return (
     <button class={style.settings_theme_button} style={buttonStyle} onClick={onClick} data-theme-id={themeId}>
