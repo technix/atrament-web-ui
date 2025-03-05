@@ -204,7 +204,7 @@ Example of toolbar and overlays:
 | Esc | Show/hide settings dialog. |
 
 ## Fonts
-To add a font to the application, create a folder in the `src/fonts` with the following files:
+To add a font to the application, create a folder in the `resources/fonts` with the following files:
 * `index.js` with the following content:
 ```
 import('./index.css');
@@ -216,7 +216,7 @@ export default {
 * `index.css`, which includes corresponding `@font-face` directives
 * font files, referenced in the `index.css`
 
-To remove fonts from the application, delete the font folder from `src/fonts`.
+To remove fonts from the application, delete the font folder from `resources/fonts`.
 
 *Please note: single file build (explained below) uses system fonts only.*
 
