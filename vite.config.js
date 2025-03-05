@@ -3,6 +3,8 @@ import preact from '@preact/preset-vite';
 import { VitePWA } from 'vite-plugin-pwa';
 import { createHtmlPlugin } from 'vite-plugin-html';
 import { viteSingleFile } from 'vite-plugin-singlefile';
+import zipPack from "vite-plugin-zip-pack";
+import CleanBuild from 'vite-plugin-clean-build';
 
 import { compileInk, watchInkFiles } from './vite/ink-compiler-plugin';
 import { removeInkFilesFromBuild } from './vite/remove-ink-files-plugin';
@@ -35,6 +37,24 @@ export default defineConfig(({ mode }) => {
     buildDir = 'build_singlefile';
   } else if (mode === 'production') {
     plugins.push(VitePWA(getPWAConfig(atramentCfg)));
+    if (atramentCfg.game.zip) {
+      const gameDir = `build/${atramentCfg.game.path}`;
+      plugins.push(zipPack({
+        inDir: gameDir,
+        outDir: 'build',
+        outFileName: atramentCfg.game.zip
+      }));
+      // delete game and PWA service workers
+      plugins.push(CleanBuild({
+        outputDir: 'build',
+        patterns: [
+          atramentCfg.game.path,
+          //'sw.js',
+          //'workbox*.js',
+          //'registerSW.js'
+        ]
+      }));
+    }
   }
 
   return {

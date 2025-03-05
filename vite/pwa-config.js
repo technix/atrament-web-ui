@@ -1,5 +1,5 @@
 export default function getPWAConfig(atramentCfg) {
-  return {
+  let pwaConfig = {
     registerType: 'autoUpdate',
     includeAssets: ['**/!(*.ink)'],
     workbox: {
@@ -31,4 +31,11 @@ export default function getPWAConfig(atramentCfg) {
       config: 'vite/pwa-assets.config.js'
     }
   };
+
+  if (atramentCfg.game.zip) {
+    // game folder will be removed, so don't include these files into service worker
+    pwaConfig.includeAssets = [ `!./${atramentCfg.game.path}/**` ];
+  }
+
+  return pwaConfig;
 }
