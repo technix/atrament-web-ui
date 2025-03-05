@@ -16,7 +16,7 @@ let fonts = systemFonts;
   if (import.meta.env.MODE !== 'singlefile') {
     // import font modules
     const extFonts = {};
-    const modules = import.meta.glob('./**/*.js');
+    const modules = import.meta.glob('../resources/fonts/**/*.js');
     await Promise.all(
       Object.values(modules).map(
         (mod) => mod().then((fontmodule) => {

@@ -1,7 +1,7 @@
 import { gameDefaultTheme } from 'src/constants';
-import lightTheme from './light.json';
-import sepiaTheme from './sepia.json';
-import darkTheme from './dark.json';
+import lightTheme from '../resources/themes/light.json';
+import sepiaTheme from '../resources/themes/sepia.json';
+import darkTheme from '../resources/themes/dark.json';
 
 export const themes = {
   light: lightTheme.theme,
