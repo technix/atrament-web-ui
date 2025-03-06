@@ -150,7 +150,7 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 ## Custom markup
 | Markup | Description                |
 | :-------- | :------------------------- |
-| `[picture]path/to/image.jpg[/picture]` | Display image (same as `#IMAGE` knot tag). The image sized automatically to fit the container. <br>Attributes:<br>`aside=left|right` displays image aligned left or right.|
+| `[picture]path/to/image.jpg[/picture]` | Display image (same as `#IMAGE` knot tag). The image sized automatically to fit the container. <br>Attributes:<br>`width=50%` sets picture width.<br>`aside=left|right` displays image aligned left or right. Default width of aside pictures is 30%.|
 | `[img]path/to/image.jpg[/img]` | Display inline image. |
 | `[button=function]Text[/button]`<br>`[button onclick=function]Text[/button]` | Display button, call a function when clicked. If function returns text, it will be displayed as a new overlay content. If not, existing overlay content will be updated.<br>Attributes:<br>`onclick=function` function to be called when clicked.<br>`disabled=true` disables the button<br>`bordered=false` hide button borders |
 | `[link=target choice text]Text[/link]` | Creates a link. When clicked, the target choice is activated, and game continues. |

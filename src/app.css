@@ -86,3 +86,10 @@ a, a:visited {
 *::-webkit-scrollbar-thumb:hover {
   background-color: #555;
 }
+
+/* */
+
+.flex-block {
+  display: flex;
+  align-items: start;
+}

@@ -19,7 +19,7 @@ const Paragraph = ( {content, isCurrent} ) => {
   }
 
   return (
-    <div style={pStyle} class={`${style.paragraph} ${pClass}`}>
+    <div style={pStyle} class={`flex-block ${style.paragraph} ${pClass}`}>
       <Markup content={content.text} isActive={isCurrent} />
     </div>
   );
