@@ -1,6 +1,5 @@
 const fs = require('node:fs');
 const os = require('node:os');
-const { downloadRelease } = require('@terascope/fetch-github-release');
 
 const user = 'inkle';
 const repo = 'ink';
@@ -15,6 +14,7 @@ const platforms = {
 }
 
 async function downloadInklecate(platform) {
+  const { downloadRelease } = await import('@terascope/fetch-github-release');
   const filterRelease = (release) => (release.prerelease === false);
   const filterAsset = (asset) => asset.name.includes(platform);
   await fs.promises.mkdir(outputdir, { recursive: true });
@@ -28,7 +28,11 @@ async function main() {
   const env = os.platform();
   const platform = platforms[env];
   if (platform) {
-    await downloadInklecate(platform);
+    try {
+      await downloadInklecate(platform);
+    } catch (e) {
+      console.error(e);
+    }
   } else {
     console.warn(`Inklecate is not available for platform: ${env}. Atrament UI will use JS compiler instead.`);
   }

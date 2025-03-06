@@ -75,21 +75,6 @@ export default defineConfig(({ mode }) => {
       outDir: buildDir
     },
     publicDir: 'root',
-    base: './',
-    experimental: {
-      renderBuiltUrl(filename, { type, hostType }) {
-        if (type === 'asset') {
-          if (hostType === 'html') {
-            // apply "base: './'" to HTML template
-            return `./${filename}`;
-          }
-          if (hostType === 'css') {
-            // fix issue with CSS fonts
-            return filename.replace('assets/','');
-          }
-        }
-        return filename;
-      },
-    },
+    base: ''
   };
 });
