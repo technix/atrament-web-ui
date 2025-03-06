@@ -6,7 +6,7 @@ import style from './index.module.css';
 import getTagAttributes from 'src/utils/get-tag-attributes';
 
 const InfoBlock = ({children, options}) => {
-  const classes = [style.infoblock];
+  const classes = ['flex-block', style.infoblock];
   if (options.font === 'system') {
     classes.push(style.font_ui);
   }

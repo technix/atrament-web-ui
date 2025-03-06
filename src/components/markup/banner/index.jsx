@@ -6,7 +6,7 @@ import style from './index.module.css';
 import getTagAttributes from 'src/utils/get-tag-attributes';
 
 const BannerBlock = ({children, options}) => {
-  const classes = [style.bannerblock];
+  const classes = ['flex-block', style.bannerblock];
   if (options.style === 'accent') {
     classes.push(style.accent);
   }

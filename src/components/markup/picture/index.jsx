@@ -11,12 +11,21 @@ const Picture = ({ options, src }) => {
   const { getAssetPath } = useAtrament();
   if (options.aside) {
     return (
-      <div class={`${style.aside_image_wrapper} ${style[`aside_image_wrapper_${options.aside}`]}`}>
+      <div
+        class={`${style.aside_image_wrapper} ${style[`aside_image_wrapper_${options.aside}`]}`}
+        style={{ width: options.width || '30%'}}
+      >
         <img class={style.aside_image} src={getAssetPath(src)} />
       </div>
     );
   }
-  return (<ContainerImage src={getAssetPath(src)} />);
+  const pictureOptions = {
+    fullsize: true
+  };
+  if (options.width) {
+    pictureOptions.width = options.width;
+  }
+  return (<ContainerImage src={getAssetPath(src)} options={pictureOptions} />);
 }
 
 export default {
