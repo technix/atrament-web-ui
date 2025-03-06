@@ -10,6 +10,7 @@ import Font from './font';
 import Highlight from './highlight';
 import Block from './block';
 import Video from './video';
+import Picture from './picture';
 
 export default [
   Button,
@@ -23,5 +24,6 @@ export default [
   Font,
   Highlight,
   Block,
-  Video
+  Video,
+  Picture
 ];

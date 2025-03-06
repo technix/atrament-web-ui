@@ -1,0 +1,19 @@
+.aside_image_wrapper { 
+  display: inline-block;
+}
+
+.aside_image_wrapper_left {
+  float: left;
+  margin-right: 0.5em;
+}
+
+.aside_image_wrapper_right {
+  float: right;
+  margin-left: 0.5em;
+}
+
+.aside_image {
+  display: block;
+  width: 30%;
+}
+
