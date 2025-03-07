@@ -1,4 +1,5 @@
 .infoblock {
+  display: block;
   width: 100%;
   background-color: var(--shade-color);
   padding: 0.5em;
