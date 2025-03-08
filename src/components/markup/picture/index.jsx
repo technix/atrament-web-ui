@@ -16,7 +16,6 @@ const Picture = ({ options, src }) => {
       pictureOptions[k] = options[k];
     }
   });
-  console.log(pictureOptions);
   return (<ContainerImage src={getAssetPath(src)} options={pictureOptions} />);
 }
 
@@ -25,7 +24,6 @@ export default {
   replacer: (el, markup) => {
     const fragments = el.match(/\[picture(.*?)\](.*?)\[\/picture\]/i);
     const options = getTagAttributes(fragments[1]);
-    console.log(fragments[1], options);
     return (<Picture options={options} src={fragments[2]} />);
   }
 }
