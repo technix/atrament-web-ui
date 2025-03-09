@@ -1,27 +1,16 @@
 import { h } from 'preact';
-import { useTranslator } from '@eo-locale/preact';
-import { useState } from 'preact/hooks';
 import style from './index.module.css';
-
-import { useAtrament, useAtramentState } from 'src/atrament/hooks';
+import { useTranslator } from '@eo-locale/preact';
+import { useAtramentState } from 'src/atrament/hooks';
 import Markup from 'src/components/ui/markup';
 
+const toolbarKey = 'TOOLBAR';
 const Toolbar = () => {
   const translator = useTranslator();
-  const { evaluateInkFunction } = useAtrament();
-  const atramentState = useAtramentState(['metadata']);
-  const [ hasError, setError ] = useState(false);
-
-  const { title, toolbar } = atramentState.metadata;
-  let toolbarContent = title || translator.translate('default.title');
-  if (toolbar && !hasError) {
-    const result = evaluateInkFunction(toolbar);
-    if (result.output) {
-      toolbarContent = result.output;
-    } else if (result.error) {
-      setError(true);
-    }
-  }
+  const atramentState = useAtramentState([toolbarKey]);
+  const toolbarContent = atramentState[toolbarKey] !== '__DEFAULT__'
+    ? atramentState[toolbarKey]
+    : translator.translate('default.title');
 
   return (
     <div class={[style.toolbar, 'atrament-toolbar'].join(' ')}>
