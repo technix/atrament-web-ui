@@ -1,3 +1,5 @@
+/* global __APP_VERSION__, __INK_SCRIPT__*/
+
 import cfg from '../atrament.config.json';
 
 export const appVersion = __APP_VERSION__;

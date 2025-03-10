@@ -21,7 +21,7 @@ const Picture = ({ options, src }) => {
 
 export default {
   regexp: /\[picture.*?\].*?\[\/picture\]/ig,
-  replacer: (el, markup) => {
+  replacer: (el) => {
     const fragments = el.match(/\[picture(.*?)\](.*?)\[\/picture\]/i);
     const options = getTagAttributes(fragments[1]);
     return (<Picture options={options} src={fragments[2]} />);
