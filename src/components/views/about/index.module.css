@@ -8,6 +8,7 @@
   display: block;
   flex-grow: 0;
   height: 5em;
+  margin-right: 1em;
 }
 
 .header small {
