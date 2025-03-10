@@ -44,14 +44,11 @@ export default defineConfig(({ mode }) => {
         outDir: 'build',
         outFileName: atramentCfg.game.zip
       }));
-      // delete game and PWA service workers
+      // delete game folder after zipping
       plugins.push(CleanBuild({
         outputDir: 'build',
         patterns: [
           atramentCfg.game.path,
-          //'sw.js',
-          //'workbox*.js',
-          //'registerSW.js'
         ]
       }));
     }
