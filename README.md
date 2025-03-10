@@ -153,7 +153,7 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 | :-------- | :------------------------- |
 | `[picture]path/to/image.jpg[/picture]` | Display image (same as `#IMAGE` knot tag). The image is sized automatically to fit the container. When using images inside of `[block]` tags, you may want to set picture margins.<br>Attributes:<br>`width=50%` sets picture width.<br>`leftmargin=0.5em` sets left margin. <br>`rightmargin=0.5em` sets right margin.|
 | `[img]path/to/image.jpg[/img]` | Display inline image. |
-| `[button=function]Text[/button]`<br>`[button onclick=function]Text[/button]` | Display button, call a function when clicked. If function returns text, it will be displayed as a new overlay content. If not, existing overlay content will be updated.<br>Attributes:<br>`onclick=function` function to be called when clicked.<br>`disabled=true` disables the button<br>`bordered=false` hide button borders |
+| `[button=function]Text[/button]`<br>`[button onclick=function]Text[/button]` | Display button, call a function when clicked. If function outputs a text, it will be displayed as a new overlay content. If not, existing overlay content will be updated.<br>Attributes:<br>`onclick=function` function to be called when clicked.<br>`disabled=true` disables the button<br>`bordered=false` hide button borders |
 | `[link=target choice text]Text[/link]` | Creates a link. When clicked, the target choice is activated, and game continues. |
 | `[progress value={variable}]Inner text[/progress]` | Displays progress bar.<br>Attributes:<br>`value=x` current progressbar value<br>`min=x` minimal progressbar value<br>`max=x` maximal progressbar value<br>`style=accent` highlight progressbar with accent theme color |
 | `[input var=variable]` | Input element, sets value of given variable. Default value of this field is read from the same variable. Disabled on inactive scenes. <br>Attributes:<br>`var=n` variable name to change<br>`type=number` input type. Possible values: `text`, `number`.<br>`placeholder=text` placeholder text |
@@ -164,7 +164,6 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 | `[highlight]text[/highlight]`<br>`[highlight color=yellow bgcolor=black]Text[/highlight]` | Highlights text with accent color.<br>Optional parameters `bgcolor` and `color` allow to set both background and foreground color for text. |
 | `[block]text[/block]` | Defines a text block.<br><br>Attributes:<br>`width=value` block width. Can be defined in percents (recommended) or other CSS units.<br>`align=left` aligns text horizontally in the block. Possible values: `left`, `center`, `right`<br>`valign=top` aligns text vertically in the block. Possible values: `top`, `bottom` |
 | `[video]path/to/video.mp4[/video]` | Display video. <br>Attributes:<br>`loop=false` disable video loop.<br>`muted=true` play video muted|
-
 
 Note: it is not possible to wrap multiple paragraphs with these tags. Use `<br>` tag for line breaks if you need multiline text in tags.
 
@@ -194,6 +193,21 @@ Example of toolbar and overlays:
 === function stats()
   [title]Character: {character_name}[/title]
   Health: {health}
+  ...
+
+```
+
+## "About" screen
+
+You may add an "About" screen to your game wuth `#about` global tag. When it is set, UI shows "About" button on the main game page. Clicking on it will display content from the function in the Ink file - see example:
+```
+# about: game_about
+
+...
+
+=== function game_about()
+  <h1>Game Title</h1>
+  "About" screen content
   ...
 
 ```
