@@ -30,7 +30,7 @@ const AboutRoute = () => {
   }, [ metadata.about, setAboutContent, evaluateInkFunction ]);
   return (
     <Container>
-      <Menu />
+      <Menu isHomeScreen />
       <ContainerText>
         <ContainerFlex>
           <Block>
