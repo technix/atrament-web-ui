@@ -29,7 +29,9 @@ export const useAtrament = () => {
       try {
         result = atrament.ink.evaluateFunction(fn, args, true);
       } catch (e) {
-        atrament.ink.story().onError(e.toString());
+        if (atrament.ink.story().onError) {
+          atrament.ink.story().onError(e.toString());
+        }
         result.error = e.toString();
       }
       return result;

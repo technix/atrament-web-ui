@@ -17,7 +17,7 @@ import useGameControls from './use-game-controls';
 
 const AboutGame = () => (<LinkMenu key="about" onClick={() => route('/about')}><Text id={'main.about'} /></LinkMenu>);
 
-const MainMenu = ({ canBeResumed, canBeLoaded, openLoadGameMenu }) => {
+const MainMenu = ({ canBeResumed, canBeLoaded, openLoadGameMenu, about }) => {
   const { newGame, resumeGame } = useGameControls();
   return (
     <>
@@ -26,7 +26,7 @@ const MainMenu = ({ canBeResumed, canBeLoaded, openLoadGameMenu }) => {
         {canBeResumed ? <LinkMenu key="continuegame" onClick={resumeGame}><Text id={'main.continue'} /></LinkMenu> : ''}
         <LinkMenu key="startgame" onClick={newGame}><Text id={'main.newgame'} /></LinkMenu>
         {canBeLoaded ? <LinkMenu key="loadgame" onClick={openLoadGameMenu}><Text id={'main.loadgame'} /></LinkMenu> : ''}
-        <AboutGame />
+        {about ? <AboutGame /> : ''}
       </Block>
     </>
   );
@@ -95,7 +95,7 @@ export const HomeMenuView = () => {
     <>
       {loadGameMenuVisible
         ? <LoadGameMenu><LinkMenu key='go-back' onClick={closeLoadGameMenu}><Text id={'main.menu'} /></LinkMenu></LoadGameMenu>
-        : <MainMenu canBeResumed={canBeResumed} canBeLoaded={canBeLoaded} openLoadGameMenu={openLoadGameMenu} />
+        : <MainMenu canBeResumed={canBeResumed} canBeLoaded={canBeLoaded} openLoadGameMenu={openLoadGameMenu} about={metadata.about} />
       }
     </>
   );
