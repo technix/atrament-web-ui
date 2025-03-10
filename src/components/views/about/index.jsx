@@ -4,7 +4,7 @@ import { Text } from '@eo-locale/preact';
 import { appVersion } from 'src/constants';
 import Block from 'src/components/ui/block';
 
-import style from './about.module.css';
+import style from './index.module.css';
 import atramentLogoImage from './atrament-logo.png';
 import iftfLogoImage from './iftf-logo.png';
 
@@ -29,7 +29,10 @@ const AboutMenu = ({ onClick }) => {
   return (
     <Block>
       <div onClick={clickHandler}>
-        <h1 class={style.header}><img src={atramentLogoImage} />Atrament {appVersion}</h1>
+        <div class={style.header}>
+          <img src={atramentLogoImage} />
+          <h1>Atrament <small>{appVersion}</small></h1>
+        </div>
         <p><A href="https://atrament.ink/">https://atrament.ink/</A></p>
         <p>
           <Text id={"about.components"} />: {components.map((item, index) => (

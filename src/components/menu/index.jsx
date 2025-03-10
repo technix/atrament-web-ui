@@ -22,8 +22,7 @@ import DebuggerMenu from 'src/components/views/debugger';
 import LoadGameView from 'src/components/views/loadgame';
 import SaveGameView from 'src/components/views/savegame';
 import Settings from 'src/components/views/settings';
-
-import AboutMenu from './about';
+import AboutMenu from 'src/components/views/about';
 
 const Quit = () => <LinkHome onClick={() => route('/')}><Text id={'game.quit'} /></LinkHome>;
 
