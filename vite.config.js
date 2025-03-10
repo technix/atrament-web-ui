@@ -60,7 +60,8 @@ export default defineConfig(({ mode }) => {
   return {
     plugins,
     define: {
-      __INK_SCRIPT__: JSON.stringify(`${atramentCfg.game.source}.${inkCompileFormat}`)
+      __INK_SCRIPT__: JSON.stringify(`${atramentCfg.game.source}.${inkCompileFormat}`),
+      __APP_VERSION__: JSON.stringify(process.env.npm_package_version)
     },
     resolve: {
       alias: [

@@ -4,6 +4,9 @@ import { route } from 'preact-router';
 import { Text } from '@eo-locale/preact';
 
 import style from './index.module.css';
+
+import { appVersion } from 'src/constants';
+
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import Backdrop from 'src/components/ui/backdrop';
@@ -20,6 +23,7 @@ import LoadGameView from 'src/components/views/loadgame';
 import SaveGameView from 'src/components/views/savegame';
 import Settings from 'src/components/views/settings';
 
+import AboutMenu from './about';
 
 const Quit = () => <LinkHome onClick={() => route('/')}><Text id={'game.quit'} /></LinkHome>;
 
@@ -88,18 +92,24 @@ const MenuGameScreen = ({ toggleMenu }) => {
   </>);
 };
 
+const MenuScreen = ({isHomeScreen, toggleMenu}) => (isHomeScreen ? <MenuHomeScreen /> : <MenuGameScreen toggleMenu={toggleMenu} />);
 
 const Menu = ({ isHomeScreen = false }) => {
-  const { atrament } = useAtrament();
   const [ isOpen, openMenu ] = useState(false);
+  const [ isAboutMenuOpen, openAboutMenu ] = useState(false);
 
-  const toggleMenu = useCallback(() => openMenu(!isOpen), [ isOpen ]);
+  const toggleMenu = useCallback(() => {
+    openMenu(!isOpen), [ isOpen ];
+    openAboutMenu(false);
+  }, [ isOpen ]);
+  const toggleAboutMenu = useCallback(() => openAboutMenu(!isAboutMenuOpen), [ isAboutMenuOpen ]);
 
   const escHandler = useCallback((e) => {
     if (e.key === "Escape") {
       toggleMenu();
+      openAboutMenu(false);
     }
-  }, [ toggleMenu ]);
+  }, [ toggleMenu, openAboutMenu ]);
 
   useEffect(() => {
     document.addEventListener("keydown", escHandler, false);
@@ -115,8 +125,16 @@ const Menu = ({ isHomeScreen = false }) => {
         <Modal>
           <div class={style.menu_content}>
             <CloseButton onClick={toggleMenu} />
-            {isHomeScreen ? <MenuHomeScreen /> : <MenuGameScreen toggleMenu={toggleMenu} />}
-            <div class={style.atrament_version}>atrament {atrament.version}</div>
+            {isAboutMenuOpen
+              ? <AboutMenu onClick={toggleAboutMenu} />
+              : <>
+                <MenuScreen isHomeScreen={isHomeScreen} toggleMenu={toggleMenu} />
+                <div class={style.atrament_version} onClick={toggleAboutMenu}>
+                  <div class={style.atrament_about}>?</div>
+                  <div class={style.atrament_appversion}>Atrament {appVersion}</div>
+                </div>
+              </>
+            }
           </div>
         </Modal>
       </div>

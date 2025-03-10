@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  align-items: center;
+  margin: 0px;
+}
+
+.header img {
+  display: block;
+  flex-grow: 0;
+  height: 2em;
+}
+
+.infobox {
+  display: flex;
+  align-items: center;
+}
+
+.infobox img {
+  width: 20%;
+  flex-grow: 0;
+  margin-right: 1em;
+}
