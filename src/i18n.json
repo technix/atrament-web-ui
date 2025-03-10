@@ -55,8 +55,9 @@
       "debug.functions.arguments_placeholder": "JSON-formatted agruments, i.e. [\"arg1\", 5]",
       "debug.functions.run-function": "Run function",
       "debug.functions.returned-value": "Returned value",
-      "debug.functions.output": "Output"
-
+      "debug.functions.output": "Output",
+      "about.components": "Components and libraries",
+      "about.iftf_support": "Made with the support of the {iftf}"
     }
   },
   {
@@ -84,7 +85,7 @@
       "main.confirm-load": "Завантажити цю гру?",
       "main.confirm-save": "Перезаписати це збереження?",
       "main.settings": "Налаштування",
-      "main.about": "Про застосунок",
+      "main.about": "Про гру",
       "game.end": "Кінець",
       "game.save-and-quit": "Зберегти гру та вийти",
       "game.quit": "Вийти з гри",
@@ -115,7 +116,9 @@
       "debug.functions.arguments_placeholder": "Аргументи у JSON-форматі, наприклад: [\"arg1\", 5]",
       "debug.functions.run-function": "Виконати функцію",
       "debug.functions.returned-value": "Повернене значення",
-      "debug.functions.output": "Вивід"
+      "debug.functions.output": "Вивід",
+      "about.components": "Компоненти та бібліотеки",
+      "about.iftf_support": "Зроблено за підтримки фонду {iftf}"
     }
   }
 ]

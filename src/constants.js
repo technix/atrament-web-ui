@@ -1,5 +1,7 @@
 import cfg from '../atrament.config.json';
 
+export const appVersion = __APP_VERSION__;
+
 // Ink file
 export const gamePath = import.meta.env.MODE === 'production' && cfg.game?.zip
   ? cfg.game?.zip // only for production build, not available for "development" and "singlefile"
