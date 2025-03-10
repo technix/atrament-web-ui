@@ -164,6 +164,7 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 | `[highlight]text[/highlight]`<br>`[highlight color=yellow bgcolor=black]Text[/highlight]` | Highlights text with accent color.<br>Optional parameters `bgcolor` and `color` allow to set both background and foreground color for text. |
 | `[block]text[/block]` | Defines a text block.<br><br>Attributes:<br>`width=value` block width. Can be defined in percents (recommended) or other CSS units.<br>`align=left` aligns text horizontally in the block. Possible values: `left`, `center`, `right`<br>`valign=top` aligns text vertically in the block. Possible values: `top`, `bottom` |
 | `[video]path/to/video.mp4[/video]` | Display video. <br>Attributes:<br>`loop=false` disable video loop.<br>`muted=true` play video muted|
+| `[url=https:\/\/atrament.ink]link text[/url]` | Creates a link to an web resource. When clicked, the resource is opened in a new browser tab. *Note: you have to escape "/" symbols in the URL, as shown in the example.* |
 
 Note: it is not possible to wrap multiple paragraphs with these tags. Use `<br>` tag for line breaks if you need multiline text in tags.
 

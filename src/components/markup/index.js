@@ -11,6 +11,7 @@ import Highlight from './highlight';
 import Block from './block';
 import Video from './video';
 import Picture from './picture';
+import URL from './url';
 
 export default [
   Button,
@@ -25,5 +26,6 @@ export default [
   Highlight,
   Block,
   Video,
-  Picture
+  Picture,
+  URL
 ];
