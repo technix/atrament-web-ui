@@ -35,9 +35,9 @@ const InlineButtonComponent = ({ children, options }) => {
 }
 
 export default {
-  regexp: /\[button.+?\].+?\[\/button\]/ig,
+  regexp: /\[button[ =].+?\].+?\[\/button\]/ig,
   replacer: (el, markup) => {
-    const fragments = el.match(/\[button(.+?)\](.+?)\[\/button\]/i);
+    const fragments = el.match(/\[button([ =].+?)\](.+?)\[\/button\]/i);
     let attributes = fragments[1];
     if (attributes.startsWith('=')) {
       attributes = `onclick${attributes}`;
