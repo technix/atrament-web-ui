@@ -220,6 +220,37 @@ You may add an "About" screen to your game wuth `#about` global tag. When it is 
 | Space, Enter | Continue story. |
 | Esc | Show/hide settings dialog. |
 
+## Themes
+To add a theme to the application, create a json file in the `resources/themes` with the following structure:
+```
+{
+  "name": "custom",
+  "theme": {
+    "bg-color": "#FCFCFC",
+    "fg-color": "#5D576B",
+    "shade-color": "rgba(0, 0, 0, 0.1)",
+    "font-color": "#333333",
+    "accent-bg-color": "#FCFCFC",
+    "accent-fg-color": "#F7567C",
+    "border-radius": "0.5rem",
+    "border-radius-inline": "0.25rem"
+  }
+}
+```
+| Theme parameter | Description                |
+| :-------- | :------------------------- |
+| name | Theme display name. |
+| bg-color | App background color. |
+| fg-color | Primary color for controls. |
+| shade-color | Shadows and highlights. |
+| font-color | App and game text color. |
+| accent-bg-color | Background for accented elements. |
+| accent-fg-color | Foreground for accented elements. |
+| border-radius | Round the corners of choices, modals, and boxes. |
+| border-radius-inline | Round the corners of inline buttons. |
+
+*Note: You can use any valid CSS values for the theme.*
+
 ## Fonts
 To add a font to the application, create a folder in the `resources/fonts` with the following files:
 * `index.js` with the following content:
@@ -237,6 +268,8 @@ To remove fonts from the application, delete the font folder from `resources/fon
 
 *Please note: single file build (explained below) uses system fonts only.*
 
+## Custom CSS styles and classes
+To add custom CSS classes or modify styles of existing elements, edit `resources/styles/custom.css` file. It contains a list of modifiable element classes for reference.
 
 ## Single file build
 Atrament Web UI build is designed as web application for web server deployment. However, you may want to build your game as a standalone web page, which can be opened locally too - similar to Inky or Twine web export.
