@@ -23,6 +23,9 @@ Object.keys(allThemes).sort().forEach(t => (themes[t] = allThemes[t]));
 export { themes };
 
 export function applyTheme(theme) {
+  if (!theme || !themes[theme]) {
+    return;
+  }
   Object.entries(themes[theme] || themes[gameDefaultTheme]).forEach(([prop, value]) => {
     document.documentElement.style.setProperty(`--${prop}`, value);
   });
