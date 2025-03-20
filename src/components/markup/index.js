@@ -12,6 +12,7 @@ import Block from './block';
 import Video from './video';
 import Picture from './picture';
 import URL from './url';
+import Table from './table';
 
 export default [
   Button,
@@ -27,5 +28,6 @@ export default [
   Block,
   Video,
   Picture,
-  URL
+  URL,
+  Table
 ];
