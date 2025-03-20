@@ -37,6 +37,7 @@ export const SessionsMenuView = () => {
   const [ loadGameMenuVisible, setLoadGameMenuVisible ] = useState(false);
   const { atrament, canResume } = useAtrament();
   const { newGame, resumeGame } = useGameControls();
+  const { metadata } = useAtramentState(['metadata']);
 
   const openLoadGameMenu = () => setLoadGameMenuVisible(true);
   const closeLoadGameMenu = () => {
@@ -52,7 +53,7 @@ export const SessionsMenuView = () => {
           <GameCover />
           <Block align='end'>
             <SessionsView newGame={newGame} resumeGame={resumeGame} canResume={canResume} loadGame={openLoadGameMenu} />
-            <AboutGame />
+            {metadata.about ? <AboutGame /> : ''}
           </Block>
         </>
       }
