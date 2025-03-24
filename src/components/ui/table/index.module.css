@@ -4,16 +4,19 @@
     width: 100%;
 }
 
-.table th,
-.table td {
+.cell_full {
+    padding: 0;
+}
+
+.cell_padding {
     padding: 0.5em 0.5em;
 }
 
-.table thead tr {
+.thead_border {
     border-bottom: 2px solid var(--shade-color);
 }
 
-.table tbody tr {
+.tbody_border {
     border-bottom: 1px solid var(--shade-color);
 }
 

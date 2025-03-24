@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import style from './index.module.css';
 
-const Table = ({columns = [], data = [], pageSize = 0}) => {
+const Table = ({columns = [], data = [], pageSize = 0, border = true, padding = true}) => {
   const [ currentPage, setCurrentPage ] = useState(0);
   useEffect(() => {
     setCurrentPage(0);
@@ -40,16 +40,18 @@ const Table = ({columns = [], data = [], pageSize = 0}) => {
       }
       {columns.length > 0 && 
         <thead>
-          <tr>
-            {columns.map((th, i) => (<th key={i} style={th.style}>{th.name}</th>))}
+          <tr class={border ? style.thead_border : ''}>
+            {columns.map((th, i) => (
+              <th key={i} class={padding ? style.cell_padding : style.cell_full} style={th.style}>{th.name}</th>
+            ))}
           </tr>
         </thead>
       }
       {displayData.length > 0 && 
         <tbody>
           {displayData.map((tr, row) => (
-            <tr key={row}>
-              {tr.map((td, col) => <td key={col}>{td}</td>)}
+            <tr key={row}  class={border ? style.tbody_border : ''}>
+              {tr.map((td, col) => <td key={col} class={padding ? style.cell_padding : style.cell_full}>{td}</td>)}
             </tr>
           ))}
         </tbody>
