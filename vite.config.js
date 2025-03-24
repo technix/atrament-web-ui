@@ -15,13 +15,18 @@ import atramentCfg from './atrament.config.json';
 export default defineConfig(({ mode }) => {
   const inkCompileFormat = atramentCfg.game.format || (mode === 'singlefile' ? 'js' : 'json');
 
+  const neutralinoTemplate = mode === 'standalone'
+    ? '<script src="./neutralino.js"></script><script>Neutralino.init();</script>'
+    : '';
+
   const plugins = [
     preact(),
     createHtmlPlugin({
       inject: {
         data: {
           title: atramentCfg.name,
-          description: atramentCfg.description
+          description: atramentCfg.description,
+          neutralino: neutralinoTemplate
         },
       },
     }),
@@ -30,15 +35,18 @@ export default defineConfig(({ mode }) => {
     removeInkFilesFromBuild(),
   ]
 
-  let buildDir = 'build';
+  let buildDir = 'build/web';
 
   if (mode === 'singlefile') {
     plugins.push(viteSingleFile());
-    buildDir = 'build_singlefile';
+    buildDir = 'build/singlefile';
+  } else if (mode === 'standalone') {
+    plugins.push(VitePWA(getPWAConfig(atramentCfg)));
+    buildDir = 'build/.tmp_neutralino/resources';
   } else if (mode === 'production') {
     plugins.push(VitePWA(getPWAConfig(atramentCfg)));
     if (atramentCfg.game.zip) {
-      const gameDir = `build/${atramentCfg.game.path}`;
+      const gameDir = `${buildDir}/${atramentCfg.game.path}`;
       plugins.push(zipPack({
         inDir: gameDir,
         outDir: 'build',
@@ -46,7 +54,7 @@ export default defineConfig(({ mode }) => {
       }));
       // delete game folder after zipping
       plugins.push(CleanBuild({
-        outputDir: 'build',
+        outputDir: buildDir,
         patterns: [
           atramentCfg.game.path,
         ]
