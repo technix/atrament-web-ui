@@ -1,15 +1,15 @@
 import { h } from 'preact';
 import { useEffect, useCallback } from 'preact/hooks';
-
+import { ERROR_STORE_KEY } from 'src/constants';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import ErrorModal from 'src/components/ui/error-modal';
 
 const ErrorStory = () => {
   const { atrament } = useAtrament();
-  const atramentState = useAtramentState(['ERROR']);
+  const atramentState = useAtramentState([ERROR_STORE_KEY]);
 
-  const closeModal = useCallback(() => atrament.state.setKey('ERROR', null), [ atrament ]);
+  const closeModal = useCallback(() => atrament.state.setKey(ERROR_STORE_KEY, null), [ atrament ]);
 
   const escHandler = useCallback((e) => {
     if (e.key === "Escape") {
@@ -24,8 +24,8 @@ const ErrorStory = () => {
     }
   }, [ escHandler ]);
 
-  if (atramentState.ERROR) {
-    return <ErrorModal close={closeModal} message={atramentState.ERROR} />;
+  if (atramentState[ERROR_STORE_KEY]) {
+    return <ErrorModal close={closeModal} message={atramentState[ERROR_STORE_KEY]} />;
   }
 };
 

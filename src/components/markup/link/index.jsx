@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import style from './index.module.css';
 import { useCallback } from "preact/hooks";
-
+import { ERROR_STORE_KEY } from 'src/constants';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 // [link=target choice text]Text[/link]
@@ -15,7 +15,7 @@ const InlineLink = ({ children, choice }) => {
     const currentScene = atramentState.scenes[lastSceneIndex];
     const chosen = currentScene.choices.findIndex((item) => item.choice === choice);
     if (chosen < 0) {
-      atrament.state.setKey('ERROR', `[link=${choice}] leads to nonexistent choice!`);
+      atrament.state.setKey(ERROR_STORE_KEY, `[link=${choice}] leads to nonexistent choice!`);
       return;
     }
     makeChoice(chosen);

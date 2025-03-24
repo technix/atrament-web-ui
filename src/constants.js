@@ -39,3 +39,17 @@ export const defaultFontSize = 100;
 export const stepFontSize = 10;
 export const minFontSize = defaultFontSize - ( stepFontSize * 3);
 export const maxFontSize = defaultFontSize + ( stepFontSize * 5);
+
+
+//// Internal constants ////
+
+// error
+export const ERROR_STORE_KEY = 'ERROR';
+
+// overlay
+export const OVERLAY_STORE_KEY = 'OVERLAY';
+
+// toolbar
+export const TOOLBAR_STORE_KEY = 'TOOLBAR';
+export const TOOLBAR_DEFAULT = '__DEFAULT__';
+
