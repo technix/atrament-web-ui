@@ -26,7 +26,14 @@ import AboutMenu from 'src/components/views/about';
 
 const Quit = () => <LinkHome onClick={() => route('/')}><Text id={'game.quit'} /></LinkHome>;
 
-const MenuHomeScreen = () => (<Settings />);
+const MenuHomeScreen = () => {
+  const { atrament } = useAtrament();
+  const exitApp = atrament.interfaces.platform.exitApp;
+  return (<>
+    <Settings />
+    {exitApp ? (<><Break /><LinkHome onClick={exitApp}><Text id={'main.exit'} /></LinkHome></>): ''}
+  </>);
+};
 
 const MenuGameScreen = ({ toggleMenu }) => {
   const { atrament } = useAtrament();

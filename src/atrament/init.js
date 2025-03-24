@@ -39,5 +39,10 @@ export default async function atramentInit(atrament, Story) {
   registerSceneProcessors(atrament);
   // mute when tab is inactive
   muteWhenInactive(atrament);
+  // set window title
+  const metadata = atrament.state.get().metadata;
+  if (metadata.title) {
+    atrament.interfaces.platform.setTitle(metadata.title);
+  }
   // done
 }
