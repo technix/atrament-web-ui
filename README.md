@@ -160,6 +160,7 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 | `[spoiler]text[/spoiler]` | Hidden text. Clicking it toggles text visibility. |
 | `[info]text[/info]` | Display text as an information block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`font=system` use system font<br>`side=n` add color to the left infobox side. Possible values: `highlight`, `accent`. |
 | `[banner]text[/banner]` | Display text as an banner block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`style=accent` use accent color<br>`allcaps=true` display text in all capitals |
+| `[css]text[/css]` | Applies CSS classed and/or styles to the text.<br><br>Attributes:<br>`class=CSS_class` applies CSS class to the text.<br>`style="CSS style string"` applies CSS style to the text. |
 | `[font=Courier New]text[/font]` | Applies font to the text. |
 | `[highlight]text[/highlight]`<br>`[highlight color=yellow bgcolor=black]Text[/highlight]` | Highlights text with accent color.<br>Optional parameters `bgcolor` and `color` allow to set both background and foreground color for text. |
 | `[block]text[/block]` | Defines a text block.<br><br>Attributes:<br>`width=value` block width. Can be defined in percents (recommended) or other CSS units.<br>`align=left` aligns text horizontally in the block. Possible values: `left`, `center`, `right`<br>`valign=top` aligns text vertically in the block. Possible values: `top`, `bottom` |
