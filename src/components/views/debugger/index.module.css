@@ -77,3 +77,9 @@
 .outputmsg {
     font-family: monospace;
 }
+
+.unknown_tag {
+    color: var(--accent-fg-color);
+    font-weight: bold;
+    cursor: help;
+}

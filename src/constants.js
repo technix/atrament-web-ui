@@ -53,3 +53,26 @@ export const OVERLAY_STORE_KEY = 'OVERLAY';
 export const TOOLBAR_STORE_KEY = 'TOOLBAR';
 export const TOOLBAR_DEFAULT = '__DEFAULT__';
 
+// known global tags (for debugger)
+
+export const KNOWN_GLOBAL_TAGS = [
+  'title',
+  'author',
+  'theme',
+  'font',
+  'observe',
+  'persist',
+  'sessions',
+  'autosave',
+  'saves',
+  'load_from_checkpoints',
+  'continue_maximally',
+  'single_scene',
+  'scenes_align',
+  'hypertext',
+  'toolbar',
+  'about',
+  'cover',
+  'background',
+  'debug'
+];
