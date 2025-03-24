@@ -26,10 +26,10 @@ The application is available at http://localhost:8900. If any source file (Ink o
 
 ### Build application for publishing to web
 ```
-npm run build
+npm run build-web
 ```
 
-The standalone web application files will be in `build` folder. Use `npm run preview` command to test it in browser at http://localhost:4173/.
+The standalone web application files will be in `build/web` folder. Use `npm run preview` command to test it in browser at http://localhost:4173/.
 
 ## Create your own game with Atrament Web UI
 
@@ -42,7 +42,7 @@ The standalone web application files will be in `build` folder. Use `npm run pre
     * "`theme`": default app theme, may be "`light`", "`sepia`", or "`dark`"
     * "`font`": default game font, may be "`System`", "`Sans Serif`", "`Serif`", "`Monospaced`", "`Fira Sans`", "`Lora`", "`Merriweather`", or "`OpenDyslexic`"
 4. (optionally) replace `root/logo.png` with your project logo. This image is used to generate favicon and application icon.
-5. That's it! You can make a test run with `npm start`, or build standalone web app with `npm run build`.
+5. That's it! You can make a test run with `npm start`, or build standalone web app with `npm run build-web`.
 
 ## Ink tags handled by Atrament Web UI
 
@@ -274,7 +274,10 @@ To add custom CSS classes or modify styles of existing elements, edit `resources
 ## Single file build
 Atrament Web UI build is designed as web application for web server deployment. However, you may want to build your game as a standalone web page, which can be opened locally too - similar to Inky or Twine web export.
 
-All you need to do is to build your game with `npm run singlefile` command. The resulting web page will be in the `build_singlefile` folder.
+All you need to do is to build your game with `npm run build-singlefile` command. The resulting web page will be in the `build/singlefile` folder.
+
+## Standalone executables build
+Atrament UI can produce executables for Windows, Linux, and MacOS. To build them, use `npm run build-standalone` command. The folder with executables for all platforms will be in the `build/standalone` folder.
 
 ## Zipped game content
 Atrament UI supports zipped game content, when whole game is loaded into browser as a single zip file. The advantage of this mode is instant asset loading at the cost of increased startup time.

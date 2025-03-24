@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "vite",
+    "build": "vite build",
     "build-web": "vite build",
     "build-singlefile": "vite build --mode singlefile",
     "build-standalone": "vite build --mode standalone && node tools/neutralino-config.cjs && cd build/.tmp_neutralino && neu update && neu build && node-rmrf ../standalone && move-file dist ../standalone",
