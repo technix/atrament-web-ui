@@ -11,8 +11,9 @@ import Highlight from './highlight';
 import Block from './block';
 import Video from './video';
 import Picture from './picture';
-import URL from './url';
+import webURL from './url';
 import Table from './table';
+import spanCSS from './css';
 
 export default [
   Button,
@@ -28,6 +29,7 @@ export default [
   Block,
   Video,
   Picture,
-  URL,
-  Table
+  webURL,
+  Table,
+  spanCSS
 ];
