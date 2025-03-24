@@ -1,6 +1,7 @@
 import { useContext, useCallback } from 'preact/hooks';
 import { useStore } from '@nanostores/preact';
 import { AtramentContext } from 'src/context';
+import { OVERLAY_STORE_KEY } from 'src/constants';
 
 export const useAtrament = () => {
   const atrament = useContext(AtramentContext);
@@ -92,34 +93,34 @@ export const useAtramentState = (keys = undefined) => {
 
 export const useAtramentOverlay = () => {
   const { evaluateInkFunction, setStateSubkey } = useAtrament();
-  const atramentState = useAtramentState(['OVERLAY']);
+  const atramentState = useAtramentState([OVERLAY_STORE_KEY]);
 
   const setOverlayContent = useCallback((overlayName, content) => {
-    setStateSubkey('OVERLAY', 'activeOverlay', overlayName);
+    setStateSubkey(OVERLAY_STORE_KEY, 'activeOverlay', overlayName);
     let textContent = content;
     const contentArray = content.split('\n');
     const firstLine = contentArray.shift();
     const title = firstLine.match(/\[title\](.+?)\[\/title\]/i);
     if (title) {
-      setStateSubkey('OVERLAY', 'title', title[1]);
+      setStateSubkey(OVERLAY_STORE_KEY, 'title', title[1]);
       textContent = contentArray.join('\n');
     }
-    setStateSubkey('OVERLAY', 'content', textContent);
+    setStateSubkey(OVERLAY_STORE_KEY, 'content', textContent);
   }, [ setStateSubkey ]);
 
   const refreshOverlay = useCallback(() => {
-    const activeOverlay = atramentState.OVERLAY.activeOverlay;
+    const activeOverlay = atramentState[OVERLAY_STORE_KEY].activeOverlay;
     if (activeOverlay) {
       // refresh active overlay
       const result = evaluateInkFunction(activeOverlay);
       setOverlayContent(activeOverlay, result.output);
     }
-  }, [ atramentState.OVERLAY.activeOverlay, setOverlayContent, evaluateInkFunction ]);
+  }, [ atramentState, setOverlayContent, evaluateInkFunction ]);
 
   const closeOverlay = useCallback(() => {
-    setStateSubkey('OVERLAY', 'activeOverlay', null);
-    setStateSubkey('OVERLAY', 'content', '');
-    setStateSubkey('OVERLAY', 'title', null);
+    setStateSubkey(OVERLAY_STORE_KEY, 'activeOverlay', null);
+    setStateSubkey(OVERLAY_STORE_KEY, 'content', '');
+    setStateSubkey(OVERLAY_STORE_KEY, 'title', null);
   }, [ setStateSubkey ]);
 
   return {
@@ -127,9 +128,9 @@ export const useAtramentOverlay = () => {
     closeOverlay,
     setOverlayContent,
     overlay: {
-      active: atramentState.OVERLAY.activeOverlay,
-      content: atramentState.OVERLAY.content.split('\n'),
-      title: atramentState.OVERLAY.title,
+      active: atramentState[OVERLAY_STORE_KEY].activeOverlay,
+      content: atramentState[OVERLAY_STORE_KEY].content.split('\n'),
+      title: atramentState[OVERLAY_STORE_KEY].title,
     }
   }
 };

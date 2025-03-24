@@ -1,9 +1,11 @@
+import { TOOLBAR_DEFAULT, TOOLBAR_STORE_KEY, OVERLAY_STORE_KEY, ERROR_STORE_KEY } from "src/constants";
+
 function registerToolbarHandler(atrament, toolbarFunction) {
   const refreshToolbar = () => {
     let result;
     try {
       result = atrament.ink.evaluateFunction(toolbarFunction, [], true);
-      atrament.state.setKey('TOOLBAR', result.output);
+      atrament.state.setKey(TOOLBAR_STORE_KEY, result.output);
     } catch (e) {
       atrament.ink.story().onError(e.toString());
     }
@@ -23,9 +25,9 @@ function registerToolbarHandler(atrament, toolbarFunction) {
 
 export default function onGameStart(atrament) {
   // register error handler
-  atrament.ink.onError((error) => atrament.state.setKey('ERROR', error));
+  atrament.ink.onError((error) => atrament.state.setKey(ERROR_STORE_KEY, error));
   // reset overlay state
-  atrament.state.setKey('OVERLAY', {
+  atrament.state.setKey(OVERLAY_STORE_KEY, {
     activeOverlay: null,
     content: '',
     title: null
@@ -35,8 +37,8 @@ export default function onGameStart(atrament) {
   if (metadata.toolbar) {
     registerToolbarHandler(atrament, metadata.toolbar);
   } else if (metadata.title) {
-    atrament.state.setKey('TOOLBAR', metadata.title);
+    atrament.state.setKey(TOOLBAR_STORE_KEY, metadata.title);
   } else {
-    atrament.state.setKey('TOOLBAR', '__DEFAULT__');
+    atrament.state.setKey(TOOLBAR_STORE_KEY, TOOLBAR_DEFAULT);
   }
 }
