@@ -169,6 +169,24 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 
 Note: it is not possible to wrap multiple paragraphs with these tags. Use `<br>` tag for line breaks if you need multiline text in tags.
 
+### Tables
+
+You can make tables with the following markup:
+```
+[table]<>
+  [header]Header 1[ ]Header 2[ ]Header 3[/header]<>
+	[row]Cell 1[ ]Cell 2[ ]Cell 3[/row]<>
+	[row]Cell 4[ ]Cell 5[ ]Cell 6[/row]<>
+[/table]
+```
+Please note `<>` operator at the end of each table line - this is required to render the table properly.
+
+The table consists of header `[header][/header]` (optional) and rows `[row][/row]`. The `[ ]` is a cell separator.
+
+Attributes:
+* `border=false` disables table borders.
+* `padding=false` disables table cell paddings.
+
 ## Overlay
 
 Atrament Web UI can display custom data (inventory, character stats etc.) as an overlay. 
