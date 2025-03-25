@@ -296,7 +296,7 @@ Atrament Web UI build is designed as web application for web server deployment. 
 All you need to do is to build your game with `npm run build-singlefile` command. The resulting web page will be in the `build/singlefile` folder.
 
 ## Standalone executables build
-Atrament UI can produce executables for Windows, Linux, and MacOS. To build them, use `npm run build-standalone` command. The folder with executables for all platforms will be in the `build/standalone` folder.
+Atrament UI can produce executables for Windows, Linux, and MacOS. To build them, use `npm run build-standalone` command. The folder with executables for all platforms will be in the `build/standalone` folder. The build also creates ZIP archives for each platform.
 
 ## Zipped game content
 Atrament UI supports zipped game content, when whole game is loaded into browser as a single zip file. The advantage of this mode is instant asset loading at the cost of increased startup time.
