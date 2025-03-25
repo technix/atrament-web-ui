@@ -14,7 +14,7 @@
     "compile-ink-script": "node tools/ink-compile.cjs",
     "install-inklecate": "node tools/install-inklecate.cjs",
     "install-neutralino": "cd tools/neutralino && neu update",
-    "neutralino": "cd build/.tmp_neutralino && neu build && node-rmrf ../standalone && move-file dist ../standalone && cd .. && node-rmrf ./.tmp_neutralino"
+    "neutralino": "cd build/.tmp_neutralino && neu build && node-rmrf ../standalone && move-file dist ../standalone && cd .. && node-rmrf ./.tmp_neutralino && cd ./standalone && node ../../tools/postbuild-neutralino.mjs"
   },
   "dependencies": {
     "@atrament/web": "2.1.1",
@@ -43,7 +43,8 @@
     "vite-plugin-html": "3.2.2",
     "vite-plugin-pwa": "0.21.1",
     "vite-plugin-singlefile": "2.2.0",
-    "vite-plugin-zip-pack": "1.2.4"
+    "vite-plugin-zip-pack": "1.2.4",
+    "zip-a-folder": "^3.1.9"
   },
   "eslintConfig": {
     "extends": "preact"
