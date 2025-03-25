@@ -13,7 +13,6 @@
     "lint": "eslint --ext .jsx --ext js src",
     "compile-ink-script": "node tools/ink-compile.cjs",
     "install-inklecate": "node tools/install-inklecate.cjs",
-    "install-neutralino": "cd tools/neutralino && neu update",
     "neutralino": "cd build/.tmp_neutralino && neu build && node-rmrf ../standalone && move-file dist ../standalone && cd .. && node-rmrf ./.tmp_neutralino && cd ./standalone && node ../../tools/postbuild-neutralino.mjs"
   },
   "dependencies": {
