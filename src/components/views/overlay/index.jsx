@@ -6,6 +6,7 @@ import { IconToolbarBack } from 'src/components/ui/icons';
 import { useAtramentOverlay } from 'src/atrament/hooks';
 
 import ContainerText from 'src/components/ui/container-text';
+import TextParagraph from 'src/components/ui/text-paragraph';
 import Markup from 'src/components/ui/markup';
 
 const OverlayView = () => {
@@ -23,7 +24,7 @@ const OverlayView = () => {
       </div>
       <div class={[style.overlay_content, 'atrament-overlay'].join(' ')}>
         <ContainerText>
-          {overlay.content.map((item, index) => <p key={index}><Markup content={item} /></p>)}
+          {overlay.content.map((item, index) => <TextParagraph key={index}><Markup content={item} /></TextParagraph>)}
         </ContainerText>
       </div>
     </div>

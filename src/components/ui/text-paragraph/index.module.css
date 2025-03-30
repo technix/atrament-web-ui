@@ -1,0 +1,7 @@
+.text_paragraph {
+    display: block;
+    margin-block-end: 1em;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    unicode-bidi: isolate;
+}
