@@ -60,6 +60,7 @@ const runInklecate = (cmd, ...args) => {
       const output = `var storyContent = ${content};`;
       fs.writeFileSync(outputFile, output);
     }
+    process.exit(inkCompilerProcess.exitCode)
   });
 }
 
