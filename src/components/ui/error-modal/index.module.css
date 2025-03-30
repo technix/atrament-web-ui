@@ -1,14 +1,3 @@
-.error_modal {
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  overflow: auto;
-  width: 100%;
-  height: 100%;
-  z-index: 150;
-}
-
 .error_modal_content {
   color: var(--accent-bg-color);
   background-color: var(--accent-fg-color);
