@@ -1,6 +1,7 @@
 import { h } from 'preact';
 import style from './index.module.css';
 
+import ContainerModal from '../container-modal';
 import Backdrop from 'src/components/ui/backdrop';
 import Modal from 'src/components/ui/modal';
 import CloseButton from 'src/components/ui/close-button';
@@ -10,8 +11,8 @@ const noop = () => {};
 
 const ErrorModal = ({ close = noop, message }) => {
   return (
-    <div class={style.error_modal}>
-      <Backdrop onClick={close} />
+    <ContainerModal>
+      <Backdrop onClick={noop} />
       <Modal>
         <div class={style.error_modal_content}>
           {close !== noop ? <CloseButton onClick={close} /> : ''}
@@ -20,7 +21,7 @@ const ErrorModal = ({ close = noop, message }) => {
           </Block>
         </div>
       </Modal>
-    </div>
+    </ContainerModal>
   );
 };
 

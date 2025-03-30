@@ -9,6 +9,7 @@ import { appVersion } from 'src/constants';
 
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
+import ContainerModal from 'src/components/ui/container-modal';
 import Backdrop from 'src/components/ui/backdrop';
 import Modal from 'src/components/ui/modal';
 import CloseButton from 'src/components/ui/close-button';
@@ -126,7 +127,7 @@ const Menu = ({ isHomeScreen = false }) => {
 
   if (isOpen) {
     return (
-      <div class={style.menu_container}>
+      <ContainerModal>
         <Backdrop onClick={toggleMenu} />
         <Modal>
           <div class={style.menu_content}>
@@ -143,7 +144,7 @@ const Menu = ({ isHomeScreen = false }) => {
             }
           </div>
         </Modal>
-      </div>
+      </ContainerModal>
     );
   }
   return (
