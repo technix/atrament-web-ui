@@ -1,20 +1,38 @@
 import { spawnSync } from 'child_process';
 
+function renderError(server, error) {
+  if (error) {
+    server.ws.send({
+      type: 'error',
+      err: {
+        message: error
+      }
+    });
+  }
+}
+
+
 function runCompiler(format = 'json') {
   const res = spawnSync('node', ['tools/ink-compile.cjs', format]);
   [ res.stdout.toString(), res.stderr.toString() ].forEach(
     (item) => item && console.log(item)
   );
-  if (res.status !== 0) {
-    throw new Error("Failed to run Ink compiler");
-  }
+  return res;
 }
 
 export function compileInk(format) {
+  let inkCompilerError;
   return {
     name: 'compile-ink',
+    configureServer(server) {
+      renderError(server, inkCompilerError);
+    },
     configResolved() {
-      runCompiler(format);
+      const res = runCompiler(format);
+      if (res.status !== 0) {
+        inkCompilerError = res.stdout.toString();
+      }
+      return res;
     },
   }
 }
@@ -25,11 +43,15 @@ export function watchInkFiles(format) {
     enforce: 'post',
     handleHotUpdate({ file, server }) {
       if (file.endsWith('.ink')) {
-        runCompiler(format);
-        server.hot.send({
-          type: 'full-reload',
-          path: '*'
-        });
+        const res = runCompiler(format);
+        if (res.status === 0) {
+          server.hot.send({
+            type: 'full-reload',
+            path: '*'
+          });
+        } else {
+          renderError(server, res.stdout.toString())
+        }
       }
     },
   }
