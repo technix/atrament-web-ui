@@ -17,6 +17,7 @@ const DebugInfo = () => {
     [translator.translate('debug.info.ink-file'), `${gamedata.$path}/${gamedata.$file}`],
     [translator.translate('debug.info.story-seed'), inkstate.storySeed],
     [translator.translate('debug.info.current-turn-index'), inkstate.currentTurnIndex],
+    [translator.translate('debug.info.path'), inkstate.previousPathString],
   ];
 
   return(
