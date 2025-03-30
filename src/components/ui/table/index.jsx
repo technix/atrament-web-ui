@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { useState, useEffect } from 'preact/hooks';
 import style from './index.module.css';
 
-const Table = ({columns = [], data = [], pageSize = 0, border = true, padding = true}) => {
+const Table = ({columns = [], data = [], pageSize = 0, border = true, padding = true, columnWidth = []}) => {
   const [ currentPage, setCurrentPage ] = useState(0);
   useEffect(() => {
     setCurrentPage(0);
@@ -41,9 +41,15 @@ const Table = ({columns = [], data = [], pageSize = 0, border = true, padding = 
       {columns.length > 0 && 
         <thead>
           <tr class={border ? style.thead_border : ''}>
-            {columns.map((th, i) => (
-              <th key={i} class={padding ? style.cell_padding : style.cell_full} style={th.style}>{th.name}</th>
-            ))}
+            {columns.map((th, i) => {
+              const thStyle = th.style || {};
+              if (columnWidth[i]) {
+                thStyle.width = columnWidth[i];
+              }
+              return (
+                <th key={i} class={padding ? style.cell_padding : style.cell_full} style={thStyle}>{th.name}</th>
+              )
+            })}
           </tr>
         </thead>
       }
@@ -51,7 +57,15 @@ const Table = ({columns = [], data = [], pageSize = 0, border = true, padding = 
         <tbody>
           {displayData.map((tr, row) => (
             <tr key={row}  class={border ? style.tbody_border : ''}>
-              {tr.map((td, col) => <td key={col} class={padding ? style.cell_padding : style.cell_full}>{td}</td>)}
+              {tr.map((td, col) => {
+                const tdStyle = {};
+                if (columnWidth[col]) {
+                  tdStyle.width = columnWidth[col];
+                }
+                return (
+                  <td key={col} class={padding ? style.cell_padding : style.cell_full} style={tdStyle}>{td}</td>
+                );
+              })}
             </tr>
           ))}
         </tbody>
