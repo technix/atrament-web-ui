@@ -1,9 +1,11 @@
 import { h } from 'preact';
 import { useEffect, useCallback, useState } from 'preact/hooks';
+import { useTranslator } from '@eo-locale/preact';
 import style from './index.module.css';
 
 import { useAtramentState } from 'src/atrament/hooks';
 import CloseButton from 'src/components/ui/close-button';
+import { IconDebugger } from 'src/components/ui/icons';
 
 import DebugInfo from './info';
 import DebugGoto from './goto';
@@ -15,6 +17,7 @@ import DebugFunctions from './functions';
 const DebuggerView = () => {
   const [ isOpen, openDebugger ] = useState(false);
   const [ keyWait, setKeyWait ] = useState(false);
+  const translator = useTranslator();
 
   const toggleDebugger = useCallback(() => openDebugger(!isOpen), [ isOpen ]);
 
@@ -38,7 +41,7 @@ const DebuggerView = () => {
   }, [ debugHandler ]);
 
   if (!isOpen) {
-    return (<button class={style.debug_toggle} onClick={toggleDebugger}>⚙</button>);
+    return (<button class={style.debug_toggle} onClick={toggleDebugger} title={translator.translate('debug')}><IconDebugger /></button>);
   }
 
   return (
