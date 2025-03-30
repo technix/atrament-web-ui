@@ -96,7 +96,7 @@ export const useAtramentOverlay = () => {
   const atramentState = useAtramentState([OVERLAY_STORE_KEY]);
 
   const setOverlayContent = useCallback((overlayName, content) => {
-    setStateSubkey(OVERLAY_STORE_KEY, 'activeOverlay', overlayName);
+    setStateSubkey(OVERLAY_STORE_KEY, 'current', overlayName);
     let textContent = content;
     const contentArray = content.split('\n');
     const firstLine = contentArray.shift();
@@ -109,16 +109,16 @@ export const useAtramentOverlay = () => {
   }, [ setStateSubkey ]);
 
   const refreshOverlay = useCallback(() => {
-    const activeOverlay = atramentState[OVERLAY_STORE_KEY].activeOverlay;
-    if (activeOverlay) {
+    const currentOverlay = atramentState[OVERLAY_STORE_KEY].current;
+    if (currentOverlay) {
       // refresh active overlay
-      const result = evaluateInkFunction(activeOverlay);
-      setOverlayContent(activeOverlay, result.output);
+      const result = evaluateInkFunction(currentOverlay);
+      setOverlayContent(currentOverlay, result.output);
     }
   }, [ atramentState, setOverlayContent, evaluateInkFunction ]);
 
   const closeOverlay = useCallback(() => {
-    setStateSubkey(OVERLAY_STORE_KEY, 'activeOverlay', null);
+    setStateSubkey(OVERLAY_STORE_KEY, 'current', null);
     setStateSubkey(OVERLAY_STORE_KEY, 'content', '');
     setStateSubkey(OVERLAY_STORE_KEY, 'title', null);
   }, [ setStateSubkey ]);
@@ -128,7 +128,7 @@ export const useAtramentOverlay = () => {
     closeOverlay,
     setOverlayContent,
     overlay: {
-      active: atramentState[OVERLAY_STORE_KEY].activeOverlay,
+      current: atramentState[OVERLAY_STORE_KEY].current,
       content: atramentState[OVERLAY_STORE_KEY].content.split('\n'),
       title: atramentState[OVERLAY_STORE_KEY].title,
     }

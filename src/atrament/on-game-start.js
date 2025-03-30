@@ -28,7 +28,7 @@ export default function onGameStart(atrament) {
   atrament.ink.onError((error) => atrament.state.setKey(ERROR_STORE_KEY, error));
   // reset overlay state
   atrament.state.setKey(OVERLAY_STORE_KEY, {
-    activeOverlay: null,
+    current: null,
     content: '',
     title: null
   });

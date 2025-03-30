@@ -12,7 +12,7 @@ import Markup from 'src/components/ui/markup';
 const OverlayView = () => {
   const { overlay, closeOverlay } = useAtramentOverlay();
 
-  if (!overlay.active) {
+  if (!overlay.current) {
     return <></>;
   }
   
