@@ -186,6 +186,7 @@ The table consists of header `[header][/header]` (optional) and rows `[row][/row
 Attributes:
 * `border=false` disables table borders.
 * `padding=false` disables table cell paddings.
+* `columns="20% 20% 60%"` sets column width. You have to set width for each column in the table.
 
 ## Overlay
 

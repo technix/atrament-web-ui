@@ -12,7 +12,7 @@ import Table from 'src/components/ui/table';
 const parseHeader = (header, markup) => header
   .split(/\[ \]/)
   .map((item) => ({
-    style: 'text-align: left',
+    style: {textAlign: 'left'},
     name: markup(item)
   }));
 
@@ -33,6 +33,13 @@ export default {
     const tableRows = fragments[2].match(/\[row\].+?\[\/row\]/ig);
     const columns = tableHeader ? parseHeader(tableHeader[1], markup) : [];
     const rows = tableRows ? tableRows.map((row) => parseRow(row, markup)) : [];
-    return (<Table columns={columns} data={rows} border={options.border} padding={options.padding} />);
+    const columnWidth = options.columns ? options.columns.split(/\s+/g) : [];
+    return (<Table
+      columns={columns}
+      data={rows}
+      border={options.border}
+      padding={options.padding}
+      columnWidth={columnWidth}
+    />);
   }
 }
