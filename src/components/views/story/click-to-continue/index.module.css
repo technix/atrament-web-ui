@@ -47,9 +47,13 @@
 }
   
 .circle:after {
-    animation: ripple 4s 1s linear infinite;
+    animation: ripple 2s linear infinite;
 }
-  
+
+.circle_empty {
+    background-color: inherit;
+}
+
 @keyframes ripple {
     to {
         transform: scale(2);

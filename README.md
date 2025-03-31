@@ -119,17 +119,20 @@ When there is a single choice, which is either empty or '>>>' (see example below
 
 ```
 This story will proceed when user clicks screen.
-
 + [ ] -> next_knot
 ```
 
 If you playtest your game with Inky, this notation is preferred:
 ```
 This story will proceed when user clicks screen.
-
 + [>>>] -> next_knot
 ```
 
+You can also provide a timeout in **seconds** for the "click to continue". A timed choice is presented as a slightly different circular button.
+```
+This story will proceed either after user clicks screen or after 3 seconds.
++ [>>>3] -> next_knot
+```
 
 ## Hypertext mode
 
