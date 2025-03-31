@@ -69,6 +69,7 @@ export const KNOWN_GLOBAL_TAGS = [
   'continue_maximally',
   'single_scene',
   'scenes_align',
+  'choices',
   'hypertext',
   'toolbar',
   'about',
