@@ -27,10 +27,13 @@ export function compileInk(format) {
     configureServer(server) {
       renderError(server, inkCompilerError);
     },
-    configResolved() {
+    configResolved({ mode }) {
       const res = runCompiler(format);
       if (res.status !== 0) {
         inkCompilerError = res.stdout.toString();
+        if (mode !== 'development') {
+          throw new Error(inkCompilerError);
+        }
       }
       return res;
     },
