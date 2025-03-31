@@ -5,7 +5,7 @@ import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import ErrorModal from 'src/components/ui/error-modal';
 
-const ErrorStory = () => {
+const StoryError = () => {
   const { atrament } = useAtrament();
   const atramentState = useAtramentState([ERROR_STORE_KEY]);
 
@@ -29,4 +29,4 @@ const ErrorStory = () => {
   }
 };
 
-export default ErrorStory;
+export default StoryError;
