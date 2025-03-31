@@ -6,6 +6,17 @@ import { OVERLAY_STORE_KEY } from 'src/constants';
 export const useAtrament = () => {
   const atrament = useContext(AtramentContext);
 
+  const inkErrorWrapper = useCallback((fn) => {
+    try {
+      return fn();
+    } catch (e) {
+      if (atrament.ink.story().onError) {
+        atrament.ink.story().onError(e.toString());
+      }
+      return null;
+    }
+  }, [ atrament ]);
+
   const getAssetPath = useCallback(
     (file) => file ? atrament.game.getAssetPath(file) : null,
     [ atrament ]
@@ -41,27 +52,23 @@ export const useAtrament = () => {
   );
 
   const setInkVariable = useCallback(
-    (name, value) => {
-      try {
-        atrament.ink.setVariable(name, value);
-      } catch (e) {
-        atrament.ink.story().onError(e.toString());
-      }
-    },
-    [ atrament ]
+    (...args) => inkErrorWrapper(() => atrament.ink.setVariable(...args)),
+    [ atrament, inkErrorWrapper ]
   );
-  
+
   const getInkVariable = useCallback(
-    (name) => {
-      let result;
-      try {
-        result = atrament.ink.getVariable(name);
-      } catch (e) {
-        atrament.ink.story().onError(e.toString());
-      }
-      return result;
-    },
-    [ atrament ]
+    (...args) => inkErrorWrapper(() => atrament.ink.getVariable(...args)),
+    [ atrament, inkErrorWrapper ]
+  );
+
+  const makeChoice = useCallback(
+    (...args) => inkErrorWrapper(() => atrament.game.makeChoice(...args)),
+    [ atrament, inkErrorWrapper ]
+  );
+
+  const continueStory = useCallback(
+    (...args) => inkErrorWrapper(() => atrament.game.continueStory(...args)),
+    [ atrament, inkErrorWrapper ]
   );
 
   const resetBackground = useCallback(() => {
@@ -74,8 +81,8 @@ export const useAtrament = () => {
     canResume: atrament.game.canResume,
     gameStart: atrament.game.start,
     gameResume: atrament.game.resume,
-    makeChoice: atrament.game.makeChoice,
-    continueStory: atrament.game.continueStory,
+    makeChoice,
+    continueStory,
     getAssetPath,
     updateSettings,
     setStateSubkey,
