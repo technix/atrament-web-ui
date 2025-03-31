@@ -63,6 +63,7 @@ The standalone web application files will be in `build/web` folder. Use `npm run
 | `# continue_maximally: false` | Pause story after each line. |
 | `# single_scene` | Store only last scene in Atrament state. |
 | `# scenes_align: center` | Scene alignment on the screen. Can be set to `top`, `center`, or `bottom`. |
+| `# choices: grouped numbered` | Changes the choices appearance. Can be set to any combination of: `grouped` (displayed as button group); `numbered` (displays numbers of choices); `left` or `right` (aligns choice text to left or right) |
 | `# hypertext` | Use links instead of choices. See "[Hypertext mode](#hypertext-mode)". |
 | `# toolbar: toolbar_function` | Use output of this function as a toolbar content. |
 | `# about: about_function` | Use output of this function as an "About" screen content. |
