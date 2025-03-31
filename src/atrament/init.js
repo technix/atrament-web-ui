@@ -8,6 +8,7 @@ import { registerSettingsHandlers } from 'src/atrament/settings-handlers'
 import registerSceneProcessors from 'src/atrament/scene-processors';
 
 import onGameStart from 'src/atrament/on-game-start';
+import onContinueStory from 'src/atrament/on-continue-story';
 
 export default async function atramentInit(atrament, Story) {
   // show all events in console
@@ -29,6 +30,7 @@ export default async function atramentInit(atrament, Story) {
     }
   });
   atrament.on('game/start', () => onGameStart(atrament));
+  atrament.on('game/continueStory', () => onContinueStory(atrament));
   // initialize game
   await atrament.game.init(gamePath, gameFile);
   await atrament.game.initInkStory();
