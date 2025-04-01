@@ -4,7 +4,7 @@ import getTagAttributes from 'src/utils/get-tag-attributes';
 // [block width=50% align=left]text in bar[/block]
 
 export default {
-  regexp: /\[block.*?\].+?\[\/block\]/ig,
+  regexp: /\[block(?:\s+[^\]]+)?\].+?\[\/block\]/ig,
   replacer: (el, markup) => {
     const fragments = el.match(/\[block(.*?)\](.+?)\[\/block\]/i);
     let options = {};

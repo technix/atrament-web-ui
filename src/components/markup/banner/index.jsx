@@ -17,7 +17,7 @@ const BannerBlock = ({children, options}) => {
 };
 
 export default {
-  regexp: /\[banner.*?\].*?\[\/banner\]/ig,
+  regexp: /\[banner(?:\s+[^\]]+)?\].*?\[\/banner\]/ig,
   replacer: (el, markup) => {
     const fragments = el.match(/\[banner(.*?)\](.*?)\[\/banner\]/i);
     const options = getTagAttributes(fragments[1]);

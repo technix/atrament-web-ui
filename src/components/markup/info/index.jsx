@@ -21,7 +21,7 @@ const InfoBlock = ({children, options}) => {
 };
 
 export default {
-  regexp: /\[info.*?\].*?\[\/info\]/ig,
+  regexp: /\[info(?:\s+[^\]]+)?\].*?\[\/info\]/ig,
   replacer: (el, markup) => {
     const fragments = el.match(/\[info(.*?)\](.*?)\[\/info\]/i);
     const options = getTagAttributes(fragments[1]);
