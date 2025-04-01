@@ -32,7 +32,7 @@ const Input = ({options}) => {
 };
 
 export default {
-  regexp: /\[input.+?\]/ig,
+  regexp: /\[input .+?\]/ig,
   replacer: (el) => {
     const fragments = el.match(/\[input(.+?)\]/i);
     const options = getTagAttributes(fragments[1]);

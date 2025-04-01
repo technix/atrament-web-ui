@@ -4,7 +4,7 @@ import getTagAttributes from 'src/utils/get-tag-attributes';
 // [highlight color=black bgcolor=red]highlighted text[/highlight]
 
 export default {
-  regexp: /\[highlight.*?\].+?\[\/highlight\]/ig,
+  regexp: /\[highlight(?:\s+[^\]]+)?\].+?\[\/highlight\]/ig,
   replacer: (el, markup) => {
     const fragments = el.match(/\[highlight(.*?)\](.+?)\[\/highlight\]/i);
     let options = {};

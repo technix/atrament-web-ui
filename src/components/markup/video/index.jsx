@@ -21,7 +21,7 @@ const Video = ({ src, options }) => {
 }
 
 export default {
-  regexp: /\[video.*?\].+?\[\/video\]/ig,
+  regexp: /\[video(?:\s+[^\]]+)?\].+?\[\/video\]/ig,
   replacer: (el) => {
     const fragments = el.match(/\[video(.*?)\](.+?)\[\/video\]/i);
     let options = {};

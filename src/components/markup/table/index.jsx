@@ -22,7 +22,7 @@ const parseRow = (row, markup) => {
 }
 
 export default {
-  regexp: /\[table.*?\].+?\[\/table\]/ig,
+  regexp: /\[table(?:\s+[^\]]+)?\].+?\[\/table\]/ig,
   replacer: (el, markup) => {
     const fragments = el.match(/\[table(.*?)\](.+?)\[\/table\]/i);
     let options = {};

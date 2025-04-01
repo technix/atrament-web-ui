@@ -5,7 +5,7 @@ import getTagAttributes from 'src/utils/get-tag-attributes';
 // [css class=classname style="style applied"]text with CSS class and style applied[/css]
 
 export default {
-  regexp: /\[css.*?\].+?\[\/css\]/ig,
+  regexp: /\[css(?:\s+[^\]]+)?\].+?\[\/css\]/ig,
   replacer: (el, markup) => {
     const fragments = el.match(/\[css(.*?)\](.+?)\[\/css\]/i);
     let options = {};

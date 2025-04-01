@@ -33,7 +33,7 @@ const Progress = ({options, children}) => {
 };
 
 export default {
-  regexp: /\[progress.+?\].*?\[\/progress\]/ig,
+  regexp: /\[progress(?:\s+[^\]]+)?\].*?\[\/progress\]/ig,
   replacer: (el, markup) => {
     const fragments = el.match(/\[progress(.+?)\](.*?)\[\/progress\]/i);
     const options = getTagAttributes(fragments[1]);
