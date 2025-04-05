@@ -66,7 +66,8 @@ export default defineConfig(({ mode }) => {
     plugins,
     define: {
       __INK_SCRIPT__: JSON.stringify(`${atramentCfg.game.source}.${inkCompileFormat}`),
-      __APP_VERSION__: JSON.stringify(process.env.npm_package_version)
+      __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
+      __EMBED_FONTS__: process.argv.includes('--embed-fonts')
     },
     resolve: {
       alias: [

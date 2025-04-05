@@ -104,7 +104,9 @@ Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MU
 | `# UNCLICKABLE` | The choice can't be selected. Alternative names: `#DISABLED`, `#INACTIVE` |
 | `# CLASS: classname` | Apply CSS class to the choice `<button>` element. |
 
-## Save management
+## Features
+
+### Save management
 
 Atrament Web UI supports the following save types:
 
@@ -114,7 +116,7 @@ Atrament Web UI supports the following save types:
 
 In addition to above, Atrament Web UI supports **sessions**, which can be enabled by global tag `#sessions`. If they are enabled, players have to choose game session before starting a game. Each session has its own autosaves, checkpoints, and saves.
 
-## "Click to continue"
+### "Click to continue"
 
 When there is a single choice, which is either empty or '>>>' (see example below), it is treated as "click to continue". Choice list is not shown, and player can continue story by clicking the screen or pressing "Space" or "Enter" key. After 3 seconds of inactivity, hint is displayed in the bottom of the screen.
 
@@ -135,7 +137,7 @@ This story will proceed either after user clicks screen or after 3 seconds.
 + [>>>3] -> next_knot
 ```
 
-## Hypertext mode
+### Hypertext mode
 
 When global tag `hypertext` is set, Atrament UI switches to hypertext mode. In this mode choice options are not displayed. However, author can use `[link=target choice text]link text[/link]` to link specific phrases to scene choices.
 
@@ -152,7 +154,7 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 + [Open door] -> inside_house
 ```
 
-## Custom markup
+### Custom markup
 | Markup | Description                |
 | :-------- | :------------------------- |
 | `[picture]path/to/image.jpg[/picture]` | Display image (same as `#IMAGE` knot tag). The image is sized automatically to fit the container. When using images inside of `[block]` tags, you may want to set picture margins.<br>Attributes:<br>`width=50%` sets picture width.<br>`leftmargin=0.5em` sets left margin. <br>`rightmargin=0.5em` sets right margin.|
@@ -173,7 +175,7 @@ You are standing in an open field west of a white house, with a boarded [link=Op
 
 Note: it is not possible to wrap multiple paragraphs with these tags. Use `<br>` tag for line breaks if you need multiline text in tags.
 
-### Tables
+#### Tables
 
 You can make tables with the following markup:
 ```
@@ -192,7 +194,7 @@ Attributes:
 * `padding=false` disables table cell paddings.
 * `columns="20% 20% 60%"` sets column width. You have to set width for each column in the table.
 
-## Overlay
+### Overlay
 
 Atrament Web UI can display custom data (inventory, character stats etc.) as an overlay. 
 
@@ -222,7 +224,7 @@ Example of toolbar and overlays:
 
 ```
 
-## "About" screen
+### "About" screen
 
 You may add an "About" screen to your game wuth `#about` global tag. When it is set, UI shows "About" button on the main game page. Clicking on it will display content from the function in the Ink file - see example:
 ```
@@ -237,14 +239,9 @@ You may add an "About" screen to your game wuth `#about` global tag. When it is 
 
 ```
 
-## Keyboard shortcuts
-| Key | Description                |
-| :-------- | :------------------------- |
-| 1,2,3... | Select corresponding choice option. |
-| Space, Enter | Continue story. |
-| Esc | Show/hide settings dialog. |
+## Customization
 
-## Themes
+### Themes
 To add a theme to the application, create a json file in the `resources/themes` with the following structure:
 ```
 {
@@ -275,7 +272,7 @@ To add a theme to the application, create a json file in the `resources/themes` 
 
 *Note: You can use any valid CSS values for the theme.*
 
-## Fonts
+### Fonts
 To add a font to the application, create a folder in the `resources/fonts` with the following files:
 * `index.js` with the following content:
 ```
@@ -290,20 +287,22 @@ export default {
 
 To remove fonts from the application, delete the font folder from `resources/fonts`.
 
-*Please note: single file build (explained below) uses system fonts only.*
-
-## Custom CSS styles and classes
+### Custom CSS styles and classes
 To add custom CSS classes or modify styles of existing elements, edit `resources/styles/custom.css` file. It contains a list of modifiable element classes for reference.
 
-## Single file build
+## Export
+
+### Single file build
 Atrament Web UI build is designed as web application for web server deployment. However, you may want to build your game as a standalone web page, which can be opened locally too - similar to Inky or Twine web export.
 
 All you need to do is to build your game with `npm run build-singlefile` command. The resulting web page will be in the `build/singlefile` folder.
 
-## Standalone executables build
+*Please note: single file build uses only system fonts to reduce file size. If you want to include all fonts from the `resources/fonts` folder, use `npm run build-singlefile -- -- --embed-fonts` command to build the game.*
+
+### Standalone executables build
 Atrament UI can produce executables for Windows, Linux, and MacOS. To build them, use `npm run build-standalone` command. The folder with executables for all platforms will be in the `build/standalone` folder. The build also creates ZIP archives for each platform.
 
-## Zipped game content
+### Zipped game content
 Atrament UI supports zipped game content, when whole game is loaded into browser as a single zip file. The advantage of this mode is instant asset loading at the cost of increased startup time.
 
 To enable this, edit `atrament.config.json` and add `zip` option to it with the name of zip file:
@@ -320,7 +319,7 @@ To enable this, edit `atrament.config.json` and add `zip` option to it with the 
 *Please note: this option is ignored for development and single file builds.*
 
 ## Debugger
-When `#debug` global tag is set, debugger can be invoked with pressing debugger button on the screen or double pressing of `~` button.
+When `#debug` global tag is set, debugger can be invoked by pressing debugger button on the screen or double pressing of `~` key.
 
 Debugger provides the following functionality:
 
@@ -329,6 +328,13 @@ Debugger provides the following functionality:
 * List of ink variables (view and edit)
 * List of visit counts
 * Navigation to knot/stich path
+
+## Keyboard shortcuts
+| Key | Description                |
+| :-------- | :------------------------- |
+| 1,2,3... | Select corresponding choice option. |
+| Space, Enter | Continue story. |
+| Esc | Show/hide settings dialog. |
 
 ## Atrament repositories
 
