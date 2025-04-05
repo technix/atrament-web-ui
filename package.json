@@ -8,12 +8,12 @@
     "build": "vite build",
     "build-web": "vite build",
     "build-singlefile": "vite build --mode singlefile",
-    "build-standalone": "vite build --mode standalone && node tools/prepare-neutralino.cjs ",
+    "build-standalone": "vite build --mode standalone && node tools/neutralino-prepare.cjs ",
     "preview": "vite preview",
     "lint": "eslint --ext .jsx --ext js src",
     "compile-ink-script": "node tools/ink-compile.cjs",
     "install-inklecate": "node tools/install-inklecate.cjs",
-    "neutralino": "cd build/.tmp_neutralino && neu build && node-rmrf ../standalone && move-file dist ../standalone && cd .. && node-rmrf ./.tmp_neutralino && cd ./standalone && node ../../tools/postbuild-neutralino.mjs"
+    "neutralino": "cd build/.tmp_neutralino && neu build && node-rmrf ../standalone && move-file dist ../standalone && cd .. && node-rmrf ./.tmp_neutralino && cd ./standalone && node ../../tools/neutralino-postbuild.mjs"
   },
   "dependencies": {
     "@atrament/web": "2.1.1",
