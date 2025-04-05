@@ -10,7 +10,6 @@ lerna-debug.log*
 package-lock.json
 node_modules
 build
-build_singlefile
 build-ssr
 *.local
 
@@ -22,7 +21,7 @@ root/**/*.json
 tools/inklecate*
 
 # neutralino
-tools/neutralino*
+tools/neutralino/*
 
 # Editor directories and files
 .vscode/*
