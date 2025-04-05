@@ -4,6 +4,7 @@ const copy = require('recursive-copy');
 const cfg = require('../atrament.config.json');
 
 const TOOLS_DIR = 'tools/neutralino';
+const BUILD_DIR = 'build/.tmp_neutralino';
 
 const neutralinoConfig = {
   $schema: "https://raw.githubusercontent.com/neutralinojs/neutralinojs/main/schemas/neutralino.config.schema.json",
@@ -59,7 +60,8 @@ const neutralinoConfig = {
 
 
 function copyNeutralinoFiles() {
-  copy(TOOLS_DIR, "build/.tmp_neutralino", { overwrite: true })
+  console.log('>>> Copy Neutralino binaries to build dir');
+  copy(TOOLS_DIR, BUILD_DIR, { overwrite: true })
     .then((results) => {
       console.info(`Copied ${results.length} files`);
     }).catch((error) => {
@@ -71,8 +73,10 @@ function copyNeutralinoFiles() {
 // 1. Create config file
 
 if (!fs.existsSync(TOOLS_DIR)) {
+  console.log(`>>> Create tools directory ${TOOLS_DIR}`);
   fs.mkdirSync(TOOLS_DIR);
 }
+console.log('>>> Generate neutralino.config.json');
 fs.writeFileSync(
   `${TOOLS_DIR}/neutralino.config.json`,
   JSON.stringify(neutralinoConfig, undefined, "  ")
@@ -81,6 +85,7 @@ fs.writeFileSync(
 // 2. Download Neutralino binaries, if needed
 
 if (!fs.existsSync(`${TOOLS_DIR}/bin`)) {
+  console.log('>>> Download Neutralino binaries');
   const neu = spawn('npx', ['neu', 'update'], { cwd: TOOLS_DIR, shell: true });
   
   neu.stdout.on('data', (data) => {
@@ -96,8 +101,9 @@ if (!fs.existsSync(`${TOOLS_DIR}/bin`)) {
       console.error("Failed to install Neutralino");
       process.exit(1);
     } else {
-      // 3. Copy Neutralino to builddir
       copyNeutralinoFiles();
     }
   });
+} else {
+  copyNeutralinoFiles();
 }
