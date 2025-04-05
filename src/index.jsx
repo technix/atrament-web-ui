@@ -8,4 +8,7 @@ import '../resources/styles/custom.css';
 // App
 import App from './components/app';
 
+// Patches
+import 'src/utils/neutralino-out-of-bounds-fix';
+
 render(<App />, document.getElementById('app'));
