@@ -1,8 +1,10 @@
-/* global __APP_VERSION__, __INK_SCRIPT__*/
+/* global __APP_VERSION__, __INK_SCRIPT__, __EMBED_FONTS__ */
 
 import cfg from '../atrament.config.json';
 
 export const appVersion = __APP_VERSION__;
+
+export const embedFonts = __EMBED_FONTS__;
 
 // Ink file
 export const gamePath = import.meta.env.MODE === 'production' && cfg.game?.zip

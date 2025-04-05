@@ -1,5 +1,5 @@
 // font styles
-import { gameDefaultFont } from 'src/constants';
+import { gameDefaultFont, embedFonts } from 'src/constants';
 
 const emojiFonts = '"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
@@ -13,7 +13,7 @@ const systemFonts = {
 let fonts = systemFonts;
 
 (async () => {
-  if (import.meta.env.MODE !== 'singlefile') {
+  if (import.meta.env.MODE !== 'singlefile' || embedFonts) {
     // import font modules
     const extFonts = {};
     const modules = import.meta.glob('../resources/fonts/**/*.js');
