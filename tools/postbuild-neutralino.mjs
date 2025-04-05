@@ -10,3 +10,4 @@ async function main() {
 }
 
 main();
+console.log('>>> Standalone build complete.');
