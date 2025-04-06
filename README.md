@@ -148,7 +148,9 @@ For better use experience in hypertext mode authors can set global tags `single_
 # single_scene
 # scenes_align: top
 
-You are standing in an open field west of a white house, with a boarded [link=Open door]front door[/link]. There is a [link=Examine mailbox]small mailbox[/link] here.
+You are standing in an open field west of a white house, 
+with a boarded [link=Open door]front door[/link]. 
+There is a [link=Examine mailbox]small mailbox[/link] here.
 
 + [Examine mailbox] -> examine_mailbox
 + [Open door] -> inside_house
@@ -226,7 +228,7 @@ Example of toolbar and overlays:
 
 ### "About" screen
 
-You may add an "About" screen to your game wuth `#about` global tag. When it is set, UI shows "About" button on the main game page. Clicking on it will display content from the function in the Ink file - see example:
+You may add an "About" screen to your game with `#about` global tag. When it is set, UI shows "About" button on the main game page. Clicking on it will display content from the function in the Ink file - see example:
 ```
 # about: game_about
 
