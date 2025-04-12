@@ -4,7 +4,13 @@ import { useCallback, useEffect, useState } from 'preact/hooks';
 import { useTranslator } from '@eo-locale/preact';
 import { useAtrament } from 'src/atrament/hooks';
 
-const ClickToContinue = ({ setReady, withChoice = false, timeout = 0 }) => {
+
+// options
+// clickable: when "click-to-continue" is allowed (0 - immediately)
+// animation: when animation is displayed (0 - immediately)
+// delay: when story continues (0 - only after click)
+
+const ClickToContinue = ({ setReady, withChoice = false, delay = 0, animation = 0, clickable = 0 }) => {
   const { makeChoice, continueStory } = useAtrament();
   const [ isVisible, setIsVisible ] = useState(false);
   const translator = useTranslator();
@@ -25,34 +31,61 @@ const ClickToContinue = ({ setReady, withChoice = false, timeout = 0 }) => {
     }
   }, [ continueGame ]);
 
-  useEffect(() => {
-    let timedChoice;
+  const addEventListeners = useCallback(() => {
     document.addEventListener("keydown", kbdChoiceHandler, false);
     document.getElementsByClassName('atrament-container-scene')[0].addEventListener("click", continueGame, false);
     document.getElementsByClassName('atrament-container-choices')[0].addEventListener("click", continueGame, false);
-    if (timeout) {
-      timedChoice = setTimeout(() => {
-        continueGame();
-      }, timeout * 1000);
+  }, [ continueGame, kbdChoiceHandler ]);
+
+  const removeEventListeners = useCallback(() => {
+    document.removeEventListener("keydown", kbdChoiceHandler, false);
+    document.getElementsByClassName('atrament-container-scene')[0].removeEventListener("click", continueGame, false);
+    document.getElementsByClassName('atrament-container-choices')[0].removeEventListener("click", continueGame, false);
+  }, [ continueGame, kbdChoiceHandler ]);
+
+  useEffect(() => {
+    let delayChoice;
+    let delayAnimation;
+    let delayClickToContinue;
+    // clickable
+    if (clickable) {
+      delayClickToContinue = setTimeout(addEventListeners, clickable * 1000);
     } else {
-      setTimeout(() => {
-        setIsVisible(true);
-      }, 3000);
+      addEventListeners();
     }
+    // delay
+    if (delay) {
+      delayChoice = setTimeout(continueGame, delay * 1000);
+    }
+    // animation
+    delayAnimation = setTimeout(() => {
+      setIsVisible(true);
+    }, animation * 1000);
     return () => {
-      if (timedChoice) {
-        clearTimeout(timedChoice);
+      if (delayChoice) {
+        clearTimeout(delayChoice);
       }
-      document.removeEventListener("keydown", kbdChoiceHandler, false);
-      document.getElementsByClassName('atrament-container-scene')[0].removeEventListener("click", continueGame, false);
-      document.getElementsByClassName('atrament-container-choices')[0].removeEventListener("click", continueGame, false);
+      if (delayAnimation) {
+        clearTimeout(delayAnimation);
+      }
+      if (delayClickToContinue) {
+        clearTimeout(delayClickToContinue);
+      }
+      removeEventListeners();
     }
-  }, [ kbdChoiceHandler, continueGame, setIsVisible, timeout ]);
+  }, [ addEventListeners, removeEventListeners, continueGame, setIsVisible, clickable, delay, animation ]);
+
+  const elementStyles = [style.circle];
+  if (delay) {
+    elementStyles.push(style.circle_empty);
+  }
 
   return (
     <div class={style.container}>
-      {isVisible && <div class={`${style.circle}`} title={translator.translate('game.click-to-continue')} />}
-      {timeout && <div class={[style.circle, style.circle_empty].join(' ')} title={translator.translate('game.click-to-continue')} />}
+      {isVisible
+        ? <div class={elementStyles.join(' ')} title={translator.translate('game.click-to-continue')} />
+        : ''
+      }
     </div>
   ) 
 };
