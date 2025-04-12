@@ -122,20 +122,26 @@ When there is a single choice, which is either empty or '>>>' (see example below
 
 ```
 This story will proceed when user clicks screen.
-+ [ ] -> next_knot
-```
-
-If you playtest your game with Inky, this notation is preferred:
-```
-This story will proceed when user clicks screen.
 + [>>>] -> next_knot
 ```
 
-You can also provide a timeout in **seconds** for the "click to continue". A timed choice is presented as a slightly different circular button.
+You can also provide a timeout in **seconds** for the "click to continue". A timed choice is presented as a slightly different circular button. After the timeout, story continues automatically.
 ```
 This story will proceed either after user clicks screen or after 3 seconds.
 + [>>>3] -> next_knot
 ```
+
+Timed choice can be configured:
+* `clickable` - pause before player can continue the story with click or keypress. If omitted, can be clicked immediately.
+* `animation` - pause before displaying animation. If omitted, the animation displays immediately.
+* `delay` - pause before story continues automatically. If omitted, the game continues only after click or keypress.
+
+All pauses are set in seconds.
+```
++ [>>>(clickable=3 animation=5 delay=10)] -> next_knot
+```
+
+
 
 ### Hypertext mode
 
