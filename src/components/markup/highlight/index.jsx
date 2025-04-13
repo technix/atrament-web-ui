@@ -12,9 +12,10 @@ export default {
       options = getTagAttributes(fragments[1]);
     }
     const highlightStyle = {
-      display: 'inline-block',
       'background-color': options.bgcolor || 'var(--accent-bg-color)',
-      color: options.color || 'var(--accent-fg-color)'
+      color: options.color || 'var(--accent-fg-color)',
+      padding: options.bgcolor ? '0.1em' : 'inherit',
+      'box-decoration-break': 'clone'
     };
     return (<span style={highlightStyle}>{markup(fragments[2])}</span>);
   }
