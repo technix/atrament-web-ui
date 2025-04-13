@@ -54,20 +54,20 @@ The standalone web application files will be in `build/web` folder. Use `npm run
 | `# author: John Doe` | Author |
 | `# theme: light` | Game color theme: `light`, `sepia`, or `dark` |
 | `# font: System` | Game font: `System`, `Sans Serif`, `Serif`, `Monospaced`, `Fira Sans`, `Lora`, `Merriweather`, or `OpenDyslexic` |
-| `# observe: varName` | Register variable observer for `varName` Ink variable. Variable value is available in `vars` section of Atrament state. |
-| `# persist: varName` | Save `varName` Ink variable value to persistent storage, restore before game starts. |
+| `# observe: varName` | Register variable observer for `varName` Ink variable. Variable value is available in `vars` section of the Atrament state. |
+| `# persist: varName` | Save `varName` Ink variable value to the persistent storage, restore before game starts. |
 | `# sessions: 3` | Amount of game sessions. Each session has its own set of saves. |
 | `# autosave: false` | Disables autosaves. |
 | `# saves: 5` | Amount of available slots for saves. |
 | `# load_from_checkpoints` | Show checkpoints in the list of games to load. |
-| `# continue_maximally: false` | Pause story after each line. |
-| `# single_scene` | Store only last scene in Atrament state. |
+| `# continue_maximally: false` | Pause the story after each line. |
+| `# single_scene` | Store only the last scene in the Atrament state. |
 | `# scenes_align: center` | Scene alignment on the screen. Can be set to `top`, `center`, or `bottom`. |
-| `# choices: grouped numbered` | Changes the choices appearance. Can be set to any combination of: `grouped` (displayed as button group); `numbered` (displays numbers of choices); `left` or `right` (aligns choice text to left or right) |
+| `# choices: grouped numbered` | Changes the choices appearance. Can be set to any combination of: `grouped` (displayed as button group); `numbered` (displays numbers of choices); `left` or `right` (aligns choice text to the left or right) |
 | `# hypertext` | Use links instead of choices. See "[Hypertext mode](#hypertext-mode)". |
 | `# toolbar: toolbar_function` | Use output of this function as a toolbar content. |
 | `# about: about_function` | Use output of this function as an "About" screen content. |
-| `# cover: some/image.jpg` | Cover image to display at the main menu screen |
+| `# cover: some/image.jpg` | Cover image to display at the main menu screen. |
 | `# background: some/picture.jpg` | Set background image for the game backdrop. |
 | `# debug` | Enable Ink story debugger. |
 
@@ -87,13 +87,13 @@ The standalone web application files will be in `build/web` folder. Use `npm run
 | `# PLAY_MUSIC: music.mp3` | Play background music (looped). There can be multiple background music tracks, played simultaneously. |
 | `# STOP_MUSIC: music.mp3` | Stop playing specific background music. |
 | `# STOP_MUSIC` | Stop playing all background music. |
-| `# CHECKPOINT` | Save game to 'default' checkpoint. |
+| `# CHECKPOINT` | Save game to the 'default' checkpoint. |
 | `# CHECKPOINT: checkpointName` | Save game to checkpoint `checkpointName`. |
 | `# SAVEGAME: saveslot` | Save game to `saveslot`. |
 | `# RESTART` | Start game from beginning. |
 | `# RESTART_FROM_CHECKPOINT` | Restart game from latest checkpoint. |
 | `# RESTART_FROM_CHECKPOINT: checkpointName` | Restart game from named checkpoint. |
-| `# CLASS: classname` | Apply CSS class to the paragraph `<p>` element. |
+| `# CLASS: classname` | Apply CSS class to the paragraph `<div>` element. |
 | `# SHUFFLE_CHOICES` | Shuffle choice order in this knot. |
 
 Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MUSIC/STOP_SOUND/STOP_MUSIC tags. Combining them may lead to unexpected side effects.
@@ -111,28 +111,28 @@ Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MU
 Atrament Web UI supports the following save types:
 
 1. **Autosave**. By default, game saves its progress after each choice. If autosave is present for the game, player can continue playing by clicking "Continue" in the main menu. When global tag `autosave: false` is present, autosaving is disabled. If autosaving is disabled and there are no saved checkpoints, "Continue" button will not be available.
-2. **Checkpoints**. They are controlled by knot tags `#CHECKPOINT` and `#RESTART_FROM_CHECKPOINT`. Authors can use named checkpoints, adding names to these tags. If there are no autosave, players can continue playing from latest saved checkpoint by clicking "Continue" in the main menu.
+2. **Checkpoints**. They are controlled by knot tags `#CHECKPOINT` and `#RESTART_FROM_CHECKPOINT`. Authors can use named checkpoints, adding names to these tags. If there is no autosave, players can continue playing from latest saved checkpoint by clicking "Continue" in the main menu.
 3. **Saves**. They are disabled by default. Authors can set global tag `#saves` to define amount of available save slots. Players can save and load games using the slots provided. If global tag `#load_from_checkpoints` is set, players can also load game from any saved checkpoint.
 
 In addition to above, Atrament Web UI supports **sessions**, which can be enabled by global tag `#sessions`. If they are enabled, players have to choose game session before starting a game. Each session has its own autosaves, checkpoints, and saves.
 
 ### "Click to continue"
 
-When there is a single choice, which is either empty or '>>>' (see example below), it is treated as "click to continue". Choice list is not shown, and player can continue story by clicking the screen or pressing "Space" or "Enter" key. After 3 seconds of inactivity, hint is displayed in the bottom of the screen.
+A single choice with text '>>>' is treated as "click to continue". Choice list is not shown, and player can continue story by clicking the screen or pressing "Space" or "Enter" key. After 3 seconds of inactivity, animated hint is displayed in the bottom of the screen.
 
 ```
 This story will proceed when user clicks screen.
 + [>>>] -> next_knot
 ```
 
-You can also provide a timeout in **seconds** for the "click to continue". A timed choice is presented as a slightly different circular button. After the timeout, story continues automatically.
+You can also provide a delay in **seconds** for the "click to continue". A timed choice is presented as a slightly different circular button. After the delay, story continues automatically.
 ```
 This story will proceed either after user clicks screen or after 3 seconds.
 + [>>>3] -> next_knot
 ```
 
-Timed choice can be configured:
-* `clickable` - pause before player can continue the story with click or keypress. If omitted, can be clicked immediately.
+Click-to-continue choice can be configured:
+* `clickable` - pause before player can continue the story with click or keypress. If omitted, player can be click and continue story immediately.
 * `animation` - pause before displaying animation. If omitted, the animation displays immediately.
 * `delay` - pause before story continues automatically. If omitted, the game continues only after click or keypress.
 
@@ -141,13 +141,11 @@ All pauses are set in seconds.
 + [>>>(clickable=3 animation=5 delay=10)] -> next_knot
 ```
 
-
-
 ### Hypertext mode
 
-When global tag `hypertext` is set, Atrament UI switches to hypertext mode. In this mode choice options are not displayed. However, author can use `[link=target choice text]link text[/link]` to link specific phrases to scene choices.
+If global tag `hypertext` is set, Atrament UI switches to hypertext mode. In this mode choice options are not displayed. However, author can use `[link=target choice text]link text[/link]` to link specific phrases to the choices.
 
-For better use experience in hypertext mode authors can set global tags `single_scene` and `scenes_align: top`.
+For better user experience in hypertext mode authors can set global tags `single_scene` and `scenes_align: top`.
 
 ```
 # hypertext
@@ -165,19 +163,19 @@ There is a [link=Examine mailbox]small mailbox[/link] here.
 ### Custom markup
 | Markup | Description                |
 | :-------- | :------------------------- |
-| `[picture]path/to/image.jpg[/picture]` | Display image (same as `#IMAGE` knot tag). The image is sized automatically to fit the container. When using images inside of `[block]` tags, you may want to set picture margins.<br>Attributes:<br>`width=50%` sets picture width.<br>`leftmargin=0.5em` sets left margin. <br>`rightmargin=0.5em` sets right margin.|
+| `[picture]path/to/image.jpg[/picture]` | Display image (same as `#IMAGE` knot tag). The image is sized automatically to fit the container. When using images inside of the `[block]` tags, you may want to set picture margins.<br>Attributes:<br>`width=50%` sets picture width.<br>`leftmargin=0.5em` sets left margin. <br>`rightmargin=0.5em` sets right margin.|
 | `[img]path/to/image.jpg[/img]` | Display inline image. |
-| `[button=function]Text[/button]`<br>`[button onclick=function]Text[/button]` | Display button, call a function when clicked. If function outputs a text, it will be displayed as a new overlay content. If not, existing overlay content will be updated.<br>Attributes:<br>`onclick=function` function to be called when clicked.<br>`disabled=true` disables the button<br>`bordered=false` hide button borders |
+| `[button=function]Text[/button]`<br>`[button onclick=function]Text[/button]` | Display button, call a function when clicked. If function outputs a text, it will be displayed as a new overlay content. If not, current overlay content will be updated.<br>Attributes:<br>`onclick=function` function to be called when clicked.<br>`disabled=true` disables the button<br>`bordered=false` hide button borders |
 | `[link=target choice text]Text[/link]` | Creates a link. When clicked, the target choice is activated, and game continues. |
-| `[progress value={variable}]Inner text[/progress]` | Displays progress bar.<br>Attributes:<br>`value=x` current progressbar value<br>`min=x` minimal progressbar value<br>`max=x` maximal progressbar value<br>`style=accent` highlight progressbar with accent theme color |
-| `[input var=variable]` | Input element, sets value of given variable. Default value of this field is read from the same variable. Disabled on inactive scenes. <br>Attributes:<br>`var=n` variable name to change<br>`type=number` input type. Possible values: `text`, `number`.<br>`placeholder=text` placeholder text |
-| `[spoiler]text[/spoiler]` | Hidden text. Clicking it toggles text visibility. |
+| `[progress value={variable}]Inner text[/progress]` | Displays a progress bar.<br>Attributes:<br>`value=x` current progressbar value<br>`min=x` minimal progressbar value<br>`max=x` maximal progressbar value<br>`style=accent` highlight progressbar with accent theme color |
+| `[input var=variable]` | Input element, sets value of given variable. Default value of this field is read from the same variable. Disabled on the inactive scenes. <br>Attributes:<br>`var=n` variable name to change<br>`type=number` input type. Possible values: `text`, `number`.<br>`placeholder=text` placeholder text |
+| `[spoiler]text[/spoiler]` | Hidden text. Text visibility toggles on click. |
 | `[info]text[/info]` | Display text as an information block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`font=system` use system font<br>`side=n` add color to the left infobox side. Possible values: `highlight`, `accent`. |
 | `[banner]text[/banner]` | Display text as an banner block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`style=accent` use accent color<br>`allcaps=true` display text in all capitals |
-| `[css]text[/css]` | Applies CSS classed and/or styles to the text.<br><br>Attributes:<br>`class=CSS_class` applies CSS class to the text.<br>`style="CSS style string"` applies CSS style to the text. |
+| `[css]text[/css]` | Applies CSS classed and/or styles to the text.<br>Attributes:<br>`class=CSS_class` applies CSS class to the text.<br>`style="CSS style string"` applies CSS style to the text. |
 | `[font=Courier New]text[/font]` | Applies font to the text. |
 | `[highlight]text[/highlight]`<br>`[highlight color=yellow bgcolor=black]Text[/highlight]` | Highlights text with accent color.<br>Optional parameters `bgcolor` and `color` allow to set both background and foreground color for text. |
-| `[block]text[/block]` | Defines a text block.<br><br>Attributes:<br>`width=value` block width. Can be defined in percents (recommended) or other CSS units.<br>`align=left` aligns text horizontally in the block. Possible values: `left`, `center`, `right`<br>`valign=top` aligns text vertically in the block. Possible values: `top`, `bottom` |
+| `[block]text[/block]` | Defines a text block.<br>Attributes:<br>`width=value` block width. Can be defined in percents (recommended) or other CSS units.<br>`align=left` aligns text horizontally in the block. Possible values: `left`, `center`, `right`<br>`valign=top` aligns text vertically in the block. Possible values: `top`, `middle`, `bottom` |
 | `[video]path/to/video.mp4[/video]` | Display video. <br>Attributes:<br>`loop=false` disable video loop.<br>`muted=true` play video muted|
 | `[url=https:\/\/atrament.ink]link text[/url]` | Creates a link to an web resource. When clicked, the resource is opened in a new browser tab. *Note: you have to escape "/" symbols in the URL, as shown in the example.* |
 
@@ -197,20 +195,20 @@ Please note `<>` operator at the end of each table line - this is required to re
 
 The table consists of header `[header][/header]` (optional) and rows `[row][/row]`. The `[ ]` is a cell separator.
 
-Attributes:
+Attributes of the `[table]` tag:
 * `border=false` disables table borders.
 * `padding=false` disables table cell paddings.
 * `columns="20% 20% 60%"` sets column width. You have to set width for each column in the table.
 
 ### Overlay
 
-Atrament Web UI can display custom data (inventory, character stats etc.) as an overlay. 
+Atrament UI can display custom data (inventory, character stats etc.) as an overlay. 
 
-To display an overlay, you need to define a button in the toolbar or in the game content with the `[button]` tag. If the function returns text content, it will be displayed as an overlay. Overlay content can have buttons too.
+To display an overlay, authors need to define a button with the `[button]` tag, which calls an Ink function. If the function returns text content, it will be displayed as an overlay. The overlay content can have buttons too.
 
 If the first line of the function is a `[title]Overlay Title[/title]` tag, this title will be displayed in the toolbar.
 
-Example of toolbar and overlays:
+Example of the toolbar and overlays:
 ```
 # toolbar: game_toolbar
 
@@ -234,7 +232,7 @@ Example of toolbar and overlays:
 
 ### "About" screen
 
-You may add an "About" screen to your game with `#about` global tag. When it is set, UI shows "About" button on the main game page. Clicking on it will display content from the function in the Ink file - see example:
+Author can add an "About" screen to the game with the `#about` global tag. When it is set, UI shows "About" button on the main game page. Clicking it will display content from the function in the Ink file - see example:
 ```
 # about: game_about
 
@@ -250,7 +248,7 @@ You may add an "About" screen to your game with `#about` global tag. When it is 
 ## Customization
 
 ### Themes
-To add a theme to the application, create a json file in the `resources/themes` with the following structure:
+To add a theme to the application, create a JSON file in the `resources/themes` folder with the following structure:
 ```
 {
   "name": "custom",
@@ -281,7 +279,7 @@ To add a theme to the application, create a json file in the `resources/themes` 
 *Note: You can use any valid CSS values for the theme.*
 
 ### Fonts
-To add a font to the application, create a folder in the `resources/fonts` with the following files:
+To add a font to the application, create a folder in the `resources/fonts` folder with the following files:
 * `index.js` with the following content:
 ```
 import('./index.css');
@@ -293,27 +291,29 @@ export default {
 * `index.css`, which includes corresponding `@font-face` directives
 * font files, referenced in the `index.css`
 
-To remove fonts from the application, delete the font folder from `resources/fonts`.
+To remove font from the application, delete the font folder from `resources/fonts`.
 
 ### Custom CSS styles and classes
 To add custom CSS classes or modify styles of existing elements, edit `resources/styles/custom.css` file. It contains a list of modifiable element classes for reference.
 
 ## Export
 
-### Single file build
-Atrament Web UI build is designed as web application for web server deployment. However, you may want to build your game as a standalone web page, which can be opened locally too - similar to Inky or Twine web export.
+Default Atrament UI build, `npm run build-web`, is a web application for web server deployment. However, there are other export modes.
 
-All you need to do is to build your game with `npm run build-singlefile` command. The resulting web page will be in the `build/singlefile` folder.
+### Single file build
+The game can be exported to a standalone web page, which can be opened locally - similar to Inky or Twine web export.
+
+To export game in a single file format, run `npm run build-singlefile` command. The resulting web page files will be in the `build/singlefile` folder.
 
 *Please note: single file build uses only system fonts to reduce file size. If you want to include all fonts from the `resources/fonts` folder, use `npm run build-singlefile -- -- --embed-fonts` command to build the game.*
 
 ### Standalone executables build
-Atrament UI can produce executables for Windows, Linux, and MacOS. To build them, use `npm run build-standalone` command. The folder with executables for all platforms will be in the `build/standalone` folder. The build also creates ZIP archives for each platform.
+To build standalone executables for Windows, Linux, and MacOS, use `npm run build-standalone` command. The folder with executables for all platforms will be in the `build/standalone` folder. The build also creates ZIP archives for each platform.
 
 ### Zipped game content
-Atrament UI supports zipped game content, when whole game is loaded into browser as a single zip file. The advantage of this mode is instant asset loading at the cost of increased startup time.
+Atrament UI supports zipped game content, when whole game is loaded into browser as a single zip file. The advantage of this mode is instant asset loading at the cost of increased startup time. However, it makes sense only for default web export mode.
 
-To enable this, edit `atrament.config.json` and add `zip` option to it with the name of zip file:
+To enable this feature, edit `atrament.config.json` and add `zip` option to it with the name of zip file:
 ```
 {
   ...
@@ -329,7 +329,7 @@ To enable this, edit `atrament.config.json` and add `zip` option to it with the 
 ## Debugger
 When `#debug` global tag is set, debugger can be invoked by pressing debugger button on the screen or double pressing of `~` key.
 
-Debugger provides the following functionality:
+Atrament Debugger provides the following functionality:
 
 * General information on ink script
 * List of global tags
