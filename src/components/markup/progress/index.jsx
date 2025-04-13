@@ -17,16 +17,14 @@ const Progress = ({options, children}) => {
     width = 0;
   }
 
-  const styles = [style.progress_bar];
-  if (options.style === 'accent') {
-    styles.push(style.accent);
-  } else {
-    styles.push(style.standard);
-  }
+  const classList = [
+    style.progress_bar,
+    options.style === 'accent' ? style.accent : style.standard
+  ].join(' ');
 
   return (
     <div class={style.progress_frame}>
-      <div class={styles.join(' ')} style={{width:`${width}%`}} />
+      <div class={classList} style={{width:`${width}%`}} />
       <div class={style.progress_content}>{children}&nbsp;</div>
     </div> 
   );

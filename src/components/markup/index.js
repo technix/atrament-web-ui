@@ -1,35 +1,35 @@
-import Button from './inline-button';
-import InlineImage from './inline-image';
-import InlineLink from './link';
-import Progress from './progress';
-import Input from './input';
-import Spoiler from './spoiler';
-import Info from './info';
 import Banner from './banner';
+import Block from './block';
+import Button from './button';
+import spanCSS from './css';
 import Font from './font';
 import Highlight from './highlight';
-import Block from './block';
-import Video from './video';
+import Info from './info';
+import InlineImage from './inline-image';
+import Input from './input';
+import InlineLink from './link';
 import Picture from './picture';
-import webURL from './url';
+import Progress from './progress';
+import Spoiler from './spoiler';
 import Table from './table';
-import spanCSS from './css';
+import webURL from './url';
+import Video from './video';
 
 export default [
-  Button,
-  InlineImage,
-  InlineLink,
-  Progress,
-  Input,
-  Spoiler,
-  Info,
   Banner,
+  Block,
+  Button,
+  spanCSS,
   Font,
   Highlight,
-  Block,
-  Video,
+  Info,
+  InlineImage,
+  Input,
+  InlineLink,
   Picture,
-  webURL,
+  Progress,
+  Spoiler,
   Table,
-  spanCSS
+  webURL,
+  Video
 ];
