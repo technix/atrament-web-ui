@@ -33,6 +33,7 @@ const AboutRoute = () => {
       <Menu isHomeScreen />
       <ContainerText>
         <ContainerFlex>
+          <Block> </Block>
           <Block>
             <Markup content={aboutContent} />
           </Block>
