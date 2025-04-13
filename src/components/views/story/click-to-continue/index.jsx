@@ -4,6 +4,8 @@ import { useCallback, useEffect, useState } from 'preact/hooks';
 import { useTranslator } from '@eo-locale/preact';
 import { useAtrament } from 'src/atrament/hooks';
 
+const getSceneElement = () => document.getElementsByClassName('atrament-container-scene')[0];
+const getChoicesElement = () => document.getElementsByClassName('atrament-container-choices')[0];
 
 // options
 // clickable: when "click-to-continue" is allowed (0 - immediately)
@@ -33,44 +35,26 @@ const ClickToContinue = ({ setReady, withChoice = false, delay = 0, animation = 
 
   const addEventListeners = useCallback(() => {
     document.addEventListener("keydown", kbdChoiceHandler, false);
-    document.getElementsByClassName('atrament-container-scene')[0].addEventListener("click", continueGame, false);
-    document.getElementsByClassName('atrament-container-choices')[0].addEventListener("click", continueGame, false);
+    getSceneElement().addEventListener("click", continueGame, false);
+    getChoicesElement().addEventListener("click", continueGame, false);
+    return 0;
   }, [ continueGame, kbdChoiceHandler ]);
 
   const removeEventListeners = useCallback(() => {
     document.removeEventListener("keydown", kbdChoiceHandler, false);
-    document.getElementsByClassName('atrament-container-scene')[0].removeEventListener("click", continueGame, false);
-    document.getElementsByClassName('atrament-container-choices')[0].removeEventListener("click", continueGame, false);
+    getSceneElement().removeEventListener("click", continueGame, false);
+    getChoicesElement().removeEventListener("click", continueGame, false);
+    return 0;
   }, [ continueGame, kbdChoiceHandler ]);
 
   useEffect(() => {
-    let delayChoice;
-    let delayAnimation;
-    let delayClickToContinue;
-    // clickable
-    if (clickable) {
-      delayClickToContinue = setTimeout(addEventListeners, clickable * 1000);
-    } else {
-      addEventListeners();
-    }
-    // delay
-    if (delay) {
-      delayChoice = setTimeout(continueGame, delay * 1000);
-    }
-    // animation
-    delayAnimation = setTimeout(() => {
-      setIsVisible(true);
-    }, animation * 1000);
+    const delayClickToContinue = setTimeout(addEventListeners, clickable * 1000);
+    const delayAnimation = setTimeout(() => setIsVisible(true), animation * 1000);
+    const delayChoice = delay ? setTimeout(continueGame, delay * 1000) : undefined;
     return () => {
-      if (delayChoice) {
-        clearTimeout(delayChoice);
-      }
-      if (delayAnimation) {
-        clearTimeout(delayAnimation);
-      }
-      if (delayClickToContinue) {
-        clearTimeout(delayClickToContinue);
-      }
+      clearTimeout(delayAnimation);
+      clearTimeout(delayClickToContinue);
+      clearTimeout(delayChoice);
       removeEventListeners();
     }
   }, [ addEventListeners, removeEventListeners, continueGame, setIsVisible, clickable, delay, animation ]);

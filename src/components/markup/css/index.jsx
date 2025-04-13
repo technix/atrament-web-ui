@@ -12,7 +12,6 @@ export default {
     if (fragments[1]) {
       options = getTagAttributes(fragments[1]);
     }
-    console.log(options);
     return (<span class={options.class} style={options.style}>{markup(fragments[2])}</span>);
   }
 }

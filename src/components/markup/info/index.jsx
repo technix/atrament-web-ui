@@ -6,18 +6,13 @@ import style from './index.module.css';
 import getTagAttributes from 'src/utils/get-tag-attributes';
 
 const InfoBlock = ({children, options}) => {
-  const classes = [style.infoblock];
-  if (options.font === 'system') {
-    classes.push(style.font_ui);
-  }
-  if (options.side) {
-    if (options.side === 'accent') {
-      classes.push(style.side_accent);
-    } else {
-      classes.push(style.side_highlight);
-    }
-  }
-  return (<div class={classes.join(' ')}>{children}</div>);
+  const classList = [
+    style.infoblock,
+    options.font === 'system' ? style.font_ui : '',
+    options.side === 'accent' ? style.side_accent : '',
+    options.side === 'highlight' ? style.side_highlight : ''
+  ].join(' ');
+  return (<div class={classList}>{children}</div>);
 };
 
 export default {

@@ -6,14 +6,12 @@ import style from './index.module.css';
 import getTagAttributes from 'src/utils/get-tag-attributes';
 
 const BannerBlock = ({children, options}) => {
-  const classes = [style.bannerblock];
-  if (options.style === 'accent') {
-    classes.push(style.accent);
-  }
-  if (options.allcaps) {
-    classes.push(style.allcaps);
-  }
-  return (<div class={classes.join(' ')}>{children}</div>);
+  const classList = [
+    style.bannerblock,
+    options.style === 'accent' ? style.accent : '',
+    options.allcaps ? style.allcaps : ''
+  ].join(' ');
+  return (<div class={classList}>{children}</div>);
 };
 
 export default {

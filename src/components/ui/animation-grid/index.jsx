@@ -3,7 +3,7 @@ import { h } from 'preact';
 import style from './style.module.css';
 
 // https://tobiasahlin.com/spinkit/
-// frid effect
+// grid effect
 const Grid = () => (
   <div class={style.sk_cube_grid}>
     <div class={style.sk_cube1} />
