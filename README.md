@@ -132,13 +132,13 @@ This story will proceed either after user clicks screen or after 3 seconds.
 ```
 
 Click-to-continue choice can be configured:
-* `clickable` - pause before player can continue the story with click or keypress. If omitted, player can be click and continue story immediately.
+* `clickable` - pause before the choice becomes clickable and player can continue the story. If omitted, player can click and continue story immediately.
 * `animation` - pause before displaying animation. If omitted, the animation displays immediately.
-* `delay` - pause before story continues automatically. If omitted, the game continues only after click or keypress.
+* `continue` - pause before story continues automatically. If omitted, the game continues only after click or keypress.
 
 All pauses are set in seconds.
 ```
-+ [>>>(clickable=3 animation=5 delay=10)] -> next_knot
++ [>>>(clickable=3 animation=5 continue=10)] -> next_knot
 ```
 
 ### Hypertext mode

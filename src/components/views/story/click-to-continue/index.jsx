@@ -8,9 +8,9 @@ const getSceneElement = () => document.getElementsByClassName('atrament-containe
 const getChoicesElement = () => document.getElementsByClassName('atrament-container-choices')[0];
 
 // options
-// clickable: when "click-to-continue" is allowed (0 - immediately)
-// animation: when animation is displayed (0 - immediately)
-// delay: when story continues (0 - only after click)
+// clickable: pause before "click-to-continue" is allowed (0 - immediately)
+// animation: pause before animation is displayed (0 - immediately)
+// delay: pause before story continues (0 - only after click)
 
 const ClickToContinue = ({ setReady, withChoice = false, delay = 0, animation = 0, clickable = 0 }) => {
   const { makeChoice, continueStory } = useAtrament();
