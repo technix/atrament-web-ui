@@ -17,6 +17,10 @@ function clickToContinueOptions(param) {
   if (param.startsWith('(')) {
     const attrs = getTagAttributes(param.replace(/[()]/g, ''));
     Object.entries(attrs).forEach(([k,v]) => options[k] = v);
+    // alternate syntax
+    if (options.continue) {
+      options.delay = options.continue;
+    }
   } else if (param) {
     options.delay = param;
   } else {
