@@ -11,7 +11,9 @@ const SettingsAnimation = () => {
 
   return (
     <div class={['atrament-settings-animation'].join(' ')}>
-      <Toggle enabled={atramentState.settings.animation} onChange={handleAnimation} /> <Text id={'settings.animations'} />
+      <Toggle enabled={atramentState.settings.animation} onChange={handleAnimation} name="settings-animation" />
+      &nbsp;
+      <label for="settings-animation"><Text id={'settings.animations'} /></label>
     </div>
   );
 };

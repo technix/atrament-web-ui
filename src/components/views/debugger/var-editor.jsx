@@ -16,9 +16,9 @@ const StringEditor = ({value, setNewValue}) => {
   return (<input class={style.input} type="text" value={value} onInput={updateValue} />);
 };
 
-const BooleanEditor = ({value, setNewValue}) => {
+const BooleanEditor = ({name, value, setNewValue}) => {
   const updateValue = (e) => setNewValue(e.target.checked);
-  return (<div class={style.toggle}><Toggle enabled={value} onChange={updateValue} /></div>);
+  return (<div class={style.toggle}><Toggle enabled={value} onChange={updateValue} name={name} /></div>);
 };
 
 const ListViewer = ({name, value}) => {
@@ -74,7 +74,7 @@ const DebugVariableEditor = ({name, value}) => {
         <button class={style.button_close} onClick={cancelEdit} title={translator.translate('debug.variables.cancel')}>X</button>
         {typeof value === 'number' && <NumberEditor value={newValue} setNewValue={setNewValue} />}
         {typeof value === 'string' && <StringEditor value={newValue} setNewValue={setNewValue} />}
-        {typeof value === 'boolean' && <BooleanEditor value={newValue} setNewValue={setNewValue} />}
+        {typeof value === 'boolean' && <BooleanEditor name={name} value={newValue} setNewValue={setNewValue} />}
         <button class={style.button} onClick={saveValue} title={translator.translate('debug.variables.save')}>&gt;</button>
       </>
       :
