@@ -11,7 +11,9 @@ const SettingsFullscreen = () => {
 
   return (
     <div class={['atrament-settings-fullscreen'].join(' ')}>
-      <Toggle enabled={atramentState.settings.fullscreen} onChange={handleFullscreen} /> <Text id={'settings.fullscreen'} />
+      <Toggle enabled={atramentState.settings.fullscreen} onChange={handleFullscreen} name="settings-fullscreen" />
+      &nbsp;
+      <label for="settings-fullscreen"><Text id={'settings.fullscreen'} /></label>
     </div>
   );
 };

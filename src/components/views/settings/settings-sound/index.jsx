@@ -17,7 +17,9 @@ const SettingsSound = () => {
   return (
     <>
       <div class={[style.settings_sound, 'atrament-settings-sound'].join(' ')}>
-        <Toggle enabled={!mute} onChange={handleMute} /> <Text id={'settings.sound'} />
+        <Toggle enabled={!mute} onChange={handleMute} name="settings-sound" />
+        &nbsp;
+        <label for="settings-sound"><Text id={'settings.sound'} /></label>
       </div>
       <div class={style.settings_sound_container}>
         <div class={style.settings_sound_icon}><IconVolumeLow /></div>
