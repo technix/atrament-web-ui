@@ -3,7 +3,7 @@ import { useEffect, useState } from 'preact/hooks';
 import { TranslationsProvider } from '@eo-locale/preact';
 import { AtramentContext } from 'src/context';
 import atramentInit from 'src/atrament/init';
-import locales from 'src/i18n.json';
+import locales from 'src/locales';
 import { appLanguage } from 'src/constants';
 
 import ApplicationWrapper from 'src/components/ui/application-wrapper';
