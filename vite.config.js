@@ -14,6 +14,10 @@ import atramentCfg from './atrament.config.json';
 
 export default defineConfig(({ mode }) => {
   const inkCompileFormat = atramentCfg.game.format || (mode === 'singlefile' ? 'js' : 'json');
+  
+  const atramentConfig = { ...atramentCfg, game: { ...atramentCfg.game } };
+  atramentConfig.game.script = `${atramentConfig.game.source}.${inkCompileFormat}`;
+  delete atramentConfig.game.source;
 
   const neutralinoTemplate = mode === 'standalone'
     ? '<script src="./neutralino.js"></script><script>Neutralino.init();</script>'
@@ -26,7 +30,8 @@ export default defineConfig(({ mode }) => {
         data: {
           title: atramentCfg.name,
           description: atramentCfg.description,
-          neutralino: neutralinoTemplate
+          neutralino: neutralinoTemplate,
+          atrament_config_json: JSON.stringify(atramentConfig)
         },
       },
     }),
@@ -65,7 +70,6 @@ export default defineConfig(({ mode }) => {
   return {
     plugins,
     define: {
-      __INK_SCRIPT__: JSON.stringify(`${atramentCfg.game.source}.${inkCompileFormat}`),
       __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
       __EMBED_FONTS__: process.argv.includes('--embed-fonts')
     },
