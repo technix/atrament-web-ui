@@ -19,6 +19,14 @@ export default defineConfig(({ mode }) => {
   atramentConfig.game.script = `${atramentConfig.game.source}.${inkCompileFormat}`;
   delete atramentConfig.game.source;
 
+  if (process.argv.includes('--template')) {
+    atramentConfig.name = "Atrament UI";
+    atramentConfig.short_name = "atrament-web-ui-template";
+    atramentConfig.description = "A game built with Atrament";
+    atramentConfig.game.script = '%INK_SCRIPT%';
+    atramentConfig.game.path = '.';
+  }
+
   const neutralinoTemplate = mode === 'standalone'
     ? '<script src="./neutralino.js"></script><script>Neutralino.init();</script>'
     : '';
