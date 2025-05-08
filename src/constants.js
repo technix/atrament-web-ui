@@ -1,6 +1,6 @@
-/* global __APP_VERSION__, __INK_SCRIPT__, __EMBED_FONTS__ */
+/* global __APP_VERSION__, __EMBED_FONTS__, $atramentConfig */
 
-import cfg from '../atrament.config.json';
+const cfg = window.$atramentConfig;
 
 export const appVersion = __APP_VERSION__;
 
@@ -10,7 +10,7 @@ export const embedFonts = __EMBED_FONTS__;
 export const gamePath = import.meta.env.MODE === 'production' && cfg.game?.zip
   ? cfg.game?.zip // only for production build, not available for "development" and "singlefile"
   : cfg.game?.path;
-export const gameFile = __INK_SCRIPT__;
+export const gameFile = cfg.game.script;
 
 // Application ID
 // - uses page URL to make sure it's unique
