@@ -9,7 +9,6 @@ import registerSceneProcessors from 'src/atrament/scene-processors';
 import registerExternalFunctions from 'src/atrament/externals';
 
 import onGameStart from 'src/atrament/on-game-start';
-import onContinueStory from 'src/atrament/on-continue-story';
 
 export default async function atramentInit(atrament, Story) {
   // show all events in console
@@ -31,7 +30,6 @@ export default async function atramentInit(atrament, Story) {
     }
   });
   atrament.on('game/start', () => onGameStart(atrament));
-  atrament.on('game/continueStory', () => onContinueStory(atrament));
   // initialize game
   await atrament.game.init(gamePath, gameFile);
   await atrament.game.initInkStory();
@@ -48,6 +46,14 @@ export default async function atramentInit(atrament, Story) {
   const metadata = atrament.state.get().metadata;
   if (metadata.title) {
     atrament.interfaces.platform.setTitle(metadata.title);
+  }
+  // track story path for debugging
+  if (metadata.debug) {
+    atrament.on('game/continueStory', () => {
+      // save current story path into game.$story_path for debugging purposes
+      const path = atrament.ink.story().state.previousPathString;
+      atrament.state.setSubkey('game', '$story_path', path);
+    });
   }
   // done
 }
