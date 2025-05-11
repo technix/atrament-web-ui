@@ -40,7 +40,7 @@ const EndGameLink = () => {
 };
 
 const Choices = ({ key, currentScene, setReady, isHypertextMode }) => {
-  const numberOfChoices = (currentScene && currentScene.choices) ? currentScene.choices.length : -1;
+  const numberOfChoices = currentScene?.choices ? currentScene.choices.length : -1;
   if (numberOfChoices === 1) {
     const isClickToContinue = currentScene.choices[0].choice.match(/^(|>>>(\d*|\(.+?\)))$/);
     if (isClickToContinue) {
@@ -62,7 +62,7 @@ const Choices = ({ key, currentScene, setReady, isHypertextMode }) => {
     // end game
     return (<EndGameLink />);
   }
-  if (isHypertextMode) {
+  if (isHypertextMode || !currentScene) {
     return <></>;
   }
   return (
