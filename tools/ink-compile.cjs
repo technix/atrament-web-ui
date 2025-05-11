@@ -4,7 +4,7 @@
     "inkjscompiler": true
 */
 
-const  { spawn, spawnSync } = require('node:child_process');
+const  { spawnSync } = require('node:child_process');
 const os = require('node:os');
 const fs = require('node:fs');
 
@@ -29,10 +29,7 @@ function checkInstallInklecate(compiler) {
   if (!fs.existsSync(compiler)) {
     // let's try to install inklecate
     console.log("Inklecate compiler is not found, installing from GitHub...");
-    const res = spawnSync('node', ['tools/install-inklecate.cjs']);
-    [ res.stdout.toString(), res.stderr.toString() ].forEach(
-      (item) => item && console.log(item)
-    );
+    spawnSync('node', ['tools/install-inklecate.cjs'], {stdio: 'inherit'});
   }
   if (!fs.existsSync(compiler)) {
     console.error("Failed to install Inklecate");
@@ -42,26 +39,14 @@ function checkInstallInklecate(compiler) {
 
 const runInklecate = (cmd, ...args) => {
   console.log('>>>', cmd, args.join(' '));
-
-  const inkCompilerProcess = spawn(cmd, args);
-
-  inkCompilerProcess.stdout.on('data', (data) => {
-    console.log(data.toString());
-  });
-
-  inkCompilerProcess.stderr.on('data', (data) => {
-    console.error(data.toString());
-  });
-
-  inkCompilerProcess.on('close', () => {
-    if (format === 'js') {
-      // convert json output to JS
-      const content = fs.readFileSync(outputFile, { encoding: 'utf8', flag: 'r' });
-      const output = `var storyContent = ${content};`;
-      fs.writeFileSync(outputFile, output);
-    }
-    process.exit(inkCompilerProcess.exitCode)
-  });
+  const inkCompilerProcess = spawnSync(cmd, args, {stdio: 'inherit'});
+  if (format === 'js') {
+    // convert json output to JS
+    const content = fs.readFileSync(outputFile, { encoding: 'utf8', flag: 'r' });
+    const output = `var storyContent = ${content};`;
+    fs.writeFileSync(outputFile, output);
+  }
+  process.exit(inkCompilerProcess.status)
 }
 
 const inklecateRun = {
