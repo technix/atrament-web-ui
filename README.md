@@ -296,6 +296,9 @@ To remove font from the application, delete the font folder from `resources/font
 ### Custom CSS styles and classes
 To add custom CSS classes or modify styles of existing elements, edit `resources/styles/custom.css` file. It contains a list of modifiable element classes for reference.
 
+### External functions
+If you add any external functions to your Ink file, the JS function code should be added as a separate `*.js` file to the `resources/externals` folder. See example file `example.js.txt` for details.
+
 ## Export
 
 Default Atrament UI build, `npm run build-web`, is a web application for web server deployment. However, there are other export modes.

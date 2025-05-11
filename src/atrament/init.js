@@ -6,6 +6,7 @@ import muteWhenInactive from 'src/utils/mute-when-inactive';
 import { loadDefaultFont, loadDefaultTheme } from 'src/atrament/load-defaults';
 import { registerSettingsHandlers } from 'src/atrament/settings-handlers'
 import registerSceneProcessors from 'src/atrament/scene-processors';
+import registerExternalFunctions from 'src/atrament/externals';
 
 import onGameStart from 'src/atrament/on-game-start';
 import onContinueStory from 'src/atrament/on-continue-story';
@@ -39,6 +40,8 @@ export default async function atramentInit(atrament, Story) {
   loadDefaultFont(atrament);
   // register scene processors
   registerSceneProcessors(atrament);
+  // register external functions
+  registerExternalFunctions(atrament);
   // mute when tab is inactive
   muteWhenInactive(atrament);
   // set window title

@@ -1,0 +1,18 @@
+/* Example of external function definition */
+
+// "atrament" object is available in the external function as "this",
+// if it is not an arrow function
+function myExampleFunction(name) {
+  return `Hello, ${name} (Atrament ${this.version})`;
+}
+
+/*
+  default export should be an object with the following keys:
+  "name": function name
+  "external": function definition,
+  "lookaheadSafe" (optional, false by default): see https://github.com/inkle/ink/blob/master/Documentation/RunningYourInk.md#actions--vs-pure-functions
+*/
+export default {
+  name: "example",
+  external: myExampleFunction
+}
