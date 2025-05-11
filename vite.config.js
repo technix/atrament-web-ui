@@ -91,7 +91,15 @@ export default defineConfig(({ mode }) => {
       port: 8900
     },
     build: {
-      outDir: buildDir
+      outDir: buildDir,
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            inkjs: ['inkjs'],
+            atrament: ['@atrament/web']
+          }
+        }
+      }
     },
     publicDir: 'root',
     base: ''
