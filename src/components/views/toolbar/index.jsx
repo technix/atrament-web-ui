@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 import { useTranslator } from '@eo-locale/preact';
 import { useAtramentState } from 'src/atrament/hooks';
@@ -13,7 +14,7 @@ const Toolbar = () => {
     : translator.translate('default.title');
 
   return (
-    <div class={[style.toolbar, 'atrament-toolbar'].join(' ')}>
+    <div class={clsx(style.toolbar, 'atrament-toolbar')}>
       <Markup content={toolbarContent} />
     </div>
   )

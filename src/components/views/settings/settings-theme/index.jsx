@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import { Text } from '@eo-locale/preact';
 import style from './index.module.css';
 import { useAtrament } from 'src/atrament/hooks';
@@ -21,7 +22,7 @@ const SettingsTheme = () => {
   const { updateSettings } = useAtrament();
   const handleTheme = (e) => updateSettings('theme', e.target.attributes['data-theme-id'].value);
   return (
-    <div class={[style.settings_theme_container, 'atrament-settings-theme'].join(' ')}>
+    <div class={clsx(style.settings_theme_container, 'atrament-settings-theme')}>
       {Object.entries(themes).map(([k, v]) => {
         return <SettingButton key={k} themeId={k} themeConfig={v} onClick={handleTheme} />
       })}

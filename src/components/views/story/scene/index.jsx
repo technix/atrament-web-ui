@@ -1,4 +1,5 @@
 import { h, Fragment } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 import { useRef, useState, useEffect, useCallback } from 'preact/hooks';
 import { scrollIntoView } from "seamless-scroll-polyfill";
@@ -42,7 +43,7 @@ const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
   }, [ scene, setIsLoaded, getAssetPath ]);
 
   return (
-    <div class={[style.scene, 'atrament-scene', isCurrent && isLoaded ? 'animation_appear' : ''].join(' ')} ref={elementRef}>
+    <div class={clsx(style.scene, 'atrament-scene', (isCurrent && isLoaded) && 'animation_appear')} ref={elementRef}>
       <div style={{ opacity: isLoaded ? 1 : 0 }}>
         {
           scene.content.map((item, i) => (

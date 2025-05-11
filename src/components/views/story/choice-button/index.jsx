@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 
 import { useAtramentState } from 'src/atrament/hooks';
@@ -25,11 +26,11 @@ const ChoiceButton = ({ choice, chosen, handleClick }) => {
     choiceCustomClass = choiceCustomClass.join(' ');
   }
 
-  const elementClasses = [style.choice_button, choiceGroupStyle, choiceAlignment, choiceStateClass, choiceCustomClass ];
+  const elementClasses = clsx(style.choice_button, choiceGroupStyle, choiceAlignment, choiceStateClass, choiceCustomClass);
 
   return (
     <button
-      class={elementClasses.join(' ')}
+      class={elementClasses}
       onClick={onClick}
       disabled={choice.disabled}
     >

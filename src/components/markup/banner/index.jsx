@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 
 // [banner style=highlight allcaps=false]text in info block[/banner]
@@ -6,11 +7,11 @@ import style from './index.module.css';
 import getTagAttributes from 'src/utils/get-tag-attributes';
 
 const BannerBlock = ({children, options}) => {
-  const classList = [
+  const classList = clsx(
     style.bannerblock,
-    options.style === 'accent' ? style.accent : '',
-    options.allcaps ? style.allcaps : ''
-  ].join(' ');
+    options.style === 'accent' && style.accent,
+    options.allcaps && style.allcaps
+  );
   return (<div class={classList}>{children}</div>);
 };
 

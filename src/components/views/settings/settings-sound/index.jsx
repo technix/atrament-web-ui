@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import { Text } from '@eo-locale/preact';
 import style from './index.module.css';
 import Toggle from 'src/components/ui/toggle';
@@ -16,7 +17,7 @@ const SettingsSound = () => {
 
   return (
     <>
-      <div class={[style.settings_sound, 'atrament-settings-sound'].join(' ')}>
+      <div class={clsx(style.settings_sound, 'atrament-settings-sound')}>
         <Toggle enabled={!mute} onChange={handleMute} name="settings-sound" />
         &nbsp;
         <label for="settings-sound"><Text id={'settings.sound'} /></label>

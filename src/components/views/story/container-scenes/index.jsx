@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 
 const getAlign = (v) => {
@@ -14,7 +15,7 @@ const getAlign = (v) => {
 
 const ContainerScenes = ({ children, align }) => {
   return (
-    <div class={[style.container_scenes, 'atrament-container-scene'].join(' ')} style={{'justify-content': getAlign(align)}}>
+    <div class={clsx(style.container_scenes, 'atrament-container-scene')} style={{'justify-content': getAlign(align)}}>
       {children}
     </div>
   );

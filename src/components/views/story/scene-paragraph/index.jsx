@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 
 import Markup from 'src/components/ui/markup';
@@ -19,7 +20,7 @@ const Paragraph = ( {content, isCurrent} ) => {
   }
 
   return (
-    <div style={pStyle} class={`${style.paragraph} ${pClass}`}>
+    <div style={pStyle} class={clsx(style.paragraph, pClass)}>
       <Markup content={content.text} isActive={isCurrent} />
     </div>
   );

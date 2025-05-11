@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import { Text } from '@eo-locale/preact';
 import Toggle from 'src/components/ui/toggle';
 
@@ -10,7 +11,7 @@ const SettingsAnimation = () => {
   const handleAnimation = (e) => updateSettings('animation', e.target.checked);
 
   return (
-    <div class={['atrament-settings-animation'].join(' ')}>
+    <div class={clsx('atrament-settings-animation')}>
       <Toggle enabled={atramentState.settings.animation} onChange={handleAnimation} name="settings-animation" />
       &nbsp;
       <label for="settings-animation"><Text id={'settings.animations'} /></label>

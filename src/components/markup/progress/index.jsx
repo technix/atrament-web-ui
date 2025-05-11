@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 
 // [progress min=0 max=100 value=99 style=accent]text in bar[/progress]
@@ -17,10 +18,10 @@ const Progress = ({options, children}) => {
     width = 0;
   }
 
-  const classList = [
+  const classList = clsx(
     style.progress_bar,
     options.style === 'accent' ? style.accent : style.standard
-  ].join(' ');
+  );
 
   return (
     <div class={style.progress_frame}>
