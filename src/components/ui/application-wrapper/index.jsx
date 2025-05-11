@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 import { useEffect } from 'preact/hooks';
 
@@ -16,7 +17,7 @@ window.addEventListener('resize', setInnerHeight);
 const ApplicationWrapper = ({ children }) => {
   useEffect(setInnerHeight, []);
   return (
-    <div class={[style.application_wrapper, 'atrament-ui-app'].join(' ')}>
+    <div class={clsx(style.application_wrapper, 'atrament-ui-app')}>
       {children}
     </div>
   );

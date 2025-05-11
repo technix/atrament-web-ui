@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 
 import { IconToolbarBack } from 'src/components/ui/icons';
@@ -22,7 +23,7 @@ const OverlayView = () => {
         <button class={style.button_back} onClick={closeOverlay}><IconToolbarBack /></button>
         {overlay.title && <div class={style.overlay_title}>{overlay.title}</div>}
       </div>
-      <div class={[style.overlay_content, 'atrament-overlay'].join(' ')}>
+      <div class={clsx(style.overlay_content, 'atrament-overlay')}>
         <ContainerText>
           {overlay.content.map((item, index) => <TextParagraph key={index}><Markup content={item} /></TextParagraph>)}
         </ContainerText>

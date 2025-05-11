@@ -1,8 +1,9 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 
 const ContainerFlex = ({ children }) => (
-  <div class={[style.container_flex, 'atrament-flex-container'].join(' ')}>
+  <div class={clsx(style.container_flex, 'atrament-flex-container')}>
     {children}
   </div>
 );

@@ -1,9 +1,10 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 
 const ContainerImage = ({ src, options = {} }) => (
   <div
-    class={[style.imagebox, 'atrament-image-container'].join(' ')}
+    class={clsx(style.imagebox, 'atrament-image-container')}
     style={{
       'margin-left': options['leftmargin'] || 'none',
       'margin-right': options['rightmargin'] || 'none'
@@ -14,11 +15,11 @@ const ContainerImage = ({ src, options = {} }) => (
       style={{
         width: options.width || 'auto',
       }}
-      class={[
+      class={clsx(
         style.image,
-        options.fullsize ? '' : style.illustration,
+        !options.fullsize && style.illustration,
         'atrament-image'
-      ].join(' ')}
+      )}
     />
   </div>
 );

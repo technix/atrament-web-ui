@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { useTranslator } from '@eo-locale/preact';
@@ -59,15 +60,10 @@ const ClickToContinue = ({ setReady, withChoice = false, delay = 0, animation = 
     }
   }, [ addEventListeners, removeEventListeners, continueGame, setIsVisible, clickable, delay, animation ]);
 
-  const elementStyles = [style.circle];
-  if (delay) {
-    elementStyles.push(style.circle_empty);
-  }
-
   return (
     <div class={style.container}>
       {isVisible
-        ? <div class={elementStyles.join(' ')} title={translator.translate('game.click-to-continue')} />
+        ? <div class={clsx(style.circle, delay && style.circle_empty)} title={translator.translate('game.click-to-continue')} />
         : ''
       }
     </div>

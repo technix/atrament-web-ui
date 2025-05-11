@@ -1,8 +1,9 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 
 const ContainerModal = ({ children }) => (
-  <div class={[style.container_modal, 'atrament-container-modal'].join(' ')}>
+  <div class={clsx(style.container_modal, 'atrament-container-modal')}>
     {children}
   </div>
 );

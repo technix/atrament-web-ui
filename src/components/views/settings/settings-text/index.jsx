@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import { Text } from '@eo-locale/preact';
 import style from './index.module.css';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
@@ -20,7 +21,7 @@ const SettingsText = () => {
   const handleFontSize = (e) => updateSettings('fontSize', e.target.value);
 
   return (
-    <div class={[style.settings_text, 'atrament-settings-text'].join(' ')}>
+    <div class={clsx(style.settings_text, 'atrament-settings-text')}>
       <div class={style.settings_fontsize_container}>
         <div class={style.settings_font_a} style={{'font-size': `${minFontSize}%`}}>A</div>
         <div class={style.settings_fontsize_input_container}>

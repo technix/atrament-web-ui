@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import { useState } from 'preact/hooks';
 import { Text } from '@eo-locale/preact';
 import style from './index.module.css';
@@ -6,10 +7,10 @@ import style from './index.module.css';
 const DialogYesNo = ({ prompt, onAccept, onReject, attributes}) => (
   <div class={style.container}>
     <div class={style.prompt}>{prompt}</div>
-    <button onClick={onAccept} class={`${style.menu_item} ${style.delete_item} ${style.small}`} {...attributes}>
+    <button onClick={onAccept} class={clsx(style.menu_item, style.delete_item, style.small)} {...attributes}>
       <Text id='yes' />
     </button>
-    <button onClick={onReject} class={`${style.menu_item} ${style.small}`} {...attributes}>
+    <button onClick={onReject} class={clsx(style.menu_item, style.small)} {...attributes}>
       <Text id='no' />
     </button>
   </div>
@@ -57,7 +58,7 @@ const MenuListItem = ({
         key={key}
         onClick={hasConfirmation ? showConfirmDialog : onSelect}
         disabled={isDisabled}
-        class={`${style.menu_item} ${isDeletable && style.is_deletable}`}
+        class={clsx(style.menu_item, isDeletable && style.is_deletable)}
         {...attributes}
       >
         {children}
@@ -66,7 +67,7 @@ const MenuListItem = ({
         <button
           key={key}
           onClick={showDeleteDialog}
-          class={`${style.menu_item} ${style.delete_button}`}
+          class={clsx(style.menu_item, style.delete_button)}
           {...attributes}
         >
           &#x2715;
