@@ -45,16 +45,17 @@ export function watchInkFiles(format) {
     name: 'watch-ink-files-hmr',
     enforce: 'post',
     handleHotUpdate({ file, server }) {
-      if (file.endsWith('.ink')) {
-        const res = runCompiler(format);
-        if (res.status === 0) {
-          server.hot.send({
-            type: 'full-reload',
-            path: '*'
-          });
-        } else {
-          renderError(server, res.stdout.toString())
-        }
+      if (!file.endsWith('.ink')) {
+        return;
+      }
+      const res = runCompiler(format);
+      if (res.status === 0) {
+        server.hot.send({
+          type: 'full-reload',
+          path: '*'
+        });
+      } else {
+        renderError(server, res.stdout.toString())
       }
     },
   }
