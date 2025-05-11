@@ -18,9 +18,9 @@ function App() {
 
   useEffect(() => {
     const startEngine = async () => {
-      const { default: atrament } = await import(/* webpackChunkName: "atrament" */ "@atrament/web");
+      const { default: atrament } = await import("@atrament/web");
       // import inkjs
-      const { Story } = await import(/* webpackChunkName: "inkjs" */ "inkjs");
+      const { Story } = await import("inkjs");
       // initialize engine
       try {
         await atramentInit(atrament, Story);
