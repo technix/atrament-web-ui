@@ -1,6 +1,7 @@
 import { h } from 'preact';
-import { useState, useCallback, useEffect } from 'preact/hooks';
+import { useState, useCallback } from 'preact/hooks';
 import { useAtrament } from 'src/atrament/hooks';
+import { useKeyboardHandler } from 'src/hooks';
 import ChoiceButton from '../choice-button';
 
 const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
@@ -40,12 +41,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
     }
   }, [ numberOfChoices, selectChoice, currentScene.choices ]);
 
-  useEffect(() => {
-    document.addEventListener("keydown", kbdChoiceHandler, false);
-    return () => {
-      document.removeEventListener("keydown", kbdChoiceHandler, false);
-    }
-  }, [ kbdChoiceHandler ]);
+  useKeyboardHandler(kbdChoiceHandler);
 
   return (
     <>

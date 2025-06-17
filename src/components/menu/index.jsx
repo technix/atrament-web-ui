@@ -1,6 +1,8 @@
 import { h } from 'preact';
-import { useCallback, useEffect, useState } from 'preact/hooks';
+import { useCallback, useState } from 'preact/hooks';
 import style from './index.module.css';
+
+import { useKeyboardHandler } from 'src/hooks';
 
 import { appVersion } from 'src/constants';
 
@@ -35,12 +37,7 @@ const Menu = ({ isHomeScreen = false }) => {
     }
   }, [ toggleMenu, openAboutMenu ]);
 
-  useEffect(() => {
-    document.addEventListener("keydown", escHandler, false);
-    return () => {
-      document.removeEventListener("keydown", escHandler, false);
-    }
-  }, [ escHandler ]);
+  useKeyboardHandler(escHandler);
 
   if (isOpen) {
     return (
