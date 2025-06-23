@@ -16,11 +16,11 @@ const InlineButtonComponent = ({ children, options }) => {
     const inkFn = options.onclick;
     const result = evaluateInkFunction(inkFn);
     if (result.output) {
-      setOverlayContent(inkFn, result.output);
+      setOverlayContent(inkFn, result.output, options.display === 'modal' ? 'modal' : 'overlay');
     } else {
       refreshOverlay();
     }
-  }, [ evaluateInkFunction, setOverlayContent, refreshOverlay, options.onclick ]);
+  }, [ evaluateInkFunction, setOverlayContent, refreshOverlay, options ]);
 
   let buttonStyle = options.bordered === false ? style.inline_button : style.bordered_button;
   return (

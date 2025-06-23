@@ -225,7 +225,8 @@ This text is [highlight color=yellow bgcolor=black]yellow highlighted on black b
 
 === function game_toolbar()
   HEALTH: {health}
-  [button=stats]Stats[/button]
+  [button onclick=stats]Stats[/button]
+  [button onclick=stats display=modal]StatsModal[/button]
 
 === function stats()
   [title]Stats[/title]
