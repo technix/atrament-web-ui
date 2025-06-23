@@ -1,14 +1,12 @@
 import { h } from 'preact';
-import clsx from 'clsx';
-import style from './index.module.css';
-
-import { IconToolbarBack } from 'src/components/ui/icons';
 
 import { useAtramentOverlay } from 'src/atrament/hooks';
-
-import ContainerText from 'src/components/ui/container-text';
 import TextParagraph from 'src/components/ui/text-paragraph';
 import Markup from 'src/components/ui/markup';
+
+import OverlayPresenter from './overlay';
+import ModalPresenter from './modal';
+
 
 const OverlayView = () => {
   const { overlay, closeOverlay } = useAtramentOverlay();
@@ -16,19 +14,16 @@ const OverlayView = () => {
   if (!overlay.current) {
     return <></>;
   }
-  
+
+  const content = overlay.content.map((item, index) => <TextParagraph key={index}><Markup content={item} /></TextParagraph>);
+
+  if (overlay.display === 'modal') {
+    return (
+      <ModalPresenter title={overlay.title} closeOverlay={closeOverlay}>{content}</ModalPresenter>
+    );
+  }
   return (
-    <div class={style.overlay_container}>
-      <div class={style.overlay_header}>
-        <button class={style.button_back} onClick={closeOverlay}><IconToolbarBack /></button>
-        {overlay.title && <div class={style.overlay_title}>{overlay.title}</div>}
-      </div>
-      <div class={clsx(style.overlay_content, 'atrament-overlay')}>
-        <ContainerText>
-          {overlay.content.map((item, index) => <TextParagraph key={index}><Markup content={item} /></TextParagraph>)}
-        </ContainerText>
-      </div>
-    </div>
+    <OverlayPresenter title={overlay.title} closeOverlay={closeOverlay}>{content}</OverlayPresenter>
   );
 }
 

@@ -30,7 +30,8 @@ export default function onGameStart(atrament) {
   atrament.state.setKey(OVERLAY_STORE_KEY, {
     current: null,
     content: '',
-    title: null
+    title: null,
+    display: null
   });
   // configure toolbar
   const metadata = atrament.state.get().metadata;
