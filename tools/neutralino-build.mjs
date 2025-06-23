@@ -1,10 +1,13 @@
-const { spawn } = require('node:child_process');
-const fs = require('node:fs');
-const copy = require('recursive-copy');
-const cfg = require('../atrament.config.json');
+import fs from 'node:fs';
+import shell from 'shelljs';
+import { zip } from 'zip-a-folder';
+import { readdir } from 'node:fs/promises';
 
 const TOOLS_DIR = 'tools/neutralino';
 const BUILD_DIR = 'build/.tmp_neutralino';
+const OUTPUT_DIR = 'build/standalone';
+
+const cfg = JSON.parse(fs.readFileSync('atrament.config.json', 'utf8'));
 
 const neutralinoConfig = {
   $schema: "https://raw.githubusercontent.com/neutralinojs/neutralinojs/main/schemas/neutralino.config.schema.json",
@@ -57,16 +60,12 @@ const neutralinoConfig = {
   }
 };
 
-
-
-function copyNeutralinoFiles() {
-  console.log('>>> Copy Neutralino binaries to build dir');
-  copy(TOOLS_DIR, BUILD_DIR, { overwrite: true })
-    .then((results) => {
-      console.info(`Copied ${results.length} files`);
-    }).catch((error) => {
-      console.error(`Copy failed: ${error}`);
-    });
+async function makeArchives() {
+  const files = await readdir('.');
+  const appName = files[0];
+  await zip('**/*-linux_*, **/*.neu', `${appName}-linux.zip`);
+  await zip('**/*-mac_*, **/*.neu', `${appName}-mac.zip`);
+  await zip('**/*-win_*, **/*.neu', `${appName}-windows.zip`);
 }
 
 
@@ -82,28 +81,37 @@ fs.writeFileSync(
   JSON.stringify(neutralinoConfig, undefined, "  ")
 );
 
+
 // 2. Download Neutralino binaries, if needed
 
 if (!fs.existsSync(`${TOOLS_DIR}/bin`)) {
   console.log('>>> Download Neutralino binaries');
-  const neu = spawn('npx', ['neu', 'update'], { cwd: TOOLS_DIR, shell: true });
-  
-  neu.stdout.on('data', (data) => {
-    console.log(data.toString());
-  });
-  
-  neu.stderr.on('data', (data) => {
-    console.error(`ERROR: ${data.toString()}`);
-  });
-  
-  neu.on('close', (code) => {
-    if (!fs.existsSync(`${TOOLS_DIR}/bin`)) {
-      console.error("Failed to install Neutralino");
-      process.exit(1);
-    } else {
-      copyNeutralinoFiles();
-    }
-  });
-} else {
-  copyNeutralinoFiles();
+  shell.pushd('-q', TOOLS_DIR);
+  shell.exec('npx neu update');
+  shell.popd('-q');
+
+  if (!fs.existsSync(`${TOOLS_DIR}/bin`)) {
+    console.error("Failed to install Neutralino");
+    process.exit(1);
+  }
 }
+
+// 3. Copy Neutralino files to build dir
+
+console.log('>>> Copy Neutralino binaries to build dir');
+shell.cp('-rf', `${TOOLS_DIR}/*`, BUILD_DIR);
+
+// 4. Neutralino build
+console.log('>>> Building Neutralino app');
+shell.pushd('-q', BUILD_DIR);
+shell.exec('neu build');
+shell.popd('-q');
+shell.rm('-rf', OUTPUT_DIR);
+shell.mv(`${BUILD_DIR}/dist`, OUTPUT_DIR);
+shell.rm('-rf', BUILD_DIR);
+
+console.log('>>> Creaing archives');
+shell.cd(OUTPUT_DIR);
+makeArchives();
+
+console.log('>>> Standalone build complete.');
