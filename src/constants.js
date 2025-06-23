@@ -1,4 +1,4 @@
-/* global __APP_VERSION__, __EMBED_FONTS__, $atramentConfig */
+/* global __APP_VERSION__, __EMBED_FONTS__ */
 
 const cfg = window.$atramentConfig;
 
