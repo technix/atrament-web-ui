@@ -39,6 +39,7 @@ export default defineConfig(({ mode }) => {
           title: atramentCfg.name,
           description: atramentCfg.description,
           neutralino: neutralinoTemplate,
+          atrament_language: atramentConfig.language,
           atrament_config_json: JSON.stringify(atramentConfig)
         },
       },
