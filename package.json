@@ -8,12 +8,11 @@
     "build": "vite build",
     "build-web": "vite build",
     "build-singlefile": "vite build --mode singlefile",
-    "build-standalone": "vite build --mode standalone && npm run neutralino",
+    "build-standalone": "vite build --mode standalone && node tools/build-standalone.mjs",
     "preview": "vite preview",
     "lint": "eslint --ext .jsx --ext js src",
     "compile-ink-script": "node tools/ink-compile.cjs",
-    "install-inklecate": "node tools/install-inklecate.cjs",
-    "neutralino": "node tools/neutralino-build.mjs"
+    "install-inklecate": "node tools/install-inklecate.cjs"
   },
   "dependencies": {
     "@atrament/web": "2.1.1",
