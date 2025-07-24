@@ -4,7 +4,7 @@ import { useTranslator } from '@eo-locale/preact';
 import style from './index.module.css';
 
 import { useAtramentState } from 'src/atrament/hooks';
-import { useKeyboardHandler } from 'src/hooks';
+import { useKeyboardHandler, useToggle } from 'src/hooks';
 import CloseButton from 'src/components/ui/close-button';
 import { IconDebugger } from 'src/components/ui/icons';
 
@@ -16,11 +16,9 @@ import DebugVisits from './visits';
 import DebugFunctions from './functions';
 
 const DebuggerView = () => {
-  const [ isOpen, openDebugger ] = useState(false);
+  const [ isOpen, toggleDebugger ] = useToggle(false);
   const [ keyWait, setKeyWait ] = useState(false);
   const translator = useTranslator();
-
-  const toggleDebugger = useCallback(() => openDebugger(!isOpen), [ isOpen ]);
 
   const debugHandler = useCallback((e) => {
     if (e.code === 'Backquote') {
