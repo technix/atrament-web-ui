@@ -21,7 +21,7 @@ root/**/*.json
 tools/inklecate*
 
 # neutralino
-tools/neutralino/*
+tools/neutralino*
 
 # Editor directories and files
 .vscode/*
