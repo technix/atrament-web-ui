@@ -85,12 +85,10 @@ export const HomeMenuView = () => {
           return s.type === atrament.game.SAVE_GAME;
         }
       );
-      if (saves.length) {
-        setLoadedState(true);
-      }
+      setLoadedState(saves.length > 0);
     }
     initHome();
-  }, [ atrament.game, canResume, metadata, setLoadedState ]);
+  });
 
   return (
     <>
