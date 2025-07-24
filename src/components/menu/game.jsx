@@ -4,6 +4,7 @@ import { route } from 'preact-router';
 import { Text } from '@eo-locale/preact';
 
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
+import { useToggle } from 'src/hooks';
 
 import LinkMenu from 'src/components/ui/link-menu';
 import LinkHome from 'src/components/ui/link-home';
@@ -21,14 +22,10 @@ const MenuGameScreen = ({ toggleMenu }) => {
   const atramentState = useAtramentState(['metadata']);
   const { saves, load_from_checkpoints } = atramentState.metadata;
 
-  const [ isSaveMenuOpen, openSaveMenu ] = useState(false);
-  const [ isLoadMenuOpen, openLoadMenu ] = useState(false);
-  const [ isSettingsMenuOpen, openSettingsMenu ] = useState(false);
-
-  const toggleSaveMenu = useCallback(() => openSaveMenu(!isSaveMenuOpen), [ isSaveMenuOpen ]);
-  const toggleLoadMenu = useCallback(() => openLoadMenu(!isLoadMenuOpen), [ isLoadMenuOpen ]);
-  const toggleSettingsMenu = useCallback(() => openSettingsMenu(!isSettingsMenuOpen), [ isSettingsMenuOpen ]);
-
+  const [ isSaveMenuOpen, toggleSaveMenu ] = useToggle(false);
+  const [ isLoadMenuOpen, toggleLoadMenu ] = useToggle(false);
+  const [ isSettingsMenuOpen, toggleSettingsMenu ] = useToggle(false);
+  
   const loadGame = useCallback(async (saveslot) => {
     await atrament.game.restart(saveslot);
     toggleLoadMenu();

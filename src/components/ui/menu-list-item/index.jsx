@@ -1,8 +1,8 @@
 import { h } from 'preact';
 import clsx from 'clsx';
-import { useState } from 'preact/hooks';
 import { Text } from '@eo-locale/preact';
 import style from './index.module.css';
+import { useToggle } from 'src/hooks';
 
 const DialogYesNo = ({ prompt, onAccept, onReject, attributes}) => (
   <div class={style.container}>
@@ -29,18 +29,14 @@ const MenuListItem = ({
   confirmPrompt = '',
   attributes={}
 }) => {
-  const [ isDeleteDialog, displayDeleteDialog ] = useState(false);
-  const [ isConfirmDialog, displayConfirmDialog ] = useState(false);
-  
-  const showDeleteDialog = () => displayDeleteDialog(true);
-  const hideDeleteDialog = () => displayDeleteDialog(false);
+  const [ isDeleteDialog, , , showDeleteDialog, hideDeleteDialog ] = useToggle(false);
+  const [ isConfirmDialog, , , showConfirmDialog, hideConfirmDialog ] = useToggle(false);
+
   const handleDelete = (ev) => {
     onDelete(ev);
     hideDeleteDialog();
   }
 
-  const showConfirmDialog = () => displayConfirmDialog(true);
-  const hideConfirmDialog = () => displayConfirmDialog(false);
   const handleConfirm = (ev) => {
     onSelect(ev);
     hideConfirmDialog();

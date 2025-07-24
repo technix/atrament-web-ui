@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { useCallback, useState } from 'preact/hooks';
 import style from './index.module.css';
 
-import { useKeyboardHandler } from 'src/hooks';
+import { useKeyboardHandler, useToggle } from 'src/hooks';
 
 import { appVersion } from 'src/constants';
 
@@ -21,21 +21,20 @@ import MenuGameScreen from './game';
 const MenuScreen = ({isHomeScreen, toggleMenu}) => (isHomeScreen ? <MenuHomeScreen /> : <MenuGameScreen toggleMenu={toggleMenu} />);
 
 const Menu = ({ isHomeScreen = false }) => {
-  const [ isOpen, openMenu ] = useState(false);
-  const [ isAboutMenuOpen, openAboutMenu ] = useState(false);
+  const [ isOpen, toggleMainMenu ] = useToggle(false);
+  const [ isAboutMenuOpen, toggleAboutMenu, setAboutMenu ] = useToggle(false);
 
   const toggleMenu = useCallback(() => {
-    openMenu(!isOpen), [ isOpen ];
-    openAboutMenu(false);
-  }, [ isOpen ]);
-  const toggleAboutMenu = useCallback(() => openAboutMenu(!isAboutMenuOpen), [ isAboutMenuOpen ]);
+    toggleMainMenu();
+    setAboutMenu(false);
+  }, [ toggleMainMenu, setAboutMenu ]);
 
   const escHandler = useCallback((e) => {
     if (e.key === "Escape") {
       toggleMenu();
-      openAboutMenu(false);
+      setAboutMenu(false);
     }
-  }, [ toggleMenu, openAboutMenu ]);
+  }, [ toggleMenu, setAboutMenu ]);
 
   useKeyboardHandler(escHandler);
 
