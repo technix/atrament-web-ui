@@ -1,12 +1,15 @@
 import { h } from 'preact';
 import style from './index.module.css';
-import { useCallback } from "preact/hooks";
+import clsx from 'clsx';
+import { useCallback, useContext } from "preact/hooks";
 import { ERROR_STORE_KEY } from 'src/constants';
+import { ActiveContentContext } from 'src/context';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 // [link=target choice text]Text[/link]
 
 const InlineLink = ({ children, choice }) => {
+  const isActive = useContext(ActiveContentContext);
   const { atrament, makeChoice, continueStory } = useAtrament();
   const atramentState = useAtramentState(['scenes']);
 
@@ -25,8 +28,8 @@ const InlineLink = ({ children, choice }) => {
   return (
     <a
       href="#"
-      class={style.inline_link}
-      onClick={clickHandler}
+      class={clsx(style.inline_link, !isActive && style.disabled)}
+      onClick={isActive ? clickHandler : () => {}}
     >
       {children}
     </a>

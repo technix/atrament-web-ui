@@ -1,3 +1,7 @@
 .inline_link, .inline_link:visited {
   color: var(--fg-color);
 }
+
+.disabled {
+  cursor: default;
+}
