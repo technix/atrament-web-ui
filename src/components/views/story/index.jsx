@@ -15,7 +15,7 @@ const StoryView = () => {
   const [ isReady, setReady ] = useState(false);
   
   const lastSceneIndex = atramentState.scenes.length - 1;
-  const isHypertextMode = !!atramentState.metadata.hypertext;
+  const isHypertextMode = !!atramentState.metadata.hypertext || !!atramentState.scenes[lastSceneIndex].tags.HYPERTEXT;
   const key = `choices-${atramentState.scenes[lastSceneIndex]?.uuid}`;
 
   return (
