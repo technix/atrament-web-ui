@@ -95,6 +95,7 @@ The standalone web application files will be in `build/web` folder. Use `npm run
 | `# RESTART_FROM_CHECKPOINT: checkpointName` | Restart game from named checkpoint. |
 | `# CLASS: classname` | Apply CSS class to the paragraph `<div>` element. |
 | `# SHUFFLE_CHOICES` | Shuffle choice order in this knot. |
+| `# HYPERTEXT` | Use links instead of choices for this scene. See "[Hypertext mode](#hypertext-mode)". |
 
 Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MUSIC/STOP_SOUND/STOP_MUSIC tags. Combining them may lead to unexpected side effects.
 
@@ -146,6 +147,8 @@ All pauses are set in seconds.
 If global tag `hypertext` is set, Atrament UI switches to hypertext mode. In this mode choice options are not displayed. However, author can use `[link=target choice text]link text[/link]` to link specific phrases to the choices.
 
 For better user experience in hypertext mode authors can set global tags `single_scene` and `scenes_align: top`.
+
+Author can enable hypertext for a chosen scene with `HYPERTEXT` scene tag.
 
 ```
 # hypertext
