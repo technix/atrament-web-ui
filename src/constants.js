@@ -79,3 +79,14 @@ export const KNOWN_GLOBAL_TAGS = [
   'background',
   'debug'
 ];
+
+// fonts
+
+export const FONTS_EMOJI = '"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
+
+export const FONTS_SYSTEM = {
+  System: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, ${FONTS_EMOJI}`,
+  'Sans Serif': `"Trebuchet MS", "Lucida Grande", Arial, Helvetica, ${FONTS_EMOJI}`,
+  Serif: `"Palatino", "Cambria", "Lucida Bright", "Georgia", "Times New Roman", ${FONTS_EMOJI}`,
+  Monospaced: `"Monaco", "Consolas", "Lucida Console", "Courier New", ${FONTS_EMOJI}`
+};

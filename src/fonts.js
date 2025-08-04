@@ -1,16 +1,8 @@
 // font styles
-import { gameDefaultFont, embedFonts } from 'src/constants';
+import { gameDefaultFont, embedFonts, FONTS_SYSTEM, FONTS_EMOJI } from 'src/constants';
 
-const emojiFonts = '"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';
 
-const systemFonts = {
-  System: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, ${emojiFonts}`,
-  'Sans Serif': `"Trebuchet MS", "Lucida Grande", Arial, Helvetica, ${emojiFonts}`,
-  Serif: `"Palatino", "Cambria", "Lucida Bright", "Georgia", "Times New Roman", ${emojiFonts}`,
-  Monospaced: `"Monaco", "Consolas", "Lucida Console", "Courier New", ${emojiFonts}`
-}
-
-let fonts = systemFonts;
+let fonts = { ...FONTS_SYSTEM };
 
 (async () => {
   if (import.meta.env.MODE !== 'singlefile' || embedFonts) {
@@ -22,7 +14,7 @@ let fonts = systemFonts;
         (mod) => mod().then((fontmodule) => {
           const fnt = fontmodule.default;
           if (fnt.name) {
-            extFonts[fnt.name] = `${fnt.name}, ${fnt.fallback || 'serif'}, ${emojiFonts}`;
+            extFonts[fnt.name] = `${fnt.name}, ${fnt.fallback || 'serif'}, ${FONTS_EMOJI}`;
           }
         })
       )
