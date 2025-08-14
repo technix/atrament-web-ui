@@ -37,9 +37,6 @@ const InlineLink = ({ children, choice }) => {
 }
 
 export default {
-  regexp: /\[link=.+?\].+?\[\/link\]/ig,
-  replacer: (el, markup) => {
-    const fragments = el.match(/\[link=(.+?)\](.+?)\[\/link\]/i);
-    return (<InlineLink choice={fragments[1]}>{markup(fragments[2])}</InlineLink>);
-  }
+  tag: 'link',
+  replacer: (options, content, markup) => <InlineLink choice={options.DEFAULT}>{markup(content)}</InlineLink>
 }

@@ -22,9 +22,6 @@ const Spoiler = ({children}) => {
 };
 
 export default {
-  regexp: /\[spoiler\].*?\[\/spoiler\]/ig,
-  replacer: (el, markup) => {
-    const fragments = el.match(/\[spoiler\](.*?)\[\/spoiler\]/i);
-    return (<Spoiler>{markup(fragments[1])}</Spoiler>);
-  }
+  tag: 'spoiler',
+  replacer: (options, content, markup) => <Spoiler>{markup(content)}</Spoiler>
 }

@@ -4,8 +4,6 @@ import style from './index.module.css';
 
 // [progress min=0 max=100 value=99 style=accent]text in bar[/progress]
 
-import getTagAttributes from 'src/utils/get-tag-attributes';
-
 const Progress = ({options, children}) => {
   const min = +options.min || 0;
   const max = +options.max || 100;
@@ -32,10 +30,6 @@ const Progress = ({options, children}) => {
 };
 
 export default {
-  regexp: /\[progress(?:\s+[^\]]+)?\].*?\[\/progress\]/ig,
-  replacer: (el, markup) => {
-    const fragments = el.match(/\[progress(.+?)\](.*?)\[\/progress\]/i);
-    const options = getTagAttributes(fragments[1]);
-    return (<Progress options={options}>{markup(fragments[2])}</Progress>);
-  }
+  tag: 'progress',
+  replacer: (options, content, markup) => <Progress options={options}>{markup(content)}</Progress>
 }

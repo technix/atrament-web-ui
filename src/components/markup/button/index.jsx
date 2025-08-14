@@ -2,7 +2,6 @@ import { h } from 'preact';
 import style from './index.module.css';
 import { useCallback } from "preact/hooks";
 
-import getTagAttributes from 'src/utils/get-tag-attributes';
 import { useAtrament, useAtramentOverlay } from 'src/atrament/hooks';
 
 // [button onclick=function]button text[/button]
@@ -35,14 +34,11 @@ const InlineButtonComponent = ({ children, options }) => {
 }
 
 export default {
-  regexp: /\[button[ =].+?\].+?\[\/button\]/ig,
-  replacer: (el, markup) => {
-    const fragments = el.match(/\[button([ =].+?)\](.+?)\[\/button\]/i);
-    let attributes = fragments[1];
-    if (attributes.startsWith('=')) {
-      attributes = `onclick${attributes}`;
+  tag: 'button',
+  replacer: (options, content, markup) => {
+    if (options.DEFAULT) {
+      options.onclick = options.DEFAULT;
     }
-    const options = getTagAttributes(attributes);
-    return (<InlineButtonComponent options={options}>{markup(fragments[2])}</InlineButtonComponent>);
+    return (<InlineButtonComponent options={options}>{markup(content)}</InlineButtonComponent>);
   }
 }

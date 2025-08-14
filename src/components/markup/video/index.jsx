@@ -1,6 +1,5 @@
 import { h } from 'preact';
 import { useAtrament } from 'src/atrament/hooks';
-import getTagAttributes from 'src/utils/get-tag-attributes';
 
 // [video]path/to/video.mp4[/video]
 
@@ -21,13 +20,6 @@ const Video = ({ src, options }) => {
 }
 
 export default {
-  regexp: /\[video(?:\s+[^\]]+)?\].+?\[\/video\]/ig,
-  replacer: (el) => {
-    const fragments = el.match(/\[video(.*?)\](.+?)\[\/video\]/i);
-    let options = {};
-    if (fragments[1]) {
-      options = getTagAttributes(fragments[1]);
-    }
-    return (<Video options={options} src={fragments[2]} />);
-  }
+  tag: 'video',
+  replacer: (options, content) => <Video options={options} src={content} />
 }

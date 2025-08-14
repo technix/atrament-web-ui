@@ -1,7 +1,5 @@
 import { h } from 'preact';
 
-import getTagAttributes from 'src/utils/get-tag-attributes';
-
 import Table from 'src/components/ui/table';
 
 // [table]<>
@@ -22,15 +20,10 @@ const parseRow = (row, markup) => {
 }
 
 export default {
-  regexp: /\[table(?:\s+[^\]]+)?\].+?\[\/table\]/ig,
-  replacer: (el, markup) => {
-    const fragments = el.match(/\[table(.*?)\](.+?)\[\/table\]/i);
-    let options = {};
-    if (fragments[1]) {
-      options = getTagAttributes(fragments[1]);
-    }
-    const tableHeader = fragments[2].match(/\[header\](.+?)\[\/header\]/i);
-    const tableRows = fragments[2].match(/\[row\].+?\[\/row\]/ig);
+  tag: 'table',
+  replacer: (options, content, markup) => {
+    const tableHeader = content.match(/\[header\](.+?)\[\/header\]/i);
+    const tableRows = content.match(/\[row\].+?\[\/row\]/ig);
     const columns = tableHeader ? parseHeader(tableHeader[1], markup) : [];
     const rows = tableRows ? tableRows.map((row) => parseRow(row, markup)) : [];
     const columnWidth = options.columns ? options.columns.split(/\s+/g) : [];
