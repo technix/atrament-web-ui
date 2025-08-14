@@ -2,7 +2,6 @@ import { h } from 'preact';
 import { useContext, useEffect, useState } from 'preact/hooks';
 import style from './index.module.css';
 
-import getTagAttributes from 'src/utils/get-tag-attributes';
 import { useAtrament } from 'src/atrament/hooks';
 import { ActiveContentContext } from 'src/context';
 
@@ -32,10 +31,7 @@ const Input = ({options}) => {
 };
 
 export default {
-  regexp: /\[input .+?\]/ig,
-  replacer: (el) => {
-    const fragments = el.match(/\[input(.+?)\]/i);
-    const options = getTagAttributes(fragments[1]);
-    return (<Input options={options} />);
-  }
+  tag: 'input',
+  tagOptions: { single: true },
+  replacer: (options) => <Input options={options} />
 }

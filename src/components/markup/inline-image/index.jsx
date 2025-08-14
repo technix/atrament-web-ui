@@ -10,9 +10,6 @@ const InlineImage = ({ src }) => {
 }
 
 export default {
-  regexp: /\[img\].+?\[\/img\]/ig,
-  replacer: (el) => {
-    const fragments = el.match(/\[img\](.+?)\[\/img\]/i);
-    return (<InlineImage src={fragments[1]} />);
-  }
+  tag: 'img',
+  replacer: (options, content) => <InlineImage src={content} />
 }

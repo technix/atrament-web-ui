@@ -1,6 +1,5 @@
 import { h } from 'preact';
 import { useAtrament } from 'src/atrament/hooks';
-import getTagAttributes from 'src/utils/get-tag-attributes';
 
 import ContainerImage from 'src/components/ui/container-image'
 
@@ -20,10 +19,8 @@ const Picture = ({ options, src }) => {
 }
 
 export default {
-  regexp: /\[picture(?:\s+[^\]]+)?\].*?\[\/picture\]/ig,
-  replacer: (el) => {
-    const fragments = el.match(/\[picture(.*?)\](.*?)\[\/picture\]/i);
-    const options = getTagAttributes(fragments[1]);
-    return (<Picture options={options} src={fragments[2]} />);
+  tag: 'picture',
+  replacer: (options, content) => {
+    return (<Picture options={options} src={content} />);
   }
 }

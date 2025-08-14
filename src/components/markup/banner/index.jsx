@@ -4,8 +4,6 @@ import style from './index.module.css';
 
 // [banner style=highlight allcaps=false]text in info block[/banner]
 
-import getTagAttributes from 'src/utils/get-tag-attributes';
-
 const BannerBlock = ({children, options}) => {
   const classList = clsx(
     style.bannerblock,
@@ -16,10 +14,6 @@ const BannerBlock = ({children, options}) => {
 };
 
 export default {
-  regexp: /\[banner(?:\s+[^\]]+)?\].*?\[\/banner\]/ig,
-  replacer: (el, markup) => {
-    const fragments = el.match(/\[banner(.*?)\](.*?)\[\/banner\]/i);
-    const options = getTagAttributes(fragments[1]);
-    return (<BannerBlock options={options}>{markup(fragments[2])}</BannerBlock>);
-  }
+  tag: 'banner',
+  replacer: (options, content, markup) => <BannerBlock options={options}>{markup(content)}</BannerBlock>
 }

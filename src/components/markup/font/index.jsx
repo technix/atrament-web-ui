@@ -3,9 +3,6 @@ import { h } from 'preact';
 // [font=Fira Sans]text with font applied[/font]
 
 export default {
-  regexp: /\[font=.+?\].+?\[\/font\]/ig,
-  replacer: (el, markup) => {
-    const fragments = el.match(/\[font=(.+?)\](.+?)\[\/font\]/i);
-    return (<span style={{ 'font-family': fragments[1] }}>{markup(fragments[2])}</span>);
-  }
+  tag: 'font',
+  replacer: (options, content, markup) => <span style={{ 'font-family': options.DEFAULT }}>{markup(content)}</span>
 }
