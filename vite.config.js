@@ -50,10 +50,19 @@ export default defineConfig(({ mode }) => {
   ]
 
   let buildDir = 'build/web';
+  let rollupOptions = {
+    output: {
+      manualChunks: {
+        inkjs: ['inkjs'],
+        atrament: ['@atrament/web']
+      }
+    }
+  }
 
   if (mode === 'singlefile') {
     plugins.push(viteSingleFile());
     buildDir = 'build/singlefile';
+    rollupOptions = {};
   } else if (mode === 'standalone') {
     plugins.push(VitePWA(getPWAConfig(atramentCfg)));
     buildDir = 'build/.tmp_neutralino/resources';
@@ -93,14 +102,7 @@ export default defineConfig(({ mode }) => {
     },
     build: {
       outDir: buildDir,
-      rollupOptions: {
-        output: {
-          manualChunks: {
-            inkjs: ['inkjs'],
-            atrament: ['@atrament/web']
-          }
-        }
-      }
+      rollupOptions
     },
     publicDir: 'root',
     base: ''
