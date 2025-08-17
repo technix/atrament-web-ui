@@ -5,7 +5,8 @@ function renderError(server, error) {
     server.ws.send({
       type: 'error',
       err: {
-        message: error
+        message: error,
+        stack: ''
       }
     });
   }
@@ -14,10 +15,17 @@ function renderError(server, error) {
 
 function runCompiler(format = 'json') {
   const res = spawnSync('node', ['tools/ink-compile.cjs', format]);
+  let output = '';
   [ res.stdout.toString(), res.stderr.toString() ].forEach(
-    (item) => item && console.log(item)
+    (item) => {
+      if (!item) {
+        return;
+      }
+      console.log(item);
+      output += item;
+    }
   );
-  return res;
+  return [ res, output ];
 }
 
 export function compileInk(format) {
@@ -28,9 +36,9 @@ export function compileInk(format) {
       renderError(server, inkCompilerError);
     },
     configResolved({ mode }) {
-      const res = runCompiler(format);
+      const [ res, output ] = runCompiler(format);
       if (res.status !== 0) {
-        inkCompilerError = res.stdout.toString();
+        inkCompilerError = output;
         if (mode !== 'development') {
           throw new Error(inkCompilerError);
         }
@@ -48,14 +56,14 @@ export function watchInkFiles(format) {
       if (!file.endsWith('.ink')) {
         return;
       }
-      const res = runCompiler(format);
+      const [ res, output ] = runCompiler(format);
       if (res.status === 0) {
         server.hot.send({
           type: 'full-reload',
           path: '*'
         });
       } else {
-        renderError(server, res.stdout.toString())
+        renderError(server, output)
       }
     },
   }
