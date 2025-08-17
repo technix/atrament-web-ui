@@ -1,4 +1,6 @@
 import { h } from 'preact';
+import { useState } from 'preact/hooks';
+import style from './index.module.css';
 import { useAtrament } from 'src/atrament/hooks';
 import { useTranslator } from '@eo-locale/preact';
 
@@ -15,12 +17,27 @@ function listInkVisits(atrament) {
 }
 
 const DebugVisits = () => {
+  const [ visitNameFilter, setVisitNameFilter ] = useState('');
   const { atrament } = useAtrament();
   const translator = useTranslator();
-  const inkVisits = listInkVisits(atrament);
+  const inkVisits = listInkVisits(atrament).filter((v) => v[0].includes(visitNameFilter));
+
+  const handleFilterChange = (e) => {
+    setVisitNameFilter(e.target.value);
+  };
+
   return(
     <Collapse title={translator.translate('debug.visits')}>
-      <Table data={inkVisits} />
+      <div class={style.input_div}>
+        <input
+          class={style.input}
+          type="text"
+          placeholder={translator.translate('debug.variables.filter-by-name')}
+          value={visitNameFilter}
+          onInput={handleFilterChange}
+        />
+      </div>
+      <Table data={inkVisits} pageSize={10} />
     </Collapse>
   );
 };

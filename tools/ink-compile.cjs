@@ -50,10 +50,10 @@ const runInklecate = (cmd, ...args) => {
 }
 
 const inklecateRun = {
-  js: ['node', 'node_modules/inkjs/dist/inkjs-compiler.js', inputFile, '-o', outputFile],
-  win32: ['tools/inklecate/inklecate.exe', '-o', outputFile, inputFile],
-  linux: ['tools/inklecate/inklecate', '-o', outputFile, inputFile],
-  darwin: ['tools/inklecate/inklecate', '-o', outputFile, inputFile]
+  js: ['node', 'node_modules/inkjs/bin/inkjs-compiler.js', '-c', '-o', outputFile, inputFile ],
+  win32: ['tools/inklecate/inklecate.exe', '-c', '-o', outputFile, inputFile],
+  linux: ['tools/inklecate/inklecate', '-c', '-o', outputFile, inputFile],
+  darwin: ['tools/inklecate/inklecate', '-c', '-o', outputFile, inputFile]
 }
 
 let env = 'js';
