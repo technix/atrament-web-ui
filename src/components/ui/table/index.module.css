@@ -4,6 +4,11 @@
     width: 100%;
 }
 
+.table thead th, .table tbody td {
+  overflow-wrap: anywhere;
+  word-break: break-all;
+}
+
 .cell_full {
     padding: 0;
 }
