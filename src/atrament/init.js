@@ -47,6 +47,10 @@ export default async function atramentInit(atrament, Story) {
   if (metadata.title) {
     atrament.interfaces.platform.setTitle(metadata.title);
   }
+  // enable ink fallbacks for external functions
+  if (metadata.allow_external_function_fallbacks) {
+    atrament.ink.story().allowExternalFunctionFallbacks = true;
+  }
   // track story path for debugging
   if (metadata.debug) {
     atrament.on('game/continueStory', () => {

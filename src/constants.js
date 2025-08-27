@@ -77,7 +77,8 @@ export const KNOWN_GLOBAL_TAGS = [
   'about',
   'cover',
   'background',
-  'debug'
+  'debug',
+  'allow_external_function_fallbacks'
 ];
 
 // fonts
