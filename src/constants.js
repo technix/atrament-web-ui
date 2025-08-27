@@ -42,6 +42,8 @@ export const stepFontSize = 10;
 export const minFontSize = defaultFontSize - ( stepFontSize * 3);
 export const maxFontSize = defaultFontSize + ( stepFontSize * 5);
 
+// volume
+export const defaultVolume = 50;
 
 //// Internal constants ////
 
@@ -54,6 +56,9 @@ export const OVERLAY_STORE_KEY = 'OVERLAY';
 // toolbar
 export const TOOLBAR_STORE_KEY = 'TOOLBAR';
 export const TOOLBAR_DEFAULT = '__DEFAULT__';
+
+// story path
+export const STORYPATH_STORE_KEY = '$story_path';
 
 // known global tags (for debugger)
 

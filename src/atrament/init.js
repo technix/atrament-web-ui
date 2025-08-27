@@ -1,5 +1,5 @@
 
-import { applicationID, gameFile, gamePath } from 'src/constants';
+import { applicationID, gameFile, gamePath, defaultVolume, defaultFontSize, STORYPATH_STORE_KEY } from 'src/constants';
 
 import muteWhenInactive from 'src/utils/mute-when-inactive';
 
@@ -25,8 +25,8 @@ export default async function atramentInit(atrament, Story) {
       fullscreen: false,
       animation: true,
       mute: false,
-      volume: 50,
-      fontSize: 100
+      volume: defaultVolume,
+      fontSize: defaultFontSize
     }
   });
   atrament.on('game/start', () => onGameStart(atrament));
@@ -56,7 +56,7 @@ export default async function atramentInit(atrament, Story) {
     atrament.on('game/continueStory', () => {
       // save current story path into game.$story_path for debugging purposes
       const path = atrament.ink.story().state.previousPathString;
-      atrament.state.setSubkey('game', '$story_path', path);
+      atrament.state.setSubkey('game', STORYPATH_STORE_KEY, path);
     });
   }
   // done
