@@ -8,7 +8,19 @@ It uses [inkjs](https://github.com/y-lohse/inkjs) to interpret Ink scripts, [Atr
 
 ## Getting started
 
-### Get source code and install dependencies
+Before proceeding, install [Node.js](https://nodejs.org/) for your platform, version 22.12+ or higher.
+
+### Create a new Atrament project
+
+The easiest way to create a new Atrament project is to use `atrament-wizard` tool:
+
+```
+npx atrament-wizard create
+```
+
+#### Expert mode
+
+If you're an experienced JS developer or want to use development version of Atrament Web UI, you can do all the steps manually:
 
 ```
 git clone https://github.com/technix/atrament-web-ui.git --depth 1
@@ -17,21 +29,7 @@ npm install
 npm run install-inklecate
 ```
 
-### Run application locally in dev mode
-```
-npm start
-```
-
-The application is available at http://localhost:8900. If any source file (Ink or Javascript) is edited, the application automatically restarts with these changes.
-
-### Build application for publishing to web
-```
-npm run build-web
-```
-
-The standalone web application files will be in `build/web` folder. Use `npm run preview` command to test it in browser at http://localhost:4173/.
-
-## Create your own game with Atrament Web UI
+After performing these steps, you can customize the game configuration:
 
 1. Remove all files from `root/game` and put your game files there (ink script, images, music etc).
 2. Edit `atrament.config.json`, change the `source` parameter in `game` section to name of your main Ink file. File path for this file is relative to `root/game` folder.
@@ -42,7 +40,17 @@ The standalone web application files will be in `build/web` folder. Use `npm run
     * "`theme`": default app theme, may be "`light`", "`sepia`", or "`dark`"
     * "`font`": default game font, may be "`System`", "`Sans Serif`", "`Serif`", "`Monospaced`", "`Fira Sans`", "`Lora`", "`Merriweather`", or "`OpenDyslexic`"
 4. (optionally) replace `root/logo.png` with your project logo. This image is used to generate favicon and application icon.
-5. That's it! You can make a test run with `npm start`, or build standalone web app with `npm run build-web`.
+
+
+### Run application locally in dev mode
+```
+npm start
+```
+
+The application is available at http://localhost:8900. If any source file (Ink or Javascript) is edited, the application automatically restarts with these changes.
+
+### Build application for publishing
+Atrament game can be published as a web application, as a single HTML file, or as a desktop application. See [Publishing](#publishing) section of this document for more details.
 
 ## Ink tags handled by Atrament Web UI
 
@@ -303,11 +311,20 @@ To add custom CSS classes or modify styles of existing elements, edit `resources
 ### External functions
 If you add any external functions to your Ink file, the JS function code should be added as a separate `*.js` file to the `resources/externals` folder. See example file `example.js.txt` for details.
 
-## Export
+## Publishing
 
-Default Atrament UI build, `npm run build-web`, is a web application for web server deployment. However, there are other export modes.
+### Web application
+Default Atrament UI build is a progressive web application for web server deployment.
+```
+npm run build-web
+```
+The standalone web application files will be in `build/web` folder. Use `npm run preview` command to test it in browser at http://localhost:4173/.
+
 
 ### Single file build
+```
+npm run build-singlefile
+```
 The game can be exported to a standalone web page, which can be opened locally - similar to Inky or Twine web export.
 
 To export game in a single file format, run `npm run build-singlefile` command. The resulting web page files will be in the `build/singlefile` folder.
@@ -315,6 +332,9 @@ To export game in a single file format, run `npm run build-singlefile` command. 
 *Please note: single file build uses only system fonts to reduce file size. If you want to include all fonts from the `resources/fonts` folder, use `npm run build-singlefile -- -- --embed-fonts` command to build the game.*
 
 ### Standalone executables build
+```
+npm run build-standalone
+```
 To build standalone executables for Windows, Linux, and MacOS, use `npm run build-standalone` command. The folder with executables for all platforms will be in the `build/standalone` folder. The build also creates ZIP archives for each platform.
 
 ### Zipped game content
@@ -333,6 +353,12 @@ To enable this feature, edit `atrament.config.json` and add `zip` option to it w
 ```
 *Please note: this option is ignored for development and single file builds.*
 
+### Publishing Atrament games from Inky
+You can create a single file Atrament games written with Inky, without setting up an Atrament project. Run this command in the project folder with Ink files to create a single file build:
+```
+npx atrament-wizard publish
+```
+
 ## Debugger
 When `#debug` global tag is set, debugger can be invoked by pressing debugger button on the screen or double pressing of `~` key.
 
@@ -342,6 +368,7 @@ Atrament Debugger provides the following functionality:
 * List of global tags
 * List of ink variables (view and edit)
 * List of visit counts
+* Run Ink function with specified parameters and see the output
 * Navigation to knot/stich path
 
 ## Keyboard shortcuts
