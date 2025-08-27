@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useCallback, useState } from 'preact/hooks';
+import { useCallback } from 'preact/hooks';
 import style from './index.module.css';
 
 import { useKeyboardHandler, useToggle } from 'src/hooks';

@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useCallback, useState } from 'preact/hooks';
+import { useCallback } from 'preact/hooks';
 import { route } from 'preact-router';
 import { Text } from '@eo-locale/preact';
 
