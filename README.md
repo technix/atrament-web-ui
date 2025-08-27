@@ -69,6 +69,7 @@ The standalone web application files will be in `build/web` folder. Use `npm run
 | `# about: about_function` | Use output of this function as an "About" screen content. |
 | `# cover: some/image.jpg` | Cover image to display at the main menu screen. |
 | `# background: some/picture.jpg` | Set background image for the game backdrop. |
+| `# allow_external_function_fallbacks` | If the function defined with EXTERNAL is not found, run Ink function with the same name instead. |
 | `# debug` | Enable Ink story debugger. |
 
 ### Knot tags
