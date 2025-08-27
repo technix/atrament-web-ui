@@ -55,6 +55,8 @@
     "debug.variables.cancel": "Cancel",
     "debug.variables.save": "Save",
     "debug.visits": "Visits",
+    "debug.visits.path": "Path",
+    "debug.visits.count": "Count",
     "debug.go-to-path": "Go to path",
     "debug.functions": "Functions",
     "debug.functions.arguments": "Arguments",

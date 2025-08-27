@@ -23,7 +23,7 @@ const DebugVariablesTable = ({ variables }) => {
   return(
     <Table columns={
       [
-        { name: translator.translate('debug.variables.name'), style: {width: '25%', 'text-align': 'left'} },
+        { name: translator.translate('debug.variables.name'), style: {width: '50%', 'text-align': 'left'} },
         { name: translator.translate('debug.variables.value'), style: {'text-align': 'left'} }
       ]
     } data={tableData} pageSize={10} />
