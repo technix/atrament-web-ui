@@ -55,6 +55,8 @@
     "debug.variables.cancel": "Скасувати",
     "debug.variables.save": "Зберегти",
     "debug.visits": "Візити",
+    "debug.visits.path": "Шлях",
+    "debug.visits.count": "Переходи",
     "debug.go-to-path": "Перейти до",
     "debug.functions": "Функції",
     "debug.functions.arguments": "Аргументи",
