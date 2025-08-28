@@ -104,7 +104,9 @@ Atrament game can be published as a web application, as a single HTML file, or a
 | `# RESTART_FROM_CHECKPOINT: checkpointName` | Restart game from named checkpoint. |
 | `# CLASS: classname` | Apply CSS class to the paragraph `<div>` element. |
 | `# SHUFFLE_CHOICES` | Shuffle choice order in this knot. |
+| `# PROMPT: What would you like to do?` | Display prompt text before the choices. |
 | `# HYPERTEXT` | Use links instead of choices for this scene. See "[Hypertext mode](#hypertext-mode)". |
+
 
 Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MUSIC/STOP_SOUND/STOP_MUSIC tags. Combining them may lead to unexpected side effects.
 

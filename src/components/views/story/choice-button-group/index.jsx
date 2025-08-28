@@ -3,6 +3,7 @@ import { useState, useCallback } from 'preact/hooks';
 import { useAtrament } from 'src/atrament/hooks';
 import { useKeyboardHandler } from 'src/hooks';
 import ChoiceButton from '../choice-button';
+import style from './index.module.css';
 
 const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
   const { makeChoice, continueStory } = useAtrament();
@@ -45,14 +46,17 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
 
   return (
     <>
-      {currentScene.choices.map((choice, index) => (
-        <ChoiceButton
-          key={`${key}-${index}`}
-          choice={choice}
-          chosen={chosen}
-          handleClick={selectChoice}
-        />))
-      }
+      {currentScene.tags?.PROMPT && <div class={style.choice_prompt}>{currentScene.tags.PROMPT}</div>}
+      <div>
+        {currentScene.choices.map((choice, index) => (
+          <ChoiceButton
+            key={`${key}-${index}`}
+            choice={choice}
+            chosen={chosen}
+            handleClick={selectChoice}
+          />))
+        }
+      </div>
     </>
   ) 
 };
