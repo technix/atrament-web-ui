@@ -18,4 +18,6 @@ Available classes:
 .atrament-container-choices Container for choices list
 .atrament-container-scene   Scene container div
 .atrament-scene             Scene content div
+.atrament-prompt            Prompt before choices
+.atrament-choice            Choice button
 */
