@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import { useState, useCallback } from 'preact/hooks';
 import { useAtrament } from 'src/atrament/hooks';
 import { useKeyboardHandler } from 'src/hooks';
@@ -46,7 +47,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
 
   return (
     <>
-      {currentScene.tags?.PROMPT && <div class={style.choice_prompt}>{currentScene.tags.PROMPT}</div>}
+      {currentScene.tags?.PROMPT && <div class={clsx(style.choice_prompt, 'atrament-prompt')}>{currentScene.tags.PROMPT}</div>}
       <div>
         {currentScene.choices.map((choice, index) => (
           <ChoiceButton

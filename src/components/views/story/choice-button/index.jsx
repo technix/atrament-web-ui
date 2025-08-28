@@ -26,7 +26,7 @@ const ChoiceButton = ({ choice, chosen, handleClick }) => {
     choiceCustomClass = choiceCustomClass.join(' ');
   }
 
-  const elementClasses = clsx(style.choice_button, choiceGroupStyle, choiceAlignment, choiceStateClass, choiceCustomClass);
+  const elementClasses = clsx(style.choice_button, choiceGroupStyle, choiceAlignment, choiceStateClass, 'atrament-choice', choiceCustomClass);
 
   return (
     <button
