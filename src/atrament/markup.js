@@ -1,35 +1,13 @@
 import MarkupComponents from 'src/components/markup';
 import HTMLFragment from 'src/components/markup/html-fragment';
 import getTagAttributes from 'src/utils/get-tag-attributes';
+import getMarkupRegex from 'src/utils/get-markup-regex';
 
 const containsHTML = (str) => /<\/?[a-z][\s\S]*>/i.test(str);
 
-function getRegex(tagName, options = {}) {
-  /*
-    The following options are allowed:
-      [tag][/tag]
-      [tag=option][/tag]
-      [tag option1=value option2=value][/tag]
-    when {single:true}:
-      [tag]
-      [tag=option]
-      [tag option1=value1 option2=value2]
-  */
-  let matcher = new RegExp(`\\[${tagName}(?:=[^\\]]+|\\s+[^\\]]+)?\\].*?\\[\\/${tagName}\\]`, 'ig');
-  let parser = new RegExp(`\\[${tagName}(.*?)\\](.*?)\\[\\/${tagName}\\]`, 'i');
-  if (options.single) {
-    matcher = new RegExp(`\\[${tagName}(?:=[^\\]]+|\\s+[^\\]]+)?\\]`, 'ig');
-    parser = new RegExp(`\\[${tagName}(.*?)\\]`, 'i');
-  }
-  return {
-    matcher,
-    parser
-  }
-}
-
 // modify markup components: add 'regex' property
 MarkupComponents.forEach(component => {
-  component.regex = getRegex(component.tag, component.tagOptions);
+  component.regex = getMarkupRegex(component.tag, component.tagOptions);
 });
 
 
