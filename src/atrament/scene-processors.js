@@ -1,6 +1,6 @@
 // Atrament scene processors
 import arrayShuffle from "src/utils/array-shuffle";
-import getMarkupRegex from 'src/utils/get-markup-regex';
+import getImagesFromContent from "src/utils/get-images-from-content";
 
 function sceneBackground(scene) {
   // BACKGROUND and PAGE_BACKGROUND can be set to false, so we check if variable is defined
@@ -22,23 +22,13 @@ function shuffleChoices(scene) {
   }
 }
 
-const imageRegexes = [getMarkupRegex('img'), getMarkupRegex('picture')];
-
-function precacheImages(scene) {
+function sceneMarkupImages(scene) {
   // get image URLs from [img] and [picture], so they can be preloaded
-  const images = {};
-  scene.content?.forEach((content) => {
-    imageRegexes.forEach((regex) => {
-      content.text?.match(regex.matcher)?.forEach((item) => {
-        const parsed = item.match(regex.parser);
-        images[parsed[2]] = true;
-      });
-    })
-  });
-  scene.images.push(...Object.keys(images));
+  const images = getImagesFromContent(scene.content?.map((item) => item.text));
+  scene.images.push(...images);
 }
 
 export default function registerSceneProcessors(atrament) {
-  [sceneBackground, shuffleChoices, precacheImages]
+  [sceneBackground, shuffleChoices, sceneMarkupImages]
     .forEach((p) => atrament.game.defineSceneProcessor(p.bind(atrament)));
 }

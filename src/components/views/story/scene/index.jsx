@@ -9,6 +9,7 @@ import Paragraph from '../scene-paragraph';
 // utils
 import { useAtrament } from 'src/atrament/hooks';
 import preloadImages from 'src/utils/preload-images';
+import CircleLoader from 'src/components/ui/animation-circles';
 
 const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
   const { getAssetPath } = useAtrament();
@@ -44,18 +45,18 @@ const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
 
   return (
     <div class={clsx(style.scene, 'atrament-scene', (isCurrent && isLoaded) && 'animation_appear')} ref={elementRef}>
-      <div style={{ opacity: isLoaded ? 1 : 0 }}>
-        {
-          scene.content.map((item, i) => (
-            <Fragment key={`paragraph-${scene.uuid}-${i}`}>
-              {item.images.map(
-                (img, i) => <ContainerImage key={`${i}-${img}`} src={getAssetPath(img)} />
-              )}
-              <Paragraph isCurrent={isCurrent} content={item} />
-            </Fragment>
-          ))
-        }
-      </div>
+      { isLoaded ? 
+        scene.content.map((item, i) => (
+          <Fragment key={`paragraph-${scene.uuid}-${i}`}>
+            {item.images.map(
+              (img, i) => <ContainerImage key={`${i}-${img}`} src={getAssetPath(img)} />
+            )}
+            <Paragraph isCurrent={isCurrent} content={item} />
+          </Fragment>
+        ))
+        :
+        <CircleLoader />
+      }
     </div>
   )
 };
