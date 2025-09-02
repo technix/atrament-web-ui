@@ -42,7 +42,7 @@ export default function markup(text) {
   // find matched markup and its length
   const processingQueue = [];
   MarkupComponents.forEach(component => {
-    const mentions = text.match(component.regex.matcher);
+    const mentions = text?.match(component.regex.matcher);
     if (mentions) {
       mentions.forEach((mention) => processingQueue.push({
         component,
