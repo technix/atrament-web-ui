@@ -1,12 +1,14 @@
 import { h } from 'preact';
 import style from './index.module.css';
-import { useCallback } from "preact/hooks";
+import { useCallback, useContext } from "preact/hooks";
+import { ActiveContentContext } from 'src/context';
 
 import { useAtrament, useAtramentOverlay } from 'src/atrament/hooks';
 
 // [button onclick=function]button text[/button]
 
 const InlineButtonComponent = ({ children, options }) => {
+  const isActive = useContext(ActiveContentContext);
   const { evaluateInkFunction } = useAtrament();
   const { setOverlayContent, refreshOverlay } = useAtramentOverlay();
 
@@ -26,7 +28,7 @@ const InlineButtonComponent = ({ children, options }) => {
     <button
       class={buttonStyle}
       onClick={clickHandler}
-      disabled={options.disabled}
+      disabled={!isActive || options.disabled}
     >
       {children}
     </button>
