@@ -10,6 +10,11 @@ MarkupComponents.forEach(component => {
   component.regex = getMarkupRegex(component.tag, component.tagOptions);
 });
 
+// split string with delimiter string, keeping it in the resulting array
+function splitKeepDelimiter(text, delimiter) {
+  const escaped = delimiter.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); // escape regex chars
+  return text.split(new RegExp(`(${escaped})`));
+}
 
 function parseTag(item, regex, replacer) {
   const parsed = item.match(regex.parser);
@@ -22,20 +27,13 @@ function parseTag(item, regex, replacer) {
 }
 
 
-function replaceWithComponent(text, regex, replacer) {
-  if (typeof text !== 'string') {
+function replaceWithComponent(text, mention, parserFn) {
+  console.log(text);
+  if (typeof text !== 'string' || !text.includes(mention)) {
     return text;
   }
-  const mentions = text.match(regex.matcher);
-  if (!mentions) {
-    return text;
-  }
-  const splitted = text.split(regex.matcher);
-  const result = splitted.flatMap((fragment, index) => {
-    return (index < mentions.length
-      ? [fragment, parseTag(mentions[index], regex, replacer)]
-      : [fragment]);
-  });
+  const splitted = splitKeepDelimiter(text, mention);
+  const result = splitted.flatMap((fragment) => fragment === mention ? parserFn(fragment) : fragment);
   return result;
 }
 
@@ -47,23 +45,19 @@ export default function markup(text) {
   MarkupComponents.forEach(component => {
     const mentions = text.match(component.regex.matcher);
     if (mentions) {
-      mentions.forEach((m) => processingQueue.push({
+      mentions.forEach((mention) => processingQueue.push({
         component,
-        size: m.length
+        mention,
+        size: mention.length
       }));
     }
   });
   // start from the longest markup elements, which may contain others
   processingQueue
     .sort((a, b) => b.size - a.size)
-    .forEach(({ component }) => {
-      processedText = processedText.flatMap(
-        (item) => replaceWithComponent(
-          item,
-          component.regex,
-          component.replacer
-        )
-      );
+    .forEach(({ component, mention }) => {
+      const replacerFn = (txt) => parseTag(txt, component.regex, component.replacer);
+      processedText = processedText.flatMap((item) => replaceWithComponent(item, mention, replacerFn));
     });
   return processedText.map((item, index) =>
     typeof item === 'string' && containsHTML(item)
