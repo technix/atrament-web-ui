@@ -213,6 +213,7 @@ Attributes of the `[table]` tag:
 * `border=false` disables table borders.
 * `padding=false` disables table cell paddings.
 * `columns="20% 20% 60%"` sets column width. You have to set width for each column in the table.
+* `fixed=true` forces text wrapping, so columns always have fixed width.
 
 ### Overlay
 

@@ -26,7 +26,7 @@ const DebugVariablesTable = ({ variables }) => {
         { name: translator.translate('debug.variables.name'), style: {width: '50%', 'text-align': 'left'} },
         { name: translator.translate('debug.variables.value'), style: {'text-align': 'left'} }
       ]
-    } data={tableData} pageSize={10} />
+    } data={tableData} pageSize={10} fixed />
   );
 }
 

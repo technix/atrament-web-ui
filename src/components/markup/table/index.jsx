@@ -33,6 +33,7 @@ export default {
       border={options.border}
       padding={options.padding}
       columnWidth={columnWidth}
+      fixed={options.fixed}
     />);
   }
 }

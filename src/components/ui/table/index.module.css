@@ -4,7 +4,7 @@
     width: 100%;
 }
 
-.table thead th, .table tbody td {
+.table_fixed thead th, .table_fixed tbody td {
   overflow-wrap: anywhere;
   word-break: break-all;
 }
