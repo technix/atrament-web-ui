@@ -44,6 +44,7 @@ const DebugVisits = () => {
         ]}
         data={inkVisits}
         pageSize={10}
+        fixed
       />
     </Collapse>
   );

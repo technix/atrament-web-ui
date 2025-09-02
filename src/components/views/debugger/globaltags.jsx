@@ -28,7 +28,7 @@ const DebugGlobaltags = () => {
 
   return(
     <Collapse title={translator.translate('debug.global-tags')} open>
-      <Table data={displayGlobaltags} />
+      <Table data={displayGlobaltags} fixed />
     </Collapse>
   );
 };

@@ -1,8 +1,9 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import { useState, useEffect } from 'preact/hooks';
 import style from './index.module.css';
 
-const Table = ({columns = [], data = [], pageSize = 0, border = true, padding = true, columnWidth = []}) => {
+const Table = ({columns = [], data = [], pageSize = 0, border = true, padding = true, columnWidth = [], fixed = false}) => {
   const [ currentPage, setCurrentPage ] = useState(0);
   useEffect(() => {
     setCurrentPage(0);
@@ -23,7 +24,7 @@ const Table = ({columns = [], data = [], pageSize = 0, border = true, padding = 
   const displayData = data.slice(startFrom, endOn);
 
   return (
-    <table class={style.table}>
+    <table class={clsx(style.table, fixed && style.table_fixed)}>
       {pageSize > 0 &&
         <caption class={style.caption}>
           {[...Array(pages).keys()].map((p) =>
