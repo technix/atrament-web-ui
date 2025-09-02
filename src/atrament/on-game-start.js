@@ -11,15 +11,14 @@ function registerToolbarHandler(atrament, toolbarFunction) {
     }
   }
   const delayedRefreshToolbar = () => setTimeout(refreshToolbar, 0);
-  // refresh toolbar on continueStory and function evaluation (buttons etc)
+  // refresh toolbar on game start, continueStory, and function evaluation (buttons etc)
+  atrament.on('game/start', delayedRefreshToolbar);
   atrament.on('game/continueStory', delayedRefreshToolbar);
   atrament.on('ink/evaluateFunction', (params) => {
     if (params.function !== toolbarFunction) {
       delayedRefreshToolbar();
     }
   });
-  // run refresh toolbar before game starts
-  refreshToolbar();
 }
 
 
