@@ -28,7 +28,6 @@ function parseTag(item, regex, replacer) {
 
 
 function replaceWithComponent(text, mention, parserFn) {
-  console.log(text);
   if (typeof text !== 'string' || !text.includes(mention)) {
     return text;
   }
