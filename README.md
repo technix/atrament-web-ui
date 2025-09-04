@@ -18,6 +18,8 @@ The easiest way to create a new Atrament project is to use `atrament-wizard` too
 npx atrament-wizard create
 ```
 
+By default, Atrament comes with a minimal Ink story template. If you want to see a demonstration of various Atrament features, copy content of `examples/showcase` into `root/game` folder after creating a project.
+
 #### Expert mode
 
 If you're an experienced JS developer or want to use development version of Atrament Web UI, you can do all the steps manually:
