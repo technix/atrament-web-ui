@@ -9,6 +9,7 @@ import Menu from 'src/components/menu';
 
 import Markup from 'src/components/ui/markup';
 import Block from 'src/components/ui/block';
+import TextParagraph from 'src/components/ui/text-paragraph';
 import Container from 'src/components/ui/container';
 import ContainerText from 'src/components/ui/container-text';
 import ContainerFlex from 'src/components/ui/container-flex';
@@ -35,7 +36,7 @@ const AboutRoute = () => {
         <ContainerFlex>
           <Block> </Block>
           <Block>
-            <Markup content={aboutContent} />
+            {aboutContent.split("\n").map((item) => <TextParagraph key={item}><Markup isActive content={item} /></TextParagraph>)}
           </Block>
         </ContainerFlex>
         <Block>
