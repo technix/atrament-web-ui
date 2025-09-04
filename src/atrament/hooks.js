@@ -18,7 +18,15 @@ export const useAtrament = () => {
   }, [ atrament ]);
 
   const getAssetPath = useCallback(
-    (file) => file ? atrament.game.getAssetPath(file) : null,
+    (file) => {
+      if (!file) {
+        return null;
+      }
+      if (file.startsWith('http://') || file.startsWith('https://')) {
+        return file;
+      }
+      return atrament.game.getAssetPath(file);
+    },
     [ atrament ]
   );
 
