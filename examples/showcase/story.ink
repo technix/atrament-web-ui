@@ -15,6 +15,7 @@ VAR empty_text = ""
 === start ===
 # CLEAR
 Atrament UI features showcase.
+Some items are disabled - it means there is no example available yet.
 
 + [Game] -> game
 + [Markup] -> markup
@@ -25,8 +26,9 @@ Atrament UI features showcase.
 # CLEAR
 Atrament game-related features.
 
-+ [Checkpoints] -> checkpoints
++ [Checkpoints#DISABLED] -> checkpoints
 + [Shuffled choices] -> shuffled_choices
++ [Choice prompt] -> choice_prompt
 + [Click to continue] -> click_to_continue
 + [Input] -> markup_input
 + [<<< Back] -> start
@@ -48,6 +50,19 @@ These choices are shuffled.
     Choice 4 was selected.
 + [Choice 5]
     Choice 5 was selected.
+-
++ [OK] -> game
+
+=== choice_prompt
+# PROMPT: What would you like to do?
+You can have a prompt before the choices.
+
++ [Continue]
+    You chose to continue.
++ [Proceed]
+    You chose to proceed.
++ [Move on]
+    You chose to move on.
 -
 + [OK] -> game
 
@@ -100,23 +115,52 @@ Atrament multimedia features.
 + [Images] -> media_images
 + [Backgrounds] -> media_bgimages
 + [Video] -> media_video
-+ [Sound] -> media_sound
-+ [Music] -> media_music
++ [Sound#DISABLED] -> media_sound
++ [Music#DISABLED] -> media_music
 + [<<< Back] -> start
 
 === media_images
 # CLEAR
-TO DO
+This is an inline image: [img]fountain-pen.png[/img]. It is created with "img" markup tag and fits into paragraph text.
++ [Next]
+-
+# IMAGE: rule-book.png
+This is an image, set with IMAGE paragraph tag. It is always displayed at the beginning of the paragraph. 
++ [Next]
+-
+This scene contains an image, set with "picture" markup tag.
+It can be placed anywhere. [picture]quill-ink.png[/picture] However, it breaks the text flow.
++ [Next]
+-
+You can define width of the picture placed with "picture" tag: [picture width=50%]quill-ink.png[/picture] 
++ [Next]
+-
+You can combine images, placing them in the "block" markup tag.
+[block width=33%][picture]fountain-pen.png[/picture][/block][block width=33%][picture]quill-ink.png[/picture][/block][block width=33%][picture]rule-book.png[/picture][/block] 
 + [OK] -> media
 
 === media_bgimages
 # CLEAR
-TO DO
+# BACKGROUND: sandbg.jpg
+This scene has image as a background, set via "BACKGROUND" paragraph tag.
++ [Next]
+-
+# BACKGROUND: false
+To reset the background, use "BACKGROUND: false".
++ [Next]
+-
+# PAGE_BACKGROUND: sandbg.jpg
+The background outside of text are is set via "PAGE_BACKGROUND" paragraph tag. It is visible only on desktop.
++ [Next]
+-
+# PAGE_BACKGROUND: false
+To reset the page background, use "PAGE_BACKGROUND: false".
 + [OK] -> media
 
 === media_video
 # CLEAR
-TO DO
+This paragraph contains video.
+[video]https:\/\/storage.googleapis.com\/gtv-videos-bucket\/sample\/ForBiggerEscapes.mp4[/video]
 + [OK] -> media
 
 === media_sound
@@ -146,16 +190,45 @@ Atrament markup-related features.
 
 === layout_block
 # CLEAR
-TO DO
+Two content blocks, distributed evenly.
+[block width=50%]This is a first block of content.[/block][block width=50%]Another block of content.[progress value=50][/progress][/block]
++ [Next]
+-
+Three content blocks with different content alignment.
+[block width=33% align=left]Left<br>This text is aligned to the left.[/block][block width=33% align=center]Center<br>This text is centered.[/block][block width=33% align=right]Right<br>This text is aligned to the right.[/block]
++ [Next]
+-
+Two content blocks with different vertical alignment.
+[block width=20%]-<br/>-<br/>-<br/>-[/block][block width=40% valign=top]This text is on top of the block.[/block][block width=40% valign=bottom]This text is aligned to the bottom of the block.[/block]
+
 + [OK] -> markup
 
 === layout_table
 # CLEAR
-TO DO
+Table with header and active content.
+[table]<>
+[header]Item[ ]Name[ ]Value[/header]<>
+[row]1[ ]456[ ][progress value=50][/progress][/row]<>
+[row]2[ ][button onclick=stats]Show stats[/button][ ]890[/row]<>
+[row]3[ ]67[ ]This is a sample text content[/row]<>
+[/table]
++ [Next]
+-
+Table without header, borders, and paddings. Column width is predefined.
+[table border=false padding=false columns="25% 50% 25%"]<>
+[row]1[ ]456[ ][progress value=50][/progress][/row]<>
+[row]2[ ][button onclick=stats]Show stats[/button][ ]890[/row]<>
+[row]3[ ]67[ ]This is a sample text content[/row]<>
+[/table]
 + [OK] -> markup
 
 === markup_link_url
 # CLEAR
+[link=Next]Link[/link] to choice.
+[url=https:\/\/atrament.ink]Link[/url] to external web page.
++ [Next]
+-
+Choice links are inactive on the inactive scenes. External links are always active.
 [link=OK]Link[/link] to choice.
 [url=https:\/\/atrament.ink]Link[/url] to external web page.
 + [OK] -> markup
@@ -222,6 +295,8 @@ This text is [highlight color=yellow bgcolor=black]yellow highlighted on black b
 === function game_about()
   [banner]Atrament UI showcase[/banner]
   Demonstrational Ink story to show Atrament UI possibilities.
+  Images: [url=https:\/\/game-icons.net]Game-Icons.net[/url], CC BY 3.0
+  Background: photo by [url=https:\/\/unsplash.com\/@hdjislk?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash]Daniel Straub[/url] on [url=https:\/\/unsplash.com\/photos\/brown-sands-n5HOJGtYt4Q?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"]Unsplash[/url]
 
 === function game_toolbar()
   HEALTH: {health}

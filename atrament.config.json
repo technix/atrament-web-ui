@@ -8,6 +8,6 @@
   "locale": "en-US",
   "game": {
     "path": "game",
-    "source": "intercept.ink"
+    "source": "story.ink"
   }
 }
