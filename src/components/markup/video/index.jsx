@@ -1,12 +1,22 @@
 import { h } from 'preact';
-import { useAtrament } from 'src/atrament/hooks';
+import { useEffect, useRef } from 'preact/hooks';
+import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 // [video]path/to/video.mp4[/video]
 
 const Video = ({ src, options }) => {
   const { getAssetPath } = useAtrament();
+  const atramentState = useAtramentState(['settings']);
+  const videoPlayerRef = useRef(null);
+  const soundVolume = atramentState.settings.volume;
+  
+  useEffect(() => {
+    videoPlayerRef.current.volume = soundVolume/100;
+  }, [videoPlayerRef, soundVolume]);
+
   return (
     <video
+      ref={videoPlayerRef}
       style={{ 'pointer-events': 'none' }}
       width='100%'
       autoplay
