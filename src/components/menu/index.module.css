@@ -15,35 +15,3 @@
 .menu_content {
   padding: 1rem;
 }
-
-.atrament_version {
-  margin-top: 1rem;
-  width: 100%;
-  text-align: right;
-  font-size: 0.8rem;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.atrament_version:hover {
-  cursor: pointer;
-}
-
-
-.atrament_about {
-  background-color: var(--fg-color);
-  color: var(--bg-color);
-  padding: 0.2em;
-}
-
-.atrament_appversion {
-  background-color: var(--shade-color);
-  color: var(--fg-color);
-  padding: 0.2em;
-  padding-left: 0.3em;
-}
-
-.atrament_appversion:hover {
-  background-color: var(--fg-color);
-  color: var(--bg-color);
-}

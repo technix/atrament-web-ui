@@ -4,12 +4,11 @@ import style from './index.module.css';
 
 import { useKeyboardHandler, useToggle } from 'src/hooks';
 
-import { appVersion } from 'src/constants';
-
 import ContainerModal from 'src/components/ui/container-modal';
 import Backdrop from 'src/components/ui/backdrop';
 import Modal from 'src/components/ui/modal';
 import CloseButton from 'src/components/ui/close-button';
+import VersionInfo from 'src/components/ui/version-info';
 import { IconMenu } from 'src/components/ui/icons';
 
 import DebuggerMenu from 'src/components/views/debugger';
@@ -49,10 +48,7 @@ const Menu = ({ isHomeScreen = false }) => {
               ? <AboutMenu onClick={toggleAboutMenu} />
               : <>
                 <MenuScreen isHomeScreen={isHomeScreen} toggleMenu={toggleMenu} />
-                <div class={style.atrament_version} onClick={toggleAboutMenu}>
-                  <div class={style.atrament_about}>?</div>
-                  <div class={style.atrament_appversion}>Atrament {appVersion}</div>
-                </div>
+                <VersionInfo onClick={toggleAboutMenu} />
               </>
             }
           </div>
