@@ -15,6 +15,8 @@ import ContainerText from 'src/components/ui/container-text';
 import ContainerFlex from 'src/components/ui/container-flex';
 import LinkMenu from 'src/components/ui/link-menu';
 
+import StoryError from 'src/components/views/story-error';
+
 const AboutRoute = () => {
   const { evaluateInkFunction } = useAtrament();
   const { metadata } = useAtramentState(['metadata']);
@@ -23,15 +25,12 @@ const AboutRoute = () => {
   
   useEffect(() => {
     const result = evaluateInkFunction(metadata.about);
-    if (result.output) {
-      setAboutContent(result.output);
-    } else {
-      setAboutContent(result.error);
-    }
+    setAboutContent(result.output || ' ');
   }, [ metadata.about, setAboutContent, evaluateInkFunction ]);
   return (
     <Container>
       <Menu isHomeScreen />
+      <StoryError />
       <ContainerText>
         <ContainerFlex>
           <Block> </Block>

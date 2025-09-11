@@ -1,4 +1,4 @@
-import { TOOLBAR_DEFAULT, TOOLBAR_STORE_KEY, OVERLAY_STORE_KEY, ERROR_STORE_KEY } from "src/constants";
+import { TOOLBAR_DEFAULT, TOOLBAR_STORE_KEY, OVERLAY_STORE_KEY } from "src/constants";
 
 function registerToolbarHandler(atrament, toolbarFunction) {
   const refreshToolbar = () => {
@@ -23,8 +23,6 @@ function registerToolbarHandler(atrament, toolbarFunction) {
 
 
 export default function onGameStart(atrament) {
-  // register error handler
-  atrament.ink.onError((error) => atrament.state.setKey(ERROR_STORE_KEY, error));
   // reset overlay state
   atrament.state.setKey(OVERLAY_STORE_KEY, {
     current: null,

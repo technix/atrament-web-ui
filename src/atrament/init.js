@@ -1,5 +1,5 @@
 
-import { applicationID, gameFile, gamePath, defaultVolume, defaultFontSize, STORYPATH_STORE_KEY } from 'src/constants';
+import { applicationID, gameFile, gamePath, defaultVolume, defaultFontSize, ERROR_STORE_KEY, STORYPATH_STORE_KEY } from 'src/constants';
 
 import muteWhenInactive from 'src/utils/mute-when-inactive';
 
@@ -51,6 +51,8 @@ export default async function atramentInit(atrament, Story) {
   if (metadata.allow_external_function_fallbacks) {
     atrament.ink.story().allowExternalFunctionFallbacks = true;
   }
+  // register error handler
+  atrament.ink.onError((error) => atrament.state.setKey(ERROR_STORE_KEY, error));
   // track story path for debugging
   if (metadata.debug) {
     atrament.on('game/continueStory', () => {
