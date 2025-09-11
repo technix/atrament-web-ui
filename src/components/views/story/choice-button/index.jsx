@@ -19,14 +19,7 @@ const ChoiceButton = ({ choice, chosen, handleClick }) => {
   const choiceStateClass = choiceIsMade ? (activeChoice ? style.choice_active : style.choice_inactive) : '';
   const choiceGroupStyle = metadata.choices?.includes('grouped') ? style.buttons_grouped : style.buttons_separate;
   const choiceAlignment = metadata.choices?.includes('left') ? style.left_aligned : metadata.choices?.includes('right') ? style.right_aligned : '';
-
-
-  let choiceCustomClass = choice.tags.CLASS;
-  if (Array.isArray(choiceCustomClass)) {
-    choiceCustomClass = choiceCustomClass.join(' ');
-  }
-
-  const elementClasses = clsx(style.choice_button, choiceGroupStyle, choiceAlignment, choiceStateClass, 'atrament-choice', choiceCustomClass);
+  const elementClasses = clsx(style.choice_button, choiceGroupStyle, choiceAlignment, choiceStateClass, 'atrament-choice', choice.tags.CLASS);
 
   return (
     <button
