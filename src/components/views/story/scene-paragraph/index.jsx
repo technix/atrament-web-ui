@@ -1,6 +1,5 @@
 import { h } from 'preact';
-import clsx from 'clsx';
-import style from './index.module.css';
+import TextParagraph from 'src/components/ui/text-paragraph';
 
 import Markup from 'src/components/ui/markup';
 
@@ -9,20 +8,10 @@ const Paragraph = ( {content, isCurrent} ) => {
     return <></>;
   }
 
-  let pStyle;
-  if (!isCurrent) {
-    pStyle = {opacity: '70%'};
-  }
-
-  let pClass = content.tags.CLASS || '';
-  if (Array.isArray(pClass)) {
-    pClass = pClass.join(' ');
-  }
-
   return (
-    <div style={pStyle} class={clsx(style.paragraph, pClass)}>
+    <TextParagraph active={isCurrent} class_override={content.tags.CLASS}>
       <Markup content={content.text} isActive={isCurrent} />
-    </div>
+    </TextParagraph>
   );
 }
 
