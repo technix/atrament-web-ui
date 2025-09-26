@@ -52,6 +52,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
         {currentScene.choices.map((choice, index) => (
           <ChoiceButton
             key={`${key}-${index}`}
+            index={index}
             choice={choice}
             chosen={chosen}
             handleClick={selectChoice}

@@ -5,8 +5,14 @@ import style from './index.module.css';
 import { useAtramentState } from 'src/atrament/hooks';
 import Markup from 'src/components/ui/markup';
 
-const ChoiceButton = ({ choice, chosen, handleClick }) => {
+const ChoiceButton = ({ choice, chosen, index, handleClick }) => {
   const { metadata } = useAtramentState(['metadata']);
+  const choiceAppearance = {
+    grouped: metadata.choices?.includes('grouped'),
+    left: metadata.choices?.includes('left'),
+    right: metadata.choices?.includes('right'),
+    numbered: metadata.choices?.includes('numbered')
+  };
 
   const choiceIsMade = chosen !== null; // something is chosen
   const activeChoice = chosen === choice.id; // this is the active choice
@@ -17,17 +23,20 @@ const ChoiceButton = ({ choice, chosen, handleClick }) => {
   };
 
   const choiceStateClass = choiceIsMade ? (activeChoice ? style.choice_active : style.choice_inactive) : '';
-  const choiceGroupStyle = metadata.choices?.includes('grouped') ? style.buttons_grouped : style.buttons_separate;
-  const choiceAlignment = metadata.choices?.includes('left') ? style.left_aligned : metadata.choices?.includes('right') ? style.right_aligned : '';
-  const elementClasses = clsx(style.choice_button, choiceGroupStyle, choiceAlignment, choiceStateClass, 'atrament-choice', choice.tags.CLASS);
+  const choiceGroupClass = choiceAppearance.grouped ? style.buttons_grouped : style.buttons_separate;
+  const choiceAlignmentClass = choiceAppearance.left ? style.left_aligned : choiceAppearance.right ? style.right_aligned : '';
+  const elementClasses = clsx(
+    style.choice_button,
+    choiceGroupClass,
+    choiceAlignmentClass,
+    choiceStateClass,
+    'atrament-choice',
+    choice.tags.CLASS
+  );
 
   return (
-    <button
-      class={elementClasses}
-      onClick={onClick}
-      disabled={choice.disabled}
-    >
-      {metadata.choices?.includes('numbered') ? <>{choice.id + 1}.&nbsp;</> : ''}
+    <button class={elementClasses} onClick={onClick} disabled={choice.disabled}>
+      {choiceAppearance.numbered ? <>{index + 1}.&nbsp;</> : ''}
       <Markup content={choice.choice} />
     </button>
   );
