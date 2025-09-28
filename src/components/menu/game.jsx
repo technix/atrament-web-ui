@@ -15,6 +15,34 @@ import LoadGameView from 'src/components/views/loadgame';
 import SaveGameView from 'src/components/views/savegame';
 import Settings from 'src/components/views/settings';
 
+
+const SaveMenuLayout = ({ saveGame, toggleSaveMenu }) => (
+  <>
+    <Header><h2><Text id={'main.savegame'} /></h2></Header>
+    <SaveGameView saveGame={saveGame} />
+    <Break />
+    <LinkMenu key='go-back' onClick={toggleSaveMenu}><Text id={'cancel'} /></LinkMenu>
+  </>
+);
+
+const LoadMenuLayout = ({ loadGame, toggleLoadMenu }) => (
+  <>
+    <Header><h2><Text id={'main.loadgame'} /></h2></Header>
+    <LoadGameView loadGame={loadGame} hasConfirmation />
+    <Break />
+    <LinkMenu key='go-back' onClick={toggleLoadMenu}><Text id={'cancel'} /></LinkMenu>
+  </>
+);
+
+const SettingsMenuLayout = ({ toggleSettingsMenu }) => (
+  <>
+    <Settings />
+    <Break />
+    <LinkMenu key='go-back' onClick={toggleSettingsMenu}><Text id={'back'} /></LinkMenu>
+  </>
+);
+
+
 const Quit = () => <LinkHome onClick={() => route('/')}><Text id={'game.quit'} /></LinkHome>;
 
 const MenuGameScreen = ({ toggleMenu }) => {
@@ -37,25 +65,11 @@ const MenuGameScreen = ({ toggleMenu }) => {
   }, [ atrament ]);
 
   if (isSaveMenuOpen) {
-    return (<>
-      <Header><h2><Text id={'main.savegame'} /></h2></Header>
-      <SaveGameView saveGame={saveGame} />
-      <Break />
-      <LinkMenu key='go-back' onClick={toggleSaveMenu}><Text id={'cancel'} /></LinkMenu>
-    </>);
+    return <SaveMenuLayout saveGame={saveGame} toggleSaveMenu={toggleSaveMenu} />;
   } else if (isLoadMenuOpen) {
-    return (<>
-      <Header><h2><Text id={'main.loadgame'} /></h2></Header>
-      <LoadGameView loadGame={loadGame} hasConfirmation />
-      <Break />
-      <LinkMenu key='go-back' onClick={toggleLoadMenu}><Text id={'cancel'} /></LinkMenu>
-    </>);
+    return <LoadMenuLayout loadGame={loadGame} toggleLoadMenu={toggleLoadMenu} />
   } else if (isSettingsMenuOpen) {
-    return (<>
-      <Settings />
-      <Break />
-      <LinkMenu key='go-back' onClick={toggleSettingsMenu}><Text id={'back'} /></LinkMenu>
-    </>);
+    return <SettingsMenuLayout toggleSettingsMenu={toggleSettingsMenu} />;
   }
 
   return (<>
