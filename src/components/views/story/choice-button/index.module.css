@@ -96,6 +96,29 @@
   border-radius: var(--border-radius);
 }
 
+/* choice buttons - block-like - single row */
+
+.buttons_grouped_row {
+  margin-top: 0;
+  border: 1px solid var(--fg-color);
+  border-right: none;
+}
+
+.buttons_grouped_row:first-child {
+  border-radius: var(--border-radius) 0 0 var(--border-radius);
+  border-right: none;
+}
+
+.buttons_grouped_row:last-child {
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+  border-right: 1px solid var(--fg-color);
+}
+
+.buttons_grouped_row:only-child {
+  border-radius: var(--border-radius);
+}
+
+/* text alignment */
 
 .left_aligned {
   text-align: left;

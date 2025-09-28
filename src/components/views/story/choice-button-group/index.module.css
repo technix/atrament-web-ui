@@ -9,3 +9,13 @@
   width: 100%;
   border-top: 1px solid var(--fg-color);
 }
+
+.choice_row {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.choice_row_ungrouped {
+  gap: 0.5em;
+}

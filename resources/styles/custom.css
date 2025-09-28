@@ -20,5 +20,6 @@ Available classes:
 .atrament-scene             Scene content div
 .atrament-paragraph         Paragraph content div
 .atrament-prompt            Prompt before choices
+.atrament-choices           Wrapper for choice buttons
 .atrament-choice            Choice button
 */

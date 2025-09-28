@@ -11,7 +11,8 @@ const ChoiceButton = ({ choice, chosen, index, handleClick }) => {
     grouped: metadata.choices?.includes('grouped'),
     left: metadata.choices?.includes('left'),
     right: metadata.choices?.includes('right'),
-    numbered: metadata.choices?.includes('numbered')
+    numbered: metadata.choices?.includes('numbered'),
+    row: metadata.choices?.includes('row')
   };
 
   const choiceIsMade = chosen !== null; // something is chosen
@@ -23,7 +24,7 @@ const ChoiceButton = ({ choice, chosen, index, handleClick }) => {
   };
 
   const choiceStateClass = choiceIsMade ? (activeChoice ? style.choice_active : style.choice_inactive) : '';
-  const choiceGroupClass = choiceAppearance.grouped ? style.buttons_grouped : style.buttons_separate;
+  const choiceGroupClass = choiceAppearance.grouped ? (choiceAppearance.row ? style.buttons_grouped_row : style.buttons_grouped) : style.buttons_separate;
   const choiceAlignmentClass = choiceAppearance.left ? style.left_aligned : choiceAppearance.right ? style.right_aligned : '';
   const elementClasses = clsx(
     style.choice_button,
