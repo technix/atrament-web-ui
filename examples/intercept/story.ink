@@ -1,8 +1,6 @@
 # title: The Intercept
 # author: inkle Ltd.
-# cover: cover.png
-# debug
-# toolbar: game_toolbar
+
 
 // Character variables. We track just two, using a +/- scale
 VAR forceful = 0
@@ -71,16 +69,6 @@ VAR DEBUG = false
  === function raise(ref x)
  	~ x = x + 1
 
-=== function game_toolbar()
-  [button onclick=stats]Stats[/button]
-
-=== function stats()
-  [title]Stats[/title]
-  Hello darkness
-  [picture]cover.png[/picture]
-  My old friend
-
-
 /*--------------------------------------------------------------------------------
 
 	Start the story!
@@ -91,10 +79,9 @@ VAR DEBUG = false
 
 //  Intro
 	- 	They are keeping me waiting. 
-		[button onclick=stats display=modal]Very long button to trigger first[/button] [highlight][button=stats]StatsModal[/button][/highlight]  [button=stats][highlight]StatsModal[/highlight][/button]
-		The door was locked after I sat down. 
+		*	Hut 14[]. The door was locked after I sat down. 
 		I don't even have a pen to do any work. There's a copy of the morning's intercept in my pocket, but staring at the jumbled letters will only drive me mad. 
-		I am not a  machine, whatever they  say about me.
+		I am not a machine, whatever they say about me.
 
 	- (opts)
 		{|I rattle my fingers on the field table.|}
