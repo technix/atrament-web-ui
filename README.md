@@ -276,6 +276,7 @@ To add a theme to the application, create a JSON file in the `resources/themes` 
     "font-color": "#333333",
     "accent-bg-color": "#FCFCFC",
     "accent-fg-color": "#F7567C",
+    "accent-inverse-color": "#FCFCFC",
     "border-radius": "0.5rem",
     "border-radius-inline": "0.25rem"
   }
@@ -290,6 +291,7 @@ To add a theme to the application, create a JSON file in the `resources/themes` 
 | font-color | App and game text color. |
 | accent-bg-color | Background for accented elements. |
 | accent-fg-color | Foreground for accented elements. |
+| accent-inverse-color | Foreground for active accented elements (accent-fg-color is used as a background then). |
 | border-radius | Round the corners of choices, modals, and boxes. |
 | border-radius-inline | Round the corners of inline buttons. |
 
