@@ -1,5 +1,7 @@
 .loader {
   width: 60px;
+  margin-left: auto;
+  margin-right: auto;
   aspect-ratio: 2;
   --_g: no-repeat radial-gradient(circle closest-side,var(--fg-color) 90%, #0000);
   background:
