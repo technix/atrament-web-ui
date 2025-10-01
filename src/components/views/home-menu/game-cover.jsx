@@ -9,16 +9,20 @@ const GameCover = () => {
   const { getAssetPath } = useAtrament();
   const translator = useTranslator();
   const atramentState = useAtramentState(['metadata']);
-  const { title, author, cover } = atramentState.metadata;
+  const { title, author, cover, title_screen_layout } = atramentState.metadata;
   const [ coverImage, coverSize ] = (cover || '').split(' ');
+  const LayoutElements = {
+    cover: coverImage
+      ? <ContainerImage src={getAssetPath(coverImage)} options={coverSize ? {width: coverSize} : {}} />
+      : '',
+    title: <h1>{title ? title : translator.translate('default.title')}</h1>,
+    author: <p>{author ? author : translator.translate('default.author')}</p>
+  };
+  const layout = (title_screen_layout || 'cover, title, author').split(/\s*,\s*/);
+  console.log(layout);
   return (
     <Header>
-      {coverImage
-        ? <ContainerImage src={getAssetPath(coverImage)} options={coverSize ? {width: coverSize} : {}} />
-        : ''
-      }
-      <h1>{title ? title : translator.translate('default.title')}</h1>
-      <p>{author ? author : translator.translate('default.author')}</p>
+      {layout.map((item) => LayoutElements[item])}
     </Header>
   )
 };

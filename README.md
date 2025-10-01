@@ -62,6 +62,8 @@ Atrament game can be published as a web application, as a single HTML file, or a
 | :-------- | :------------------------- |
 | `# title: A Story Written In Ink` | Game title |
 | `# author: John Doe` | Author |
+| `# cover: some/image.jpg` | Cover image to display at the main menu screen. You can change its dimensions by adding width value after the image path: `# cover: some/image.jpg 30%` |
+| `# title_screen_layout: cover, title, author` | Order of the components on the title screen. You can remove items from this list or rearrange them. |
 | `# theme: light` | Game color theme: `light`, `sepia`, or `dark` |
 | `# font: System` | Game font: `System`, `Sans Serif`, `Serif`, `Monospaced`, `Fira Sans`, `Lora`, `Merriweather`, or `OpenDyslexic` |
 | `# observe: varName` | Register variable observer for `varName` Ink variable. Variable value is available in `vars` section of the Atrament state. |
@@ -77,7 +79,6 @@ Atrament game can be published as a web application, as a single HTML file, or a
 | `# hypertext` | Use links instead of choices. See "[Hypertext mode](#hypertext-mode)". |
 | `# toolbar: toolbar_function` | Use output of this function as a toolbar content. |
 | `# about: about_function` | Use output of this function as an "About" screen content. |
-| `# cover: some/image.jpg` | Cover image to display at the main menu screen. You can change its dimensions by adding width value after the image path: `# cover: some/image.jpg 30%` |
 | `# background: some/picture.jpg` | Set background image for the game backdrop. |
 | `# allow_external_function_fallbacks` | If the function defined with EXTERNAL is not found, run Ink function with the same name instead. |
 | `# debug` | Enable Ink story debugger. |
