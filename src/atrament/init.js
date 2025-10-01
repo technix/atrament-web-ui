@@ -8,6 +8,7 @@ import { registerSettingsHandlers } from 'src/atrament/settings-handlers'
 import registerSceneProcessors from 'src/atrament/scene-processors';
 import registerExternalFunctions from 'src/atrament/externals';
 
+import onGameInit from 'src/atrament/on-game-init';
 import onGameStart from 'src/atrament/on-game-start';
 
 export default async function atramentInit(atrament, Story) {
@@ -29,6 +30,7 @@ export default async function atramentInit(atrament, Story) {
       fontSize: defaultFontSize
     }
   });
+  atrament.on('game/initInkStory', () => onGameInit(atrament));
   atrament.on('game/start', () => onGameStart(atrament));
   // initialize game
   await atrament.game.init(gamePath, gameFile);
