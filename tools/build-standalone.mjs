@@ -107,7 +107,8 @@ shell.pushd('-q', BUILD_DIR);
 shell.exec('neu build');
 shell.popd('-q');
 shell.rm('-rf', OUTPUT_DIR);
-shell.mv(`${BUILD_DIR}/dist`, OUTPUT_DIR);
+shell.mkdir('-p', OUTPUT_DIR);
+shell.mv(`${BUILD_DIR}/dist/*`, OUTPUT_DIR);
 shell.rm('-rf', BUILD_DIR);
 
 console.log('>>> Creaing archives');
