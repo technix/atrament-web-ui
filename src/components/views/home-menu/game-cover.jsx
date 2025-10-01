@@ -10,9 +10,13 @@ const GameCover = () => {
   const translator = useTranslator();
   const atramentState = useAtramentState(['metadata']);
   const { title, author, cover } = atramentState.metadata;
+  const [ coverImage, coverSize ] = (cover || '').split(' ');
   return (
     <Header>
-      {cover ? <ContainerImage src={getAssetPath(cover)} /> : ''}
+      {coverImage
+        ? <ContainerImage src={getAssetPath(coverImage)} options={coverSize ? {width: coverSize} : {}} />
+        : ''
+      }
       <h1>{title ? title : translator.translate('default.title')}</h1>
       <p>{author ? author : translator.translate('default.author')}</p>
     </Header>

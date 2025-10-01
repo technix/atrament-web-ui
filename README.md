@@ -77,7 +77,7 @@ Atrament game can be published as a web application, as a single HTML file, or a
 | `# hypertext` | Use links instead of choices. See "[Hypertext mode](#hypertext-mode)". |
 | `# toolbar: toolbar_function` | Use output of this function as a toolbar content. |
 | `# about: about_function` | Use output of this function as an "About" screen content. |
-| `# cover: some/image.jpg` | Cover image to display at the main menu screen. |
+| `# cover: some/image.jpg` | Cover image to display at the main menu screen. You can change its dimensions by adding width value after the image path: `# cover: some/image.jpg 30%` |
 | `# background: some/picture.jpg` | Set background image for the game backdrop. |
 | `# allow_external_function_fallbacks` | If the function defined with EXTERNAL is not found, run Ink function with the same name instead. |
 | `# debug` | Enable Ink story debugger. |
