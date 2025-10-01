@@ -10,7 +10,7 @@ import TextParagraph from 'src/components/ui/text-paragraph';
 import Container from 'src/components/ui/container';
 import ContainerText from 'src/components/ui/container-text';
 import ContainerFlex from 'src/components/ui/container-flex';
-import LinkMenu from 'src/components/ui/link-menu';
+import MenuButton from 'src/components/ui/menu-button';
 
 import StoryError from 'src/components/views/story-error';
 import useAboutContent from 'src/content/use-about-content';
@@ -31,7 +31,7 @@ const AboutRoute = () => {
           </Block>
         </ContainerFlex>
         <Block>
-          <LinkMenu key="mainmenu" onClick={mainMenu}><Text id={'main.menu'} /></LinkMenu>
+          <MenuButton key="mainmenu" onClick={mainMenu}><Text id={'main.menu'} /></MenuButton>
         </Block>
       </ContainerText>
     </Container>

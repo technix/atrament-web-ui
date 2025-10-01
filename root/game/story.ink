@@ -1,6 +1,7 @@
 # title: Atrament story template
 # author: -
-This is a template for the Atrament story.
+# saves: 5
+[highlight]This is a template for the Atrament story.[/highlight]
 
 * [OK] 
     It's time to create your own!

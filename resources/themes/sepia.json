@@ -7,6 +7,7 @@
     "font-color": "#333333",
     "accent-bg-color": "#ffeedb",
     "accent-fg-color": "#a53850",
+    "accent-inverse-color": "#ffeedb",
     "border-radius": "0.5rem",
     "border-radius-inline": "0.25rem"
   }

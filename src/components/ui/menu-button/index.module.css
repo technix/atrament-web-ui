@@ -1,4 +1,4 @@
-.link_menu {
+.menu_button {
   display: block;
   width: 100%;
   background-color: var(--bg-color);
@@ -13,7 +13,7 @@
   font-family: var(--font-game);
 }
 
-.link_menu:hover {
+.menu_button:hover {
   background-color: var(--fg-color);
   color: var(--bg-color);
 }

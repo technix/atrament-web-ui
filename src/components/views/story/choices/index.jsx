@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { Text } from '@eo-locale/preact';
 import { route } from 'preact-router';
 import { useAtrament } from 'src/atrament/hooks';
-import LinkHome from 'src/components/ui/link-home';
+import MenuButtonAccent from 'src/components/ui/menu-button-accent';
 import ChoiceButtonGroup from '../choice-button-group';
 import ClickToContinue from '../click-to-continue';
 
@@ -36,7 +36,7 @@ const EndGameLink = () => {
     await atrament.game.removeSave();
     route('/');
   };
-  return (<LinkHome onClick={endGame}><Text id={'game.end'} /></LinkHome>);
+  return (<MenuButtonAccent onClick={endGame}><Text id={'game.end'} /></MenuButtonAccent>);
 };
 
 const Choices = ({ key, currentScene, setReady, isHypertextMode }) => {

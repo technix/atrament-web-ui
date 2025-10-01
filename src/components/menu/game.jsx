@@ -6,8 +6,8 @@ import { Text } from '@eo-locale/preact';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 import { useToggle } from 'src/hooks';
 
-import LinkMenu from 'src/components/ui/link-menu';
-import LinkHome from 'src/components/ui/link-home';
+import MenuButton from 'src/components/ui/menu-button';
+import MenuButtonAccent from 'src/components/ui/menu-button-accent';
 import Header from 'src/components/ui/header';
 import Break from 'src/components/ui/break';
 
@@ -21,7 +21,7 @@ const SaveMenuLayout = ({ saveGame, toggleSaveMenu }) => (
     <Header><h2><Text id={'main.savegame'} /></h2></Header>
     <SaveGameView saveGame={saveGame} />
     <Break />
-    <LinkMenu key='go-back' onClick={toggleSaveMenu}><Text id={'cancel'} /></LinkMenu>
+    <MenuButton key='go-back' onClick={toggleSaveMenu}><Text id={'cancel'} /></MenuButton>
   </>
 );
 
@@ -30,7 +30,7 @@ const LoadMenuLayout = ({ loadGame, toggleLoadMenu }) => (
     <Header><h2><Text id={'main.loadgame'} /></h2></Header>
     <LoadGameView loadGame={loadGame} hasConfirmation />
     <Break />
-    <LinkMenu key='go-back' onClick={toggleLoadMenu}><Text id={'cancel'} /></LinkMenu>
+    <MenuButton key='go-back' onClick={toggleLoadMenu}><Text id={'cancel'} /></MenuButton>
   </>
 );
 
@@ -38,12 +38,12 @@ const SettingsMenuLayout = ({ toggleSettingsMenu }) => (
   <>
     <Settings />
     <Break />
-    <LinkMenu key='go-back' onClick={toggleSettingsMenu}><Text id={'back'} /></LinkMenu>
+    <MenuButton key='go-back' onClick={toggleSettingsMenu}><Text id={'back'} /></MenuButton>
   </>
 );
 
 
-const Quit = () => <LinkHome onClick={() => route('/')}><Text id={'game.quit'} /></LinkHome>;
+const Quit = () => <MenuButtonAccent onClick={() => route('/')}><Text id={'game.quit'} /></MenuButtonAccent>;
 
 const MenuGameScreen = ({ toggleMenu }) => {
   const { atrament } = useAtrament();
@@ -74,15 +74,15 @@ const MenuGameScreen = ({ toggleMenu }) => {
 
   return (<>
     {saves
-      ? <LinkMenu key='save-game' onClick={toggleSaveMenu}><Text id={'main.savegame'} /></LinkMenu>
+      ? <MenuButton key='save-game' onClick={toggleSaveMenu}><Text id={'main.savegame'} /></MenuButton>
       : null
     }
     { (saves || load_from_checkpoints)
-      ? <LinkMenu key='load-game' onClick={toggleLoadMenu}><Text id={'main.loadgame'} /></LinkMenu>
+      ? <MenuButton key='load-game' onClick={toggleLoadMenu}><Text id={'main.loadgame'} /></MenuButton>
       : null
     }
     { (saves || load_from_checkpoints)
-      ? <LinkMenu key='settings' onClick={toggleSettingsMenu}><Text id={'main.settings'} /></LinkMenu>
+      ? <MenuButton key='settings' onClick={toggleSettingsMenu}><Text id={'main.settings'} /></MenuButton>
       : <Settings />
     }
     <Break />

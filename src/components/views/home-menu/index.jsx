@@ -6,7 +6,7 @@ import { Text } from '@eo-locale/preact';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import Block from 'src/components/ui/block';
-import LinkMenu from 'src/components/ui/link-menu';
+import MenuButton from 'src/components/ui/menu-button';
 
 import SessionsView from 'src/components/views/sessions';
 
@@ -15,7 +15,7 @@ import GameCover from './game-cover';
 import useGameControls from './use-game-controls';
 
 
-const AboutGame = () => (<LinkMenu key="about" onClick={() => route('/about')}><Text id={'main.about'} /></LinkMenu>);
+const AboutGame = () => (<MenuButton key="about" onClick={() => route('/about')}><Text id={'main.about'} /></MenuButton>);
 
 const MainMenu = ({ canBeResumed, canBeLoaded, openLoadGameMenu, about }) => {
   const { newGame, resumeGame } = useGameControls();
@@ -23,9 +23,9 @@ const MainMenu = ({ canBeResumed, canBeLoaded, openLoadGameMenu, about }) => {
     <>
       <GameCover />
       <Block align='end'>
-        {canBeResumed ? <LinkMenu key="continuegame" onClick={resumeGame}><Text id={'main.continue'} /></LinkMenu> : ''}
-        <LinkMenu key="startgame" onClick={newGame}><Text id={'main.newgame'} /></LinkMenu>
-        {canBeLoaded ? <LinkMenu key="loadgame" onClick={openLoadGameMenu}><Text id={'main.loadgame'} /></LinkMenu> : ''}
+        {canBeResumed ? <MenuButton key="continuegame" onClick={resumeGame}><Text id={'main.continue'} /></MenuButton> : ''}
+        <MenuButton key="startgame" onClick={newGame}><Text id={'main.newgame'} /></MenuButton>
+        {canBeLoaded ? <MenuButton key="loadgame" onClick={openLoadGameMenu}><Text id={'main.loadgame'} /></MenuButton> : ''}
         {about ? <AboutGame /> : ''}
       </Block>
     </>
@@ -48,7 +48,7 @@ export const SessionsMenuView = () => {
   return (
     <>
       {loadGameMenuVisible
-        ? <LoadGameMenu><LinkMenu key='go-back' onClick={closeLoadGameMenu}><Text id={'cancel'} /></LinkMenu></LoadGameMenu>
+        ? <LoadGameMenu><MenuButton key='go-back' onClick={closeLoadGameMenu}><Text id={'cancel'} /></MenuButton></LoadGameMenu>
         : <>
           <GameCover />
           <Block align='end'>
@@ -93,7 +93,7 @@ export const HomeMenuView = () => {
   return (
     <>
       {loadGameMenuVisible
-        ? <LoadGameMenu><LinkMenu key='go-back' onClick={closeLoadGameMenu}><Text id={'main.menu'} /></LinkMenu></LoadGameMenu>
+        ? <LoadGameMenu><MenuButton key='go-back' onClick={closeLoadGameMenu}><Text id={'main.menu'} /></MenuButton></LoadGameMenu>
         : <MainMenu canBeResumed={canBeResumed} canBeLoaded={canBeLoaded} openLoadGameMenu={openLoadGameMenu} about={metadata.about} />
       }
     </>
