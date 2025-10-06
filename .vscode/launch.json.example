@@ -1,0 +1,12 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Browser Preview",
+      "url": "http://localhost:8900",
+      "preLaunchTask": "start-atrament"
+    }
+  ]
+}

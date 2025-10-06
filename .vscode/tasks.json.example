@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "npm",
+      "script": "start",
+      "problemMatcher": {
+        "owner": "typescript",
+        "pattern": {
+          "regexp": ".*",
+          "file": 1,
+          "location": 2,
+          "message": 3
+        },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^> @atrament/web-ui.*start.*",
+          "endsPattern": "^.*Local:.*http://localhost:8900/.*"
+        }
+      },
+      "label": "start-atrament",
+      "detail": "vite",
+      "isBackground": true
+    }
+  ]
+}

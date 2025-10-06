@@ -26,6 +26,8 @@ tools/neutralino*
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
+!.vscode/launch.json.example
+!.vscode/tasks.json.example
 .idea
 .DS_Store
 *.suo
