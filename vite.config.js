@@ -13,13 +13,15 @@ import getPWAConfig from './vite/pwa-config';
 import atramentCfg from './atrament.config.json';
 
 export default defineConfig(({ mode }) => {
+  const isTemplateBuild = process.argv.includes('--template');
   const inkCompileFormat = atramentCfg.game.format || (mode === 'singlefile' ? 'js' : 'json');
   
   const atramentConfig = { ...atramentCfg, game: { ...atramentCfg.game } };
   atramentConfig.game.script = `${atramentConfig.game.source}.${inkCompileFormat}`;
   delete atramentConfig.game.source;
 
-  if (process.argv.includes('--template')) {
+  if (isTemplateBuild) {
+    console.log("### Building template for atrament-wizard\n");
     atramentConfig.name = "Atrament UI";
     atramentConfig.short_name = "atrament-web-ui-template";
     atramentConfig.description = "A game built with Atrament";
@@ -36,8 +38,8 @@ export default defineConfig(({ mode }) => {
     createHtmlPlugin({
       inject: {
         data: {
-          title: atramentCfg.name,
-          description: atramentCfg.description,
+          title: atramentConfig.name,
+          description: atramentConfig.description,
           neutralino: neutralinoTemplate,
           atrament_language: atramentConfig.language,
           atrament_config_json: JSON.stringify(atramentConfig)
@@ -57,29 +59,32 @@ export default defineConfig(({ mode }) => {
         atrament: ['@atrament/web']
       }
     }
-  }
+  };
 
   if (mode === 'singlefile') {
     plugins.push(viteSingleFile());
     buildDir = 'build/singlefile';
     rollupOptions = {};
+    if (isTemplateBuild) {
+      buildDir = 'build/atrament-wizard-template';
+    }
   } else if (mode === 'standalone') {
-    plugins.push(VitePWA(getPWAConfig(atramentCfg)));
+    plugins.push(VitePWA(getPWAConfig(atramentConfig)));
     buildDir = 'build/.tmp_neutralino/resources';
   } else if (mode === 'production') {
-    plugins.push(VitePWA(getPWAConfig(atramentCfg)));
-    if (atramentCfg.game.zip) {
-      const gameDir = `${buildDir}/${atramentCfg.game.path}`;
+    plugins.push(VitePWA(getPWAConfig(atramentConfig)));
+    if (atramentConfig.game.zip) {
+      const gameDir = `${buildDir}/${atramentConfig.game.path}`;
       plugins.push(zipPack({
         inDir: gameDir,
         outDir: 'build',
-        outFileName: atramentCfg.game.zip
+        outFileName: atramentConfig.game.zip
       }));
       // delete game folder after zipping
       plugins.push(CleanBuild({
         outputDir: buildDir,
         patterns: [
-          atramentCfg.game.path,
+          atramentConfig.game.path,
         ]
       }));
     }
