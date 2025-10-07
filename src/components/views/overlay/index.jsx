@@ -9,25 +9,16 @@ import ModalPresenter from './modal';
 
 import useOverlayContent from 'src/content/use-overlay-content';
 
+const OverlayParagraph = (item, index) => <TextParagraph key={index}><Markup content={item} /></TextParagraph>;
+
 const OverlayView = () => {
   const [ isLoaded, overlay, closeOverlay ] = useOverlayContent();
-
   if (!overlay.current) {
     return <></>;
   }
-
-  const content = isLoaded
-    ? overlay.content.map((item, index) => <TextParagraph key={index}><Markup content={item} /></TextParagraph>)
-    : <CircleLoader />;
-
-  if (overlay.display === 'modal') {
-    return (
-      <ModalPresenter title={overlay.title} closeOverlay={closeOverlay}>{content}</ModalPresenter>
-    );
-  }
-  return (
-    <OverlayPresenter title={overlay.title} closeOverlay={closeOverlay}>{content}</OverlayPresenter>
-  );
+  const content = isLoaded ? overlay.content.map(OverlayParagraph) : <CircleLoader />;
+  const Presenter = overlay.display === 'modal' ? ModalPresenter : OverlayPresenter;
+  return <Presenter title={overlay.title} closeOverlay={closeOverlay}>{content}</Presenter>;
 }
 
 export default OverlayView;
