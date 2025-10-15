@@ -15,7 +15,7 @@
     "install-inklecate": "node tools/install-inklecate.cjs"
   },
   "dependencies": {
-    "@atrament/web": "2.1.2",
+    "@atrament/web": "2.1.3",
     "@eo-locale/preact": "1.7.2",
     "@nanostores/preact": "1.0.0",
     "clsx": "2.1.1",
