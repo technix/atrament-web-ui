@@ -19,7 +19,6 @@ const GameCover = () => {
     author: <p>{author ? author : translator.translate('default.author')}</p>
   };
   const layout = (title_screen_layout || 'cover, title, author').split(/\s*,\s*/);
-  console.log(layout);
   return (
     <Header>
       {layout.map((item) => LayoutElements[item])}
