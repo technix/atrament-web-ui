@@ -4,5 +4,8 @@ import { h } from 'preact';
 
 export default {
   tag: 'font',
-  replacer: (options, content, markup) => <span style={{ 'font-family': options.DEFAULT }}>{markup(content)}</span>
+  replacer: (options, content, markup) => {
+    const fontFamily = options.family || options.DEFAULT;
+    return (<span class={options.class} style={{ 'font-family': fontFamily }}>{markup(content)}</span>);
+  }
 }

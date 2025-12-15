@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 import { useState } from "preact/hooks";
 
@@ -9,11 +10,11 @@ const classes = [
   style.revealed
 ];
 
-const Spoiler = ({children}) => {
+const Spoiler = ({ options, children }) => {
   const [ currentStyle, setStyle ] = useState(0);
   return (
     <span
-      class={classes[currentStyle]}
+      class={clsx(classes[currentStyle], options.class)}
       onClick={() => setStyle(1 - currentStyle)}
     >
       <span>{children}</span>
@@ -23,5 +24,5 @@ const Spoiler = ({children}) => {
 
 export default {
   tag: 'spoiler',
-  replacer: (options, content, markup) => <Spoiler>{markup(content)}</Spoiler>
+  replacer: (options, content, markup) => <Spoiler options={options}>{markup(content)}</Spoiler>
 }

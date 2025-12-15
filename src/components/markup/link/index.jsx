@@ -7,11 +7,14 @@ import { ActiveContentContext } from 'src/context';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 // [link=target choice text]Text[/link]
+// [link target=target choice text class=someclass]Text[/link]
 
-const InlineLink = ({ children, choice }) => {
+const InlineLink = ({ children, options }) => {
   const isActive = useContext(ActiveContentContext);
   const { atrament, makeChoice, continueStory } = useAtrament();
   const atramentState = useAtramentState(['scenes']);
+
+  const choice = options.to || options.DEFAULT;
 
   const clickHandler = useCallback(() => {
     const lastSceneIndex = atramentState.scenes.length - 1;
@@ -25,10 +28,16 @@ const InlineLink = ({ children, choice }) => {
     continueStory();
   }, [ atrament, continueStory, makeChoice, choice, atramentState.scenes ]);
 
+  const linkClass = clsx(
+    style.inline_link, 
+    !isActive && style.disabled,
+    options.class
+  );
+
   return (
     <a
       href="#"
-      class={clsx(style.inline_link, !isActive && style.disabled)}
+      class={linkClass}
       onClick={isActive ? clickHandler : () => {}}
     >
       {children}
@@ -38,5 +47,5 @@ const InlineLink = ({ children, choice }) => {
 
 export default {
   tag: 'link',
-  replacer: (options, content, markup) => <InlineLink choice={options.DEFAULT}>{markup(content)}</InlineLink>
+  replacer: (options, content, markup) => <InlineLink options={options}>{markup(content)}</InlineLink>
 }

@@ -16,6 +16,7 @@ const Video = ({ src, options }) => {
 
   return (
     <video
+      class={options.class}
       ref={videoPlayerRef}
       style={{ 'pointer-events': 'none' }}
       width='100%'

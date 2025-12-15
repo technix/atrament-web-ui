@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 import { useCallback, useContext } from "preact/hooks";
 import { ActiveContentContext } from 'src/context';
@@ -23,10 +24,13 @@ const InlineButtonComponent = ({ children, options }) => {
     }
   }, [ evaluateInkFunction, setOverlayContent, refreshOverlay, options ]);
 
-  let buttonStyle = options.bordered === false ? style.inline_button : style.bordered_button;
+  let buttonClass = clsx(
+    options.bordered === false ? style.inline_button : style.bordered_button,
+    options.class
+  );
   return (
     <button
-      class={buttonStyle}
+      class={buttonClass}
       onClick={clickHandler}
       disabled={!isActive || options.disabled}
     >

@@ -11,6 +11,6 @@ export default {
       'text-align': options.align || 'inherit',
       'vertical-align': options.valign || 'top',
     };
-    return (<div style={blockStyle}>{markup(content)}</div>);
+    return (<div style={blockStyle} class={options.class}>{markup(content)}</div>);
   }
 }

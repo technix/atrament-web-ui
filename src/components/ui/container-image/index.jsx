@@ -4,7 +4,7 @@ import style from './index.module.css';
 
 const ContainerImage = ({ src, options = {} }) => (
   <div
-    class={clsx(style.imagebox, 'atrament-image-container')}
+    class={clsx(style.imagebox, 'atrament-image-container', options.class)}
     style={{
       'margin-left': options['leftmargin'] || 'none',
       'margin-right': options['rightmargin'] || 'none'

@@ -183,18 +183,20 @@ There is a [link=Examine mailbox]small mailbox[/link] here.
 | `[picture]path/to/image.jpg[/picture]` | Display image (same as `#IMAGE` knot tag). The image is sized automatically to fit the container. When using images inside of the `[block]` tags, you may want to set picture margins.<br>Attributes:<br>`width=50%` sets picture width.<br>`leftmargin=0.5em` sets left margin. <br>`rightmargin=0.5em` sets right margin.|
 | `[img]path/to/image.jpg[/img]` | Display inline image. |
 | `[button=function]Text[/button]`<br>`[button onclick=function]Text[/button]` | Display button, call a function when clicked. If function outputs a text, it will be displayed as a new overlay content. If not, current overlay content will be updated.<br>Attributes:<br>`onclick=function` function to be called when clicked.<br>`disabled=true` disables the button<br>`bordered=false` hide button borders<br>`display=modal` display modal instead of overlay when clicked |
-| `[link=target choice text]Text[/link]` | Creates a link. When clicked, the target choice is activated, and game continues. |
+| `[link=choice text]Text[/link]` <br> `[link to=choice text]Text[/link]`| Creates a link. When clicked, the target choice is activated, and game continues. |
 | `[progress value={variable}]Inner text[/progress]` | Displays a progress bar.<br>Attributes:<br>`value=x` current progressbar value<br>`min=x` minimal progressbar value<br>`max=x` maximal progressbar value<br>`style=accent` highlight progressbar with accent theme color |
 | `[input var=variable]` | Input element, sets value of given variable. Default value of this field is read from the same variable. Disabled on the inactive scenes. <br>Attributes:<br>`var=n` variable name to change<br>`type=number` input type. Possible values: `text`, `number`.<br>`placeholder=text` placeholder text |
 | `[spoiler]text[/spoiler]` | Hidden text. Text visibility toggles on click. |
 | `[info]text[/info]` | Display text as an information block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`font=system` use system font<br>`side=n` add color to the left infobox side. Possible values: `highlight`, `accent`. |
 | `[banner]text[/banner]` | Display text as an banner block. Since this is a block element, it is recommended to use it on a whole paragraph.<br>Attributes:<br>`style=accent` use accent color<br>`allcaps=true` display text in all capitals |
 | `[css]text[/css]` | Applies CSS classed and/or styles to the text.<br>Attributes:<br>`class=CSS_class` applies CSS class to the text.<br>`style="CSS style string"` applies CSS style to the text. |
-| `[font=Courier New]text[/font]` | Applies font to the text. |
+| `[font=Courier New]text[/font]` <br> `[font family=Courier New]text[/font]` | Applies font to the text. |
 | `[highlight]text[/highlight]`<br>`[highlight color=yellow bgcolor=black]Text[/highlight]` | Highlights text with accent color.<br>Optional parameters `bgcolor` and `color` allow to set both background and foreground color for text. |
 | `[block]text[/block]` | Defines a text block.<br>Attributes:<br>`width=value` block width. Can be defined in percents (recommended) or other CSS units.<br>`align=left` aligns text horizontally in the block. Possible values: `left`, `center`, `right`<br>`valign=top` aligns text vertically in the block. Possible values: `top`, `middle`, `bottom` |
 | `[video]path/to/video.mp4[/video]` | Display video. <br>Attributes:<br>`loop=false` disable video loop.<br>`muted=true` play video muted|
-| `[url=https:\/\/atrament.ink]link text[/url]` | Creates a link to an web resource. When clicked, the resource is opened in a new browser tab. *Note: you have to escape "/" symbols in the URL, as shown in the example.* |
+| `[url=https:\/\/atrament.ink]link text[/url]`<br>`[url href=https:\/\/atrament.ink]link text[/url]` | Creates a link to an web resource. When clicked, the resource is opened in a new browser tab. *Note: you have to escape "/" symbols in the URL, as shown in the example.* |
+
+All markup tags support `class` attribute to set a CSS class for the element.
 
 Note: it is not possible to wrap multiple paragraphs with these tags. Use `<br>` tag for line breaks if you need multiline text in tags.
 

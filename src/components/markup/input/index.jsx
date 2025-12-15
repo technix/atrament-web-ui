@@ -1,9 +1,11 @@
 import { h } from 'preact';
 import { useContext, useEffect, useState } from 'preact/hooks';
+import clsx from 'clsx';
 import style from './index.module.css';
 
 import { useAtrament } from 'src/atrament/hooks';
 import { ActiveContentContext } from 'src/context';
+
 
 // [input var=variable placeholder="placeholder text" type=number]
 
@@ -25,8 +27,9 @@ const Input = ({options}) => {
     setDefaultValue(targetValue);
   };
   const inputType = options.type === 'number' ? 'number' : 'text';
+  const inputClass = clsx(style.input, options.class);
   return (
-    <input disabled={!isActive} class={style.input} value={defaultValue} placeholder={options.placeholder} type={inputType} onInput={onInput} />
+    <input disabled={!isActive} class={inputClass} value={defaultValue} placeholder={options.placeholder} type={inputType} onInput={onInput} />
   );
 };
 

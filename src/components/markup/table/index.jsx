@@ -28,6 +28,7 @@ export default {
     const rows = tableRows ? tableRows.map((row) => parseRow(row, markup)) : [];
     const columnWidth = options.columns ? options.columns.split(/\s+/g) : [];
     return (<Table
+      className={options.class}
       columns={columns}
       data={rows}
       border={options.border}

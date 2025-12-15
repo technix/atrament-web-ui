@@ -11,6 +11,6 @@ export default {
       padding: options.bgcolor ? '0.1em' : 'inherit',
       'box-decoration-break': 'clone'
     };
-    return (<span style={highlightStyle}>{markup(content)}</span>);
+    return (<span style={highlightStyle} class={options.class}>{markup(content)}</span>);
   }
 }

@@ -9,7 +9,8 @@ const InfoBlock = ({children, options}) => {
     style.infoblock,
     options.font === 'system' && style.font_ui,
     options.side === 'accent' && style.side_accent,
-    options.side === 'highlight' && style.side_highlight
+    options.side === 'highlight' && style.side_highlight,
+    options.class
   );
   return (<div class={classList}>{children}</div>);
 };

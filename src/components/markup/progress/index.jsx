@@ -22,7 +22,7 @@ const Progress = ({options, children}) => {
   );
 
   return (
-    <div class={style.progress_frame}>
+    <div class={clsx(style.progress_frame, options.class)}>
       <div class={classList} style={{width:`${width}%`}} />
       <div class={style.progress_content}>{children}&nbsp;</div>
     </div> 
