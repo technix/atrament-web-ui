@@ -1,11 +1,6 @@
-import { OVERLAY_STORE_KEY } from "src/constants";
+import initOverlay from './init-overlay';
 
 export default function onGameStart(atrament) {
   // reset overlay state
-  atrament.state.setKey(OVERLAY_STORE_KEY, {
-    current: null,
-    content: '',
-    title: null,
-    display: null
-  });
+  initOverlay(atrament);
 }

@@ -1,4 +1,5 @@
 import { TOOLBAR_DEFAULT, TOOLBAR_STORE_KEY } from "src/constants";
+import initOverlay from "./init-overlay";
 
 function registerToolbarHandler(atrament, toolbarFunction) {
   const refreshToolbar = () => {
@@ -31,4 +32,6 @@ export default function onGameInit(atrament) {
   } else {
     atrament.state.setKey(TOOLBAR_STORE_KEY, TOOLBAR_DEFAULT);
   }
+  // initialize overlay state
+  initOverlay(atrament);
 }
