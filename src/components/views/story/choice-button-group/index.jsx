@@ -46,11 +46,19 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
 
   useKeyboardHandler(kbdChoiceHandler);
 
-  const isGrouped = metadata.choices?.includes('grouped');
-  const isSingleRow = metadata.choices?.includes('row');
+  const gameChoiceAppearance = metadata.choices; // #choices global tag
+  const sceneChoiceAppearance = currentScene.tags?.CHOICES; // #CHOICES knot tag
+  const choiceAppearance = {
+    grouped: !!(gameChoiceAppearance?.includes('grouped') || sceneChoiceAppearance?.includes('grouped')),
+    left: !!(gameChoiceAppearance?.includes('left') || sceneChoiceAppearance?.includes('left')),
+    right: !!(gameChoiceAppearance?.includes('right') || sceneChoiceAppearance?.includes('right')),
+    numbered: !!(gameChoiceAppearance?.includes('numbered') || sceneChoiceAppearance?.includes('numbered')),
+    row: !!(gameChoiceAppearance?.includes('row') || sceneChoiceAppearance?.includes('row'))
+  };
+
   const choiceButtonGroupClass = clsx(
-    isSingleRow && style.choice_row,
-    (isSingleRow && !isGrouped) && style.choice_row_ungrouped,
+    choiceAppearance.row && style.choice_row,
+    (choiceAppearance.row && !choiceAppearance.grouped) && style.choice_row_ungrouped,
     'atrament-choices'
   );
 
@@ -65,6 +73,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
             choice={choice}
             chosen={chosen}
             handleClick={selectChoice}
+            choiceAppearance={choiceAppearance}
           />))
         }
       </div>

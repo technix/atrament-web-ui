@@ -109,6 +109,7 @@ Atrament game can be published as a web application, as a single HTML file, or a
 | `# SHUFFLE_CHOICES` | Shuffle choice order in this knot. |
 | `# PROMPT: What would you like to do?` | Display prompt text before the choices. |
 | `# HYPERTEXT` | Use links instead of choices for this scene. See "[Hypertext mode](#hypertext-mode)". |
+| `# CHOICES: grouped numbered` | Changes the choices appearance for this scene only. Uses the same syntax as global `#choices` tag. |
 
 
 Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MUSIC/STOP_SOUND/STOP_MUSIC tags. Combining them may lead to unexpected side effects.

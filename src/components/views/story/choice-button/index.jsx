@@ -2,18 +2,9 @@ import { h } from 'preact';
 import clsx from 'clsx';
 import style from './index.module.css';
 
-import { useAtramentState } from 'src/atrament/hooks';
 import Markup from 'src/components/ui/markup';
 
-const ChoiceButton = ({ choice, chosen, index, handleClick }) => {
-  const { metadata } = useAtramentState(['metadata']);
-  const choiceAppearance = {
-    grouped: metadata.choices?.includes('grouped'),
-    left: metadata.choices?.includes('left'),
-    right: metadata.choices?.includes('right'),
-    numbered: metadata.choices?.includes('numbered'),
-    row: metadata.choices?.includes('row')
-  };
+const ChoiceButton = ({ choice, chosen, index, handleClick, choiceAppearance }) => {
 
   const choiceIsMade = chosen !== null; // something is chosen
   const activeChoice = chosen === choice.id; // this is the active choice
