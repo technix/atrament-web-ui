@@ -4,25 +4,18 @@ import style from './index.module.css';
 import { useCallback, useContext } from "preact/hooks";
 import { ActiveContentContext } from 'src/context';
 
-import { useAtrament, useAtramentOverlay } from 'src/atrament/hooks';
+import { useAtramentOverlay } from 'src/atrament/hooks';
 
 // [button onclick=function]button text[/button]
 
 const InlineButtonComponent = ({ children, options }) => {
   const isActive = useContext(ActiveContentContext);
-  const { evaluateInkFunction } = useAtrament();
-  const { setOverlayContent, refreshOverlay } = useAtramentOverlay();
+  const { execContentFunction } = useAtramentOverlay();
 
   const clickHandler = useCallback((e) => {
     e.stopPropagation();
-    const inkFn = options.onclick;
-    const result = evaluateInkFunction(inkFn);
-    if (result.output) {
-      setOverlayContent(inkFn, result.output, options.display === 'modal' ? 'modal' : 'overlay');
-    } else {
-      refreshOverlay();
-    }
-  }, [ evaluateInkFunction, setOverlayContent, refreshOverlay, options ]);
+    execContentFunction(options.onclick, options.display);
+  }, [ execContentFunction, options ]);
 
   let buttonClass = clsx(
     options.bordered === false ? style.inline_button : style.bordered_button,

@@ -2,6 +2,11 @@
   color: var(--fg-color);
 }
 
+.inline_link:hover {
+  color: var(--accent-fg-color);
+  background-color: var(--accent-bg-color);
+}
+
 .disabled {
   cursor: default;
 }

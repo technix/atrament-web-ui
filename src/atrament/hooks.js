@@ -142,10 +142,20 @@ export const useAtramentOverlay = () => {
     setStateSubkey(OVERLAY_STORE_KEY, 'display', null);
   }, [ setStateSubkey ]);
 
+  const execContentFunction = useCallback((inkFn, display) => {
+    const result = evaluateInkFunction(inkFn);
+    if (result.output) {
+      setOverlayContent(inkFn, result.output, display === 'modal' ? 'modal' : 'overlay');
+    } else {
+      refreshOverlay();
+    }
+  }, [ evaluateInkFunction, refreshOverlay, setOverlayContent ]);
+
   return {
     refreshOverlay,
     closeOverlay,
     setOverlayContent,
+    execContentFunction,
     overlay: {
       current: atramentState[OVERLAY_STORE_KEY].current,
       content: atramentState[OVERLAY_STORE_KEY].content.split('\n'),
