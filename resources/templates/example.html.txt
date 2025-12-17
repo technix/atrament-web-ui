@@ -1,0 +1,9 @@
+<div style="border: 2px solid #990000">
+    <!-- Variables are passed like this -->
+    <div>{{title}}</div>
+    <!--
+        Add attribute data-mount="content" to an element
+        where the [template] tag content will be placed
+    -->
+    <div data-mount="content"></div>
+</div>

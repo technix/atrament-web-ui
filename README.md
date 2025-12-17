@@ -266,6 +266,42 @@ Author can add an "About" screen to the game with the `#about` global tag. When 
 
 ```
 
+### HTML templates
+
+Atrament can render custom HTML templates with variable substitution. It uses [mustache](https://mustache.github.io/mustache.5.html) as a template parser.
+
+1. Create a template in the `resources/templates` folder. It should be an `.html` file - for example, `card.html`.
+```
+<div class="card">
+    <!-- Variables are passed like this -->
+    <div class="card-title">{{title}}</div>
+    <!--
+        Add attribute data-mount="content" to an element
+        where the [template] tag content will be placed
+    -->
+    <div class="card-content" data-mount="content"></div>
+</div>
+```
+
+2. Add the template to your Ink script with `[template]` markup tag:
+
+```
+VAR CARD_TITLE="Card Title"
+[template src=card.html var:title="{CARD_TITLE}"]<>
+Your content is [highlight]here[/highlight]<>
+[/template]
+```
+
+Variables are passed via `var:X` attributes. For example, `var:title="Header"` will be passed as template variable `title`.
+
+Tips:
+
+- templates can be without content: `[template src][/template]`
+- templates are wrapped into a `<div>` element. You can add custom class to the wrapper with `class` attribute of the `[template]` tag.
+- if you need an inline template, you can change wrapper to a `<span>`: `[template src=x.html wrapper=span][/template]`.
+- templates can be nested: `[template src=card.html][template src=title.html var:title="Card Title"][/template][/template]`
+
+
 ## Customization
 
 ### Themes
