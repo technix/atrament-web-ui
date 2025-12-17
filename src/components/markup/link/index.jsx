@@ -2,7 +2,6 @@ import { h } from 'preact';
 import style from './index.module.css';
 import clsx from 'clsx';
 import { useCallback, useContext } from "preact/hooks";
-import { ERROR_STORE_KEY } from 'src/constants';
 import { ActiveContentContext } from 'src/context';
 import { useAtrament, useAtramentState, useAtramentOverlay } from 'src/atrament/hooks';
 
@@ -12,7 +11,7 @@ import { useAtrament, useAtramentState, useAtramentOverlay } from 'src/atrament/
 
 const InlineLink = ({ children, options }) => {
   const isActive = useContext(ActiveContentContext);
-  const { atrament, makeChoice, continueStory } = useAtrament();
+  const { makeChoice, continueStory, throwAtramentError } = useAtrament();
   const { execContentFunction } = useAtramentOverlay();
 
   const atramentState = useAtramentState(['scenes']);
@@ -24,12 +23,12 @@ const InlineLink = ({ children, options }) => {
     const currentScene = atramentState.scenes[lastSceneIndex];
     const chosen = currentScene.choices.findIndex((item) => item.choice === choice);
     if (chosen < 0) {
-      atrament.state.setKey(ERROR_STORE_KEY, `[link=${choice}] leads to nonexistent choice!`);
+      throwAtramentError(`[link=${choice}] leads to nonexistent choice!`);
       return;
     }
     makeChoice(chosen);
     continueStory();
-  }, [ atrament, continueStory, makeChoice, choice, atramentState.scenes ]);
+  }, [ throwAtramentError, continueStory, makeChoice, choice, atramentState.scenes ]);
 
   const clickHandlerFunction = useCallback(
     () => execContentFunction(options.onclick, options.display), 
