@@ -46,14 +46,14 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
 
   useKeyboardHandler(kbdChoiceHandler);
 
-  const gameChoiceAppearance = metadata.choices; // #choices global tag
-  const sceneChoiceAppearance = currentScene.tags?.CHOICES; // #CHOICES knot tag
+  // knot tag '#CHOICES' has more priority than global '#choices' tag
+  const choiceConfig = currentScene.tags?.CHOICES || metadata.choices;
   const choiceAppearance = {
-    grouped: !!(gameChoiceAppearance?.includes('grouped') || sceneChoiceAppearance?.includes('grouped')),
-    left: !!(gameChoiceAppearance?.includes('left') || sceneChoiceAppearance?.includes('left')),
-    right: !!(gameChoiceAppearance?.includes('right') || sceneChoiceAppearance?.includes('right')),
-    numbered: !!(gameChoiceAppearance?.includes('numbered') || sceneChoiceAppearance?.includes('numbered')),
-    row: !!(gameChoiceAppearance?.includes('row') || sceneChoiceAppearance?.includes('row'))
+    grouped: !!choiceConfig?.includes('grouped'),
+    left: !!choiceConfig?.includes('left'),
+    right: !!choiceConfig?.includes('right'),
+    numbered: !!choiceConfig?.includes('numbered'),
+    row: !!choiceConfig?.includes('row')
   };
 
   const choiceButtonGroupClass = clsx(
