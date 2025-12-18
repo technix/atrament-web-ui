@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 import { IconToolbarBack } from 'src/components/ui/icons';
 import ContainerText from 'src/components/ui/container-text';
+import Block from 'src/components/ui/block';
 
 export default function OverlayPresenter({ children, title, closeOverlay }) {
   return (
@@ -14,7 +15,9 @@ export default function OverlayPresenter({ children, title, closeOverlay }) {
       </div>
       <div class={clsx(style.overlay_content, 'atrament-overlay')}>
         <ContainerText>
-          {children}
+          <Block>
+            {children}
+          </Block>
         </ContainerText>
       </div>
     </div>
