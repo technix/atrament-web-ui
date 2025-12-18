@@ -12,9 +12,15 @@ import Container from 'src/components/ui/container';
 import Loading from 'src/components/ui/loading';
 import AppRouter from './router';
 
+import setInnerHeight from 'src/utils/set-inner-height';
+
+window.addEventListener('resize', setInnerHeight);
+
 function App() {
   const [ atrament, setAtrament ] = useState(null);
   const [ initError, setInitError ] = useState(null);
+
+  useEffect(setInnerHeight, []);
 
   useEffect(() => {
     const startEngine = async () => {
