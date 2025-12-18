@@ -29,5 +29,9 @@ export {
 };
 
 export function applyFont(font) {
-  document.documentElement.style.setProperty('--font-game', fonts[font] || fonts[gameDefaultFont]);
+  document.documentElement.style.setProperty('--font-face-game', fonts[font] || fonts[gameDefaultFont]);
+}
+
+export function applyInterfaceFont(font) {
+  document.documentElement.style.setProperty('--font-face-ui', fonts[font] || FONTS_SYSTEM['System']);
 }

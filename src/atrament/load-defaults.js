@@ -1,4 +1,5 @@
 import { gameDefaultTheme, gameDefaultFont } from 'src/constants';
+import { applyInterfaceFont } from 'src/fonts';
 
 export function loadDefaultTheme(atrament) {
   // set initial theme from game
@@ -14,4 +15,6 @@ export function loadDefaultFont(atrament) {
   if (!atrament.settings.get('font')) {
     atrament.settings.set('font', defaultFont);
   }
+  // set game interface font
+  applyInterfaceFont(gameDefaultFont);
 }

@@ -6,7 +6,7 @@
   flex-direction: column;
   overflow: auto;
   line-height: calc(1ex / 0.32);
-  font-family: var(--font-game);
+  font-family: var(--font-face-game);
   font-size: var(--game-font-size);
 }
 

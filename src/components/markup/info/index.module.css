@@ -7,7 +7,7 @@
 }
 
 .font_ui {
-  font-family: var(--font-interface);
+  font-family: var(--font-face-ui);
 }
 
 .side_highlight {

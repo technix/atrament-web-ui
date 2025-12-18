@@ -3,7 +3,6 @@
   text-align: center;
   display: flex;
   margin: 1rem;
-  font-family: var(--font-game);
 }
 
 .header_align {

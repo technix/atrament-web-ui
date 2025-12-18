@@ -40,7 +40,7 @@ After performing these steps, you can customize the game configuration:
     * "`short_name`": your application short name, or codename
     * "`description`": your application description
     * "`theme`": default app theme, may be "`light`", "`sepia`", or "`dark`"
-    * "`font`": default game font, may be "`System`", "`Sans Serif`", "`Serif`", "`Monospaced`", "`Fira Sans`", "`Lora`", "`Merriweather`", or "`OpenDyslexic`"
+    * "`font`": default UI and game font, may be "`System`", "`Sans Serif`", "`Serif`", "`Monospaced`", "`Fira Sans`", "`Lora`", "`Merriweather`", or "`OpenDyslexic`"
 4. (optionally) replace `root/logo.png` with your project logo. This image is used to generate favicon and application icon.
 
 

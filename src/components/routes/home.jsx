@@ -24,7 +24,7 @@ const HomeRoute = () => {
 
   return (
     <Container>
-      <ContainerFlex>
+      <ContainerFlex cssClass='font-face-game'>
         <Menu isHomeScreen />
         { sessions? <SessionsMenuView /> : <HomeMenuView /> }
       </ContainerFlex>

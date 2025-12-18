@@ -10,7 +10,6 @@
   border: 1px solid var(--fg-color);
   border-radius: var(--border-radius);
   cursor: pointer;
-  font-family: var(--font-game);
 }
 
 .menu_button:hover {
