@@ -38,7 +38,8 @@ const InlineLink = ({ children, options }) => {
   const linkClass = clsx(
     style.inline_link, 
     !isActive && style.disabled,
-    options.class
+    'atrament-tag-link',
+    options.class,
   );
 
   const onClickFunction = isActive

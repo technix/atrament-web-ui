@@ -14,7 +14,7 @@ const Spoiler = ({ options, children }) => {
   const [ currentStyle, setStyle ] = useState(0);
   return (
     <span
-      class={clsx(classes[currentStyle], options.class)}
+      class={clsx(classes[currentStyle], 'atrament-tag-spoiler', options.class)}
       onClick={() => setStyle(1 - currentStyle)}
     >
       <span>{children}</span>

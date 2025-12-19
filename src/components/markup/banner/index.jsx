@@ -9,7 +9,8 @@ const BannerBlock = ({children, options}) => {
     style.bannerblock,
     options.style === 'accent' && style.accent,
     options.allcaps && style.allcaps,
-    options.class
+    'atrament-tag-banner',
+    options.class,
   );
   return (<div class={classList}>{children}</div>);
 };

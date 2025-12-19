@@ -1,5 +1,5 @@
 import { h } from 'preact';
-
+import clsx from 'clsx';
 import Table from 'src/components/ui/table';
 
 // [table]<>
@@ -28,7 +28,7 @@ export default {
     const rows = tableRows ? tableRows.map((row) => parseRow(row, markup)) : [];
     const columnWidth = options.columns ? options.columns.split(/\s+/g) : [];
     return (<Table
-      className={options.class}
+      className={clsx('atrament-tag-table', options.class)}
       columns={columns}
       data={rows}
       border={options.border}

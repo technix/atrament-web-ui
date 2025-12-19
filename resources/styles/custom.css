@@ -22,4 +22,21 @@ Available classes:
 .atrament-prompt            Prompt before choices
 .atrament-choices           Wrapper for choice buttons
 .atrament-choice            Choice button
+
+Markup tags styling:
+.atrament-tag-banner                [banner]
+.atrament-tag-block                 [block]
+.atrament-tag-button                [button]
+.atrament-tag-highlight             [highlight]
+.atrament-tag-info                  [info]
+.atrament-tag-img                   [img]
+.atrament-tag-input                 [input]
+.atrament-tag-link                  [link]
+.atrament-tag-progressbar           [progressbar]
+.atrament-tag-progressbar-gauge     Progress bar gauge
+.atrament-tag-progressbar-content   Progress bar text content
+.atrament-tag-spoiler               [spoiler]
+.atrament-tag-table                 [table]
+.atrament-tag-url                   [url]
+.atrament-tag-video                 [video]
 */

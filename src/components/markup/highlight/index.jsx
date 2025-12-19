@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 
 // [highlight color=black bgcolor=red]highlighted text[/highlight]
 
@@ -11,6 +12,6 @@ export default {
       padding: options.bgcolor ? '0.1em' : 'inherit',
       'box-decoration-break': 'clone'
     };
-    return (<span style={highlightStyle} class={options.class}>{markup(content)}</span>);
+    return (<span style={highlightStyle} class={clsx('atrament-tag-highlight', options.class)}>{markup(content)}</span>);
   }
 }

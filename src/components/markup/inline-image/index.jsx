@@ -7,7 +7,7 @@ import { useAtrament } from 'src/atrament/hooks';
 
 const InlineImage = ({ options, src }) => {
   const { getAssetPath } = useAtrament();
-  const imgClass = clsx(style.inline_image, options.class);
+  const imgClass = clsx(style.inline_image, 'atrament-tag-img', options.class);
   return (<img class={imgClass} src={getAssetPath(src)} />);
 }
 

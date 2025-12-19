@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import { useEffect, useRef } from 'preact/hooks';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
@@ -20,7 +21,7 @@ const Video = ({ src, options }) => {
 
   return (
     <video
-      class={options.class}
+      class={clsx('atrament-tag-video', options.class)}
       ref={videoPlayerRef}
       style={{ 'pointer-events': 'none' }}
       width='100%'

@@ -27,7 +27,7 @@ const Input = ({options}) => {
     setDefaultValue(targetValue);
   };
   const inputType = options.type === 'number' ? 'number' : 'text';
-  const inputClass = clsx(style.input, options.class);
+  const inputClass = clsx(style.input, 'atrament-tag-input', options.class);
   return (
     <input disabled={!isActive} class={inputClass} value={defaultValue} placeholder={options.placeholder} type={inputType} onInput={onInput} />
   );

@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 
 // [block width=50% align=left]text in bar[/block]
 
@@ -11,6 +12,6 @@ export default {
       'text-align': options.align || 'inherit',
       'vertical-align': options.valign || 'top',
     };
-    return (<div style={blockStyle} class={options.class}>{markup(content)}</div>);
+    return (<div style={blockStyle} class={clsx('atrament-tag-block', options.class)}>{markup(content)}</div>);
   }
 }

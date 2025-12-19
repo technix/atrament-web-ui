@@ -18,13 +18,14 @@ const Progress = ({options, children}) => {
 
   const classList = clsx(
     style.progress_bar,
-    options.style === 'accent' ? style.accent : style.standard
+    options.style === 'accent' ? style.accent : style.standard,
+    'atrament-tag-progressbar-gauge'
   );
 
   return (
-    <div class={clsx(style.progress_frame, options.class)}>
+    <div class={clsx(style.progress_frame, 'atrament-tag-progressbar', options.class)}>
       <div class={classList} style={{width:`${width}%`}} />
-      <div class={style.progress_content}>{children}&nbsp;</div>
+      <div class={clsx(style.progress_content, 'atrament-tag-progressbar-content')}>{children}&nbsp;</div>
     </div> 
   );
 };
