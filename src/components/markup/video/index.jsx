@@ -8,11 +8,15 @@ const Video = ({ src, options }) => {
   const { getAssetPath } = useAtrament();
   const atramentState = useAtramentState(['settings']);
   const videoPlayerRef = useRef(null);
-  const soundVolume = atramentState.settings.volume;
+  const { volume, mute } = atramentState.settings;
   
   useEffect(() => {
-    videoPlayerRef.current.volume = soundVolume/100;
-  }, [videoPlayerRef, soundVolume]);
+    videoPlayerRef.current.volume = volume/100;
+  }, [videoPlayerRef, volume]);
+
+  useEffect(() => {
+    videoPlayerRef.current.muted = mute;
+  }, [videoPlayerRef, mute]);
 
   return (
     <video
