@@ -10,6 +10,7 @@ import SettingsText from './settings-text';
 import SettingsFont from './settings-font';
 import SettingsTheme from './settings-theme';
 import SettingsAnimation from './settings-animation';
+import SettingsDefaults from './settings-defaults';
 
 const Settings = () => {
   const translator = useTranslator();
@@ -23,6 +24,7 @@ const Settings = () => {
         <SettingsText />
         <SettingsTheme />
       </Collapse>
+      <SettingsDefaults />
     </div>
   );
 };

@@ -36,6 +36,8 @@
     "settings.animations": "Animations",
     "settings.sound": "Sound",
     "settings.appearance": "Appearance",
+    "settings.restore-defaults": "Restore default settings",
+    "settings.confirm-restore-defaults": "Restore settings?",
     "themes.light": "light",
     "themes.sepia": "sepia",
     "themes.dark": "dark",

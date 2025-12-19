@@ -36,6 +36,8 @@
     "settings.animations": "Анімації",
     "settings.sound": "Звук",
     "settings.appearance": "Вигляд",
+    "settings.restore-defaults": "Скинути налаштування",
+    "settings.confirm-restore-defaults": "Скинути налаштування?",
     "themes.light": "Світла",
     "themes.sepia": "Сепія",
     "themes.dark": "Темна",

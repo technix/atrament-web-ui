@@ -45,6 +45,15 @@ export const maxFontSize = defaultFontSize + ( stepFontSize * 5);
 // volume
 export const defaultVolume = 50;
 
+export const defaultSettings = {
+  fullscreen: false,
+  animation: true,
+  mute: false,
+  volume: defaultVolume,
+  fontSize: defaultFontSize,
+  theme: gameDefaultTheme
+};
+
 //// Internal constants ////
 
 // error
