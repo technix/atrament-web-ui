@@ -19,7 +19,7 @@ const DebugFunctions = () => {
     let fnArgs = [];
     try {
       fnArgs = JSON.parse(args);
-    } catch (e) {
+    } catch (e) { // eslint-disable-line no-unused-vars
       // ignore parsing error
     }
     return fnArgs;

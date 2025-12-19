@@ -1,4 +1,3 @@
-/* eslint-env browser */
 export default function muteWhenInactive(atrament) {
   document.addEventListener('visibilitychange', () => {
     if (document.visibilityState === 'visible') {

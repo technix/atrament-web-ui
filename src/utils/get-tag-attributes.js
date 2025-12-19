@@ -5,7 +5,7 @@ export default function getTagAttributes(tag) {
     const [, name, value] = item.match(/(.+?)=(.+)/);
     try {
       attributes[name] = JSON.parse(value);
-    } catch(e) {
+    } catch(e) { // eslint-disable-line no-unused-vars
       attributes[name] = value;
     }
   });
