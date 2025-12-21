@@ -17,5 +17,5 @@ const BannerBlock = ({children, options}) => {
 
 export default {
   tag: 'banner',
-  replacer: (options, content, markup) => <BannerBlock options={options}>{markup(content)}</BannerBlock>
+  component: BannerBlock
 }

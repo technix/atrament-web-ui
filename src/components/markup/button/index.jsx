@@ -35,10 +35,10 @@ const InlineButtonComponent = ({ children, options }) => {
 
 export default {
   tag: 'button',
-  replacer: (options, content, markup) => {
+  component: ({ options, children}) => {
     if (options.DEFAULT) {
       options.onclick = options.DEFAULT;
     }
-    return (<InlineButtonComponent options={options}>{markup(content)}</InlineButtonComponent>);
+    return (<InlineButtonComponent options={options}>{children}</InlineButtonComponent>);
   }
 }

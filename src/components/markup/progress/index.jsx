@@ -32,5 +32,5 @@ const Progress = ({options, children}) => {
 
 export default {
   tag: 'progress',
-  replacer: (options, content, markup) => <Progress options={options}>{markup(content)}</Progress>
+  component: Progress
 }

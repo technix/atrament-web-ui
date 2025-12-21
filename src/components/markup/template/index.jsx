@@ -62,5 +62,5 @@ const HtmlTemplate = ({ options, children }) => {
 
 export default {
   tag: 'template',
-  replacer: (options, content, markup) => <HtmlTemplate options={options}>{markup(content)}</HtmlTemplate>
+  component: HtmlTemplate
 }

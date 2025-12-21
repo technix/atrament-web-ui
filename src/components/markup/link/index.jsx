@@ -59,5 +59,5 @@ const InlineLink = ({ children, options }) => {
 
 export default {
   tag: 'link',
-  replacer: (options, content, markup) => <InlineLink options={options}>{markup(content)}</InlineLink>
+  component: InlineLink
 }

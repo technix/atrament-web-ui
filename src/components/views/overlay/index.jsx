@@ -9,7 +9,7 @@ import ModalPresenter from './modal';
 
 import useOverlayContent from 'src/content/use-overlay-content';
 
-const OverlayParagraph = (item, index) => <TextParagraph key={index}><Markup content={item} /></TextParagraph>;
+const OverlayParagraph = (item, index) => <TextParagraph key={index}><Markup>{item}</Markup></TextParagraph>;
 
 const OverlayView = () => {
   const [ isLoaded, overlay, closeOverlay ] = useOverlayContent();

@@ -4,8 +4,8 @@ import clsx from 'clsx';
 
 export default {
   tag: 'url',
-  replacer: (options, content, markup) => {
+  component: ({options, children }) => {
     const href = options.href || options.DEFAULT;
-    return (<a href={href} class={clsx('atrament-tag-url',options.class)} target="_blank" rel="noreferrer">{markup(content)}</a>);
+    return (<a href={href} class={clsx('atrament-tag-url',options.class)} target="_blank" rel="noreferrer">{children}</a>);
   }
 }

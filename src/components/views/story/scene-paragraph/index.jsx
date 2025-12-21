@@ -10,7 +10,7 @@ const Paragraph = ( {content, isCurrent} ) => {
 
   return (
     <TextParagraph active={isCurrent} class_override={content.tags.CLASS}>
-      <Markup content={content.text} isActive={isCurrent} />
+      <Markup isActive={isCurrent}>{content.text}</Markup>
     </TextParagraph>
   );
 }

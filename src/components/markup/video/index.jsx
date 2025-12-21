@@ -37,5 +37,6 @@ const Video = ({ src, options }) => {
 
 export default {
   tag: 'video',
-  replacer: (options, content) => <Video options={options} src={content} />
+  tagOptions: { raw: true },
+  component: Video
 }

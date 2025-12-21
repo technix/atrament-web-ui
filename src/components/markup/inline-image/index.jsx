@@ -5,13 +5,14 @@ import { useAtrament } from 'src/atrament/hooks';
 
 // [img]path/to/image.jpg[/img]
 
-const InlineImage = ({ options, src }) => {
+const InlineImage = ({ options, children }) => {
   const { getAssetPath } = useAtrament();
   const imgClass = clsx(style.inline_image, 'atrament-tag-img', options.class);
-  return (<img class={imgClass} src={getAssetPath(src)} />);
+  return (<img class={imgClass} src={getAssetPath(children)} />);
 }
 
 export default {
   tag: 'img',
-  replacer: (options, content) => <InlineImage options={options} src={content} />
+  tagOptions: { raw: true },
+  component: InlineImage
 }

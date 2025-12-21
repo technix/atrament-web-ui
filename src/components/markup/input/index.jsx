@@ -36,5 +36,5 @@ const Input = ({options}) => {
 export default {
   tag: 'input',
   tagOptions: { single: true },
-  replacer: (options) => <Input options={options} />
+  component: Input
 }

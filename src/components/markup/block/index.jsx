@@ -5,13 +5,13 @@ import clsx from 'clsx';
 
 export default {
   tag: 'block',
-  replacer: (options, content, markup) => {
+  component: ({ options, children }) => {
     const blockStyle = {
       display: 'inline-block',
       width: options.width || '100%',
       'text-align': options.align || 'inherit',
       'vertical-align': options.valign || 'top',
     };
-    return (<div style={blockStyle} class={clsx('atrament-tag-block', options.class)}>{markup(content)}</div>);
+    return (<div style={blockStyle} class={clsx('atrament-tag-block', options.class)}>{children}</div>);
   }
 }

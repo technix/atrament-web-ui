@@ -18,5 +18,5 @@ const InfoBlock = ({children, options}) => {
 
 export default {
   tag: 'info',
-  replacer: (options, content, markup) => <InfoBlock options={options}>{markup(content)}</InfoBlock>
+  component: InfoBlock
 }

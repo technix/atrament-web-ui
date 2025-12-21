@@ -9,7 +9,7 @@ const Toolbar = () => {
   const toolbarContent = useToolbarContent();
   return (
     <div class={clsx(style.toolbar, 'atrament-toolbar')}>
-      <Markup content={toolbarContent} />
+      <Markup>{toolbarContent}</Markup>
     </div>
   )
 };

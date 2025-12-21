@@ -5,7 +5,7 @@ import ContainerImage from 'src/components/ui/container-image'
 
 // [picture align=left]path/to/image.jpg[/picture]
 
-const Picture = ({ options, src }) => {
+const Picture = ({ options, children }) => {
   const { getAssetPath } = useAtrament();
   const pictureOptions = {
     fullsize: true
@@ -15,12 +15,11 @@ const Picture = ({ options, src }) => {
       pictureOptions[k] = options[k];
     }
   });
-  return (<ContainerImage src={getAssetPath(src)} options={pictureOptions} />);
+  return (<ContainerImage src={getAssetPath(children)} options={pictureOptions} />);
 }
 
 export default {
   tag: 'picture',
-  replacer: (options, content) => {
-    return (<Picture options={options} src={content} />);
-  }
+  tagOptions: { raw: true },
+  component: Picture
 }

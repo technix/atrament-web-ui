@@ -29,7 +29,7 @@ const ChoiceButton = ({ choice, chosen, index, handleClick, choiceAppearance }) 
   return (
     <button class={elementClasses} onClick={onClick} disabled={choice.disabled}>
       {choiceAppearance.numbered ? <>{index + 1}.&nbsp;</> : ''}
-      <Markup content={choice.choice} />
+      <Markup>{choice.choice}</Markup>
     </button>
   );
 };

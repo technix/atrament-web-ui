@@ -27,7 +27,7 @@ const AboutRoute = () => {
         <ContainerFlex>
           <Block> </Block>
           <Block>
-            {aboutContent.map((item) => <TextParagraph key={item}><Markup isActive content={item} /></TextParagraph>)}
+            {aboutContent.map((item) => <TextParagraph key={item}><Markup>{item}</Markup></TextParagraph>)}
           </Block>
         </ContainerFlex>
         <Block>

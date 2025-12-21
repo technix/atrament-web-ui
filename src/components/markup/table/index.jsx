@@ -7,25 +7,26 @@ import Table from 'src/components/ui/table';
 // [row][/row]
 // [/table]
 
-const parseHeader = (header, markup) => header
+const parseHeader = (header, renderer) => header
   .split(/\[ \]/)
   .map((item) => ({
     style: {textAlign: 'left'},
-    name: markup(item)
+    name: renderer(item)
   }));
 
-const parseRow = (row, markup) => {
+const parseRow = (row, renderer) => {
   const currentRow = row.match(/\[row\](.+?)\[\/row\]/i);
-  return currentRow[1].split(/\[ \]/).map(markup);
+  return currentRow[1].split(/\[ \]/).map((item) => renderer(item));
 }
 
 export default {
   tag: 'table',
-  replacer: (options, content, markup) => {
-    const tableHeader = content.match(/\[header\](.+?)\[\/header\]/i);
-    const tableRows = content.match(/\[row\].+?\[\/row\]/ig);
-    const columns = tableHeader ? parseHeader(tableHeader[1], markup) : [];
-    const rows = tableRows ? tableRows.map((row) => parseRow(row, markup)) : [];
+  tagOptions: { raw: true },
+  component: ({ options, children, markupRenderer }) => {
+    const tableHeader = children.match(/\[header\](.+?)\[\/header\]/i);
+    const tableRows = children.match(/\[row\].+?\[\/row\]/ig);
+    const columns = tableHeader ? parseHeader(tableHeader[1], markupRenderer) : [];
+    const rows = tableRows ? tableRows.map((row) => parseRow(row, markupRenderer)) : [];
     const columnWidth = options.columns ? options.columns.split(/\s+/g) : [];
     return (<Table
       className={clsx('atrament-tag-table', options.class)}

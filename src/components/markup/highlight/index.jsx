@@ -5,13 +5,13 @@ import clsx from 'clsx';
 
 export default {
   tag: 'highlight',
-  replacer: (options, content, markup) => {
+  component: ({ options, children }) => {
     const highlightStyle = {
       'background-color': options.bgcolor || 'var(--accent-bg-color)',
       color: options.color || 'var(--accent-fg-color)',
       padding: options.bgcolor ? '0.1em' : 'inherit',
       'box-decoration-break': 'clone'
     };
-    return (<span style={highlightStyle} class={clsx('atrament-tag-highlight', options.class)}>{markup(content)}</span>);
+    return (<span style={highlightStyle} class={clsx('atrament-tag-highlight', options.class)}>{children}</span>);
   }
 }

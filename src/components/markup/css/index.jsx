@@ -4,5 +4,5 @@ import { h } from 'preact';
 
 export default {
   tag: 'css',
-  replacer: (options, content, markup) => <span class={options.class} style={options.style}>{markup(content)}</span>
+  component: ({ options, children }) => <span class={options.class} style={options.style}>{children}</span>
 }

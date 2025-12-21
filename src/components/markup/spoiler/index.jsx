@@ -24,5 +24,5 @@ const Spoiler = ({ options, children }) => {
 
 export default {
   tag: 'spoiler',
-  replacer: (options, content, markup) => <Spoiler options={options}>{markup(content)}</Spoiler>
+  component: Spoiler
 }
