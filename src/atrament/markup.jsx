@@ -1,8 +1,9 @@
+import { h, Fragment } from 'preact';
 import markupTags from 'src/components/markup';
-import { Fragment, HTMLFragment } from 'src/components/markup/fragment';
 import getTagAttributes from 'src/utils/get-tag-attributes';
 
 const containsHTML = (str) => /<\/?[a-z][\s\S]*>/i.test(str);
+const HTMLFragment = ({ index, item }) => (<span key={index} dangerouslySetInnerHTML={{ __html: item }} />);
 
 const tagRe = /\[(\/?)(\w+)([^\]]*)\]/g;
 
@@ -129,7 +130,7 @@ function render(node) {
 
   if (markupTags[node.name]?.replacer) {
     // old-style components with replacers
-    const replacer = markupTags[node.name]?.replacer ?? ((options, content) => Fragment({ children: content }));
+    const replacer = markupTags[node.name]?.replacer ?? ((options, content) => <>{content}</>);
     return replacer(node.options, node.raw ? node.children[0]?.value : node.children.map(render), (i) => i);
   }
 
