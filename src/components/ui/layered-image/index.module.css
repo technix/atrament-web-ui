@@ -1,0 +1,15 @@
+.imagebox {
+  display: flex;
+  position: relative;
+}
+
+.background {
+  margin: auto;
+  max-width: 100%;
+  display: block;
+}
+
+.layer_wrapper {
+  position: absolute;
+  overflow: hidden;
+}

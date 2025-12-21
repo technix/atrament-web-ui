@@ -221,6 +221,33 @@ Attributes of the `[table]` tag:
 * `columns="20% 20% 60%"` sets column width. You have to set width for each column in the table.
 * `fixed=true` forces text wrapping, so columns always have fixed width.
 
+#### Layered images
+
+To create a multi-layer image, use `[layers]` markup tag:
+```
+[layers]<>
+[picture]southern_fjord.png[/picture]<>
+[picture x=369 y=2669]quill-ink.png[/picture]<>
+[picture x=2261 y=2531]fountain-pen.png[/picture]<>
+[/layers]
+```
+
+First `[picture]` tag inside of the `[layers]` is background. Background dimensions are determined automatically to fit the screen.
+
+The `x` and `y` attributes of other `[picture]` tags determine image coordinates relatively to the top left corner of the background image. These attribute values are set in **pixels**. If omitted, the layer is aligned to the top left corner.
+
+Attributes of the `[layers]` tag:
+* `width=50%` sets layered picture width.
+* `leftmargin=0.5em` sets left margin.
+* `rightmargin=0.5em` sets right margin.
+
+Attributes of the `[picture]` tag inside of a `[layers]` tag:
+* `x=10` set X coordinate relative to top left corner of the background
+* `y=22` set Y coordinate relative to top left corner of the background
+* `to="Choice text"` clicking on this layer links to the choice with this text
+* `onclick=inkFunction` clicking on this layer calls this Ink function
+* `display=modal` when Ink function is called, the result will be displayed in the modal window
+
 ### Overlay
 
 Atrament UI can display custom data (inventory, character stats etc.) as an overlay. 
