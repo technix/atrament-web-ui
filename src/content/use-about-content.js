@@ -5,7 +5,7 @@ export default function useAboutContent() {
   const { evaluateInkFunction } = useAtrament();
   const { metadata } = useAtramentState(['metadata']);
   const [ aboutContent, setAboutContent ] = useState(' ');
-  
+
   useEffect(() => {
     const result = evaluateInkFunction(metadata.about);
     setAboutContent(result.output || ' ');

@@ -30,6 +30,7 @@
   "devDependencies": {
     "@neutralinojs/neu": "11.6.0",
     "@preact/preset-vite": "2.10.2",
+    "@stylistic/eslint-plugin": "^5.6.1",
     "@terascope/fetch-github-release": "2.2.1",
     "@vite-pwa/assets-generator": "1.0.2",
     "eslint": "9.39.2",

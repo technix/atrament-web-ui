@@ -39,8 +39,8 @@ const DebugVisits = () => {
       </div>
       <Table
         columns={[
-          {name: translator.translate('debug.visits.path'), style: {width: '75%', 'text-align': 'left'}},
-          {name: translator.translate('debug.visits.count'), style: {'text-align': 'left'}}
+          { name: translator.translate('debug.visits.path'), style: { width: '75%', 'text-align': 'left' } },
+          { name: translator.translate('debug.visits.count'), style: { 'text-align': 'left' } }
         ]}
         data={inkVisits}
         pageSize={10}

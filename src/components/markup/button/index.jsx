@@ -35,7 +35,7 @@ const InlineButtonComponent = ({ children, options }) => {
 
 export default {
   tag: 'button',
-  component: ({ options, children}) => {
+  component: ({ options, children }) => {
     if (options.DEFAULT) {
       options.onclick = options.DEFAULT;
     }

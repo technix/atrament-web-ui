@@ -6,22 +6,22 @@ import { useAtrament } from 'src/atrament/hooks';
 
 import Toggle from 'src/components/ui/toggle';
 
-const NumberEditor = ({value, setNewValue}) => {
+const NumberEditor = ({ value, setNewValue }) => {
   const updateValue = (e) => setNewValue(+e.target.value);
   return (<input class={style.input} type="number" value={value} onInput={updateValue} />);
 };
 
-const StringEditor = ({value, setNewValue}) => {
+const StringEditor = ({ value, setNewValue }) => {
   const updateValue = (e) => setNewValue(e.target.value);
   return (<input class={style.input} type="text" value={value} onInput={updateValue} />);
 };
 
-const BooleanEditor = ({name, value, setNewValue}) => {
+const BooleanEditor = ({ name, value, setNewValue }) => {
   const updateValue = (e) => setNewValue(e.target.checked);
   return (<div class={style.toggle}><Toggle enabled={value} onChange={updateValue} name={name} /></div>);
 };
 
-const ListViewer = ({name, value}) => {
+const ListViewer = ({ name, value }) => {
   if (name === value._originNames[0] && value.size === 0) {
     // empty list, show only possible keys
     const mapKeys = [...value.origins[0]._itemNameToValues.keys()];
@@ -40,7 +40,7 @@ const ListViewer = ({name, value}) => {
 
 
 
-const DebugVariableEditor = ({name, value}) => {
+const DebugVariableEditor = ({ name, value }) => {
   const { getInkVariable, setInkVariable } = useAtrament();
   const translator = useTranslator();
   const [ editMode, setEditMode ] = useState(false);

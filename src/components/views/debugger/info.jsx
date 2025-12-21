@@ -14,12 +14,12 @@ const DebugInfo = () => {
   const inkstory = atrament.ink.story();
   const inkstate = inkstory.state;
   const gamedata = atrament.state.get().game;
-  
+
   const tableData = [
     [translator.translate('debug.info.ink-file'), `${gamedata.$path}/${gamedata.$file}`],
     [translator.translate('debug.info.story-seed'), inkstate.storySeed],
     [translator.translate('debug.info.current-turn-index'), inkstate.currentTurnIndex],
-    [translator.translate('debug.info.path'), gamedata[STORYPATH_STORE_KEY]],
+    [translator.translate('debug.info.path'), gamedata[STORYPATH_STORE_KEY]]
   ];
 
   return(

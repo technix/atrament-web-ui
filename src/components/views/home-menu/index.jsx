@@ -71,7 +71,7 @@ export const HomeMenuView = () => {
 
   const openLoadGameMenu = () => setLoadGameMenuVisible(true);
   const closeLoadGameMenu = () => setLoadGameMenuVisible(false);
-  
+
   useEffect(() => {
     const initHome = async () => {
       const canResumeGame = await canResume();

@@ -13,7 +13,7 @@ const DebugGlobaltags = () => {
   const { atrament } = useAtrament();
   const translator = useTranslator();
   const globaltags = atrament.ink.getGlobalTags();
-  
+
   const displayGlobaltags = Object.keys(globaltags).map(k => {
     if (KNOWN_GLOBAL_TAGS.includes(k)) {
       return [k, globaltags[k]];

@@ -4,7 +4,7 @@ import { Text } from '@eo-locale/preact';
 import { useState } from 'preact/hooks';
 import { useAtrament } from 'src/atrament/hooks';
 
-const DebugGoto = ({closeFn}) => {
+const DebugGoto = ({ closeFn }) => {
   const { atrament } = useAtrament();
   const [ pathString, setPathString ] = useState('');
   const [ errorMsg, setErrorMsg ] = useState('');

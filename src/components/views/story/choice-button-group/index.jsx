@@ -32,7 +32,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
     const targetElement = e.target.tagName.toLowerCase();
     if (targetElement === 'input') {
       // ignore keyboard event
-      return; 
+      return;
     }
     if (
       numberOfChoices > 0 &&
@@ -78,7 +78,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
         }
       </div>
     </>
-  ) 
+  )
 };
 
 export default ChoiceButtonGroup;

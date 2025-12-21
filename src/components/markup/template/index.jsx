@@ -40,7 +40,7 @@ const HtmlTemplate = ({ options, children }) => {
   // render HTML content
   let htmlContent;
   try {
-    htmlContent = mustache.render(templates[options.src], vars );
+    htmlContent = mustache.render(templates[options.src], vars);
   } catch (e) {
     throwAtramentError(`Template: ${options.src}. ${e}`);
     console.error(e);
@@ -52,8 +52,8 @@ const HtmlTemplate = ({ options, children }) => {
     <>
       {
         options.wrapper === 'span'
-          ? <span ref={rootRef} class={options.class} dangerouslySetInnerHTML={{__html: htmlContent}} />
-          : <div ref={rootRef} class={options.class} dangerouslySetInnerHTML={{__html: htmlContent}} />
+          ? <span ref={rootRef} class={options.class} dangerouslySetInnerHTML={{ __html: htmlContent }} />
+          : <div ref={rootRef} class={options.class} dangerouslySetInnerHTML={{ __html: htmlContent }} />
       }
       {slot && createPortal(children, slot)}
     </>

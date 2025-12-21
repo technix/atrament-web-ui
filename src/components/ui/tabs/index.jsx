@@ -2,7 +2,7 @@ import { h } from 'preact';
 import style from './index.module.css';
 import { useState } from 'preact/hooks';
 
-const Tab = ({ children}) => <div class={style.tab}>{children}</div>;
+const Tab = ({ children }) => <div class={style.tab}>{children}</div>;
 
 const TabContent = ({ children, isHidden }) => (
   <section class={style.tabcontent} role="tabpanel" hidden={isHidden}>
@@ -22,7 +22,7 @@ const Tabs = ({ children }) => {
   return (
     <div class={style.tabs}>
       <ul class={style.tablist} role="tablist">
-        {children.map((tab, id) => 
+        {children.map((tab, id) =>
           <TabHeader
             key={id}
             title={tab.props.title}
@@ -33,11 +33,11 @@ const Tabs = ({ children }) => {
           </TabHeader>
         )}
       </ul>
-      {children.map((tab, id) => 
+      {children.map((tab, id) =>
         <TabContent key={id} isHidden={!(activeTab === id)}>{tab.props.children}</TabContent>
       )}
     </div>
-  ); 
+  );
 }
 
 export {

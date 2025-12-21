@@ -15,7 +15,7 @@ const LoadGameView = ({ loadGame, hasConfirmation = false }) => {
   const translator = useTranslator();
   const { atrament } = useAtrament();
   const { metadata } = useAtramentState(['metadata']);
-  
+
   const initLoadgame = useCallback(async () => {
     const existingSaves = await atrament.game.listSaves();
     const saveSlotList = [];
@@ -66,8 +66,8 @@ const LoadGameView = ({ loadGame, hasConfirmation = false }) => {
   }, [ initLoadgame ]);
 
   return (
-    <>      
-      {saveslots.map((s) => 
+    <>
+      {saveslots.map((s) =>
         <MenuListItem
           key={s.name}
           onSelect={startSavedGame}

@@ -18,7 +18,7 @@ export function registerSettingsHandlers(atrament) {
       document.documentElement.style.setProperty('--animation-disabled', '0s');
     }
   });
-  atrament.settings.defineHandler('fullscreen', (oldV, value) => { 
+  atrament.settings.defineHandler('fullscreen', (oldV, value) => {
     atrament.interfaces.platform.setFullscreen(value, (v) => {
       atrament.settings.set('fullscreen', v);
       atrament.settings.save();

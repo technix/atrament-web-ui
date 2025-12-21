@@ -17,11 +17,11 @@ const components = [
   ["Howler", "https://howlerjs.com/"],
   ["Nanostores", "https://github.com/nanostores/nanostores"],
   ["LocalForage", "https://github.com/localForage/localForage"],
-  ["fflate", "https://github.com/101arrowz/fflate"],
+  ["fflate", "https://github.com/101arrowz/fflate"]
 ];
 const lastComponent = components.length - 1;
 
-const A = ({href, children}) => (<a href={href} target="_blank" rel="noreferrer">{children}</a>);
+const A = ({ href, children }) => (<a href={href} target="_blank" rel="noreferrer">{children}</a>);
 const iftfLink = '<a href="https://iftechfoundation.org/" target="_blank" rel="noreferrer">Interactive Fiction Technology Foundation</a>';
 
 const AboutMenu = ({ onClick }) => {

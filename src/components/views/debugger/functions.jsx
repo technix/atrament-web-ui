@@ -86,7 +86,7 @@ const DebugFunctions = () => {
       <div class={style.container}>
         {outputMsg && <Table data={[
           [translator.translate('debug.functions.returned-value'), JSON.stringify(outputMsg.returned)],
-          [translator.translate('debug.functions.output'), <pre key={'output'}>{outputMsg.output}</pre>],
+          [translator.translate('debug.functions.output'), <pre key={'output'}>{outputMsg.output}</pre>]
         ]} fixed />}
       </div>
     </Collapse>

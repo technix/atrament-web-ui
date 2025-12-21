@@ -7,7 +7,7 @@ import ErrorModal from 'src/components/ui/error-modal';
 
 const StoryError = () => {
   const [ errorMessage, clearError ] = useErrorContent();
-  
+
   const escHandler = useCallback((e) => {
     if (e.key === "Escape") {
       clearError()

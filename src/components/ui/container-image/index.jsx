@@ -13,7 +13,7 @@ const ContainerImage = ({ src, options = {} }) => (
     <img
       src={src}
       style={{
-        width: options.width || 'auto',
+        width: options.width || 'auto'
       }}
       class={clsx(
         style.image,

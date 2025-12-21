@@ -13,7 +13,7 @@ const GameCover = () => {
   const [ coverImage, coverSize ] = (cover || '').split(' ');
   const LayoutElements = {
     cover: coverImage
-      ? <ContainerImage src={getAssetPath(coverImage)} options={coverSize ? {width: coverSize} : {}} />
+      ? <ContainerImage src={getAssetPath(coverImage)} options={coverSize ? { width: coverSize } : {}} />
       : '',
     title: <h1>{title ? title : translator.translate('default.title')}</h1>,
     author: <p>{author ? author : translator.translate('default.author')}</p>

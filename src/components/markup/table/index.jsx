@@ -10,7 +10,7 @@ import Table from 'src/components/ui/table';
 const parseHeader = (header, renderer) => header
   .split(/\[ \]/)
   .map((item) => ({
-    style: {textAlign: 'left'},
+    style: { textAlign: 'left' },
     name: renderer(item)
   }));
 

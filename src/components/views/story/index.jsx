@@ -13,7 +13,7 @@ import Choices from './choices';
 const StoryView = () => {
   const atramentState = useAtramentState(['scenes', 'metadata']);
   const [ isReady, setReady ] = useState(false);
-  
+
   const lastSceneIndex = atramentState.scenes.length - 1;
   const isHypertextMode = !!atramentState.metadata.hypertext || !!atramentState.scenes[lastSceneIndex]?.tags.HYPERTEXT;
   const key = `choices-${atramentState.scenes[lastSceneIndex]?.uuid}`;
@@ -21,7 +21,7 @@ const StoryView = () => {
   return (
     <ContainerText>
       <ContainerScenes align={atramentState.metadata.scenes_align}>
-        {atramentState.scenes.map((s, i) => 
+        {atramentState.scenes.map((s, i) =>
           <Scene
             key={s.uuid}
             scene={s}

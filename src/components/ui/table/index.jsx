@@ -4,14 +4,14 @@ import { useState, useEffect } from 'preact/hooks';
 import style from './index.module.css';
 
 const Table = ({
-  columns = [], 
-  data = [], 
+  columns = [],
+  data = [],
   pageSize = 0,
   border = true,
   padding = true,
   columnWidth = [],
   fixed = false,
-  className = '',
+  className = ''
 }) => {
   const [ currentPage, setCurrentPage ] = useState(0);
   useEffect(() => {
@@ -48,7 +48,7 @@ const Table = ({
           )}
         </caption>
       }
-      {columns.length > 0 && 
+      {columns.length > 0 &&
         <thead>
           <tr class={border ? style.thead_border : ''}>
             {columns.map((th, i) => {
@@ -63,7 +63,7 @@ const Table = ({
           </tr>
         </thead>
       }
-      {displayData.length > 0 && 
+      {displayData.length > 0 &&
         <tbody>
           {displayData.map((tr, row) => (
             <tr key={row}  class={border ? style.tbody_border : ''}>

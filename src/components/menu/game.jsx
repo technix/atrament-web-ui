@@ -53,7 +53,7 @@ const MenuGameScreen = ({ toggleMenu }) => {
   const [ isSaveMenuOpen, toggleSaveMenu ] = useToggle(false);
   const [ isLoadMenuOpen, toggleLoadMenu ] = useToggle(false);
   const [ isSettingsMenuOpen, toggleSettingsMenu ] = useToggle(false);
-  
+
   const loadGame = useCallback(async (saveslot) => {
     await atrament.game.restart(saveslot);
     toggleLoadMenu();

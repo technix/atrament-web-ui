@@ -6,7 +6,7 @@ import { useAtrament } from 'src/atrament/hooks';
 
 import { themes } from 'src/themes';
 
-const SettingButton = ({themeId, themeConfig, onClick }) =>  {
+const SettingButton = ({ themeId, themeConfig, onClick }) =>  {
   const buttonStyle={
     color: themeConfig['fg-color'],
     'background-color': themeConfig['bg-color']

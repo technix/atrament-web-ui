@@ -3,7 +3,7 @@ import TextParagraph from 'src/components/ui/text-paragraph';
 
 import Markup from 'src/components/ui/markup';
 
-const Paragraph = ( {content, isCurrent} ) => {
+const Paragraph = ({ content, isCurrent }) => {
   if (content.text === "\n") {
     return <></>;
   }

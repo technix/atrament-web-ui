@@ -10,7 +10,7 @@ export default {
       display: 'inline-block',
       width: options.width || '100%',
       'text-align': options.align || 'inherit',
-      'vertical-align': options.valign || 'top',
+      'vertical-align': options.valign || 'top'
     };
     return (<div style={blockStyle} class={clsx('atrament-tag-block', options.class)}>{children}</div>);
   }

@@ -54,7 +54,7 @@ const Choices = ({ key, currentScene, setReady, isHypertextMode }) => {
         clickable={options.clickable}
       />);
     }
-  } else if (numberOfChoices === 0) { 
+  } else if (numberOfChoices === 0) {
     if (currentScene.canContinue) {
       // paragraph mode
       return (<ClickToContinue setReady={setReady} animation={3} />);

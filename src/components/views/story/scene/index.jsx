@@ -45,7 +45,7 @@ const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
 
   return (
     <div class={clsx(style.scene, 'atrament-scene', (isCurrent && isLoaded) && 'animation_appear')} ref={elementRef}>
-      { isLoaded ? 
+      { isLoaded ?
         scene.content.map((item, i) => (
           <Fragment key={`paragraph-${scene.uuid}-${i}`}>
             {item.images.map(

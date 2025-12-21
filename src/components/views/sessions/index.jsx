@@ -12,7 +12,7 @@ const SessionsView = ({ newGame, loadGame, resumeGame, canResume }) => {
   const translator = useTranslator();
   const { atrament } = useAtrament();
   const { metadata } = useAtramentState(['metadata']);
-  
+
   const initSessions = useCallback(async () => {
     const existingSessions = await atrament.game.getSessions();
     let firstEmptySlot = true;
@@ -57,10 +57,9 @@ const SessionsView = ({ newGame, loadGame, resumeGame, canResume }) => {
     onLoad();
   }, [ initSessions ]);
 
-
   return (
-    <>      
-      {sessions.map((s) => 
+    <>
+      {sessions.map((s) =>
         <MenuListItem
           key={s.name}
           onSelect={startSession}

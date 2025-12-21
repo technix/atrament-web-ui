@@ -4,7 +4,7 @@ import { Text } from '@eo-locale/preact';
 import style from './index.module.css';
 import { useToggle } from 'src/hooks';
 
-const DialogYesNo = ({ prompt, onAccept, onReject, attributes}) => (
+const DialogYesNo = ({ prompt, onAccept, onReject, attributes }) => (
   <div class={style.container}>
     <div class={style.prompt}>{prompt}</div>
     <button onClick={onAccept} class={clsx(style.menu_item, style.delete_item, style.small)} {...attributes}>
@@ -59,7 +59,7 @@ const MenuListItem = ({
       >
         {children}
       </button>
-      {(isDeletable && !isDisabled) && 
+      {(isDeletable && !isDisabled) &&
         <button
           key={key}
           onClick={showDeleteDialog}

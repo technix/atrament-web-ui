@@ -15,7 +15,7 @@ const getAlign = (v) => {
 
 const ContainerScenes = ({ children, align }) => {
   return (
-    <div class={clsx(style.container_scenes, 'atrament-container-scene')} style={{'justify-content': getAlign(align)}}>
+    <div class={clsx(style.container_scenes, 'atrament-container-scene')} style={{ 'justify-content': getAlign(align) }}>
       {children}
     </div>
   );

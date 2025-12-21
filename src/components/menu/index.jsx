@@ -17,7 +17,7 @@ import AboutMenu from 'src/components/views/about';
 import MenuHomeScreen from './home';
 import MenuGameScreen from './game';
 
-const MenuScreen = ({isHomeScreen, toggleMenu}) => (isHomeScreen ? <MenuHomeScreen /> : <MenuGameScreen toggleMenu={toggleMenu} />);
+const MenuScreen = ({ isHomeScreen, toggleMenu }) => (isHomeScreen ? <MenuHomeScreen /> : <MenuGameScreen toggleMenu={toggleMenu} />);
 
 const Menu = ({ isHomeScreen = false }) => {
   const [ isOpen, toggleMainMenu ] = useToggle(false);

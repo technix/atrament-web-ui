@@ -23,8 +23,8 @@ const DebugVariablesTable = ({ variables }) => {
   return(
     <Table columns={
       [
-        { name: translator.translate('debug.variables.name'), style: {width: '50%', 'text-align': 'left'} },
-        { name: translator.translate('debug.variables.value'), style: {'text-align': 'left'} }
+        { name: translator.translate('debug.variables.name'), style: { width: '50%', 'text-align': 'left' } },
+        { name: translator.translate('debug.variables.value'), style: { 'text-align': 'left' } }
       ]
     } data={tableData} pageSize={10} fixed />
   );
@@ -35,7 +35,7 @@ const DebugVariables = () => {
   const { atrament } = useAtrament();
   const translator = useTranslator();
   const inkVariables = listInkVariables(atrament).filter((v) => v[0].includes(varNameFilter));
-  
+
   const handleFilterChange = (e) => {
     setVarNameFilter(e.target.value);
   };

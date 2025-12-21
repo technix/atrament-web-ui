@@ -1,5 +1,5 @@
 import markupTags from 'src/components/markup';
-import {Fragment, HTMLFragment} from 'src/components/markup/fragment';
+import { Fragment, HTMLFragment } from 'src/components/markup/fragment';
 import getTagAttributes from 'src/utils/get-tag-attributes';
 
 const containsHTML = (str) => /<\/?[a-z][\s\S]*>/i.test(str);
@@ -30,7 +30,7 @@ function parseBBCode(input) {
     if (index > cursor) {
       parent.children.push({
         type: "text",
-        value: input.slice(cursor, index),
+        value: input.slice(cursor, index)
       });
     }
 
@@ -50,7 +50,7 @@ function parseBBCode(input) {
 
       parent.children.push({
         type: "text",
-        value: input.slice(index, end),
+        value: input.slice(index, end)
       });
 
       cursor = end;
@@ -65,7 +65,7 @@ function parseBBCode(input) {
         name,
         options: getTagAttributes(rawOptions.trim()),
         children: [],
-        raw: isRaw,
+        raw: isRaw
       };
 
       parent.children.push(node);
@@ -90,7 +90,7 @@ function parseBBCode(input) {
           value: input.slice(
             tagRe.lastIndex,
             rawEnd
-          ),
+          )
         });
 
         cursor = closeMatch
@@ -111,7 +111,7 @@ function parseBBCode(input) {
   if (cursor < input.length) {
     stack[stack.length - 1].children.push({
       type: "text",
-      value: input.slice(cursor),
+      value: input.slice(cursor)
     });
   }
 
@@ -122,14 +122,14 @@ function parseBBCode(input) {
 function render(node) {
   if (node.type === "text") {
     if (containsHTML(node.value)) {
-      return HTMLFragment({index: Math.random(), item: node.value});
+      return HTMLFragment({ index: Math.random(), item: node.value });
     }
     return node.value;
   };
 
   if (markupTags[node.name]?.replacer) {
     // old-style components with replacers
-    const replacer = markupTags[node.name]?.replacer ?? ((options, content) => Fragment({children: content}));
+    const replacer = markupTags[node.name]?.replacer ?? ((options, content) => Fragment({ children: content }));
     return replacer(node.options, node.raw ? node.children[0]?.value : node.children.map(render), (i) => i);
   }
 

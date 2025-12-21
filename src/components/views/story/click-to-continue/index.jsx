@@ -67,7 +67,7 @@ const ClickToContinue = ({ setReady, withChoice = false, delay = 0, animation = 
         : ''
       }
     </div>
-  ) 
+  )
 };
 
 export default ClickToContinue;

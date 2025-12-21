@@ -108,7 +108,7 @@ export const useAtrament = () => {
 
 export const useAtramentState = (keys = undefined) => {
   const atrament = useContext(AtramentContext);
-  return useStore(atrament.store, {keys});
+  return useStore(atrament.store, { keys });
 };
 
 export const useAtramentOverlay = () => {

@@ -12,9 +12,9 @@ const SettingsFont = () => {
   const font = atramentState.settings.font;
   return (
     <div class={clsx(style.settings_font_container, 'atrament-settings-font')}>
-      <select onChange={handleFont} style={{'font-family': fonts[font]}}>
+      <select onChange={handleFont} style={{ 'font-family': fonts[font] }}>
         {Object.entries(fonts).map(([k, v]) => (
-          <option key={k} value={k} style={{'font-family': v}} selected={font === k}>{k}</option>
+          <option key={k} value={k} style={{ 'font-family': v }} selected={font === k}>{k}</option>
         ))}
       </select>
     </div>

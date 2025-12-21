@@ -9,7 +9,7 @@ import { ActiveContentContext } from 'src/context';
 
 // [input var=variable placeholder="placeholder text" type=number]
 
-const Input = ({options}) => {
+const Input = ({ options }) => {
   const isActive = useContext(ActiveContentContext);
 
   const [ defaultValue, setDefaultValue ] = useState(null);

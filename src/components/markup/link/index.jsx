@@ -31,15 +31,15 @@ const InlineLink = ({ children, options }) => {
   }, [ throwAtramentError, continueStory, makeChoice, choice, atramentState.scenes ]);
 
   const clickHandlerFunction = useCallback(
-    () => execContentFunction(options.onclick, options.display), 
+    () => execContentFunction(options.onclick, options.display),
     [ execContentFunction, options ]
   );
 
   const linkClass = clsx(
-    style.inline_link, 
+    style.inline_link,
     !isActive && style.disabled,
     'atrament-tag-link',
-    options.class,
+    options.class
   );
 
   const onClickFunction = isActive

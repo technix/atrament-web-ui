@@ -10,7 +10,7 @@ const Video = ({ src, options }) => {
   const atramentState = useAtramentState(['settings']);
   const videoPlayerRef = useRef(null);
   const { volume, mute } = atramentState.settings;
-  
+
   useEffect(() => {
     videoPlayerRef.current.volume = volume/100;
   }, [videoPlayerRef, volume]);

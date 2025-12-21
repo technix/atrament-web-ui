@@ -4,7 +4,7 @@ import style from './index.module.css';
 
 // [progress min=0 max=100 value=99 style=accent]text in bar[/progress]
 
-const Progress = ({options, children}) => {
+const Progress = ({ options, children }) => {
   const min = +options.min || 0;
   const max = +options.max || 100;
   const value = +options.value || 0;
@@ -24,9 +24,9 @@ const Progress = ({options, children}) => {
 
   return (
     <div class={clsx(style.progress_frame, 'atrament-tag-progressbar', options.class)}>
-      <div class={classList} style={{width:`${width}%`}} />
+      <div class={classList} style={{ width:`${width}%` }} />
       <div class={clsx(style.progress_content, 'atrament-tag-progressbar-content')}>{children}&nbsp;</div>
-    </div> 
+    </div>
   );
 };
 

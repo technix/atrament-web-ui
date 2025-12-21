@@ -15,7 +15,7 @@ const SaveGameView = ({ saveGame }) => {
   const { atrament } = useAtrament();
   const { metadata } = useAtramentState(['metadata']);
   const numberOfSaveSlots = metadata.saves ? +metadata.saves : 0;
-  
+
   const initSavegame = useCallback(async () => {
     const existingSaves = await atrament.game.listSaves();
     // saved games
@@ -50,8 +50,8 @@ const SaveGameView = ({ saveGame }) => {
   }, [ initSavegame ]);
 
   return (
-    <>      
-      {saveslots.map((s) => 
+    <>
+      {saveslots.map((s) =>
         <MenuListItem
           key={s.name}
           onSelect={saveGameToSlot}

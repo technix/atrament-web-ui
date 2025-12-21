@@ -23,7 +23,7 @@ const SettingsText = () => {
   return (
     <div class={clsx(style.settings_text, 'atrament-settings-text')}>
       <div class={style.settings_fontsize_container}>
-        <div class={style.settings_font_a} style={{'font-size': `${minFontSize}%`}}>A</div>
+        <div class={style.settings_font_a} style={{ 'font-size': `${minFontSize}%` }}>A</div>
         <div class={style.settings_fontsize_input_container}>
           <input
             class={style.settings_fontsize_input}
@@ -39,9 +39,9 @@ const SettingsText = () => {
             {datapointsFontSize.map((f) => <option key={f} value={f} />)}
           </datalist>
         </div>
-        <div class={style.settings_font_a} style={{'font-size': `${maxFontSize}%`}}>A</div>
+        <div class={style.settings_font_a} style={{ 'font-size': `${maxFontSize}%` }}>A</div>
       </div>
-      <div class={style.settings_font_sample} style={{'font-size': `${fontSize}%`, 'font-family': fonts[font]}}>
+      <div class={style.settings_font_sample} style={{ 'font-size': `${fontSize}%`, 'font-family': fonts[font] }}>
         <Text id={'font.sampleText'} />
       </div>
     </div>

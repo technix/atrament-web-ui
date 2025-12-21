@@ -22,7 +22,7 @@ const GameRoute = () => {
     containerStyle = {
       'background-image': `url(${getAssetPath(atramentState.game.background)})`,
       'background-size': 'cover',
-      'background-position': 'center' 
+      'background-position': 'center'
     }
   }
 

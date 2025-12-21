@@ -39,8 +39,8 @@ export const gameDefaultFont = cfg.font;
 // Font size range and step (percentage)
 export const defaultFontSize = 100;
 export const stepFontSize = 10;
-export const minFontSize = defaultFontSize - ( stepFontSize * 3);
-export const maxFontSize = defaultFontSize + ( stepFontSize * 5);
+export const minFontSize = defaultFontSize - (stepFontSize * 3);
+export const maxFontSize = defaultFontSize + (stepFontSize * 5);
 
 // volume
 export const defaultVolume = 50;
