@@ -3,12 +3,42 @@ import { useRef, useState, useEffect } from 'preact/hooks';
 import clsx from 'clsx';
 import style from './index.module.css';
 
-const LayeredImage = ({ layers = [], options = {} }) => {
+const ImageLayer = ({ key, scale, item }) => (<img
+  class='atrament-layer'
+  key={key}
+  src={item.src}
+  onClick={item.onclick}
+  style={{
+    position: 'absolute',
+    left: (item.attrs?.x || 0) * scale,
+    top: (item.attrs?.y || 0) * scale,
+    width: item.width ? item.width * scale : 'auto',
+    height: item.height ? item.height * scale : 'auto',
+    cursor: item.onclick ? 'pointer' : 'auto'
+  }}
+/>);
+
+const AreaLayer = ({ key, scale, item }) => (<div
+  class='atrament-layer-area'
+  key={key}
+  onClick={item.onclick}
+  style={{
+    position: 'absolute',
+    left: (item.attrs.x || 0) * scale,
+    top: (item.attrs.y || 0) * scale,
+    width: (item.attrs.width || (item.attrs.x1 - item.attrs.x)) * scale,
+    height: (item.attrs.height || (item.attrs.y1 - item.attrs.y)) * scale,
+    cursor: item.onclick ? 'pointer' : 'auto'
+  }}
+/>);
+
+const LayeredImage = ({ layers = [], areas=[], options = {} }) => {
   const containerRef = useRef(null);
   const [layout, setLayout] = useState(null);
 
   const overlays = [ ...layers.sort(((a, b) => a.index - b.index)) ];
   const background = overlays.shift();
+  const overlayAreas = [ ...areas.sort(((a, b) => a.index - b.index)) ];
 
   useEffect(() => {
     const update = () => {
@@ -66,22 +96,8 @@ const LayeredImage = ({ layers = [], options = {} }) => {
             height: layout.renderHeight,  
           }}
         >
-          {overlays.map((o, i) => (
-            <img
-              class='atrament-layer'
-              key={i}
-              src={o.src}
-              onClick={o.onclick}
-              style={{
-                position: 'absolute',
-                left: (o.attrs?.x || 0) * layout.scale,
-                top: (o.attrs?.y || 0) * layout.scale,
-                width: o.width ? o.width * layout.scale : 'auto',
-                height: o.height ? o.height * layout.scale : 'auto',
-                cursor: o.onclick ? 'pointer' : 'auto'
-              }}
-            />
-          ))}
+          {overlays.map((o, k) => <ImageLayer key={k} item={o} scale={layout.scale} />)}
+          {overlayAreas.map((o, k) => <AreaLayer key={k} item={o} scale={layout.scale} />)}
         </div>
       )}
     </div>

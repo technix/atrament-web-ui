@@ -55,32 +55,49 @@ const Layers = ({ options, children }) => {
     setImageData(fetchedImages);
   }
 
-  const pictures = children.match(/\[picture.*?\].+?\[\/picture\]/ig);
-  const layers = pictures?.map((img, index) => {
-    const [,attrs,src] = img.match(/\[picture(.*?)\](.+?)\[\/picture\]/i);
-    const layerOptions = getTagAttributes(attrs);
-    let onclick = null;
+  const addOnclickHandler = (options) => {
+    let onClick = null;
     if (isActive) {
-      if (layerOptions.onclick) {
-        onclick = () => clickHandlerFunction(layerOptions);
-      } else if (layerOptions.to) {
-        onclick = () => clickHandlerChoice(layerOptions.to);
+      if (options.onclick) {
+        onClick = () => clickHandlerFunction(options);
+      } else if (options.to) {
+        onClick = () => clickHandlerChoice(options.to);
       }
     }
+    return onClick;
+  };
+
+  // picture layers
+  const pictures = children.match(/\[picture.*?\].+?\[\/picture\]/ig);
+  const pictureLayers = pictures?.map((img, index) => {
+    const [,attrs,src] = img.match(/\[picture(.*?)\](.+?)\[\/picture\]/i);
+    const layerOptions = getTagAttributes(attrs);
     return {
       attrs: layerOptions,
       src: getAssetPath(src),
       index,
-      onclick
+      onclick: addOnclickHandler(layerOptions)
+    }
+  });
+
+  // area layers
+  const areas = children.match(/\[area.+?\]/ig);
+  const areaLayers = areas?.map((img, index) => {
+    const [,attrs] = img.match(/\[area(.*?)\]/i);
+    const areaOptions = getTagAttributes(attrs);
+    return {
+      attrs: areaOptions,
+      index,
+      onclick: addOnclickHandler(areaOptions)
     }
   });
 
   useEffect(() => {
-    layers && prefetcher(layers);
+    pictureLayers && prefetcher(pictureLayers);
   }, []);
   
   return (<>
-    {imageData && <LayeredImage layers={imageData} options={options} />}
+    {imageData && <LayeredImage layers={imageData} areas={areaLayers} options={options} />}
   </>);
 }
 

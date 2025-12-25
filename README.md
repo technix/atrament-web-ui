@@ -248,6 +248,29 @@ Attributes of the `[picture]` tag inside of a `[layers]` tag:
 * `onclick=inkFunction` clicking on this layer calls this Ink function
 * `display=modal` when Ink function is called, the result will be displayed in the modal window
 
+You can have clickable areas on the image with `[area]` markup tag. Attributes are similar to `[picture]` tag, but you have to define width and height of the clickable area explicitly. You can use either "x, y, width, height" or "x,y,x1,y1" attributes to set the area dimensions.
+
+```
+[layers]<>
+[picture]southern_fjord.png[/picture]<>
+[area x=369 y=2669 width=512 height=512 onclick=inkFunction]<>
+[area x=2261 y=2531 with=300 height=100 onclick=otherInkFunction display=modal]<>
+[area x=123 y=987 width=110 height=222 to="Choice Text"]<>
+[area x=123 y=987 x1=223 y1=1200 to="Choice Text 2"]<>
+[/layers]
+```
+
+Attributes of the `[area]` tag:
+* `x=10` set X coordinate of the top left corner of the area relative to top left corner of the background
+* `y=22` set Y coordinate of the top left corner of the area relative to top left corner of the background
+* `width=10` set width of the area
+* `height=22` set height of the area
+* `x1=20` set X coordinate of the bottom right corner of the area 
+* `y1=32` set Y coordinate of the bottom right corner of the area
+* `to="Choice text"` clicking on this layer links to the choice with this text
+* `onclick=inkFunction` clicking on this layer calls this Ink function
+* `display=modal` when Ink function is called, the result will be displayed in the modal window
+
 ### Overlay
 
 Atrament UI can display custom data (inventory, character stats etc.) as an overlay. 
