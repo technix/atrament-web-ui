@@ -66,7 +66,8 @@ function parseBBCode(input) {
         name,
         options: getTagAttributes(rawOptions.trim()),
         children: [],
-        raw: isRaw
+        raw: isRaw,
+        key: Math.random()
       };
 
       parent.children.push(node);
@@ -135,7 +136,7 @@ function render(node) {
   }
 
   const Component = markupTags[node.name]?.component ?? Fragment;
-  return (<Component options={node.options} markupRenderer={markup}>
+  return (<Component key={node.key} options={node.options} markupRenderer={markup}>
     {node.raw ? node.children[0]?.value : node.children.map(render)}
   </Component>);
 }
