@@ -8,4 +8,12 @@ Object.entries(templateFiles).forEach(([name, t]) => {
   templates[key] = t;
 });
 
+// vite: reload app on template file change
+if (import.meta.hot) {
+  import.meta.hot.send({
+    type: 'full-reload',
+    path: '*'
+  });
+}
+
 export default templates;
