@@ -31,6 +31,10 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
   }, [ makeChoice, continueStory, setReady, delay ]);
 
   const kbdChoiceHandler = useCallback((e) => {
+    if (chosen) {
+      // only single keyboard choice can be made
+      return;
+    }
     const kbdChoice = +e.key;
     const targetElement = e.target.tagName.toLowerCase();
     if (targetElement === 'input') {
@@ -45,7 +49,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
     ) {
       selectChoice(availableChoices[kbdChoice-1].id);
     }
-  }, [ numberOfChoices, selectChoice, availableChoices ]);
+  }, [ numberOfChoices, selectChoice, availableChoices, chosen ]);
 
   useKeyboardHandler(kbdChoiceHandler);
 
