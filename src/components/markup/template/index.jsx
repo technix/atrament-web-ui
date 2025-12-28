@@ -12,7 +12,7 @@ import { useAtrament } from 'src/atrament/hooks';
 //  - var:VARNAME variable value
 
 const HtmlTemplate = ({ options, children }) => {
-  const { throwAtramentError } = useAtrament();
+  const { throwAtramentError, getAssetPath } = useAtrament();
   const rootRef = useRef(null);
   const [slot, setSlot] = useState(null);
 
@@ -28,7 +28,10 @@ const HtmlTemplate = ({ options, children }) => {
   Object.entries(options).forEach(([key, value]) => {
     const varString = key.match(/var:(.+)/);
     if (varString) {
-      vars[varString[1]] = value;
+      // use getAssetPath if variable contains game asset
+      vars[varString[1]] = value.startsWith('GAME_ASSET:') 
+        ? getAssetPath(value.replace('GAME_ASSET:', '')) 
+        : value;
     }
   });
 

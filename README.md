@@ -355,11 +355,11 @@ Your content is [highlight]here[/highlight]<>
 [/template]
 ```
 
-Variables are passed via `var:X` attributes. For example, `var:title="Header"` will be passed as template variable `title`.
+Variables are passed via `var:X` attributes. For example, `var:title="Header"` will be passed as template variable `title`. If you need to pass a game asset path (image, sound, video) into the template, prepend it with `GAME_ASSET:` prefix: `var:cardImage="GAME_ASSET:yourimage.jpg"`
 
 Tips:
 
-- templates can be without content: `[template src][/template]`
+- templates can be without content: `[template src=card.html][/template]`
 - templates are wrapped into a `<div>` element. You can add custom class to the wrapper with `class` attribute of the `[template]` tag.
 - if you need an inline template, you can change wrapper to a `<span>`: `[template src=x.html wrapper=span][/template]`.
 - templates can be nested: `[template src=card.html][template src=title.html var:title="Card Title"][/template][/template]`
