@@ -5,7 +5,7 @@ import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 // [video]path/to/video.mp4[/video]
 
-const Video = ({ src, options }) => {
+const Video = ({ options, children }) => {
   const { getAssetPath } = useAtrament();
   const atramentState = useAtramentState(['settings']);
   const videoPlayerRef = useRef(null);
@@ -30,7 +30,7 @@ const Video = ({ src, options }) => {
       loop
       {...options}
     >
-      <source src={getAssetPath(src)} />
+      <source src={getAssetPath(children)} />
     </video>
   );
 }
