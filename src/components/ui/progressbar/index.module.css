@@ -2,6 +2,7 @@
   border: 1px solid var(--fg-color);
   border-radius: var(--border-radius-inline);
   position: relative;
+  overflow: hidden;
 }
 
 .progress_bar {
@@ -20,7 +21,7 @@
 }
 
 .borderless {
-  border: none;
+  border: 1px solid transparent;
 }
 
 .progress_content {
