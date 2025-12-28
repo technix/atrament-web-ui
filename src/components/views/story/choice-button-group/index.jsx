@@ -11,7 +11,10 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
   const { metadata } = useAtramentState(['metadata']);
   const [ chosen, setChosen ] = useState(null);
 
-  const numberOfChoices = (currentScene && currentScene.choices) ? currentScene.choices.length : -1;
+  // hide choices with #HIDDEN tag
+  const availableChoices = currentScene.choices?.filter((i) => !i.tags?.HIDDEN);
+
+  const numberOfChoices = Array.isArray(availableChoices) ? availableChoices.length : -1;
 
   const selectChoice = useCallback((id) => {
     const delay = numberOfChoices > 1 ? 350 : 150;
@@ -38,11 +41,11 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
       numberOfChoices > 0 &&
       kbdChoice > 0 &&
       kbdChoice <= numberOfChoices &&
-      !currentScene.choices[kbdChoice-1].disabled
+      !availableChoices[kbdChoice-1].disabled
     ) {
-      selectChoice(currentScene.choices[kbdChoice-1].id);
+      selectChoice(availableChoices[kbdChoice-1].id);
     }
-  }, [ numberOfChoices, selectChoice, currentScene.choices ]);
+  }, [ numberOfChoices, selectChoice, availableChoices ]);
 
   useKeyboardHandler(kbdChoiceHandler);
 
@@ -66,7 +69,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
     <>
       {currentScene.tags?.PROMPT && <div class={clsx(style.choice_prompt, 'atrament-prompt')}>{currentScene.tags.PROMPT}</div>}
       <div class={choiceButtonGroupClass}>
-        {currentScene.choices.map((choice, index) => (
+        {availableChoices.map((choice, index) => (
           <ChoiceButton
             key={`${key}-${index}`}
             index={index}

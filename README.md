@@ -118,6 +118,7 @@ Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MU
 | Tag | Description                |
 | :-------- | :------------------------- |
 | `# UNCLICKABLE` | The choice can't be selected. Alternative names: `#DISABLED`, `#INACTIVE` |
+| `# HIDDEN` | The choice is not shown to the player, but can be selected with links or buttons. |
 | `# CLASS: classname` | Apply CSS class to the choice `<button>` element. |
 
 ## Features
