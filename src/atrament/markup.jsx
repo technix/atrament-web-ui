@@ -5,7 +5,7 @@ import getTagAttributes from 'src/utils/get-tag-attributes';
 const containsHTML = (str) => /<\/?[a-z][\s\S]*>/i.test(str);
 const HTMLFragment = ({ index, item }) => (<span key={index} dangerouslySetInnerHTML={{ __html: item }} />);
 
-const tagRe = /\[(\/?)(\w+)([^\]]*)\]/g;
+const tagRe = /\[(\/?)([-\w]+)([^\]]*)\]/g;
 
 function parseBBCode(input) {
   const root = { children: [] };
@@ -143,5 +143,6 @@ function render(node) {
 
 export default function markup(text) {
   const ast = parseBBCode(text);
+  console.log(ast);
   return render(ast);
 }

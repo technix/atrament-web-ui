@@ -35,8 +35,17 @@ Markup tags styling:
 .atrament-tag-progressbar           [progressbar]
 .atrament-tag-progressbar-gauge     Progress bar gauge
 .atrament-tag-progressbar-content   Progress bar text content
+.atrament-tag-separator             [---]
 .atrament-tag-spoiler               [spoiler]
 .atrament-tag-table                 [table]
 .atrament-tag-url                   [url]
 .atrament-tag-video                 [video]
+*/
+
+/*
+You can include other CSS files here, using this syntax:
+
+@import url(your_css_file.css);
+
+These CSS files should be located in this folder.
 */

@@ -208,6 +208,7 @@ There is a [link=Examine mailbox]small mailbox[/link] here.
 | `[block]text[/block]` | Defines a text block.<br>Attributes:<br>`width=value` block width. Can be defined in percents (recommended) or other CSS units.<br>`align=left` aligns text horizontally in the block. Possible values: `left`, `center`, `right`<br>`valign=top` aligns text vertically in the block. Possible values: `top`, `middle`, `bottom` |
 | `[video]path/to/video.mp4[/video]` | Display video. <br>Attributes:<br>`loop=false` disable video loop.<br>`muted=true` play video muted|
 | `[url=https:\/\/atrament.ink]link text[/url]`<br>`[url href=https:\/\/atrament.ink]link text[/url]` | Creates a link to an web resource. When clicked, the resource is opened in a new browser tab. *Note: you have to escape "/" symbols in the URL, as shown in the example.* |
+| `[---]` | Line separator. <br>Attributes:<br>`width=30%` set separator width. |
 
 All markup tags support `class` attribute to set a CSS class for the element.
 
