@@ -12,6 +12,10 @@ const InlineButtonComponent = ({ children, options }) => {
   const isActive = useContext(ActiveContentContext);
   const { execContentFunction } = useAtramentOverlay();
 
+  if (options.DEFAULT) {
+    options.onclick = options.DEFAULT;
+  }
+
   const clickHandler = useCallback((e) => {
     e.stopPropagation();
     execContentFunction(options.onclick, options.display);
@@ -35,10 +39,5 @@ const InlineButtonComponent = ({ children, options }) => {
 
 export default {
   tag: 'button',
-  component: ({ options, children }) => {
-    if (options.DEFAULT) {
-      options.onclick = options.DEFAULT;
-    }
-    return (<InlineButtonComponent options={options}>{children}</InlineButtonComponent>);
-  }
+  component: InlineButtonComponent
 }
