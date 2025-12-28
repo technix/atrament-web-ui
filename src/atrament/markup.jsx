@@ -143,6 +143,5 @@ function render(node) {
 
 export default function markup(text) {
   const ast = parseBBCode(text);
-  console.log(ast);
   return render(ast);
 }

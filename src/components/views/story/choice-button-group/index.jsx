@@ -76,7 +76,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
       {currentScene.tags?.AUTO_CHOICE &&
         <ChoiceTimer
           options={currentScene.tags.AUTO_CHOICE}
-          choices={currentScene.choices} 
+          choices={currentScene.choices}
           selectChoice={selectChoice}
         />
       }

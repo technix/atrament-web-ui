@@ -50,11 +50,6 @@ const Layers = ({ options, children }) => {
     [ execContentFunction ]
   );
 
-  const prefetcher = async (images) => {
-    const fetchedImages = await prefetchImages(images);
-    setImageData(fetchedImages);
-  }
-
   const addOnclickHandler = (options) => {
     let onClick = null;
     if (isActive) {
@@ -96,9 +91,13 @@ const Layers = ({ options, children }) => {
     i.onclick = addOnclickHandler(i.attrs);
     return i;
   });
-  
+
   useEffect(() => {
-    pictureLayers && prefetcher(pictureLayers);
+    const prefetcher = async (images) => {
+      const fetchedImages = await prefetchImages(images);
+      setImageData(fetchedImages);
+    };
+    prefetcher(pictureLayers);
   }, []);
 
   return (<>

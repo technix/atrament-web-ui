@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useRef, useState, useEffect } from 'preact/hooks';
+import { useRef, useState, useEffect, useCallback } from 'preact/hooks';
 import clsx from 'clsx';
 import style from './index.module.css';
 
@@ -40,35 +40,34 @@ const LayeredImage = ({ layers = [], areas=[], options = {} }) => {
   const background = overlays.shift();
   const overlayAreas = [ ...areas.sort(((a, b) => a.index - b.index)) ];
 
+  const update = useCallback(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const cw = container.clientWidth;
+    const ch = container.clientHeight;
+    const scale = Math.min(
+      cw / background.width,
+      ch / background.height
+    );
+    const renderWidth = background.width * scale;
+    const renderHeight = background.height * scale;
+    const offsetX = (cw - renderWidth) / 2;
+    const offsetY = (ch - renderHeight) / 2;
+
+    setLayout({
+      scale,
+      renderWidth,
+      renderHeight,
+      offsetX,
+      offsetY
+    });
+  }, [ background ]);
+
   useEffect(() => {
-    const update = () => {
-      const container = containerRef.current;
-      if (!container) return;
-      const cw = container.clientWidth;
-      const ch = container.clientHeight;
-      const scale = Math.min(
-        cw / background.width,
-        ch / background.height
-      );
-      const renderWidth = background.width * scale;
-      const renderHeight = background.height * scale;
-      const offsetX = (cw - renderWidth) / 2;
-      const offsetY = (ch - renderHeight) / 2;
-
-      setLayout({
-        scale,
-        renderWidth,
-        renderHeight,
-        offsetX,
-        offsetY
-      });
-    }
-
     update();
     window.addEventListener('resize', update);
     return () => window.removeEventListener('resize', update);
-  }, []);
-
+  }, [ update ]);
 
   return (
     <div
@@ -93,7 +92,7 @@ const LayeredImage = ({ layers = [], areas=[], options = {} }) => {
             left: layout.offsetX,
             top: layout.offsetY,
             width: layout.renderWidth,
-            height: layout.renderHeight,  
+            height: layout.renderHeight
           }}
         >
           {overlays.map((o, k) => <ImageLayer key={k} item={o} scale={layout.scale} />)}

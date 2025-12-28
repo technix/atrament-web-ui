@@ -6,7 +6,7 @@ import { useAtrament } from 'src/atrament/hooks';
 
 const ChoiceTimer = ({ options, choices, selectChoice }) => {
   const { throwAtramentError } = useAtrament();
-  const params = getTagAttributes(options + ' '); // handle empty tag properly
+  const params = getTagAttributes(`${options} `); // handle empty tag properly
   const timeout = (params.delay || 0) * 1000;
   const timerStep = timeout / 100;
   const [timeLeft, setTimeLeft] = useState(timeout);
@@ -25,7 +25,7 @@ const ChoiceTimer = ({ options, choices, selectChoice }) => {
       return;
     }
     selectChoice(selected[0].id);
-  }, [ choices, selectChoice ]);
+  }, [ choices, selectChoice, params, throwAtramentError ]);
 
   // animate progress bar
   useEffect(() => {
@@ -42,7 +42,7 @@ const ChoiceTimer = ({ options, choices, selectChoice }) => {
     return () => clearInterval(timer);
   }, []);
 
-  return <ProgressBar options={{display: 'thin', border: false, min: 0, max: timeout, value: timeLeft }} />;
+  return <ProgressBar options={{ display: 'thin', border: false, min: 0, max: timeout, value: timeLeft }} />;
 };
 
 export default ChoiceTimer;
