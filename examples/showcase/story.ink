@@ -10,14 +10,21 @@ VAR completion = 10
 VAR character_name = "John Doe"
 VAR empty_text = ""
 
+VAR castle1 = true
+VAR castle2 = true
+VAR castle3 = true
+
 -> start
 
 === start ===
 # CLEAR
-Atrament UI features showcase.
+Atrament UI features showcase. See [url=https:\/\/github.com/technix/atrament-web-ui/blob/master/examples/showcase/story.ink]Ink source code[/url] for more details.
+[---]
 Some items are disabled - it means there is no example available yet.
 
+
 + [Game] -> game
++ [Choices] -> choices
 + [Markup] -> markup
 + [Media] -> media
 
@@ -27,60 +34,11 @@ Some items are disabled - it means there is no example available yet.
 Atrament game-related features.
 
 + [Checkpoints#DISABLED] -> checkpoints
-+ [Shuffled choices] -> shuffled_choices
-+ [Choice prompt] -> choice_prompt
-+ [Click to continue] -> click_to_continue
 + [Input] -> markup_input
 + [<<< Back] -> start
 
 === checkpoints
 TO DO
-+ [OK] -> game
-
-=== shuffled_choices
-# SHUFFLE_CHOICES
-These choices are shuffled.
-
-+ [Choice 1]
-    Choice 1 was selected.
-+ [Choice 2]
-    Choice 2 was selected.
-+ [Choice 3#UNCLICKABLE]
-+ [Choice 4]
-    Choice 4 was selected.
-+ [Choice 5]
-    Choice 5 was selected.
--
-+ [OK] -> game
-
-=== choice_prompt
-# PROMPT: What would you like to do?
-You can have a prompt before the choices.
-
-+ [Continue]
-    You chose to continue.
-+ [Proceed]
-    You chose to proceed.
-+ [Move on]
-    You chose to move on.
--
-+ [OK] -> game
-
-=== click_to_continue
-# CLEAR
-Default click to continue. Shows animation after 3 seconds.
-+ [>>>]
--
-Timed click to continue. Shows animation immediately, continues after 5 seconds.
-+ [>>>5]
--
-Custom click to continue: no animation, continues in 3 seconds.
-+ [>>>(delay=3 animation=10)]
--
-Custom click to continue: can't be continued before animation, animation starts after 3 seconds, auto-continue after 6 seconds.
-+ [>>>(clickable=3 animation=3 delay=6)]
--
-Done.
 + [OK] -> game
 
 === markup_input
@@ -108,11 +66,154 @@ Done.
     -> game
 
 ////////////////////////////////////////////////////////////////////////////////////
+// Choices
+=== choices ===
+# CLEAR
+Atrament choice features.
+
++ [Choice appearance] -> choice_appearance
++ [Choice prompt] -> choice_prompt
++ [Shuffled choices] -> shuffled_choices
++ [Hidden choices] -> hidden_choices
++ [Auto choice] -> auto_choice
++ [Click to continue] -> click_to_continue
++ [<<< Back] -> start
+
+=== choice_appearance
+# CHOICES: grouped
+Grouped choices.
+
++ [Choice 1]
+    Choice 1 was selected.
++ [Choice 2]
+    Choice 2 was selected.
++ [Choice 3]
+    Choice 3 was selected.
+-
+# CHOICES: numbered
+Numbered choices.
+
++ [Choice 1]
+    Choice 1 was selected.
++ [Choice 2]
+    Choice 2 was selected.
++ [Choice 3]
+    Choice 3 was selected.
+
+-
+# CHOICES: row
+Display choices in a row.
+
++ [Choice 1]
+    Choice 1 was selected.
++ [Choice 2]
+    Choice 2 was selected.
++ [Choice 3]
+    Choice 3 was selected.
+-
+# CHOICES: grouped numbered left
+Combine options: grouped, numbered, aligned.
+
++ [Choice 1]
+    Choice 1 was selected.
++ [Choice 2]
+    Choice 2 was selected.
++ [Choice 3]
+    Choice 3 was selected.
+-
++ [OK] -> choices
+
+=== shuffled_choices
+# SHUFFLE_CHOICES
+These choices are shuffled.
+
++ [Choice 1]
+    Choice 1 was selected.
++ [Choice 2]
+    Choice 2 was selected.
++ [Choice 3#UNCLICKABLE]
++ [Choice 4]
+    Choice 4 was selected.
++ [Choice 5]
+    Choice 5 was selected.
+-
++ [OK] -> choices
+
+
+=== hidden_choices
+Choice 2 is hidden, but you can still select it with link: [link to="Choice 2"]Choice 2[/link].
+
++ [Choice 1]
+    Choice 1 was selected.
++ [Choice 2#HIDDEN]
+    Choice 2 was selected.
++ [Choice 3]
+    Choice 3 was selected.
+-
++ [OK] -> choices
+
+=== choice_prompt
+# PROMPT: What would you like to do?
+You can have a prompt before the choices.
+
++ [Continue]
+    You chose to continue.
++ [Proceed]
+    You chose to proceed.
++ [Move on]
+    You chose to move on.
+-
++ [OK] -> choices
+
+=== auto_choice
+# AUTO_CHOICE: delay=5
+Random choice will be made after 5 seconds.
+
++ [Choice 1]
+    Choice 1 was selected.
++ [Choice 2]
+    Choice 2 was selected.
++ [Choice 3]
+    Choice 3 was selected.
+-
+# AUTO_CHOICE: delay=5 choice="Choice 3"
+Choice 3 will be selected after 5 seconds. Hidden choices can be targeted too.
+
++ [Choice 1]
+    Choice 1 was selected.
++ [Choice 2]
+    Choice 2 was selected.
++ [Choice 3]
+    Choice 3 was selected.
+-
+
++ [OK] -> choices
+
+=== click_to_continue
+# CLEAR
+Default click to continue. Shows animation after 3 seconds.
++ [>>>]
+-
+Timed click to continue. Shows animation immediately, continues after 5 seconds.
++ [>>>5]
+-
+Custom click to continue: no animation, continues in 3 seconds.
++ [>>>(delay=3 animation=10)]
+-
+Custom click to continue: can't be continued before animation, animation starts after 3 seconds, auto-continue after 6 seconds.
++ [>>>(clickable=3 animation=3 delay=6)]
+-
+Done.
++ [OK] -> choices
+
+
+////////////////////////////////////////////////////////////////////////////////////
 // Media
 === media ===
 # CLEAR
 Atrament multimedia features.
 + [Images] -> media_images
++ [Layered images] -> media_layers
 + [Backgrounds] -> media_bgimages
 + [Video] -> media_video
 + [Sound#DISABLED] -> media_sound
@@ -137,6 +238,31 @@ You can define width of the picture placed with "picture" tag: [picture width=50
 -
 You can combine images, placing them in the "block" markup tag.
 [block width=33%][picture]fountain-pen.png[/picture][/block][block width=33%][picture]quill-ink.png[/picture][/block][block width=33%][picture]rule-book.png[/picture][/block] 
++ [OK] -> media
+
+=== media_layers
+
+You can combine images with "layers" markup tags. You can define clickable areas or layers and either run an Ink function or choose a specific choice.
+
+Example: clicks on the castles selects choices, click on the swordsman opens stats.
+[layers]<>
+[picture]map.png[/picture]<>
+[picture x=2000 y=650]castle.png[/picture]<>
+[picture x=600 y=250 to="Mountain Castle"]castle.png[/picture]<> // click leads to choice
+[picture x=2700 y=3150 to="South Castle"]castle.png[/picture]<>
+[picture x=1361 y=2231 onclick=stats display=modal]swordman.png[/picture]<> // click opens overlay
+[area x=2000 y=650 x1=2512 y1=1162 to="River Castle"]<>
+[/layers]
+
+// choices are 
++ [River Castle#HIDDEN]
+    Travel to River Castle.
++ [Mountain Castle#HIDDEN]
+    Travel to Mountain Castle.
++ [South Castle#HIDDEN]
+    Travel to South Castle.
++ [Next]
+-
 + [OK] -> media
 
 === media_bgimages
@@ -302,6 +428,7 @@ This text is [highlight color=yellow bgcolor=black]yellow highlighted on black b
   HEALTH: {health}
   [button onclick=stats]Stats[/button]
   [button onclick=stats display=modal]StatsModal[/button]
+  [button onclick=dynamic_map]Map[/button]
 
 === function stats()
   [title]Stats[/title]
@@ -313,3 +440,28 @@ This text is [highlight color=yellow bgcolor=black]yellow highlighted on black b
 
 === function health_minus()
   ~ health = health - 1
+
+=== function dynamic_map()
+[title]Map[/title]
+Clicking on castles removes them, click on swordsman resets the map.
+[layers]<>
+[picture]map.png[/picture]<>
+{castle1:[picture x=2000 y=650 onclick=disable_castle1]castle.png[/picture]}<>
+{castle2:[picture x=600 y=250 onclick=disable_castle2]castle.png[/picture]}<>
+{castle3:[picture x=2700 y=3150 onclick=disable_castle3]castle.png[/picture]}<>
+[picture x=1361 y=2231 onclick=reset_castles]swordman.png[/picture]<>
+[/layers]
+
+=== function disable_castle1()
+  ~ castle1 = false
+
+=== function disable_castle2()
+  ~ castle2 = false
+
+=== function disable_castle3()
+  ~ castle3 = false
+
+=== function reset_castles()
+  ~ castle1 = true
+  ~ castle2 = true
+  ~ castle3 = true
