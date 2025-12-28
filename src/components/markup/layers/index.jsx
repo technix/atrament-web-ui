@@ -75,8 +75,7 @@ const Layers = ({ options, children }) => {
     return {
       attrs: layerOptions,
       src: getAssetPath(src),
-      index,
-      onclick: addOnclickHandler(layerOptions)
+      index
     }
   });
 
@@ -92,12 +91,18 @@ const Layers = ({ options, children }) => {
     }
   });
 
+  const imageLayers = imageData?.map(i => {
+    // assign onclick, using cached image data
+    i.onclick = addOnclickHandler(i.attrs);
+    return i;
+  });
+  
   useEffect(() => {
     pictureLayers && prefetcher(pictureLayers);
   }, []);
-  
+
   return (<>
-    {imageData && <LayeredImage layers={imageData} areas={areaLayers} options={options} />}
+    {imageData && <LayeredImage layers={imageLayers} areas={areaLayers} options={options} />}
   </>);
 }
 
