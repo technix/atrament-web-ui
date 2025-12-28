@@ -110,6 +110,7 @@ Atrament game can be published as a web application, as a single HTML file, or a
 | `# PROMPT: What would you like to do?` | Display prompt text before the choices. |
 | `# HYPERTEXT` | Use links instead of choices for this scene. See "[Hypertext mode](#hypertext-mode)". |
 | `# CHOICES: grouped numbered` | Changes the choices appearance for this scene only. Uses the same syntax as global `#choices` tag. |
+| `# AUTO_CHOICE` | Make a choice automatically. See "[Automatic choice](#automatic-choice)". |
 
 
 Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MUSIC/STOP_SOUND/STOP_MUSIC tags. Combining them may lead to unexpected side effects.
@@ -157,6 +158,16 @@ All pauses are set in seconds.
 ```
 + [>>>(clickable=3 animation=5 continue=10)] -> next_knot
 ```
+
+### Automatic choice
+
+You can make specific or random choice automatically with `#AUTO_CHOICE` knot tag:
+
+```# AUTO_CHOICE: delay=10 choice="Some choice"```
+
+Options of the tag:
+* `delay` - sets a delay before automatic choice and displays a choice timer bar. If omitted, a choice is selected immediately.
+* `choice` - text of the choice to be auto-selected. If omitted, a choice option will be selected randomly.
 
 ### Hypertext mode
 

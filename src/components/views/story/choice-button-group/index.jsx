@@ -5,6 +5,7 @@ import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 import { useKeyboardHandler } from 'src/hooks';
 import { SINGLE_CHOICE_DELAY, MULTI_CHOICE_DELAY } from 'src/constants';
 import ChoiceButton from '../choice-button';
+import ChoiceTimer from '../choice-timer';
 import style from './index.module.css';
 
 const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
@@ -72,6 +73,13 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
   return (
     <>
       {currentScene.tags?.PROMPT && <div class={clsx(style.choice_prompt, 'atrament-prompt')}>{currentScene.tags.PROMPT}</div>}
+      {currentScene.tags?.AUTO_CHOICE &&
+        <ChoiceTimer
+          options={currentScene.tags.AUTO_CHOICE}
+          choices={currentScene.choices} 
+          selectChoice={selectChoice}
+        />
+      }
       <div class={choiceButtonGroupClass}>
         {availableChoices.map((choice, index) => (
           <ChoiceButton
