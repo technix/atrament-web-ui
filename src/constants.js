@@ -96,3 +96,16 @@ export const FONTS_SYSTEM = {
   Serif: `"Palatino", "Cambria", "Lucida Bright", "Georgia", "Times New Roman", serif, ${FONTS_EMOJI}`,
   Monospaced: `"Monaco", "Consolas", "Lucida Console", "Courier New", monospaced, ${FONTS_EMOJI}`
 };
+
+//////////// delayed actions /////////////////
+
+// delay before scene loader animation
+export const LOADER_DELAY = 300;
+
+// delay between choice selection
+export const SINGLE_CHOICE_DELAY = 150;
+export const MULTI_CHOICE_DELAY = 350;
+
+// story scroll into view
+export const SCROLL_INTO_VIEW_DELAY = 100;
+export const SCROLL_INTO_VIEW_DURATION = 300;

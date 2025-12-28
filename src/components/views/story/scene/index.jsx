@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import style from './index.module.css';
 import { useRef, useState, useEffect, useCallback } from 'preact/hooks';
 import { scrollIntoView } from "seamless-scroll-polyfill";
+import { SCROLL_INTO_VIEW_DELAY, SCROLL_INTO_VIEW_DURATION } from 'src/constants';
 // UI
 import ContainerImage from 'src/components/ui/container-image';
 import Paragraph from '../scene-paragraph';
@@ -22,9 +23,9 @@ const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
       () => {
         // elementRef.current.scrollIntoView({ behavior, block: 'start' });
         // native 'scrollIntoView' glitches sometimes, so we use polyfill instead
-        scrollIntoView(elementRef.current, { behavior, block: 'start' }, { duration: 300 });
+        scrollIntoView(elementRef.current, { behavior, block: 'start' }, { duration: SCROLL_INTO_VIEW_DURATION });
       },
-      100
+      SCROLL_INTO_VIEW_DELAY
     );
   }, [ readyHandler ]);
 

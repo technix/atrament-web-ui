@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import { useState, useCallback } from 'preact/hooks';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 import { useKeyboardHandler } from 'src/hooks';
+import { SINGLE_CHOICE_DELAY, MULTI_CHOICE_DELAY } from 'src/constants';
 import ChoiceButton from '../choice-button';
 import style from './index.module.css';
 
@@ -16,19 +17,18 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
 
   const numberOfChoices = Array.isArray(availableChoices) ? availableChoices.length : -1;
 
+  const delay = numberOfChoices > 1 ? MULTI_CHOICE_DELAY : SINGLE_CHOICE_DELAY;
+
   const selectChoice = useCallback((id) => {
-    const delay = numberOfChoices > 1 ? 350 : 150;
     setChosen(id);
+    // pass choice to Atrament
     setTimeout(() => {
-      // pass choice to Atrament
-      setTimeout(() => {
-        setChosen(null);
-        setReady(false);
-        makeChoice(id);
-        continueStory();
-      }, delay);
-    }, 0);
-  }, [ makeChoice, continueStory, setReady, numberOfChoices ]);
+      setChosen(null);
+      setReady(false);
+      makeChoice(id);
+      continueStory();
+    }, delay);
+  }, [ makeChoice, continueStory, setReady, delay ]);
 
   const kbdChoiceHandler = useCallback((e) => {
     const kbdChoice = +e.key;

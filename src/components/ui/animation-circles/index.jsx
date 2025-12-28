@@ -1,9 +1,10 @@
 
 import { h } from 'preact';
+import { LOADER_DELAY } from 'src/constants';
 import { useState, useEffect } from 'preact/hooks';
 import style from './index.module.css';
 
-const CircleLoader = ({ delay = 300 }) => {
+const CircleLoader = ({ delay = LOADER_DELAY }) => {
   const [isVisible, setIsVisible] = useState(false);
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), delay);
