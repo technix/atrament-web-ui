@@ -32,7 +32,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
   }, [ makeChoice, continueStory, setReady, delay ]);
 
   const kbdChoiceHandler = useCallback((e) => {
-    if (chosen) {
+    if (chosen !== null) {
       // only single keyboard choice can be made
       return;
     }
