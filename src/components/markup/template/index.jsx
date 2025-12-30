@@ -29,7 +29,7 @@ const HtmlTemplate = ({ options, children }) => {
     const varString = key.match(/var:(.+)/);
     if (varString) {
       // use getAssetPath if variable contains game asset
-      vars[varString[1]] = value.startsWith('GAME_ASSET:') 
+      vars[varString[1]] = `${value}`.startsWith('GAME_ASSET:')
         ? getAssetPath(value.replace('GAME_ASSET:', '')) 
         : value;
     }
