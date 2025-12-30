@@ -22,10 +22,11 @@ export const useAtrament = () => {
       if (!file) {
         return null;
       }
-      if (file.startsWith('http://') || file.startsWith('https://')) {
-        return file;
+      const asset = `${file}`;
+      if (asset.startsWith('http://') || asset.startsWith('https://')) {
+        return asset;
       }
-      return atrament.game.getAssetPath(file);
+      return atrament.game.getAssetPath(asset);
     },
     [ atrament ]
   );
@@ -117,7 +118,7 @@ export const useAtramentOverlay = () => {
 
   const setOverlayContent = useCallback((overlayName, content, displayType) => {
     setStateSubkey(OVERLAY_STORE_KEY, 'current', overlayName);
-    let textContent = content;
+    let textContent = `${content}`;
     const contentArray = content.split('\n');
     const firstLine = contentArray.shift();
     const title = firstLine.match(/\[title\](.+?)\[\/title\]/i);
