@@ -19,6 +19,7 @@ window.addEventListener('resize', setInnerHeight);
 function App() {
   const [ atrament, setAtrament ] = useState(null);
   const [ initError, setInitError ] = useState(null);
+  const [ loadedPercent, setLoadedPercent ] = useState(0);
 
   useEffect(setInnerHeight, []);
 
@@ -27,6 +28,8 @@ function App() {
       const { default: atrament } = await import("@atrament/web");
       // import inkjs
       const { Story } = await import("inkjs");
+      // loader progress
+      atrament.interfaces.loader.onProgress(({ percent }) => setLoadedPercent(percent));
       // initialize engine
       try {
         await atramentInit(atrament, Story);
@@ -49,7 +52,7 @@ function App() {
             ? <AppRouter />
             : initError
               ? <Container><ErrorModal message={initError} /></Container>
-              : <Loading />
+              : <Loading loadedPercent={loadedPercent} />
           }
         </ApplicationWrapper>
       </AtramentContext.Provider>

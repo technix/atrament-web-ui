@@ -77,7 +77,7 @@ export default defineConfig(({ mode }) => {
       const gameDir = `${buildDir}/${atramentConfig.game.path}`;
       plugins.push(zipPack({
         inDir: gameDir,
-        outDir: 'build',
+        outDir: buildDir,
         outFileName: atramentConfig.game.zip
       }));
       // delete game folder after zipping

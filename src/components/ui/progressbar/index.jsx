@@ -24,6 +24,7 @@ const ProgressBar = ({ options, children }) => {
   const classListGauge = clsx(
     style.progress_bar,
     options.style === 'accent' ? style.accent : style.standard,
+    options.solid && style.progress_bar_solid,
     'atrament-tag-progressbar-gauge'
   );
 
