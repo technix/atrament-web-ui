@@ -4,7 +4,7 @@
 
 .inline_link:hover {
   color: var(--accent-fg-color);
-  background-color: var(--accent-bg-color);
+  text-decoration: none;
 }
 
 .disabled {
