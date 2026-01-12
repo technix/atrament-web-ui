@@ -4,7 +4,7 @@ import TextParagraph from 'src/components/ui/text-paragraph';
 import Markup from 'src/components/ui/markup';
 
 const Paragraph = ({ content, isCurrent }) => {
-  if (content.text === "\n") {
+  if (content.text === "\n" || content.text === "") {
     return <></>;
   }
 
