@@ -13,13 +13,22 @@
   flex-grow: 0;
   flex-shrink: 0;
   flex-basis: auto;
-  border-bottom: 1px solid var(--fg-color);
+  align-items: center;
   display: flex;
   font-family: var(--font-face-game);
 }
 
 .overlay_header > * {
   vertical-align: middle;
+}
+
+.overlay_header_modal {
+  margin: 1rem;
+  margin-bottom: 0;
+}
+
+.overlay_header_bottom_line {
+  border-bottom: 1px solid var(--fg-color);
 }
 
 .overlay_title {
@@ -29,6 +38,10 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.overlay_title_modal {
+  justify-content: left;
 }
 
 .overlay_content {

@@ -1,4 +1,5 @@
 import { h } from 'preact';
+import clsx from 'clsx';
 import style from './index.module.css';
 
 import ContainerText from 'src/components/ui/container-text';
@@ -13,16 +14,14 @@ export default function ModalPresenter({ children, title, closeOverlay }) {
     <ContainerModal>
       <Backdrop onClick={closeOverlay} />
       <Modal>
+        <div class={clsx(style.overlay_header, style.overlay_header_modal, title && style.overlay_header_bottom_line)}>
+          <div class={clsx(style.overlay_title, style.overlay_title_modal)}>{title}</div>
+          <div><CloseButton onClick={closeOverlay} /></div>
+        </div>
         <ContainerText>
-          <Block>
-            <div class={style.overlay_header}>
-              <div class={style.overlay_title}>{title}</div>
-              <CloseButton onClick={closeOverlay} />
-            </div>
-          </Block>
-          <Block>
+          <div class={clsx(style.overlay_content, 'atrament-overlay')}>
             {children}
-          </Block>
+          </div>
         </ContainerText>
       </Modal>
     </ContainerModal>

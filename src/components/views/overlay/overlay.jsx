@@ -9,17 +9,15 @@ import Block from 'src/components/ui/block';
 export default function OverlayPresenter({ children, title, closeOverlay }) {
   return (
     <div class={style.overlay_container}>
-      <div class={style.overlay_header}>
+      <div class={clsx(style.overlay_header, style.overlay_header_bottom_line)}>
         <button class={style.button_back} onClick={closeOverlay}><IconToolbarBack /></button>
         {title && <div class={style.overlay_title}>{title}</div>}
       </div>
-      <div class={clsx(style.overlay_content, 'atrament-overlay')}>
-        <ContainerText>
-          <Block>
-            {children}
-          </Block>
-        </ContainerText>
-      </div>
+      <ContainerText>
+        <div class={clsx(style.overlay_content, 'atrament-overlay')}>
+          {children}
+        </div>
+      </ContainerText>
     </div>
   );
 }
