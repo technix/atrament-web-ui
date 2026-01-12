@@ -1,13 +1,5 @@
 .inline_link, .inline_link:visited {
-  display: inline;
-  background: transparent;
-  border: none;
-  padding: 0;
-  font: inherit;
-  cursor: pointer;
   color: var(--fg-color);
-  text-decoration: underline;
-  -webkit-appearance: none;
 }
 
 .inline_link:hover {
@@ -15,6 +7,12 @@
   text-decoration: none;
 }
 
-.inline_link:disabled {
+.disabled {
+  cursor: default;
+}
+
+.disabled:hover {
+  color: var(--fg-color);
+  text-decoration: underline;
   cursor: default;
 }

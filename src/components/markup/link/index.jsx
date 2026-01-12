@@ -49,13 +49,13 @@ const InlineLink = ({ children, options }) => {
     : () => {};
 
   return (
-    <button
+    <a
+      href="#"
       class={linkClass}
       onClick={onClickFunction}
-      disabled={!isActive}
     >
       {children}
-    </button>
+    </a>
   );
 }
 
