@@ -39,6 +39,11 @@ export const useAtrament = () => {
     [ atrament ]
   );
 
+  const setStateKey = useCallback(
+    (...args) => atrament.state.setKey(...args),
+    [ atrament ]
+  );
+
   const setStateSubkey = useCallback(
     (...args) => atrament.state.setSubkey(...args),
     [ atrament ]
@@ -98,6 +103,7 @@ export const useAtrament = () => {
     continueStory,
     getAssetPath,
     updateSettings,
+    setStateKey,
     setStateSubkey,
     evaluateInkFunction,
     setInkVariable,
@@ -113,24 +119,24 @@ export const useAtramentState = (keys = undefined) => {
 };
 
 export const useAtramentOverlay = () => {
-  const { evaluateInkFunction, setStateSubkey } = useAtrament();
+  const { evaluateInkFunction, setStateKey } = useAtrament();
   const atramentState = useAtramentState([OVERLAY_STORE_KEY]);
 
   const setOverlayContent = useCallback((overlayName, content, displayType) => {
-    setStateSubkey(OVERLAY_STORE_KEY, 'current', overlayName);
     let textContent = `${content}`;
     const contentArray = content.split('\n');
     const firstLine = contentArray.shift();
-    const title = firstLine.match(/\[title\](.+?)\[\/title\]/i);
+    const title = firstLine.match(/\[title\](.+?)\[\/title\](.*)$/i);
     if (title) {
-      setStateSubkey(OVERLAY_STORE_KEY, 'title', title[1]);
-      textContent = contentArray.join('\n');
+      textContent = [title[2], ...contentArray].join('\n');
     }
-    setStateSubkey(OVERLAY_STORE_KEY, 'content', textContent);
-    if (displayType) {
-      setStateSubkey(OVERLAY_STORE_KEY, 'display', displayType);
-    }
-  }, [ setStateSubkey ]);
+    setStateKey(OVERLAY_STORE_KEY, {
+      current: overlayName,
+      title: title ? title[1] : null,
+      content: textContent,
+      display: displayType || null
+    });
+  }, [ setStateKey ]);
 
   const refreshOverlay = useCallback(() => {
     const currentOverlay = atramentState[OVERLAY_STORE_KEY].current;
@@ -142,11 +148,13 @@ export const useAtramentOverlay = () => {
   }, [ atramentState, setOverlayContent, evaluateInkFunction ]);
 
   const closeOverlay = useCallback(() => {
-    setStateSubkey(OVERLAY_STORE_KEY, 'current', null);
-    setStateSubkey(OVERLAY_STORE_KEY, 'content', '');
-    setStateSubkey(OVERLAY_STORE_KEY, 'title', null);
-    setStateSubkey(OVERLAY_STORE_KEY, 'display', null);
-  }, [ setStateSubkey ]);
+    setStateKey(OVERLAY_STORE_KEY, {
+      current: null,
+      content: '',
+      title: null,
+      display: null
+    });
+  }, [ setStateKey ]);
 
   const execContentFunction = useCallback((inkFn, display) => {
     const result = evaluateInkFunction(inkFn);
