@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import clsx from 'clsx';
 import style from './index.module.css';
-import { useState } from "preact/hooks";
+import { useState, useCallback } from "preact/hooks";
 
 // [spoiler]text in spoiler[/spoiler]
 
@@ -12,10 +12,14 @@ const classes = [
 
 const Spoiler = ({ options, children }) => {
   const [ currentStyle, setStyle ] = useState(0);
+  const onClick = useCallback((e) => {
+    e.stopPropagation();
+    setStyle((v) => 1 - v);
+  }, [ setStyle ]);
   return (
     <span
       class={clsx(classes[currentStyle], 'atrament-tag-spoiler', options.class)}
-      onClick={() => setStyle(1 - currentStyle)}
+      onClick={onClick}
     >
       <span>{children}</span>
     </span>

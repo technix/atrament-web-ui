@@ -54,9 +54,15 @@ const Layers = ({ options, children }) => {
     let onClick = null;
     if (isActive) {
       if (options.onclick) {
-        onClick = () => clickHandlerFunction(options);
+        onClick = (e) => {
+          e.stopPropagation();
+          clickHandlerFunction(options);
+        };
       } else if (options.to) {
-        onClick = () => clickHandlerChoice(options.to);
+        onClick = (e) => {
+          e.stopPropagation();
+          clickHandlerChoice(options.to);
+        };
       }
     }
     return onClick;

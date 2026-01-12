@@ -18,7 +18,8 @@ const InlineLink = ({ children, options }) => {
 
   const choice = options.to || options.DEFAULT;
 
-  const clickHandlerChoice = useCallback(() => {
+  const clickHandlerChoice = useCallback((e) => {
+    e.stopPropagation();
     const lastSceneIndex = atramentState.scenes.length - 1;
     const currentScene = atramentState.scenes[lastSceneIndex];
     const chosen = currentScene.choices.findIndex((item) => item.choice === choice);
@@ -30,8 +31,10 @@ const InlineLink = ({ children, options }) => {
     continueStory();
   }, [ throwAtramentError, continueStory, makeChoice, choice, atramentState.scenes ]);
 
-  const clickHandlerFunction = useCallback(
-    () => execContentFunction(options.onclick, options.display),
+  const clickHandlerFunction = useCallback((e) => {
+      e.stopPropagation();
+      execContentFunction(options.onclick, options.display);
+    },
     [ execContentFunction, options ]
   );
 

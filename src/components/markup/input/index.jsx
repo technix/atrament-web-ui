@@ -6,8 +6,9 @@ import style from './index.module.css';
 import { useAtrament } from 'src/atrament/hooks';
 import { ActiveContentContext } from 'src/context';
 
-
 // [input var=variable placeholder="placeholder text" type=number]
+
+const onClick = (e) => e.stopPropagation();
 
 const Input = ({ options }) => {
   const isActive = useContext(ActiveContentContext);
@@ -29,7 +30,15 @@ const Input = ({ options }) => {
   const inputType = options.type === 'number' ? 'number' : 'text';
   const inputClass = clsx(style.input, 'atrament-tag-input', options.class);
   return (
-    <input disabled={!isActive} class={inputClass} value={defaultValue} placeholder={options.placeholder} type={inputType} onInput={onInput} />
+    <input
+      disabled={!isActive}
+      class={inputClass}
+      value={defaultValue}
+      placeholder={options.placeholder}
+      type={inputType}
+      onInput={onInput}
+      onClick={onClick}
+    />
   );
 };
 
