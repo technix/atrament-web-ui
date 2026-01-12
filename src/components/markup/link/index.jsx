@@ -32,11 +32,10 @@ const InlineLink = ({ children, options }) => {
   }, [ throwAtramentError, continueStory, makeChoice, choice, atramentState.scenes ]);
 
   const clickHandlerFunction = useCallback((e) => {
-      e.stopPropagation();
-      execContentFunction(options.onclick, options.display);
-    },
-    [ execContentFunction, options ]
-  );
+    e.stopPropagation();
+    execContentFunction(options.onclick, options.display);
+  },
+  [ execContentFunction, options ]);
 
   const linkClass = clsx(
     style.inline_link,
