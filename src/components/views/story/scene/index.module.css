@@ -1,12 +1,13 @@
 .scene {
   display: block;
-  padding: 1rem;
+  padding: 1em;
+  padding-bottom: 0;
 }
 
-.scene p:first-child {
-  margin-top: 0px;
+.scene:last-child {
+  padding-bottom: 1em;
 }
 
-.scene p:last-child {
-  margin-bottom: 0px;
+.scene:empty {
+  padding: 0;
 }
