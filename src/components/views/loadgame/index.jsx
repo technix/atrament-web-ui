@@ -19,13 +19,6 @@ const LoadGameView = ({ loadGame, hasConfirmation = false }) => {
   const initLoadgame = useCallback(async () => {
     const existingSaves = await atrament.game.listSaves();
     const saveSlotList = [];
-    // autosave
-    const autosave = existingSaves
-      .filter((s) => s.type === atrament.game.SAVE_AUTOSAVE)
-      .map((s) => ({ ...s, slot: translator.translate('main.autosave', { date: datefmt(s.date) }) }));
-    if (autosave.length) {
-      saveSlotList.push(autosave[0]);
-    }
     // checkpoints
     if (metadata.load_from_checkpoints) {
       const checkpoints = existingSaves
