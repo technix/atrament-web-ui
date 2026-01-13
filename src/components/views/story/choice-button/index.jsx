@@ -16,7 +16,7 @@ const ChoiceButton = ({ choice, chosen, index, handleClick, choiceAppearance }) 
 
   const choiceStateClass = choiceIsMade ? (activeChoice ? style.choice_active : style.choice_inactive) : '';
   const choiceGroupClass = choiceAppearance.grouped ? (choiceAppearance.row ? style.buttons_grouped_row : style.buttons_grouped) : style.buttons_separate;
-  const choiceAlignmentClass = choiceAppearance.left ? style.left_aligned : choiceAppearance.right ? style.right_aligned : '';
+  const choiceAlignmentClass = choiceAppearance.left ? style.left_aligned : (choiceAppearance.right ? style.right_aligned : '');
   const elementClasses = clsx(
     style.choice_button,
     choiceGroupClass,

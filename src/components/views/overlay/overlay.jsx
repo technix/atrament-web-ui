@@ -4,7 +4,6 @@ import clsx from 'clsx';
 
 import { IconToolbarBack } from 'src/components/ui/icons';
 import ContainerText from 'src/components/ui/container-text';
-import Block from 'src/components/ui/block';
 
 export default function OverlayPresenter({ children, title, closeOverlay }) {
   return (

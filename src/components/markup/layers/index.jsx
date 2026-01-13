@@ -16,9 +16,9 @@ function prefetchImages(imageList) {
         width: imgToPreload.naturalWidth,
         height: imgToPreload.naturalHeight
       });
-      imgToPreload.src = img.src;
       imgToPreload.onload = preloaded;
       imgToPreload.onerror = preloaded;
+      imgToPreload.src = img.src;
     }));
   }
   return Promise.allSettled(imagePreloads)
