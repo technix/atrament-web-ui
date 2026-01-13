@@ -8,11 +8,10 @@ let fonts = { ...FONTS_SYSTEM };
   if (import.meta.env.MODE !== 'singlefile' || embedFonts) {
     // import font modules
     const extFonts = {};
-    const modules = import.meta.glob('../resources/fonts/**/*.js');
+    const modules = import.meta.glob('../resources/fonts/**/*.js', { import: 'default' });
     await Promise.all(
       Object.values(modules).map(
-        (mod) => mod().then((fontmodule) => {
-          const fnt = fontmodule.default;
+        (mod) => mod().then((fnt) => {
           if (fnt.name) {
             extFonts[fnt.name] = `${fnt.name}, ${fnt.fallback || 'serif'}, ${FONTS_EMOJI}`;
           }
