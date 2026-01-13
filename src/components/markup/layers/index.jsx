@@ -11,14 +11,14 @@ function prefetchImages(imageList) {
   for (let img of imageList) {
     imagePreloads.push(new Promise((resolve) => {
       const imgToPreload = new Image();
-      imgToPreload.onload = resolve;
-      imgToPreload.onerror = resolve;
-      imgToPreload.src = img.src;
-      resolve({
+      const preloaded = () => resolve({
         ...img,
         width: imgToPreload.naturalWidth,
         height: imgToPreload.naturalHeight
       });
+      imgToPreload.src = img.src;
+      imgToPreload.onload = preloaded;
+      imgToPreload.onerror = preloaded;
     }));
   }
   return Promise.allSettled(imagePreloads)
@@ -26,7 +26,7 @@ function prefetchImages(imageList) {
 }
 
 const Layers = ({ options, children }) => {
-  const [ imageData, setImageData ] = useState(null);
+  const [ imageLayers, setImageLayers ] = useState(null);
   const isActive = useContext(ActiveContentContext);
   const { makeChoice, continueStory, throwAtramentError, getAssetPath } = useAtrament();
   const { execContentFunction } = useAtramentOverlay();
@@ -92,22 +92,21 @@ const Layers = ({ options, children }) => {
     }
   });
 
-  const imageLayers = imageData?.map(i => {
-    // assign onclick, using cached image data
-    i.onclick = addOnclickHandler(i.attrs);
-    return i;
-  });
-
   useEffect(() => {
     const prefetcher = async (images) => {
       const fetchedImages = await prefetchImages(images);
-      setImageData(fetchedImages);
+      const imageLayers = fetchedImages?.map(i => {
+        // assign onclick, using image data
+        i.onclick = addOnclickHandler(i.attrs);
+        return i;
+      });
+      setImageLayers(imageLayers);
     };
     prefetcher(pictureLayers);
   }, []);
 
   return (<>
-    {imageData && <LayeredImage layers={imageLayers} areas={areaLayers} options={options} />}
+    {imageLayers && <LayeredImage layers={imageLayers} areas={areaLayers} options={options} />}
   </>);
 }
 
