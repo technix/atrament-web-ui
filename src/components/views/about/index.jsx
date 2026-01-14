@@ -17,7 +17,8 @@ const components = [
   ["Howler", "https://howlerjs.com/"],
   ["Nanostores", "https://github.com/nanostores/nanostores"],
   ["LocalForage", "https://github.com/localForage/localForage"],
-  ["fflate", "https://github.com/101arrowz/fflate"]
+  ["fflate", "https://github.com/101arrowz/fflate"],
+  ["mustache.js", "https://github.com/janl/mustache.js"]
 ];
 const lastComponent = components.length - 1;
 
