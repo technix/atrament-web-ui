@@ -9,3 +9,15 @@
   overflow: auto;
   border-radius: var(--border-radius);
 }
+
+@media (max-width: 960px) {
+  .modal {
+    width: 90%;
+  }
+}
+
+@media (max-width: 400px) {
+  .modal {
+    width: 95%;
+  }
+}
