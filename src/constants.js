@@ -60,6 +60,10 @@ export const TOOLBAR_DEFAULT = '__DEFAULT__';
 // story path
 export const STORYPATH_STORE_KEY = '$story_path';
 
+// background
+export const BACKGROUND_STORE_KEY = 'background';
+export const BACKGROUND_PAGE_STORE_KEY = 'background_page';
+
 // known global tags (for debugger)
 
 export const KNOWN_GLOBAL_TAGS = [

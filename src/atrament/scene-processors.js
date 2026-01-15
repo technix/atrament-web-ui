@@ -1,4 +1,5 @@
 // Atrament scene processors
+import { BACKGROUND_STORE_KEY, BACKGROUND_PAGE_STORE_KEY } from 'src/constants';
 import arrayShuffle from "src/utils/array-shuffle";
 import getImagesFromContent from "src/utils/get-images-from-content";
 
@@ -7,12 +8,12 @@ function sceneBackground(scene) {
   const background = scene.tags?.BACKGROUND;
   if (typeof background !== 'undefined') {
     scene.images.push(background);
-    this.state.setSubkey('game', 'background', background);
+    this.state.setSubkey('game', BACKGROUND_STORE_KEY, background);
   }
   const backgroundPage = scene.tags?.PAGE_BACKGROUND;
   if (typeof backgroundPage !== 'undefined') {
     scene.images.push(backgroundPage);
-    this.state.setSubkey('game', 'background_page', backgroundPage);
+    this.state.setSubkey('game', BACKGROUND_PAGE_STORE_KEY, backgroundPage);
   }
 }
 

@@ -1,11 +1,11 @@
 import { h } from 'preact';
 import { useEffect } from 'preact/hooks';
+import { BACKGROUND_STORE_KEY, BACKGROUND_PAGE_STORE_KEY } from 'src/constants';
 
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import Container from 'src/components/ui/container';
 import Menu from 'src/components/menu';
-
 
 import Toolbar from 'src/components/views/toolbar';
 import StoryView from 'src/components/views/story';
@@ -17,16 +17,18 @@ const GameRoute = () => {
   const { getAssetPath } = useAtrament();
   const atramentState = useAtramentState(['game']);
 
+  const background = atramentState.game[BACKGROUND_STORE_KEY];
+  const backgroundPage = atramentState.game[BACKGROUND_PAGE_STORE_KEY];
+
   let containerStyle;
-  if (atramentState.game.background) {
+  if (background) {
     containerStyle = {
-      'background-image': `url(${getAssetPath(atramentState.game.background)})`,
+      'background-image': `url(${getAssetPath(background)})`,
       'background-size': 'cover',
       'background-position': 'center'
     }
   }
 
-  const backgroundPage = atramentState.game.background_page;
   useEffect(() => {
     setPageBackground(backgroundPage, getAssetPath);
   }, [ backgroundPage, getAssetPath ]);

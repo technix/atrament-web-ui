@@ -1,7 +1,7 @@
 import { useContext, useCallback } from 'preact/hooks';
 import { useStore } from '@nanostores/preact';
 import { AtramentContext } from 'src/context';
-import { OVERLAY_STORE_KEY, ERROR_STORE_KEY } from 'src/constants';
+import { OVERLAY_STORE_KEY, ERROR_STORE_KEY, BACKGROUND_STORE_KEY, BACKGROUND_PAGE_STORE_KEY } from 'src/constants';
 
 export const useAtrament = () => {
   const atrament = useContext(AtramentContext);
@@ -86,8 +86,8 @@ export const useAtrament = () => {
   );
 
   const resetBackground = useCallback(() => {
-    atrament.state.setSubkey('game', 'background', null);
-    atrament.state.setSubkey('game', 'background_page', null);
+    atrament.state.setSubkey('game', BACKGROUND_STORE_KEY, null);
+    atrament.state.setSubkey('game', BACKGROUND_PAGE_STORE_KEY, null);
   }, [ atrament ]);
 
   const throwAtramentError = useCallback((message) => {
