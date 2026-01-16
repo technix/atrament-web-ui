@@ -8,7 +8,7 @@ import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 import Block from 'src/components/ui/block';
 import MenuButton from 'src/components/ui/menu-button';
 
-import SessionsView from 'src/components/views/sessions';
+import SessionsView from 'src/components/menu/elements/sessions';
 
 import LoadGameMenu from './load-game';
 import GameCover from './game-cover';

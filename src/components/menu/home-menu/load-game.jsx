@@ -6,7 +6,7 @@ import Block from 'src/components/ui/block';
 import Header from 'src/components/ui/header';
 import Break from 'src/components/ui/break';
 
-import LoadGameView from 'src/components/views/loadgame';
+import LoadGameView from 'src/components/menu/elements/loadgame';
 
 import useGameControls from './use-game-controls';
 

@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { route } from 'preact-router';
 import { Text } from '@eo-locale/preact';
 
-import Menu from 'src/components/views/main-menu';
+import Menu from 'src/components/menu/main-menu';
 
 import Markup from 'src/components/ui/markup';
 import Block from 'src/components/ui/block';
@@ -12,7 +12,7 @@ import ContainerText from 'src/components/ui/container-text';
 import ContainerFlex from 'src/components/ui/container-flex';
 import MenuButton from 'src/components/ui/menu-button';
 
-import StoryError from 'src/components/views/story-error';
+import ErrorScreen from 'src/components/screens/error';
 import useAboutContent from 'src/content/use-about-content';
 
 const mainMenu = () => route('/');
@@ -22,7 +22,7 @@ const AboutRoute = () => {
   return (
     <Container>
       <Menu isHomeScreen />
-      <StoryError />
+      <ErrorScreen />
       <ContainerText>
         <ContainerFlex>
           <Block> </Block>

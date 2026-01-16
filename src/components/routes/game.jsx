@@ -5,12 +5,12 @@ import { BACKGROUND_STORE_KEY, BACKGROUND_PAGE_STORE_KEY } from 'src/constants';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import Container from 'src/components/ui/container';
-import Menu from 'src/components/views/main-menu';
+import Menu from 'src/components/menu/main-menu';
 
-import Toolbar from 'src/components/views/toolbar';
-import StoryView from 'src/components/views/story';
-import OverlayView from 'src/components/views/overlay';
-import StoryError from 'src/components/views/story-error';
+import Toolbar from 'src/components/screens/game/toolbar';
+import StoryView from 'src/components/screens/game/story';
+import OverlayView from 'src/components/screens/game/overlay';
+import ErrorScreen from 'src/components/screens/error';
 
 import { setPageBackground } from 'src/utils/page-background';
 import preloadImages from 'src/utils/preload-images';
@@ -55,7 +55,7 @@ const GameRoute = () => {
   return (
     <Container style={containerStyle}>
       <Menu />
-      <StoryError />
+      <ErrorScreen />
       <Toolbar />
       <OverlayView />
       <StoryView />

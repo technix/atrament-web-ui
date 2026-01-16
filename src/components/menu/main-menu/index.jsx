@@ -11,8 +11,8 @@ import CloseButton from 'src/components/ui/close-button';
 import VersionInfo from 'src/components/ui/version-info';
 import { IconMenu } from 'src/components/ui/icons';
 
-import DebuggerMenu from 'src/components/views/debugger';
-import AboutMenu from 'src/components/views/about';
+import DebuggerMenu from 'src/components/screens/debugger';
+import AboutMenu from 'src/components/menu/elements/about-atrament';
 
 import MenuScreen from './menu';
 

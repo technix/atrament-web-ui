@@ -2,7 +2,7 @@ import { h } from 'preact';
 import style from './index.module.css';
 import { useTranslator } from '@eo-locale/preact';
 
-import Collapse from '../../ui/collapse';
+import Collapse from 'src/components/ui/collapse';
 
 import SettingsFullscreen from './settings-fullscreen';
 import SettingsSound from './settings-sound';

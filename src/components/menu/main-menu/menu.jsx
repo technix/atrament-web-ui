@@ -10,9 +10,9 @@ import MenuButtonAccent from 'src/components/ui/menu-button-accent';
 import Header from 'src/components/ui/header';
 import Break from 'src/components/ui/break';
 
-import LoadGameView from 'src/components/views/loadgame';
-import SaveGameView from 'src/components/views/savegame';
-import Settings from 'src/components/views/settings';
+import LoadGameView from 'src/components/menu/elements/loadgame';
+import SaveGameView from 'src/components/menu/elements/savegame';
+import Settings from 'src/components/menu/elements/settings';
 
 const NO_MENU = 0;
 const MENU_SAVE = 1;

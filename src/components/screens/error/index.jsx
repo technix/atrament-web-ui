@@ -5,7 +5,7 @@ import useErrorContent from 'src/content/use-error-content';
 
 import ErrorModal from 'src/components/ui/error-modal';
 
-const StoryError = () => {
+const ErrorScreen = () => {
   const [ errorMessage, clearError ] = useErrorContent();
 
   const escHandler = useCallback((e) => {
@@ -21,4 +21,4 @@ const StoryError = () => {
   }
 };
 
-export default StoryError;
+export default ErrorScreen;
