@@ -14,10 +14,7 @@ import { IconMenu } from 'src/components/ui/icons';
 import DebuggerMenu from 'src/components/views/debugger';
 import AboutMenu from 'src/components/views/about';
 
-import MenuHomeScreen from './home';
-import MenuGameScreen from './game';
-
-const MenuScreen = ({ isHomeScreen, toggleMenu }) => (isHomeScreen ? <MenuHomeScreen /> : <MenuGameScreen toggleMenu={toggleMenu} />);
+import MenuScreen from './menu';
 
 const Menu = ({ isHomeScreen = false }) => {
   const [ isOpen, toggleMainMenu ] = useToggle(false);

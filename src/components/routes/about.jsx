@@ -2,7 +2,7 @@ import { h } from 'preact';
 import { route } from 'preact-router';
 import { Text } from '@eo-locale/preact';
 
-import Menu from 'src/components/menu';
+import Menu from 'src/components/views/main-menu';
 
 import Markup from 'src/components/ui/markup';
 import Block from 'src/components/ui/block';

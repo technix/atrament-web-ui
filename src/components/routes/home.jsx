@@ -5,7 +5,7 @@ import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 import Container from 'src/components/ui/container';
 import ContainerFlex from 'src/components/ui/container-flex';
 
-import Menu from 'src/components/menu';
+import Menu from 'src/components/views/main-menu';
 import { SessionsMenuView, HomeMenuView } from 'src/components/views/home-menu';
 
 import { setPageBackground } from 'src/utils/page-background';

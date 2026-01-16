@@ -5,7 +5,7 @@ import { BACKGROUND_STORE_KEY, BACKGROUND_PAGE_STORE_KEY } from 'src/constants';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import Container from 'src/components/ui/container';
-import Menu from 'src/components/menu';
+import Menu from 'src/components/views/main-menu';
 
 import Toolbar from 'src/components/views/toolbar';
 import StoryView from 'src/components/views/story';
