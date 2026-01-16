@@ -6,7 +6,6 @@ import { Text } from '@eo-locale/preact';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import MenuButton from 'src/components/ui/menu-button';
-import MenuButtonAccent from 'src/components/ui/menu-button-accent';
 import Header from 'src/components/ui/header';
 import Break from 'src/components/ui/break';
 
@@ -61,7 +60,7 @@ const MenuLayout = ({ setActiveMenu, hasSaveButton, hasLoadButton, hasQuitGameBu
     // Settings
     (hasSaveButton || hasLoadButton) ? <MenuButton key='settings' onClick={openSettingsMenu}><Text id={'main.settings'} /></MenuButton> : <Settings />,
     // Quit game
-    hasQuitGameButton && <><Break /><MenuButtonAccent onClick={() => route('/')}><Text id={'game.quit'} /></MenuButtonAccent></>
+    hasQuitGameButton && <><Break /><MenuButton accented key='quit-game' onClick={() => route('/')}><Text id={'game.quit'} /></MenuButton></>
   ];
   return <>{displayButtons}</>;
 }
@@ -96,7 +95,7 @@ const MenuScreen = ({ toggleMenu, isHomeScreen }) => {
     activeMenu === MENU_LOAD &&  <LoadMenuLayout loadGame={loadGame} closeSubmenu={closeSubmenu} />,
     activeMenu === MENU_SETTINGS && <SettingsMenuLayout closeSubmenu={closeSubmenu} />,
     activeMenu === NO_MENU && <MenuLayout setActiveMenu={setActiveMenu} hasSaveButton={hasSaveButton} hasLoadButton={hasLoadButton} hasQuitGameButton={hasQuitGameButton} />,
-    hasExitAppButton && (<><Break /><MenuButtonAccent onClick={exitApp}><Text id={'main.exit'} /></MenuButtonAccent></>)
+    hasExitAppButton && (<><Break /><MenuButton accented key='exit-app' onClick={exitApp}><Text id={'main.exit'} /></MenuButton></>)
   ];
 
   return <>{displayComponents}</>;

@@ -16,3 +16,13 @@
   background-color: var(--fg-color);
   color: var(--bg-color);
 }
+
+.accented_button {
+  color: var(--accent-fg-color);
+  border: 1px solid var(--accent-fg-color);
+}
+
+.accented_button:hover {
+  background-color: var(--accent-fg-color);
+  color: var(--accent-inverse-color);
+}
