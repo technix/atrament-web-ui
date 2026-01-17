@@ -143,7 +143,7 @@ export const useAtramentOverlay = () => {
     if (currentOverlay) {
       // refresh active overlay
       const result = evaluateInkFunction(currentOverlay);
-      setOverlayContent(currentOverlay, result.output, null);
+      setOverlayContent(currentOverlay, result.output, atramentState[OVERLAY_STORE_KEY].display);
     }
   }, [ atramentState, setOverlayContent, evaluateInkFunction ]);
 
