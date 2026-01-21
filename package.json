@@ -1,6 +1,6 @@
 {
   "name": "@atrament/web-ui",
-  "version": "2.4.1",
+  "version": "2.4.2-dev",
   "license": "MIT",
   "type": "module",
   "scripts": {
