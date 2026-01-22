@@ -47,6 +47,7 @@
     "debug.info.current-turn-index": "Aktueller Zug: Index",
     "debug.info.path": "Pfad",
     "debug.global-tags": "Globale Tags",
+    "debug.scene-tags": "Szene Tags",
     "debug.unknown-tag": "Unbekannter Tag",
     "debug.variables": "Variablen",
     "debug.variables.filter-by-name": "Nach Namen filtern",

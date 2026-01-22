@@ -23,7 +23,7 @@ const DebugInfo = () => {
   ];
 
   return(
-    <Collapse title={translator.translate('debug.info')} open>
+    <Collapse title={translator.translate('debug.info')}>
       <Table data={tableData} fixed />
     </Collapse>
   );

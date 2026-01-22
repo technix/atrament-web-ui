@@ -41,7 +41,7 @@ const DebugVariables = () => {
   };
 
   return(
-    <Collapse title={translator.translate('debug.variables')}>
+    <Collapse title={`${translator.translate('debug.variables')} [${inkVariables.length}]`}>
       <div class={style.input_div}>
         <input
           class={style.input}

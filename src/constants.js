@@ -90,6 +90,29 @@ export const KNOWN_GLOBAL_TAGS = [
   'allow_external_function_fallbacks'
 ];
 
+export const KNOWN_SCENE_TAGS = [
+  'IMAGE',
+  'BACKGROUND',
+  'PAGE_BACKGROUND',
+  'CLEAR',
+  'AUDIO',
+  'AUDIOLOOP',
+  'PLAY_SOUND',
+  'STOP_SOUND',
+  'PLAY_MUSIC',
+  'STOP_MUSIC',
+  'CHECKPOINT',
+  'SAVEGAME',
+  'RESTART',
+  'RESTART_FROM_CHECKPOINT',
+  'CLASS',
+  'SHUFFLE_CHOICES',
+  'PROMPT',
+  'HYPERTEXT',
+  'CHOICES',
+  'AUTO_CHOICE'
+];
+
 // fonts
 
 export const FONTS_EMOJI = '"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"';

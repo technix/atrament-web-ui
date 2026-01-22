@@ -47,6 +47,7 @@
     "debug.info.current-turn-index": "Індекс поточного ходу",
     "debug.info.path": "Поточний шлях",
     "debug.global-tags": "Глобальні теги",
+    "debug.scene-tags": "Теги сцени",
     "debug.unknown-tag": "Невідомий тег",
     "debug.variables": "Змінні",
     "debug.variables.filter-by-name": "Фільтр за ім'ям",

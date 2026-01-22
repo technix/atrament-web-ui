@@ -47,6 +47,7 @@
     "debug.info.current-turn-index": "Current turn index",
     "debug.info.path": "Path",
     "debug.global-tags": "Global tags",
+    "debug.scene-tags": "Scene tags",
     "debug.unknown-tag": "Unknown tag",
     "debug.variables": "Variables",
     "debug.variables.filter-by-name": "Filter by name",

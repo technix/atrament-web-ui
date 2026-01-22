@@ -11,6 +11,7 @@ import { IconDebugger } from 'src/components/ui/icons';
 import DebugInfo from './info';
 import DebugGoto from './goto';
 import DebugGlobaltags from './globaltags';
+import DebugScenetags from './scenetags';
 import DebugVariables from './variables';
 import DebugVisits from './visits';
 import DebugFunctions from './functions';
@@ -43,6 +44,7 @@ const DebuggerView = () => {
       <CloseButton onClick={toggleDebugger} />
       <DebugInfo />
       <DebugGlobaltags />
+      <DebugScenetags />
       <DebugVariables />
       <DebugVisits />
       <DebugFunctions />
