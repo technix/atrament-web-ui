@@ -1,10 +1,12 @@
-# Atrament Web UI
+# Atrament
 
-`atrament-web-ui` is a web application to run Ink games.
+<img src="https://atrament.ink/img/atrament-logo.svg" width="200px">
 
-It uses [inkjs](https://github.com/y-lohse/inkjs) to interpret Ink scripts, [Atrament](https://github.com/technix/atrament-core) as a game engine, and [Preact](https://preactjs.com/) as a Web UI framework.
+Atrament is a modular tool to create text games or interactive fiction stories for the web and desktop.
 
-[Live Demo](https://technix.github.io/atrament-web-ui/)
+It uses [inkjs](https://github.com/y-lohse/inkjs) to interpret Ink scripts, [@atrament/core](https://github.com/technix/atrament-core) as a game engine, and [Preact](https://preactjs.com/) as a Web UI framework.
+
+[Documentation](https://atrament.ink) | [Live Demo](https://technix.github.io/atrament-web-ui/)
 
 ## Getting started
 
