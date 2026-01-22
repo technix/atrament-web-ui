@@ -21,17 +21,18 @@ const DebugScenetags = () => {
   }
 
   const displayScenetags = Object.keys(tags)
-    .filter((k) => !globalTags.hasOwnProperty(k))
+    .filter((k) => !globalTags.hasOwn(k))
     .map(k => {
       if (KNOWN_SCENE_TAGS.includes(k)) {
-      return [k, tags[k]];
+        return [k, tags[k]];
       }
-      return [(
-      <span
+      return [
+        (<span
           key={k}
           class={style.unknown_tag}
           title={translator.translate('debug.unknown-tag')}
-      >{k}</span>), tags[k]];
+        >{k}</span>), tags[k]
+      ];
     });
 
   return(

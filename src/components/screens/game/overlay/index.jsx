@@ -9,7 +9,7 @@ import ModalPresenter from './modal';
 
 import useOverlayContent from 'src/content/use-overlay-content';
 
-const OverlayParagraph = (item) => 
+const OverlayParagraph = (item) =>
   item === '' || item === '\n'
     ? <></>
     : <TextParagraph key={Math.random()}><Markup>{item}</Markup></TextParagraph>;

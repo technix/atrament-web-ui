@@ -73,7 +73,7 @@ const MenuScreen = ({ toggleMenu, isHomeScreen }) => {
   const [ activeMenu, setActiveMenu ] = useState(NO_MENU);
 
   const closeSubmenu = useCallback(() => setActiveMenu(NO_MENU), [ setActiveMenu ]);
-  
+
   const exitApp = atrament.interfaces.platform.exitApp;
   const hasSaveButton = !!saves && !isHomeScreen;
   const hasLoadButton = !!(saves || load_from_checkpoints) && !isHomeScreen;

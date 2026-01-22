@@ -7,9 +7,9 @@ const MenuButton = ({ children, key, onClick, accented = false, attributes={} })
     key={key}
     onClick={onClick}
     class={clsx(
-    style.menu_button,
-    accented && style.accented_button,
-    'atrament-menu-button'
+      style.menu_button,
+      accented && style.accented_button,
+      'atrament-menu-button'
     )}
     {...attributes}
   >
