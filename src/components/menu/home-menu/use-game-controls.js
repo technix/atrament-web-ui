@@ -1,35 +1,27 @@
 import { useCallback } from 'preact/hooks';
 import { route } from 'preact-router';
-import { useAtrament, useAtramentState } from 'src/atrament/hooks';
+import { useAtrament } from 'src/atrament/hooks';
 
 const useGameControls = () => {
-  const { resetBackground, gameStart, gameResume, continueStory } = useAtrament();
-  const { metadata } = useAtramentState(['metadata']);
+  const { resetBackground, gameStart, gameResume } = useAtrament();
 
   const newGame = useCallback(async () => {
     resetBackground();
     await gameStart();
-    continueStory();
     route('/game');
-  }, [ resetBackground, gameStart, continueStory ]);
+  }, [ resetBackground, gameStart ]);
 
   const resumeGame = useCallback(async () => {
     resetBackground();
     await gameResume();
-    if (metadata.continue_maximally !== false) {
-      continueStory();
-    }
     route('/game');
-  }, [ resetBackground, gameResume, continueStory, metadata ]);
+  }, [ resetBackground, gameResume ]);
 
   const loadGame = useCallback(async (saveslot) => {
     resetBackground();
     await gameStart(saveslot);
-    if (metadata.continue_maximally !== false) {
-      continueStory();
-    }
     route('/game');
-  }, [ resetBackground, gameStart, continueStory, metadata ]);
+  }, [ resetBackground, gameStart ]);
 
   return { newGame, resumeGame, loadGame };
 };
