@@ -21,7 +21,7 @@ const DebugScenetags = () => {
   }
 
   const displayScenetags = Object.keys(tags)
-    .filter((k) => !globalTags.hasOwn(k))
+    .filter((k) => !Object.prototype.hasOwnProperty.call(globalTags, k))
     .map(k => {
       if (KNOWN_SCENE_TAGS.includes(k)) {
         return [k, tags[k]];
