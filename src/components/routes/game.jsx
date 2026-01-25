@@ -42,7 +42,7 @@ const GameRoute = () => {
     } else {
       setContainerStyle({});
     }
-  }, [ background, setContainerStyle ]);
+  }, [ background, setContainerStyle, getAssetPath ]);
 
   useEffect(() => {
     imagePreloader(

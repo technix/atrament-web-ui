@@ -11,7 +11,7 @@ import { SessionsMenuView, HomeMenuView } from 'src/components/menu/home-menu';
 import { setPageBackground } from 'src/utils/page-background';
 
 const HomeRoute = () => {
-  const { canResume, getAssetPath, resetBackground } = useAtrament();
+  const { getAssetPath, resetBackground } = useAtrament();
   const atramentState = useAtramentState(['metadata']);
   const { background, sessions } = atramentState.metadata;
 
@@ -20,13 +20,13 @@ const HomeRoute = () => {
     resetBackground();
     // set page background
     setPageBackground(background, getAssetPath);
-  }, [ resetBackground, canResume, background, getAssetPath ]);
+  }, [ resetBackground, background, getAssetPath ]);
 
   return (
     <Container>
       <ContainerFlex cssClass='font-face-game'>
         <Menu isHomeScreen />
-        { sessions? <SessionsMenuView /> : <HomeMenuView /> }
+        { sessions ? <SessionsMenuView /> : <HomeMenuView /> }
       </ContainerFlex>
     </Container>
   );
