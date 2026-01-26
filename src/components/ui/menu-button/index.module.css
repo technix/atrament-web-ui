@@ -12,6 +12,13 @@
   cursor: pointer;
 }
 
+.menu_button:disabled {
+  background-color: var(--shade-color);
+  color: var(--fg-color);
+  opacity: 0.6;
+  cursor: inherit;
+}
+
 .menu_button:hover {
   background-color: var(--fg-color);
   color: var(--bg-color);

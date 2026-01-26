@@ -1,9 +1,9 @@
 import { h } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 import { route } from 'preact-router';
 import { Text } from '@eo-locale/preact';
 
-import { useAtrament, useAtramentState } from 'src/atrament/hooks';
+import { useAtrament, useAtramentState, useAtramentSaves } from 'src/atrament/hooks';
 
 import Block from 'src/components/ui/block';
 import MenuButton from 'src/components/ui/menu-button';
@@ -64,31 +64,11 @@ export const SessionsMenuView = () => {
 
 export const HomeMenuView = () => {
   const [ loadGameMenuVisible, setLoadGameMenuVisible ] = useState(false);
-  const [ canBeResumed, setResumeState ] = useState(false);
-  const [ canBeLoaded, setLoadedState ] = useState(false);
-  const { atrament, canResume } = useAtrament();
+  const [ canBeResumed, canBeLoaded ] = useAtramentSaves();
   const { metadata } = useAtramentState(['metadata']);
 
   const openLoadGameMenu = () => setLoadGameMenuVisible(true);
   const closeLoadGameMenu = () => setLoadGameMenuVisible(false);
-
-  useEffect(() => {
-    const initHome = async () => {
-      const canResumeGame = await canResume();
-      setResumeState(!!canResumeGame);
-      const existingSaves = await atrament.game.listSaves();
-      const saves = existingSaves.filter(
-        (s) => {
-          if (metadata.load_from_checkpoints && s.type === atrament.game.SAVE_CHECKPOINT) {
-            return true;
-          }
-          return s.type === atrament.game.SAVE_GAME;
-        }
-      );
-      setLoadedState(saves.length > 0);
-    }
-    initHome();
-  });
 
   return (
     <>

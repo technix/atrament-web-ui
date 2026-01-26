@@ -1,4 +1,4 @@
-import { useContext, useCallback } from 'preact/hooks';
+import { useState, useContext, useCallback, useEffect } from 'preact/hooks';
 import { useStore } from '@nanostores/preact';
 import { AtramentContext } from 'src/context';
 import { OVERLAY_STORE_KEY, ERROR_STORE_KEY, BACKGROUND_STORE_KEY, BACKGROUND_PAGE_STORE_KEY } from 'src/constants';
@@ -178,3 +178,31 @@ export const useAtramentOverlay = () => {
     }
   }
 };
+
+export const useAtramentSaves = () => {
+  const [ canBeResumed, setResumeState ] = useState(false);
+  const [ canBeLoaded, setLoadedState ] = useState(false);
+  const { atrament, canResume } = useAtrament();
+  const { metadata } = useAtramentState(['metadata']);
+
+  const checkForSaves = async () => {
+    const canResumeGame = await canResume();
+    setResumeState(!!canResumeGame);
+    const existingSaves = await atrament.game.listSaves();
+    const saves = existingSaves.filter(
+      (s) => {
+        if (metadata.load_from_checkpoints && s.type === atrament.game.SAVE_CHECKPOINT) {
+          return true;
+        }
+        return s.type === atrament.game.SAVE_GAME;
+      }
+    );
+    setLoadedState(saves.length > 0);
+  }
+
+  useEffect(() => { checkForSaves(); });
+
+  return [ canBeResumed, canBeLoaded ];
+}
+
+

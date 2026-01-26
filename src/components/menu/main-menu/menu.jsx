@@ -3,7 +3,7 @@ import { useCallback, useState } from 'preact/hooks';
 import { route } from 'preact-router';
 import { Text } from '@eo-locale/preact';
 
-import { useAtrament, useAtramentState } from 'src/atrament/hooks';
+import { useAtrament, useAtramentState, useAtramentSaves } from 'src/atrament/hooks';
 
 import MenuButton from 'src/components/ui/menu-button';
 import Header from 'src/components/ui/header';
@@ -49,6 +49,7 @@ const SettingsMenuLayout = ({ closeSubmenu }) => (
 
 
 const MenuLayout = ({ setActiveMenu, hasSaveButton, hasLoadButton, hasQuitGameButton }) => {
+  const [ , canBeLoaded ] = useAtramentSaves();
   const openSaveMenu = useCallback(() => setActiveMenu(MENU_SAVE), [ setActiveMenu ]);
   const openLoadMenu = useCallback(() => setActiveMenu(MENU_LOAD), [ setActiveMenu ]);
   const openSettingsMenu = useCallback(() => setActiveMenu(MENU_SETTINGS), [ setActiveMenu ]);
@@ -56,7 +57,7 @@ const MenuLayout = ({ setActiveMenu, hasSaveButton, hasLoadButton, hasQuitGameBu
     // Save game
     hasSaveButton && <MenuButton key='save-game' onClick={openSaveMenu}><Text id={'main.savegame'} /></MenuButton>,
     // Load game
-    hasLoadButton && <MenuButton key='load-game' onClick={openLoadMenu}><Text id={'main.loadgame'} /></MenuButton>,
+    hasLoadButton && <MenuButton key='load-game' onClick={openLoadMenu} attributes={{ disabled: !canBeLoaded }}><Text id={'main.loadgame'} /></MenuButton>,
     // Settings
     (hasSaveButton || hasLoadButton) ? <MenuButton key='settings' onClick={openSettingsMenu}><Text id={'main.settings'} /></MenuButton> : <Settings />,
     // Quit game
