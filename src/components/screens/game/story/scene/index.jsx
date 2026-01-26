@@ -44,6 +44,11 @@ const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
     preloader();
   }, [ scene, setIsLoaded, getAssetPath ]);
 
+  const hasNoContent = scene.images.length === 0 && scene.isEmpty;
+  if (hasNoContent) {
+    return <></>;
+  }
+
   return (
     <div class={clsx(style.scene, 'atrament-scene', (isCurrent && isLoaded) && 'animation_appear')} ref={elementRef}>
       { isLoaded ?
