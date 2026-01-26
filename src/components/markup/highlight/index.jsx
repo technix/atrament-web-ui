@@ -12,6 +12,6 @@ export default {
       padding: options.bgcolor ? '0.1em' : 'inherit',
       'box-decoration-break': 'clone'
     };
-    return (<span style={highlightStyle} class={clsx('atrament-tag-highlight', options.class)}>{children}</span>);
+    return (<mark style={highlightStyle} class={clsx('atrament-tag-highlight', options.class)}>{children}</mark>);
   }
 }
