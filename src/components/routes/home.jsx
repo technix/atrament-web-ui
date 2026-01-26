@@ -4,6 +4,7 @@ import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import Container from 'src/components/ui/container';
 import ContainerFlex from 'src/components/ui/container-flex';
+import ErrorScreen from 'src/components/screens/error';
 
 import Menu from 'src/components/menu/main-menu';
 import { SessionsMenuView, HomeMenuView } from 'src/components/menu/home-menu';
@@ -25,6 +26,7 @@ const HomeRoute = () => {
   return (
     <Container>
       <ContainerFlex cssClass='font-face-game'>
+        <ErrorScreen />
         <Menu isHomeScreen />
         { sessions ? <SessionsMenuView /> : <HomeMenuView /> }
       </ContainerFlex>
