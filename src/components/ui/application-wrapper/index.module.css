@@ -1,6 +1,7 @@
 .application_wrapper {
   margin: 0 auto;
   height: var(--screen-vh);
+  height: 100svh;
 }
 
 @media (min-width: 961px) {
