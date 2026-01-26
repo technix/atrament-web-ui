@@ -25,6 +25,7 @@
     z-index: 1500;
     gap: 1em;
     overflow: auto;
+    font-family: var(--font-face-ui);
 }
 
 .container {
