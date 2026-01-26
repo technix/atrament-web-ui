@@ -5,6 +5,6 @@
 
 @media (min-width: 961px) {
   .application_wrapper {
-    aspect-ratio: 10 / 16;
+    aspect-ratio: var(--app-aspect-ratio);
   }
 }

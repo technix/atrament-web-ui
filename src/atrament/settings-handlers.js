@@ -9,7 +9,7 @@ export function registerSettingsHandlers(atrament) {
     applyFont(value);
   });
   atrament.settings.defineHandler('fontSize', (oldV, value) => {
-    document.documentElement.style.setProperty('--game-font-size', `${value}%`);
+    document.documentElement.style.setProperty('--font-size-game', `${value}%`);
   });
   atrament.settings.defineHandler('animation', (oldV, value) => {
     if (value) {

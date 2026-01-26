@@ -8,7 +8,7 @@
 }
 
 .inactive {
-    opacity: 70%;
+    opacity: var(--inactive-text-opacity);
 }
 
 .paragraph:first-child {

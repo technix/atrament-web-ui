@@ -5,9 +5,9 @@
   display: flex;
   flex-direction: column;
   overflow: auto;
-  line-height: calc(1ex / 0.32);
+  line-height: var(--text-line-height);
   font-family: var(--font-face-game);
-  font-size: var(--game-font-size);
+  font-size: var(--font-size-game);
 }
 
 /*
