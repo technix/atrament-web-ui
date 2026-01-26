@@ -4,5 +4,5 @@
   border: 2px solid var(--fg-color);
   border-radius: var(--border-radius-inline);
   background-color: var(--bg-color);
-  color: var(--fg-color);
+  color: var(--font-color);
 }

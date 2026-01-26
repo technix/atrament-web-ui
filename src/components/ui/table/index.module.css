@@ -1,6 +1,6 @@
 .table {
     border-collapse: collapse;
-    color: var(--fg-color);
+    color: var(--font-color);
     width: 100%;
 }
 
