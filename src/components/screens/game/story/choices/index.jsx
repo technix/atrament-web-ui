@@ -33,7 +33,10 @@ function clickToContinueOptions(param) {
 const EndGameLink = () => {
   const { atrament } = useAtrament();
   const endGame = async () => {
-    await atrament.game.removeSave();
+    // remove autosave
+    const autosaveSlot = atrament.game.getSaveSlotKey({ type: atrament.game.SAVE_AUTOSAVE })
+    await atrament.game.removeSave(autosaveSlot);
+    // go to home screen
     route('/');
   };
   return (<MenuButton accented key='game-end' onClick={endGame}><Text id={'game.end'} /></MenuButton>);
