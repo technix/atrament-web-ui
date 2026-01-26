@@ -7,6 +7,9 @@ const TOOLS_DIR = 'tools/neutralino';
 const BUILD_DIR = 'build/.tmp_neutralino';
 const OUTPUT_DIR = 'build/standalone';
 
+// stop script in case of failures
+shell.config.fatal = true;
+
 const cfg = JSON.parse(fs.readFileSync('atrament.config.json', 'utf8'));
 
 const neutralinoConfig = {
@@ -106,7 +109,9 @@ console.log('>>> Building Neutralino app');
 shell.pushd('-q', BUILD_DIR);
 shell.exec('neu build');
 shell.popd('-q');
-shell.rm('-rf', OUTPUT_DIR);
+if (fs.existsSync(OUTPUT_DIR)) {
+  shell.rm('-rf', OUTPUT_DIR);
+}
 shell.mkdir('-p', OUTPUT_DIR);
 shell.mv(`${BUILD_DIR}/dist/*`, OUTPUT_DIR);
 shell.rm('-rf', BUILD_DIR);

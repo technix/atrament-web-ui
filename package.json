@@ -12,7 +12,8 @@
     "preview": "vite preview",
     "lint": "eslint --ext .jsx --ext js src",
     "compile-ink-script": "node tools/ink-compile.cjs",
-    "install-inklecate": "node tools/install-inklecate.cjs"
+    "install-inklecate": "node tools/install-inklecate.cjs",
+    "update-neutralino": "cd tools/neutralino && npx neu update"
   },
   "dependencies": {
     "@atrament/web": "2.1.4",
@@ -28,9 +29,9 @@
     "seamless-scroll-polyfill": "2.3.4"
   },
   "devDependencies": {
-    "@neutralinojs/neu": "11.6.0",
+    "@neutralinojs/neu": "11.7.0",
     "@preact/preset-vite": "2.10.2",
-    "@stylistic/eslint-plugin": "5.7.0",
+    "@stylistic/eslint-plugin": "5.7.1",
     "@terascope/fetch-github-release": "2.2.1",
     "@vite-pwa/assets-generator": "1.0.2",
     "eslint": "9.39.2",
