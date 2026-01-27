@@ -2,7 +2,8 @@ import { h } from 'preact';
 import style from './index.module.css';
 import { useTranslator } from '@eo-locale/preact';
 import { useEffect, useState } from 'preact/hooks';
-import { useAtrament } from 'src/atrament/hooks';
+import { useAtrament, useAtramentState } from 'src/atrament/hooks';
+
 import Collapse from 'src/components/ui/collapse';
 
 const getPathList = (atrament) => {
@@ -23,11 +24,20 @@ const getPathList = (atrament) => {
 
 const DebugGoto = ({ closeFn }) => {
   const { atrament } = useAtrament();
+  const { scenes } = useAtramentState(['scenes']);
   const translator = useTranslator();
   const [ inkPathList, setInkPathList ] = useState([]);
   const [ pathNameFilter, setPathNameFilter ] = useState('');
   const [ pathString, setPathString ] = useState('');
   const [ errorMsg, setErrorMsg ] = useState('');
+
+  useEffect(() => {
+    setInkPathList(getPathList(atrament));
+  }, [ atrament ]);
+
+  if (scenes.length === 0) {
+    return '';
+  }
 
   const handlePathstringChange = (e) => {
     setPathString(e.target.value);
@@ -54,10 +64,6 @@ const DebugGoto = ({ closeFn }) => {
     setPathString(chosenPath);
     setPathNameFilter(chosenPath);
   }
-
-  useEffect(() => {
-    setInkPathList(getPathList(atrament));
-  }, [ atrament ]);
 
   const inkPaths = inkPathList.filter((v) => v.includes(pathNameFilter));
 
