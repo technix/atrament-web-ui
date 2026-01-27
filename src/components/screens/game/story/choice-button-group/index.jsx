@@ -61,7 +61,8 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
     left: !!choiceConfig?.includes('left'),
     right: !!choiceConfig?.includes('right'),
     numbered: !!choiceConfig?.includes('numbered'),
-    row: !!choiceConfig?.includes('row')
+    row: !!choiceConfig?.includes('row'),
+    borderless: !!choiceConfig?.includes('borderless')
   };
 
   const choiceButtonGroupClass = clsx(

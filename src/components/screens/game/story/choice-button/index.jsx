@@ -22,6 +22,7 @@ const ChoiceButton = ({ choice, chosen, index, handleClick, choiceAppearance }) 
     choiceGroupClass,
     choiceAlignmentClass,
     choiceStateClass,
+    choiceAppearance.borderless && style.buttons_borderless,
     'atrament-choice',
     choice.tags.CLASS
   );

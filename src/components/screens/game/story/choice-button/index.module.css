@@ -127,3 +127,16 @@
 .right_aligned {
   text-align: right;
 }
+
+/* borderless */
+.buttons_borderless {
+  margin-top: 0;
+  border: 1px solid transparent;
+}
+
+.buttons_borderless:disabled {
+  background-color: inherit;
+  color: var(--fg-color);
+  opacity: 0.6;
+  cursor: inherit;
+}
