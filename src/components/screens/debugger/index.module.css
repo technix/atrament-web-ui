@@ -35,6 +35,23 @@
     width: 100%;
 }
 
+.container_scrollable {
+    height: 8em;
+    overflow: auto;
+    border: 1px solid var(--shade-color);
+}
+
+.container_scrollable a {
+    text-decoration: none;
+    color: var(--fg-color);
+    line-height: 1.3em;
+}
+
+.container_scrollable a:hover {
+    text-decoration: underline;
+}
+
+
 .container div {
     vertical-align: middle;
     padding: 0.2rem;
