@@ -49,8 +49,15 @@ const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
     return <></>;
   }
 
+  const sceneClasses = clsx(
+    style.scene,
+    'atrament-scene',
+    isCurrent && 'atrament-scene-current',
+    (isCurrent && isLoaded) && 'animation_appear',
+  );
+
   return (
-    <div class={clsx(style.scene, 'atrament-scene', (isCurrent && isLoaded) && 'animation_appear')} ref={elementRef}>
+    <div class={sceneClasses} ref={elementRef}>
       { isLoaded ?
         scene.content.map((item, i) => (
           <Fragment key={`paragraph-${scene.uuid}-${i}`}>
