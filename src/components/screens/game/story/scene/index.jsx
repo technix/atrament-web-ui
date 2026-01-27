@@ -53,7 +53,7 @@ const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
     style.scene,
     'atrament-scene',
     isCurrent && 'atrament-scene-current',
-    (isCurrent && isLoaded) && 'animation_appear',
+    (isCurrent && isLoaded) && 'animation_appear'
   );
 
   return (

@@ -74,7 +74,7 @@ const DebugGoto = ({ closeFn }) => {
         </div>
         <div class={style.container_scrollable}>
           <ul>
-            {inkPaths.map((p) => <li><a href="#" onClick={setPath} data-path={p}>{p}</a></li>)}
+            {inkPaths.map((p) => <li key={p}><a href="#" onClick={setPath} data-path={p}>{p}</a></li>)}
           </ul>
         </div>
         <div class={style.container}>
