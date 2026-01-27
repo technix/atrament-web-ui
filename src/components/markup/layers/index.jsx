@@ -22,7 +22,7 @@ function prefetchImages(imageList) {
     }));
   }
   return Promise.allSettled(imagePreloads)
-    .then(r => r.map(i => i.status === 'fulfilled' ? i.value : {}));
+    .then(r => r.map(i => (i.status === 'fulfilled' ? i.value : {})));
 }
 
 const Layers = ({ options, children }) => {

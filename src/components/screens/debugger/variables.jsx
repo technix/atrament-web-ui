@@ -12,7 +12,7 @@ import DebugVariableEditor from './var-editor';
 function listInkVariables(atrament) {
   const varState = atrament.ink.getVariables();
   const inkVariables = Object.entries(varState);
-  return inkVariables.sort((a, b) => a[0] > b[0] ? 0 : -1);
+  return inkVariables.sort((a, b) => (a[0] > b[0] ? 0 : -1));
 }
 
 const DebugVariablesTable = ({ variables }) => {
@@ -20,7 +20,7 @@ const DebugVariablesTable = ({ variables }) => {
   const tableData = variables.map(
     (item, i) => [ item[0], <DebugVariableEditor key={i} name={item[0]} value={item[1]} />]
   );
-  return(
+  return (
     <Table columns={
       [
         { name: translator.translate('debug.variables.name'), style: { width: '50%', 'text-align': 'left' } },
@@ -40,7 +40,7 @@ const DebugVariables = () => {
     setVarNameFilter(e.target.value);
   };
 
-  return(
+  return (
     <Collapse title={`${translator.translate('debug.variables')} [${inkVariables.length}]`}>
       <div class={style.input_div}>
         <input

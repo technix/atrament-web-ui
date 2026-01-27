@@ -49,7 +49,7 @@ const DebugFunctions = () => {
     }
   };
 
-  return(
+  return (
     <Collapse title={translator.translate('debug.functions')}>
       <div class={style.container}>
         <div>

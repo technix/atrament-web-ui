@@ -1,4 +1,4 @@
-/* 
+/*
   Compiles Ink to JSON, using Inklecate compiler for host OS.
   To enforce using JS compiler from InkJS, add this line to attrament.config.json:
     "inkjscompiler": true

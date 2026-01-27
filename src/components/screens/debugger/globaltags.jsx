@@ -26,7 +26,7 @@ const DebugGlobaltags = () => {
       >{k}</span>), globaltags[k]];
   });
 
-  return(
+  return (
     <Collapse title={`${translator.translate('debug.global-tags')} [${displayGlobaltags.length}]`}>
       <Table data={displayGlobaltags} fixed />
     </Collapse>

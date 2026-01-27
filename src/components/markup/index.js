@@ -1,3 +1,3 @@
 const markupTags = import.meta.glob('./*/*.jsx', { eager: true });
 export default Object.values(markupTags)
-  .reduce((allTags, { default: tagModule }) => { allTags[tagModule.tag] = tagModule; return allTags;}, {});
+  .reduce((allTags, { default: tagModule }) => { allTags[tagModule.tag] = tagModule; return allTags; }, {});

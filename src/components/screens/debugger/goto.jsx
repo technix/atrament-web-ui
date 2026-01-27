@@ -26,7 +26,7 @@ const DebugGoto = ({ closeFn }) => {
     }
   };
 
-  return(
+  return (
     <>
       <div class={style.container}>
         <div>

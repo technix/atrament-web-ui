@@ -30,7 +30,7 @@ const ProgressBar = ({ options, children }) => {
 
   return (
     <div class={classListFrame}>
-      <div class={classListGauge} style={{ width:`${width}%` }} />
+      <div class={classListGauge} style={{ width: `${width}%` }} />
       <div class={clsx(style.progress_content, 'atrament-tag-progressbar-content')}>
         {children}{options.display === 'thin' ? '' : <>&nbsp;</>}
       </div>

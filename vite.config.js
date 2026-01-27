@@ -15,7 +15,7 @@ import atramentCfg from './atrament.config.json';
 export default defineConfig(({ mode }) => {
   const isTemplateBuild = process.argv.includes('--template');
   const inkCompileFormat = atramentCfg.game.format || (mode === 'singlefile' ? 'js' : 'json');
-  
+
   const atramentConfig = { ...atramentCfg, game: { ...atramentCfg.game } };
   atramentConfig.game.script = `${atramentConfig.game.source}.${inkCompileFormat}`;
   delete atramentConfig.game.source;
@@ -100,7 +100,7 @@ export default defineConfig(({ mode }) => {
       alias: [
         { find: 'src', replacement: "/src" },
         { find: 'inkjs', replacement: '/node_modules/inkjs/dist/ink.mjs' }
-      ],
+      ]
     },
     server: {
       port: 8900

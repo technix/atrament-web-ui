@@ -26,7 +26,7 @@ const A = ({ href, children }) => (<a href={href} target="_blank" rel="noreferre
 const iftfLink = '<a href="https://iftechfoundation.org/" target="_blank" rel="noreferrer">Interactive Fiction Technology Foundation</a>';
 
 const AboutMenu = ({ onClick }) => {
-  const clickHandler = (e) => e.target.tagName.toLowerCase() === 'a' ? '' : onClick(e);
+  const clickHandler = (e) => (e.target.tagName.toLowerCase() === 'a' ? '' : onClick(e));
   return (
     <Block>
       <div onClick={clickHandler}>

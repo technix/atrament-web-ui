@@ -13,7 +13,7 @@ function listInkVisits(atrament) {
   for (let item of visitCounts) {
     inkVisitCounts.push(item);
   }
-  return inkVisitCounts.sort((a, b) => a[0] > b[0] ? 0 : -1);
+  return inkVisitCounts.sort((a, b) => (a[0] > b[0] ? 0 : -1));
 }
 
 const DebugVisits = () => {
@@ -26,7 +26,7 @@ const DebugVisits = () => {
     setVisitNameFilter(e.target.value);
   };
 
-  return(
+  return (
     <Collapse title={translator.translate('debug.visits')}>
       <div class={style.input_div}>
         <input

@@ -23,7 +23,7 @@ const MenuListItem = ({
   onSelect,
   isDisabled = false,
   isDeletable = false,
-  onDelete = ()=>{},
+  onDelete = () => {},
   deletePrompt = '',
   hasConfirmation = false,
   confirmPrompt = '',

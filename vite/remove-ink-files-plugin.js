@@ -26,6 +26,6 @@ export function removeInkFilesFromBuild() {
         console.log(`Removing Ink file from bundle: ${item}`);
         fs.unlinkSync(item);
       });
-    },
+    }
   };
 }

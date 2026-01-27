@@ -22,7 +22,7 @@ const DebugInfo = () => {
     [translator.translate('debug.info.path'), gamedata[STORYPATH_STORE_KEY]]
   ];
 
-  return(
+  return (
     <Collapse title={translator.translate('debug.info')}>
       <Table data={tableData} fixed />
     </Collapse>

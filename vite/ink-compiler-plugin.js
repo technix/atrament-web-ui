@@ -44,7 +44,7 @@ export function compileInk(format) {
         }
       }
       return res;
-    },
+    }
   }
 }
 
@@ -65,6 +65,6 @@ export function watchInkFiles(format) {
       } else {
         renderError(server, output)
       }
-    },
+    }
   }
 }

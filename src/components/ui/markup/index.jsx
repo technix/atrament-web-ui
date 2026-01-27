@@ -5,7 +5,7 @@ import { ActiveContentContext } from 'src/context';
 
 const Markup = ({ children, isActive=true }) => {
   const transformedContent = useMemo(() => markup(children), [ children ]);
-  return(
+  return (
     <ActiveContentContext.Provider value={isActive}>
       {transformedContent}
     </ActiveContentContext.Provider>

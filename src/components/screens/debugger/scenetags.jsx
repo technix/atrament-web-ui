@@ -35,7 +35,7 @@ const DebugScenetags = () => {
       ];
     });
 
-  return(
+  return (
     <Collapse title={`${translator.translate('debug.scene-tags')} [${displayScenetags.length}]`}>
       <Table data={displayScenetags} fixed />
     </Collapse>
