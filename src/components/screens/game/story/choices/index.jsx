@@ -39,7 +39,7 @@ const EndGameLink = () => {
     // go to home screen
     route('/');
   };
-  return (<MenuButton accented key='game-end' onClick={endGame}><Text id={'game.end'} /></MenuButton>);
+  return (<MenuButton accented key='game-end' onClick={endGame} className='atrament-game-end'><Text id={'game.end'} /></MenuButton>);
 };
 
 const Choices = ({ key, currentScene, setReady, isHypertextMode }) => {

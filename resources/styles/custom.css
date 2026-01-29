@@ -7,6 +7,7 @@ Atrament UI elements classes:
 .atrament-block             Block
 .atrament-container         Application container div
 .atrament-flex-container    Application flex container div
+.atrament-menu-button       Menu button
 .atrament-image-container   Image container div
 .atrament-image             Image inside of a container
 .atrament-text-container    Text container div
@@ -23,6 +24,7 @@ Atrament UI elements classes:
 .atrament-prompt            Prompt before choices
 .atrament-choices           Wrapper for choice buttons
 .atrament-choice            Choice button
+.atrament-game-end          End game button (it has "atrament-menu-button" class too) 
 
 Overlays:
 .atrament-overlay-container       Fullscreen overlay container div
