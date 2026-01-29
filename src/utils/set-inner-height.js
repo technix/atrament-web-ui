@@ -1,9 +1,11 @@
+import { setCssProperty } from "./css-properties";
+
 let vh;
 
 function setInnerHeight () {
   if (window.innerHeight !== vh) {
     vh = window.innerHeight;
-    document.documentElement.style.setProperty('--screen-vh', `${vh}px`);
+    setCssProperty('--screen-vh', `${vh}px`);
   }
 }
 

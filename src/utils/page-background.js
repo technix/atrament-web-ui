@@ -1,9 +1,13 @@
 export const setPageBackground = (background, getAssetPath) => {
+  let bg = {
+    backgroundImage: 'none'
+  };
   if (background) {
-    document.body.style.backgroundImage = `url(${getAssetPath(background)})`
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundPosition = 'center';
-  } else {
-    document.body.style.backgroundImage = 'none';
+    bg = {
+      backgroundImage: `url(${getAssetPath(background)})`,
+      backgroundSize: 'cover',
+      backgroundPosition: 'center'
+    };
   }
+  Object.assign(document.body.style, bg);
 };

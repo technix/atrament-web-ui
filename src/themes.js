@@ -1,4 +1,5 @@
 import { gameDefaultTheme } from 'src/constants';
+import { setCssProperty } from './utils/css-properties';
 
 // import theme modules
 const themes = {};
@@ -26,8 +27,7 @@ export function applyTheme(theme) {
   if (!theme || !themes[theme]) {
     return;
   }
-  Object.entries(themes[theme] || themes[gameDefaultTheme]).forEach(([prop, value]) => {
-    document.documentElement.style.setProperty(`--${prop}`, value);
-  });
+  Object.entries(themes[theme] || themes[gameDefaultTheme])
+    .forEach(([prop, value]) => setCssProperty(`--${prop}`, value));
 }
 

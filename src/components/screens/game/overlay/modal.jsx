@@ -13,12 +13,12 @@ export default function ModalPresenter({ children, title, closeOverlay }) {
     style.overlay_header,
     style.overlay_header_modal,
     title && style.overlay_header_bottom_line,
-    'atrament-overlay-header-modal',
+    'atrament-overlay-header-modal'
   );
   const titleClasses = clsx(
     style.overlay_title,
     style.overlay_title_modal,
-    'atrament-overlay-title-modal',
+    'atrament-overlay-title-modal'
   );
   const overlayClasses = clsx(
     style.overlay_content,
