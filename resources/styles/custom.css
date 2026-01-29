@@ -13,7 +13,6 @@ Atrament UI elements classes:
 .atrament-header            Header
 .atrament-loading           Loading animation div
 .atrament-modal             Modal div
-.atrament-overlay           Overlay div
 .atrament-toolbar           Toolbar div
 .atrament-container-choices Container for choices list
 .atrament-container-scene   Scene container div
@@ -24,6 +23,16 @@ Atrament UI elements classes:
 .atrament-prompt            Prompt before choices
 .atrament-choices           Wrapper for choice buttons
 .atrament-choice            Choice button
+
+Overlays:
+.atrament-overlay-container       Fullscreen overlay container div
+.atrament-overlay-header          Fullscreen overlay header div
+.atrament-overlay-title           Fullscreen overlay title div
+.atrament-overlay-content         Fullscreen overlay content div
+.atrament-overlay-header-modal    Modal overlay header div
+.atrament-overlay-title-modal     Modal overlay title div
+.atrament-overlay-content-modal   Modal overlay content div
+
 
 Markup tags classes:
 .atrament-tag-banner                [banner]
