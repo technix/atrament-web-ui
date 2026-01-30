@@ -13,7 +13,10 @@ const InfoBlock = ({ children, options }) => {
     'atrament-tag-info',
     options.class
   );
-  return (<div class={classList}>{children}</div>);
+  const styleList = {
+    'text-align': options.align || 'left'
+  };
+  return (<div class={classList} style={styleList}>{children}</div>);
 };
 
 export default {
