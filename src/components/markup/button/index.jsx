@@ -22,7 +22,8 @@ const InlineButtonComponent = ({ children, options }) => {
   }, [ execContentFunction, options ]);
 
   let buttonClass = clsx(
-    options.bordered === false ? style.inline_button : style.bordered_button,
+    style.button,
+    options.bordered === false ? style.borderless : style.bordered,
     'atrament-tag-button',
     options.class
   );
