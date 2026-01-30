@@ -45,9 +45,11 @@ const Menu = ({ isHomeScreen = false }) => {
     isClosing && 'animation_disappear'
   );
 
-  if (isOpen) {
-    return (
-      <ContainerModal className={containerClasses}>
+  return (
+    <>
+      <button class={style.menu_toggle} onClick={toggleMenu}><IconMenu /></button>
+      <DebuggerMenu />
+      {isOpen && <ContainerModal className={containerClasses}>
         <Backdrop onClick={toggleMenu} />
         <Modal>
           <div class={style.menu_content}>
@@ -62,12 +64,7 @@ const Menu = ({ isHomeScreen = false }) => {
           </div>
         </Modal>
       </ContainerModal>
-    );
-  }
-  return (
-    <>
-      <button class={style.menu_toggle} onClick={toggleMenu}><IconMenu /></button>
-      <DebuggerMenu />
+      }
     </>
   );
 };
