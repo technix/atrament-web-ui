@@ -68,6 +68,15 @@ h1, h2, h3, h4, h4, h6 {
   }
 }
 
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 a, a:visited {
   color: var(--accent-fg-color);
 }
@@ -83,6 +92,23 @@ a:hover {
   animation-delay: 0s;
   animation-iteration-count: 1;
   animation-fill-mode: forwards;
+}
+
+.animation_appear_overlay {
+  animation-duration: var(--animation-disabled, 0.2s);
+}
+
+.animation_disappear {
+  animation-name: disappear;
+  animation-duration: var(--animation-disabled, 0.2s);
+  animation-timing-function: ease-out;
+  animation-delay: 0s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.transparent {
+  opacity: 0;
 }
 
 /* scrollbars */

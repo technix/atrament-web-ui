@@ -136,3 +136,7 @@ export const MULTI_CHOICE_DELAY = 350;
 // story scroll into view
 export const SCROLL_INTO_VIEW_DELAY = 100;
 export const SCROLL_INTO_VIEW_DURATION = 300;
+
+// close overlay delay
+export const CLOSE_OVERLAY_DELAY = 200;
+

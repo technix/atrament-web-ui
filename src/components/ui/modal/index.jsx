@@ -2,8 +2,8 @@ import { h } from 'preact';
 import clsx from 'clsx';
 import style from './index.module.css';
 
-const Modal = ({ children }) => (
-  <div class={clsx(style.modal, 'atrament-modal')}>
+const Modal = ({ children, className = '' }) => (
+  <div class={clsx(style.modal, className, 'atrament-modal')}>
     {children}
   </div>
 );
