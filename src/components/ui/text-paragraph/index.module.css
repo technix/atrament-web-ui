@@ -5,6 +5,7 @@
     margin-inline-start: 0;
     margin-inline-end: 0;
     unicode-bidi: isolate;
+    text-indent: var(--text-indent);
 }
 
 .inactive {

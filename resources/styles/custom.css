@@ -57,13 +57,13 @@ Markup tags classes:
 Internal CSS variables:
 --app-aspect-ratio          Application aspect ratio
 --inactive-text-opacity     Opacity of inactive scene content
---text-line-height          Line height of text
+--text-line-height          Line height of paragraph text
+--text-indent               First line indentation of paragraph text
 
-To change them, add the following into this file:
+To change them, add the following section into this file
+with new variable values:
 :root {
   --app-aspect-ratio: 10/16;
-  --inactive-text-opacity: 70%;
-  --text-line-height: calc(1ex / 0.32);
 }
 
 */

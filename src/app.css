@@ -15,6 +15,7 @@
   --app-aspect-ratio: 10 / 16;
   --inactive-text-opacity: 70%;
   --text-line-height: calc(1ex / 0.32);
+  --text-indent: none;
 }
 
 html {
