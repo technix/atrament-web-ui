@@ -1,6 +1,9 @@
 import { h } from 'preact';
-import { useCallback } from 'preact/hooks';
+import { useState, useCallback } from 'preact/hooks';
 import style from './index.module.css';
+import clsx from 'clsx';
+
+import { CLOSE_OVERLAY_DELAY } from 'src/constants';
 
 import { useKeyboardHandler, useToggle } from 'src/hooks';
 
@@ -17,26 +20,34 @@ import AboutMenu from 'src/components/menu/elements/about-atrament';
 import MenuScreen from './menu';
 
 const Menu = ({ isHomeScreen = false }) => {
+  const [ isClosing, setIsClosing ] = useState(false);
   const [ isOpen, toggleMainMenu ] = useToggle(false);
   const [ isAboutMenuOpen, toggleAboutMenu, setAboutMenu ] = useToggle(false);
 
   const toggleMenu = useCallback(() => {
-    toggleMainMenu();
-    setAboutMenu(false);
-  }, [ toggleMainMenu, setAboutMenu ]);
+    setIsClosing(isOpen);
+    setTimeout(() => {
+      toggleMainMenu();
+      setAboutMenu(false);
+    }, CLOSE_OVERLAY_DELAY);
+  }, [ isOpen, toggleMainMenu, setAboutMenu ]);
 
   const escHandler = useCallback((e) => {
     if (e.key === "Escape") {
       toggleMenu();
-      setAboutMenu(false);
     }
-  }, [ toggleMenu, setAboutMenu ]);
+  }, [ toggleMenu ]);
 
   useKeyboardHandler(escHandler);
 
+  const containerClasses = clsx(
+    'transparent animation_appear animation_appear_overlay',
+    isClosing && 'animation_disappear'
+  );
+
   if (isOpen) {
     return (
-      <ContainerModal>
+      <ContainerModal className={containerClasses}>
         <Backdrop onClick={toggleMenu} />
         <Modal>
           <div class={style.menu_content}>
