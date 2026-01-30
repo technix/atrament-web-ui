@@ -24,4 +24,5 @@
   padding: 0.5rem;
   line-height: calc(1ex / 0.32);
   overflow: hidden;
+  transition: font-size var(--animation-disabled, 0.1s) linear;
 }
