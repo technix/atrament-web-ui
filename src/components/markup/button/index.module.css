@@ -4,6 +4,7 @@
   border-radius: var(--border-radius-inline);
   text-decoration: none;
   cursor: pointer;
+  transition: background-color var(--animation-disabled, 0.1s) linear;
 }
 
 .button:disabled {

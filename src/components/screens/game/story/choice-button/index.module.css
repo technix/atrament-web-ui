@@ -8,6 +8,7 @@
   text-decoration: none;
   width: 100%;
   cursor: pointer;
+  transition: background-color var(--animation-disabled, 0.1s) linear;
 }
 
 .choice_button:hover {

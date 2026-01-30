@@ -22,6 +22,7 @@
   color: var(--fg-color);
   padding: 0.2em;
   padding-left: 0.3em;
+  transition: background-color var(--animation-disabled, 0.1s) linear;
 }
 
 .atrament_appversion:hover {

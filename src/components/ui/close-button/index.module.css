@@ -13,6 +13,7 @@
   text-decoration: none;
   border-radius: var(--border-radius);
   cursor: pointer;
+  transition: background-color var(--animation-disabled, 0.1s) linear;
 }
 
 .close button:hover {

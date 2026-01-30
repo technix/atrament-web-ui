@@ -26,6 +26,7 @@
   border: 1px solid var(--fg-color);
   border-radius: var(--border-radius);
   cursor: pointer;
+  transition: background-color var(--animation-disabled, 0.1s) linear;
 }
 
 .menu_item:hover {
