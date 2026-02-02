@@ -1,6 +1,6 @@
 {
   "name": "@atrament/web-ui",
-  "version": "2.4.2-dev",
+  "version": "2.4.2",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -9,6 +9,7 @@
     "build-web": "vite build",
     "build-singlefile": "vite build --mode singlefile",
     "build-standalone": "vite build --mode standalone && node tools/build-standalone.mjs",
+    "build-template": "vite build --mode singlefile -- --template",
     "preview": "vite preview",
     "lint": "eslint --ext .jsx --ext js src",
     "compile-ink-script": "node tools/ink-compile.cjs",
