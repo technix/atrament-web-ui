@@ -1,0 +1,121 @@
+/*
+To use any of these functions in your Ink script, copy corresponding lines to your main Ink file.
+
+// String functions
+EXTERNAL UPPERCASE(str)
+EXTERNAL LOWERCASE(str)
+EXTERNAL CAPITALIZE(str)
+EXTERNAL TRIM(str)
+EXTERNAL LENGTH(str)
+EXTERNAL CONTAINS(str, search)
+EXTERNAL STARTS_WITH(str, search)
+EXTERNAL ENDS_WITH(str, search)
+EXTERNAL REPLACE(str, old, new)
+EXTERNAL REPLACE_ALL(str, old, new)
+
+// Math functions
+EXTERNAL ROUND(x)
+EXTERNAL CLAMP(x, min, max)
+EXTERNAL ABS(x)
+EXTERNAL PERCENT(value, total)
+
+// Fairmath functions
+EXTERNAL FAIRADD(stat, percent)
+EXTERNAL FAIRSUB(stat, percent)
+
+*/
+
+// Borrowed from https://github.com/RemyVim/ink-if-story-template
+const utilities = [
+  // String functions
+  {
+    name: 'UPPERCASE',
+    external: (str) => String(str).toUpperCase(),
+    lookaheadSafe: true
+  },
+  {
+    name: 'LOWERCASE',
+    external: (str) => String(str).toLowerCase(),
+    lookaheadSafe: true
+  },
+  {
+    name: 'CAPITALIZE',
+    external: (str) => String(str).charAt(0).toUpperCase() + String(str).slice(1),
+    lookaheadSafe: true
+  },
+  {
+    name: 'TRIM',
+    external: (str) => String(str).trim(),
+    lookaheadSafe: true
+  },
+  {
+    name: 'LENGTH',
+    external: (str) => String(str).length,
+    lookaheadSafe: true
+  },
+  {
+    name: 'CONTAINS',
+    external: (str, search) => String(str).includes(String(search)),
+    lookaheadSafe: true
+  },
+  {
+    name: 'STARTS_WITH',
+    external: (str, search) => String(str).startsWith(String(search)),
+    lookaheadSafe: true
+  },
+  {
+    name: 'ENDS_WITH',
+    external: (str, search) => String(str).endsWith(String(search)),
+    lookaheadSafe: true
+  },
+  {
+    name: 'REPLACE',
+    external: (str, search, replacement) => String(str).replace(String(search), String(replacement)),
+    lookaheadSafe: true
+  },
+  {
+    name: 'REPLACE_ALL',
+    external: (str, search, replacement) => String(str).replaceAll(String(search), String(replacement)),
+    lookaheadSafe: true
+  },
+  // Math functions
+  {
+    name: 'ROUND',
+    external: (value) => Math.round(value),
+    lookaheadSafe: true
+  },
+  {
+    name: 'CLAMP',
+    external: (value, min, max) => Math.min(Math.max(min, value), max),
+    lookaheadSafe: true
+  },
+  {
+    name: 'ABS',
+    external: (value) => Math.abs(value),
+    lookaheadSafe: true
+  },
+  {
+    name: 'PERCENT',
+    external: (value, total) => (total === 0 ? 0 : Math.round((value / total) * 100)),
+    lookaheadSafe: true
+  },
+  // Fairmath functions
+  {
+    name: 'FAIRADD',
+    external: (stat, percent) => {
+      const result = stat + (100 - stat) * (percent / 100);
+      return Math.round(Math.min(Math.max(0, result), 100));
+    },
+    lookaheadSafe: true
+  },
+  {
+    name: 'FAIRSUB',
+    external: (stat, percent) => {
+      const result = stat - stat * (percent / 100);
+      return Math.round(Math.min(Math.max(0, result), 100));
+    },
+    lookaheadSafe: true
+  }
+];
+
+export default utilities;
