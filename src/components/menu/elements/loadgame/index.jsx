@@ -36,7 +36,8 @@ const LoadGameView = ({ loadGame, hasConfirmation = false }) => {
     // saved games
     const saves = existingSaves
       .filter((s) => s.type === atrament.game.SAVE_GAME)
-      .map((s) => ({ ...s, slot: datefmt(s.date) }));
+      .map((s) => ({ ...s, slot: datefmt(s.date) }))
+      .sort((a,b) => +b.name - +a.name);
     saveSlotList.push(...saves);
     // done
     setSaveslots(saveSlotList);

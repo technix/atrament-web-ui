@@ -21,11 +21,12 @@ const SaveGameView = ({ saveGame }) => {
     // saved games
     const saves = existingSaves
       .filter((s) => s.type === atrament.game.SAVE_GAME)
-      .map((s) => ({ ...s, slot: datefmt(s.date) }));
+      .map((s) => ({ ...s, slot: datefmt(s.date) }))
+      .sort((a,b) => +b.name - +a.name);
     if (saves.length < numberOfSaveSlots) {
       // new save is possible
-      saves.push({
-        name: saves.length + 1,
+      saves.unshift({
+        name: Date.now(),
         slot: translator.translate('main.new-save')
       });
     }
