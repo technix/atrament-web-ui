@@ -136,6 +136,17 @@ Atrament Web UI supports the following save types:
 
 In addition to above, Atrament Web UI supports **sessions**, which can be enabled by global tag `#sessions`. If they are enabled, players have to choose game session before starting a game. Each session has its own autosaves, checkpoints, and saves.
 
+#### Named saves
+
+By default, saves are named with the date and time when the save was created. To add a human-readable name to the save, use `ATRAMENT_SAVE_DESCRIPTION` variable in your script. Atrament will read its value when user saves the game.
+
+```
+VAR ATRAMENT_SAVE_DESCRIPTION = "In a kingdom far, far away..."
+
+=== dark_forest
+~ ATRAMENT_SAVE_DESCRIPTION = "Dark forest path"
+```
+
 ### "Click to continue"
 
 A single choice with text '>>>' is treated as "click to continue". Choice list is not shown, and player can continue story by clicking the screen or pressing "Space" or "Enter" key. After 3 seconds of inactivity, animated hint is displayed in the bottom of the screen.

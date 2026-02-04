@@ -74,7 +74,9 @@ const LoadGameView = ({ loadGame, hasConfirmation = false }) => {
             "data-save": s.id
           }}
         >
-          {s.slot}
+          {s.description
+            ? <>{s.description}<br/><small>{s.slot}</small></>
+            : s.slot }
         </MenuListItem>
       )}
     </>

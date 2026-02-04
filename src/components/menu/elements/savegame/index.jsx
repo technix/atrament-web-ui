@@ -66,7 +66,9 @@ const SaveGameView = ({ saveGame }) => {
             "data-savename": s.name
           }}
         >
-          {s.slot}
+          {s.description
+            ? <>{s.description}<br/><small>{s.slot}</small></>
+            : s.slot }
         </MenuListItem>
       )}
     </>

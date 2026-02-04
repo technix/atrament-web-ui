@@ -88,7 +88,8 @@ const MenuScreen = ({ toggleMenu, isHomeScreen }) => {
   }, [ atrament, toggleMenu, closeSubmenu ]);
 
   const saveGame = useCallback(async (saveslot) => {
-    await atrament.game.saveGame(saveslot);
+    const description = atrament.ink.getVariable('ATRAMENT_SAVE_DESCRIPTION');
+    await atrament.game.saveGame(saveslot, description);
   }, [ atrament ]);
 
   const displayComponents = [
