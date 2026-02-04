@@ -1,6 +1,6 @@
 {
   "name": "@atrament/web-ui",
-  "version": "2.4.2",
+  "version": "2.5.0-dev",
   "license": "MIT",
   "type": "module",
   "scripts": {
@@ -17,7 +17,7 @@
     "update-neutralino": "cd tools/neutralino && npx neu update"
   },
   "dependencies": {
-    "@atrament/web": "2.1.4",
+    "@atrament/web": "2.2.0",
     "@eo-locale/preact": "1.7.2",
     "@nanostores/preact": "1.0.0",
     "clsx": "2.1.1",
@@ -25,15 +25,15 @@
     "inkjs": "2.3.2",
     "mustache": "4.2.0",
     "normalize.css": "8.0.1",
-    "preact": "10.28.2",
+    "preact": "10.28.3",
     "preact-router": "4.1.2",
     "seamless-scroll-polyfill": "2.3.4"
   },
   "devDependencies": {
     "@neutralinojs/neu": "11.7.0",
-    "@preact/preset-vite": "2.10.2",
+    "@preact/preset-vite": "2.10.3",
     "@stylistic/eslint-plugin": "5.7.1",
-    "@terascope/fetch-github-release": "2.2.1",
+    "@terascope/fetch-github-release": "2.2.2",
     "@vite-pwa/assets-generator": "1.0.2",
     "eslint": "9.39.2",
     "eslint-config-preact": "2.0.0",
