@@ -72,7 +72,6 @@ export default defineConfig(({ mode }) => {
     plugins.push(VitePWA(getPWAConfig(atramentConfig)));
     buildDir = 'build/.tmp_neutralino/resources';
   } else if (mode === 'production') {
-    plugins.push(VitePWA(getPWAConfig(atramentConfig)));
     if (atramentConfig.game.zip) {
       const gameDir = `${buildDir}/${atramentConfig.game.path}`;
       plugins.push(zipPack({
@@ -88,6 +87,7 @@ export default defineConfig(({ mode }) => {
         ]
       }));
     }
+    plugins.push(VitePWA(getPWAConfig(atramentConfig)));
   }
 
   return {
