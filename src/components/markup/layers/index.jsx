@@ -1,5 +1,5 @@
 import { h } from 'preact';
-import { useEffect, useState, useContext, useCallback } from 'preact/hooks';
+import { useEffect, useState, useContext, useCallback, useMemo } from 'preact/hooks';
 import { useAtrament, useAtramentState, useAtramentOverlay } from 'src/atrament/hooks';
 import { ActiveContentContext } from 'src/context';
 import getTagAttributes from 'src/utils/get-tag-attributes';
@@ -27,6 +27,7 @@ function prefetchImages(imageList) {
 
 const Layers = ({ options, children }) => {
   const [ imageLayers, setImageLayers ] = useState(null);
+  const [ areaLayers, setAreaLayers ] = useState(null);
   const isActive = useContext(ActiveContentContext);
   const { makeChoice, continueStory, throwAtramentError, getAssetPath } = useAtrament();
   const { execContentFunction } = useAtramentOverlay();
@@ -50,9 +51,9 @@ const Layers = ({ options, children }) => {
     [ execContentFunction ]
   );
 
-  const addOnclickHandler = (options) => {
+  const addOnclickHandler = useCallback((options, isSceneActive) => {
     let onClick = null;
-    if (isActive) {
+    if (isSceneActive) {
       if (options.onclick) {
         onClick = (e) => {
           e.stopPropagation();
@@ -66,44 +67,57 @@ const Layers = ({ options, children }) => {
       }
     }
     return onClick;
-  };
+  }, [ clickHandlerChoice, clickHandlerFunction ]);
 
-  // picture layers
-  const pictures = children.match(/\[picture.*?\].+?\[\/picture\]/ig);
-  const pictureLayers = pictures?.map((img, index) => {
-    const [,attrs,src] = img.match(/\[picture(.*?)\](.+?)\[\/picture\]/i);
-    const layerOptions = getTagAttributes(attrs);
-    return {
-      attrs: layerOptions,
-      src: getAssetPath(src),
-      index
-    }
-  });
+  // image layers
+  const imageLayerData = useMemo(() => {
+    const pictures = children.match(/\[picture.*?\].+?\[\/picture\]/ig);
+    return pictures?.map((img, index) => {
+      const [,attrs,src] = img.match(/\[picture(.*?)\](.+?)\[\/picture\]/i);
+      const layerOptions = getTagAttributes(attrs);
+      return {
+        attrs: layerOptions,
+        src: getAssetPath(src),
+        index
+      }
+    });
+  }, [ children, getAssetPath ]);
 
   // area layers
-  const areas = children.match(/\[area.+?\]/ig);
-  const areaLayers = areas?.map((img, index) => {
-    const [,attrs] = img.match(/\[area(.*?)\]/i);
-    const areaOptions = getTagAttributes(attrs);
-    return {
-      attrs: areaOptions,
-      index,
-      onclick: addOnclickHandler(areaOptions)
-    }
-  });
+  const areaLayerData = useMemo(() => {
+    const areas = children.match(/\[area.+?\]/ig);
+    return areas?.map((img, index) => {
+      const [,attrs] = img.match(/\[area(.*?)\]/i);
+      const areaOptions = getTagAttributes(attrs);
+      return {
+        attrs: areaOptions,
+        index
+      }
+    });
+  }, [ children ])
+
 
   useEffect(() => {
     const prefetcher = async (images) => {
       const fetchedImages = await prefetchImages(images);
-      const imageLayers = fetchedImages?.map(i => {
+      const imageLayersProcessed = fetchedImages?.map(i => {
         // assign onclick, using image data
-        i.onclick = addOnclickHandler(i.attrs);
+        i.onclick = addOnclickHandler(i.attrs, isActive);
         return i;
       });
-      setImageLayers(imageLayers);
+      setImageLayers(imageLayersProcessed);
     };
-    prefetcher(pictureLayers);
-  }, []);
+    // preload images and assign click handlers to them
+    prefetcher(imageLayerData);
+    // add click handlers to areas
+    const areaLayersProcessed = areaLayerData?.map(i => {
+      // assign onclick, using image data
+      i.onclick = addOnclickHandler(i.attrs, isActive);
+      return i;
+    });
+    setAreaLayers(areaLayersProcessed);
+    console.log('Initial useEffect called');
+  }, [ isActive, addOnclickHandler, imageLayerData, areaLayerData ]);
 
   return (<>
     {imageLayers && <LayeredImage layers={imageLayers} areas={areaLayers} options={options} />}
