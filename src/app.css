@@ -16,6 +16,7 @@
   --inactive-text-opacity: 70%;
   --text-line-height: calc(1ex / 0.32);
   --text-indent: none;
+  --font-size-base: 1.2em;
 }
 
 html {
@@ -29,7 +30,7 @@ body {
   padding: 0;
   background-color: var(--bg-color);
   color: var(--font-color);
-  font-size: 1.2em;
+  font-size: var(--font-size-base);
   font-family: var(--font-face-ui);
 }
 
