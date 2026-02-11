@@ -45,6 +45,15 @@ export const maxFontSize = defaultFontSize + (stepFontSize * 5);
 // volume
 export const defaultVolume = 50;
 
+// Atrament settings
+export const ATRAMENT_SETTINGS = {
+  fullscreen: false,
+  animation: true,
+  mute: false,
+  volume: defaultVolume,
+  fontSize: defaultFontSize
+};
+
 //// Internal constants ////
 
 // error
