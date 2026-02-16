@@ -7,8 +7,8 @@ const Block = ({ children, align = null, className = '' }) => {
     style.block,
     align === 'start' && style.block_start,
     align === 'end' && style.block_end,
-    'atrament-block',
-    className
+    className,
+    'atrament-block'
   );
   return (
     <div class={cssStyles}>
