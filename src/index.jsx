@@ -13,4 +13,4 @@ import 'src/utils/neutralino-out-of-bounds-fix';
 // Override CSS styles
 import '../resources/styles/custom.css';
 
-render(<App />, document.getElementById('app'));
+render(<App />, document.getElementById('atrament-app'));

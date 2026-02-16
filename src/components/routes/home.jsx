@@ -9,7 +9,7 @@ import ErrorScreen from 'src/components/screens/error';
 import Menu from 'src/components/menu/main-menu';
 import { SessionsMenuView, HomeMenuView } from 'src/components/menu/home-menu';
 
-import { setPageBackground } from 'src/utils/page-background';
+import { setBackground } from 'src/utils/background';
 
 const HomeRoute = () => {
   const { getAssetPath, resetBackground } = useAtrament();
@@ -20,7 +20,7 @@ const HomeRoute = () => {
     // reset game background
     resetBackground();
     // set page background
-    setPageBackground(background, getAssetPath);
+    setBackground(document.getElementById('atrament-app'), background, getAssetPath);
   }, [ resetBackground, background, getAssetPath ]);
 
   return (

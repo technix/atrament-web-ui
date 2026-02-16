@@ -81,7 +81,7 @@ Atrament game can be published as a web application, as a single HTML file, or a
 | `# hypertext` | Use links instead of choices. See "[Hypertext mode](#hypertext-mode)". |
 | `# toolbar: toolbar_function` | Use output of this function as a toolbar content. |
 | `# about: about_function` | Use output of this function as an "About" screen content. |
-| `# background: some/picture.jpg` | Set background image for the game backdrop. |
+| `# background: some/picture.jpg` | Set background image for the Start and About screens backdrop. |
 | `# allow_external_function_fallbacks` | If the function defined with EXTERNAL is not found, run Ink function with the same name instead. |
 | `# debug` | Enable Ink story debugger. |
 
@@ -116,6 +116,12 @@ Atrament game can be published as a web application, as a single HTML file, or a
 
 
 Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MUSIC/STOP_SOUND/STOP_MUSIC tags. Combining them may lead to unexpected side effects.
+
+Note: Tags #background, #BACKGROUND, #PAGE_BACKGROUND allow CSS background attributes (hex/rgb color, transparent etc):
+```
+# background: CSS(\#990000)
+# BACKGROUND: CSS(rgba(128,0,0,0.5))
+```
 
 ### Choice tags
 | Tag | Description                |

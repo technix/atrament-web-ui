@@ -12,7 +12,7 @@ import StoryView from 'src/components/screens/game/story';
 import OverlayView from 'src/components/screens/game/overlay';
 import ErrorScreen from 'src/components/screens/error';
 
-import { setPageBackground } from 'src/utils/page-background';
+import { setBackground } from 'src/utils/background';
 import preloadImages from 'src/utils/preload-images';
 
 const imagePreloader = async (getAssetPath, image, callback) => {
@@ -22,38 +22,29 @@ const imagePreloader = async (getAssetPath, image, callback) => {
 
 const GameRoute = () => {
   const { getAssetPath } = useAtrament();
-  const [ containerStyle, setContainerStyle ] = useState({});
-  const atramentState = useAtramentState(['game']);
+  const atramentState = useAtramentState(['metadata', 'game']);
 
   const background = atramentState.game[BACKGROUND_STORE_KEY];
   const backgroundPage = atramentState.game[BACKGROUND_PAGE_STORE_KEY];
 
   useEffect(() => {
-    if (background) {
-      imagePreloader(
-        getAssetPath,
-        background,
-        () => setContainerStyle({
-          'background-image': `url(${getAssetPath(background)})`,
-          'background-size': 'cover',
-          'background-position': 'center'
-        })
-      );
-    } else {
-      setContainerStyle({});
-    }
-  }, [ background, setContainerStyle, getAssetPath ]);
+    imagePreloader(
+      getAssetPath,
+      background,
+      () => setBackground(document.getElementsByClassName('atrament-container-game')[0], background, getAssetPath)
+    );
+  }, [ background, getAssetPath ]);
 
   useEffect(() => {
     imagePreloader(
       getAssetPath,
       backgroundPage,
-      () => setPageBackground(backgroundPage, getAssetPath)
+      () => setBackground(document.getElementById('atrament-app'), backgroundPage, getAssetPath)
     );
   }, [ backgroundPage, getAssetPath ]);
 
   return (
-    <Container style={containerStyle}>
+    <Container className='atrament-container-game'>
       <Menu />
       <ErrorScreen />
       <Toolbar />
