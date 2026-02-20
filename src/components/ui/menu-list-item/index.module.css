@@ -55,6 +55,17 @@
   border-right: 0px;
 }
 
+.accented {
+  background-color: var(--accent-bg-color);
+  color: var(--accent-fg-color);
+  border: 1px solid var(--accent-fg-color);
+}
+
+.accented:hover {
+  background-color: var(--accent-fg-color);
+  color: var(--accent-bg-color);
+}
+
 .delete_button {
   position: absolute;
   width: 2em;

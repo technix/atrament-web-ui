@@ -21,6 +21,7 @@ const MenuListItem = ({
   children,
   key,
   onSelect,
+  accented = false,
   isDisabled = false,
   isDeletable = false,
   onDelete = () => {},
@@ -54,7 +55,7 @@ const MenuListItem = ({
         key={key}
         onClick={hasConfirmation ? showConfirmDialog : onSelect}
         disabled={isDisabled}
-        class={clsx(style.menu_item, isDeletable && style.is_deletable)}
+        class={clsx(style.menu_item, accented && style.accented, isDeletable && style.is_deletable)}
         {...attributes}
       >
         {children}

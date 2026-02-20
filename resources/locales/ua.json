@@ -25,6 +25,7 @@
     "main.settings": "Налаштування",
     "main.about": "Про гру",
     "main.exit": "Вихід",
+    "main.confirm-exit": "Вийти на робочий стіл?",
     "icon.menu": "Меню",
     "icon.back": "Назад",
     "icon.debugger": "Налагодження",

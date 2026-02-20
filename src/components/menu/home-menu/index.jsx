@@ -1,12 +1,13 @@
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
 import { route } from 'preact-router';
-import { Text } from '@eo-locale/preact';
+import { useTranslator, Text } from '@eo-locale/preact';
 
 import { useAtrament, useAtramentState, useAtramentSaves } from 'src/atrament/hooks';
 
 import Block from 'src/components/ui/block';
 import MenuButton from 'src/components/ui/menu-button';
+import MenuListItem from 'src/components/ui/menu-list-item';
 
 import SessionsView from 'src/components/menu/elements/sessions';
 
@@ -16,6 +17,25 @@ import useGameControls from './use-game-controls';
 
 
 const AboutGame = () => (<MenuButton key="about" onClick={() => route('/about')}><Text id={'main.about'} /></MenuButton>);
+
+const ExitAppButton = () => {
+  const { atrament } = useAtrament();
+  const translator = useTranslator();
+  const exitApp = atrament.interfaces.platform.exitApp;
+  if (!exitApp) {
+    return <></>;
+  }
+  return (<MenuListItem
+    accented
+    key='menu-exit-button'
+    onSelect={exitApp}
+    hasConfirmation={true}
+    confirmPrompt={translator.translate('main.confirm-exit')}
+  >
+    <Text id={'main.exit'} />
+  </MenuListItem>);
+};
+
 
 const MainMenu = ({ canBeResumed, canBeLoaded, openLoadGameMenu, about }) => {
   const { newGame, resumeGame } = useGameControls();
@@ -27,6 +47,7 @@ const MainMenu = ({ canBeResumed, canBeLoaded, openLoadGameMenu, about }) => {
         <MenuButton key="startgame" onClick={newGame}><Text id={'main.newgame'} /></MenuButton>
         {canBeLoaded ? <MenuButton key="loadgame" onClick={openLoadGameMenu}><Text id={'main.loadgame'} /></MenuButton> : ''}
         {about ? <AboutGame /> : ''}
+        <ExitAppButton />
       </Block>
     </>
   );

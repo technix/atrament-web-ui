@@ -25,6 +25,7 @@
     "main.settings": "Einstellungen",
     "main.about": "Über",
     "main.exit": "Beenden",
+    "main.confirm-exit": "Zum Desktop zurückkehren?",
     "icon.menu": "Menü",
     "icon.back": "Zurück",
     "icon.debugger": "Debugger",

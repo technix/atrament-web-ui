@@ -90,11 +90,9 @@ const MenuScreen = ({ toggleMenu, isHomeScreen }) => {
 
   const closeSubmenu = useCallback(() => setActiveMenu(NO_MENU), [ setActiveMenu ]);
 
-  const exitApp = atrament.interfaces.platform.exitApp;
   const hasSaveButton = !!saves && !isHomeScreen;
   const hasLoadButton = !!(saves || load_from_checkpoints) && !isHomeScreen;
   const hasQuitGameButton = !isHomeScreen;
-  const hasExitAppButton = isHomeScreen && exitApp;
 
   const loadGame = useCallback(async (saveslot) => {
     await atrament.game.restart(saveslot);
@@ -111,8 +109,7 @@ const MenuScreen = ({ toggleMenu, isHomeScreen }) => {
     activeMenu === MENU_SAVE && <SaveMenuLayout saveGame={saveGame} closeSubmenu={closeSubmenu} />,
     activeMenu === MENU_LOAD &&  <LoadMenuLayout loadGame={loadGame} closeSubmenu={closeSubmenu} />,
     activeMenu === MENU_SETTINGS && <SettingsMenuLayout closeSubmenu={closeSubmenu} />,
-    activeMenu === NO_MENU && <MenuLayout setActiveMenu={setActiveMenu} hasSaveButton={hasSaveButton} hasLoadButton={hasLoadButton} hasQuitGameButton={hasQuitGameButton} />,
-    hasExitAppButton && (<><Break /><MenuButton accented key='exit-app' onClick={exitApp}><Text id={'main.exit'} /></MenuButton></>)
+    activeMenu === NO_MENU && <MenuLayout setActiveMenu={setActiveMenu} hasSaveButton={hasSaveButton} hasLoadButton={hasLoadButton} hasQuitGameButton={hasQuitGameButton} />
   ];
 
   return <>{displayComponents}</>;
