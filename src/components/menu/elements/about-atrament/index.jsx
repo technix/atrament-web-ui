@@ -7,19 +7,8 @@ import Block from 'src/components/ui/block';
 import style from './index.module.css';
 import atramentLogoImage from './atrament-logo.png';
 import iftfLogoImage from './iftf-logo.png';
+import components from './components.json';
 
-const components = [
-  ["Atrament Core", "https://github.com/technix/atrament-core"],
-  ["Atrament Web", "https://github.com/technix/atrament-web"],
-  ["Atrament Web UI", "https://github.com/technix/atrament-web-ui"],
-  ["InkJS", "https://github.com/y-lohse/inkjs"],
-  ["Preact", "https://preactjs.com/"],
-  ["Howler", "https://howlerjs.com/"],
-  ["Nanostores", "https://github.com/nanostores/nanostores"],
-  ["LocalForage", "https://github.com/localForage/localForage"],
-  ["fflate", "https://github.com/101arrowz/fflate"],
-  ["mustache.js", "https://github.com/janl/mustache.js"]
-];
 const lastComponent = components.length - 1;
 
 const A = ({ href, children }) => (<a href={href} target="_blank" rel="noreferrer">{children}</a>);

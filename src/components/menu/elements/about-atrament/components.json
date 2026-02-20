@@ -1,0 +1,12 @@
+[
+  ["Atrament Core", "https://github.com/technix/atrament-core"],
+  ["Atrament Web", "https://github.com/technix/atrament-web"],
+  ["Atrament Web UI", "https://github.com/technix/atrament-web-ui"],
+  ["InkJS", "https://github.com/y-lohse/inkjs"],
+  ["Preact", "https://preactjs.com/"],
+  ["Howler", "https://howlerjs.com/"],
+  ["Nanostores", "https://github.com/nanostores/nanostores"],
+  ["LocalForage", "https://github.com/localForage/localForage"],
+  ["fflate", "https://github.com/101arrowz/fflate"],
+  ["mustache.js", "https://github.com/janl/mustache.js"]
+]
