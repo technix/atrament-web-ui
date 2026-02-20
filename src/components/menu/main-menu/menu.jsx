@@ -1,13 +1,14 @@
 import { h } from 'preact';
 import { useCallback, useState } from 'preact/hooks';
 import { route } from 'preact-router';
-import { Text } from '@eo-locale/preact';
+import { useTranslator, Text } from '@eo-locale/preact';
 
 import { useAtrament, useAtramentState, useAtramentSaves } from 'src/atrament/hooks';
 
 import MenuButton from 'src/components/ui/menu-button';
 import Header from 'src/components/ui/header';
 import Break from 'src/components/ui/break';
+import MenuListItem from 'src/components/ui/menu-list-item';
 
 import LoadGameView from 'src/components/menu/elements/loadgame';
 import SaveGameView from 'src/components/menu/elements/savegame';
@@ -48,6 +49,20 @@ const SettingsMenuLayout = ({ closeSubmenu }) => (
 );
 
 
+const MenuQuitButton = () => {
+  const translator = useTranslator();
+  const onSelect = () => route('/');
+  return (<MenuListItem
+    key='main-menu-quit-button'
+    onSelect={onSelect}
+    hasConfirmation={true}
+    confirmPrompt={translator.translate('game.confirm-quit')}
+  >
+    <Text id={'game.quit'} />
+  </MenuListItem>);
+};
+
+
 const MenuLayout = ({ setActiveMenu, hasSaveButton, hasLoadButton, hasQuitGameButton }) => {
   const [ , canBeLoaded ] = useAtramentSaves();
   const openSaveMenu = useCallback(() => setActiveMenu(MENU_SAVE), [ setActiveMenu ]);
@@ -61,7 +76,7 @@ const MenuLayout = ({ setActiveMenu, hasSaveButton, hasLoadButton, hasQuitGameBu
     // Settings
     (hasSaveButton || hasLoadButton) ? <MenuButton key='settings' onClick={openSettingsMenu}><Text id={'main.settings'} /></MenuButton> : <Settings />,
     // Quit game
-    hasQuitGameButton && <><Break /><MenuButton accented key='quit-game' onClick={() => route('/')}><Text id={'game.quit'} /></MenuButton></>
+    hasQuitGameButton && <><Break /><MenuQuitButton /></>
   ];
   return <>{displayButtons}</>;
 }

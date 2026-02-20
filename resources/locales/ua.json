@@ -31,6 +31,7 @@
     "game.end": "Кінець",
     "game.save-and-quit": "Зберегти гру та вийти",
     "game.quit": "Вийти з гри",
+    "game.confirm-quit": "Вийти з гри?",
     "game.click-to-continue": "Натисни, щоб продовжити",
     "settings.fullscreen": "На весь екран",
     "settings.animations": "Анімації",

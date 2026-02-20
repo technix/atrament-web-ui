@@ -31,6 +31,7 @@
     "game.end": "Ende",
     "game.save-and-quit": "Speichern und beenden",
     "game.quit": "Spiel beenden",
+    "game.confirm-quit": "Spiel beenden?",
     "game.click-to-continue": "Klicke, um fortzufahren",
     "settings.fullscreen": "Vollbild",
     "settings.animations": "Animationen",
