@@ -1,11 +1,13 @@
 import { h } from 'preact';
+import { useRef, useEffect } from 'preact/hooks';
 import clsx from 'clsx';
 import { Text } from '@eo-locale/preact';
 import style from './index.module.css';
 import { useToggle } from 'src/hooks';
+import adjustElementSize from 'src/utils/adjust-element-size';
 
 const DialogYesNo = ({ prompt, onAccept, onReject, attributes }) => (
-  <div class={style.container}>
+  <>
     <div class={style.prompt}>{prompt}</div>
     <button onClick={onAccept} class={clsx(style.menu_item, style.delete_item, style.small)} {...attributes}>
       <Text id='yes' />
@@ -13,7 +15,7 @@ const DialogYesNo = ({ prompt, onAccept, onReject, attributes }) => (
     <button onClick={onReject} class={clsx(style.menu_item, style.small)} {...attributes}>
       <Text id='no' />
     </button>
-  </div>
+  </>
 );
 
 
@@ -32,6 +34,15 @@ const MenuListItem = ({
 }) => {
   const [ isDeleteDialog, , , showDeleteDialog, hideDeleteDialog ] = useToggle(false);
   const [ isConfirmDialog, , , showConfirmDialog, hideConfirmDialog ] = useToggle(false);
+  const elementRef = useRef(null);
+
+  useEffect(() => {
+    let observer;
+    if (elementRef.current) {
+      observer = adjustElementSize(elementRef.current);
+    }
+    return () => observer?.disconnect();
+  }, []);
 
   const handleDelete = (ev) => {
     onDelete(ev);
@@ -43,14 +54,14 @@ const MenuListItem = ({
     hideConfirmDialog();
   }
 
-  if (isConfirmDialog) {
-    return (<DialogYesNo prompt={confirmPrompt} onAccept={handleConfirm} onReject={hideConfirmDialog} attributes={attributes} />);
-  } else if (isDeleteDialog) {
-    return (<DialogYesNo prompt={deletePrompt} onAccept={handleDelete} onReject={hideDeleteDialog} attributes={attributes} />);
-  }
+  let Content = <></>;
 
-  return (
-    <div class={style.container}>
+  if (isConfirmDialog) {
+    Content = <DialogYesNo prompt={confirmPrompt} onAccept={handleConfirm} onReject={hideConfirmDialog} attributes={attributes} />;
+  } else if (isDeleteDialog) {
+    Content = <DialogYesNo prompt={deletePrompt} onAccept={handleDelete} onReject={hideDeleteDialog} attributes={attributes} />;
+  } else {
+    Content = <>
       <button
         key={key}
         onClick={hasConfirmation ? showConfirmDialog : onSelect}
@@ -69,6 +80,12 @@ const MenuListItem = ({
         >
           &#x2715;
         </button>}
+    </>;
+  }
+
+  return (
+    <div class={style.container} ref={elementRef}>
+      {Content}
     </div>
   );
 };
