@@ -24,7 +24,8 @@ const Menu = ({ isHomeScreen = false }) => {
   const [ isOpen, toggleMainMenu ] = useToggle(false);
   const [ isAboutMenuOpen, toggleAboutMenu, setAboutMenu ] = useToggle(false);
 
-  const toggleMenu = useCallback(() => {
+  const toggleMenu = useCallback((e) => {
+    e?.stopPropagation();
     setIsClosing(isOpen);
     setTimeout(() => {
       toggleMainMenu();

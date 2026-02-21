@@ -18,7 +18,8 @@ const ClickToContinue = ({ setReady, withChoice = false, delay = 0, animation = 
   const [ isVisible, setIsVisible ] = useState(false);
   const translator = useTranslator();
 
-  const continueGame = useCallback(() => {
+  const continueGame = useCallback((e) => {
+    e?.stopPropagation();
     setTimeout(() => {
       setReady(false);
       if (withChoice) {

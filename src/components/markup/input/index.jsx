@@ -2,13 +2,12 @@ import { h } from 'preact';
 import { useContext, useEffect, useState } from 'preact/hooks';
 import clsx from 'clsx';
 import style from './index.module.css';
+import catchClick from 'src/utils/catch-click';
 
 import { useAtrament } from 'src/atrament/hooks';
 import { ActiveContentContext } from 'src/context';
 
 // [input var=variable placeholder="placeholder text" type=number]
-
-const onClick = (e) => e.stopPropagation();
 
 const Input = ({ options }) => {
   const isActive = useContext(ActiveContentContext);
@@ -37,7 +36,7 @@ const Input = ({ options }) => {
       placeholder={options.placeholder}
       type={inputType}
       onInput={onInput}
-      onClick={onClick}
+      onClick={catchClick}
     />
   );
 };
