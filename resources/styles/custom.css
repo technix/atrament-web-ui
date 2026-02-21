@@ -16,6 +16,8 @@ Atrament UI elements classes:
 .atrament-loading           Loading animation div
 .atrament-modal             Modal div
 .atrament-toolbar           Toolbar div
+.atrament-container-game            Container for game screen
+.atrament-container-game-content    Container for scenes and choices
 .atrament-container-choices Container for choices list
 .atrament-container-scene   Scene container div
 .atrament-scene             Scene content div
@@ -26,6 +28,7 @@ Atrament UI elements classes:
 .atrament-choices           Wrapper for choice buttons
 .atrament-choice            Choice button
 .atrament-game-end          End game button (it has "atrament-menu-button" class too) 
+.atrament-about             "About Atrament" modal content
 
 Overlays:
 .atrament-overlay-container       Fullscreen overlay container div

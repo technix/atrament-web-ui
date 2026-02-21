@@ -17,7 +17,7 @@ const iftfLink = '<a href="https://iftechfoundation.org/" target="_blank" rel="n
 const AboutMenu = ({ onClick }) => {
   const clickHandler = (e) => (e.target.tagName.toLowerCase() === 'a' ? '' : onClick(e));
   return (
-    <Block>
+    <Block className='atrament-about'>
       <div onClick={clickHandler}>
         <div class={style.header}>
           <img src={atramentLogoImage} />
