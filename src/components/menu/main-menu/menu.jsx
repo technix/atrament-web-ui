@@ -5,6 +5,8 @@ import { useTranslator, Text } from '@eo-locale/preact';
 
 import { useAtrament, useAtramentState, useAtramentSaves } from 'src/atrament/hooks';
 
+import getSaveDescription from 'src/utils/get-save-description';
+
 import MenuButton from 'src/components/ui/menu-button';
 import Header from 'src/components/ui/header';
 import Break from 'src/components/ui/break';
@@ -13,6 +15,7 @@ import MenuListItem from 'src/components/ui/menu-list-item';
 import LoadGameView from 'src/components/menu/elements/loadgame';
 import SaveGameView from 'src/components/menu/elements/savegame';
 import Settings from 'src/components/menu/elements/settings';
+
 
 const NO_MENU = 0;
 const MENU_SAVE = 1;
@@ -101,7 +104,7 @@ const MenuScreen = ({ toggleMenu, isHomeScreen }) => {
   }, [ atrament, toggleMenu, closeSubmenu ]);
 
   const saveGame = useCallback(async (saveslot) => {
-    const description = atrament.ink.getVariable('ATRAMENT_SAVE_DESCRIPTION');
+    const description = getSaveDescription(atrament);
     await atrament.game.saveGame(saveslot, description);
   }, [ atrament ]);
 

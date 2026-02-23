@@ -73,6 +73,7 @@ Atrament game can be published as a web application, as a single HTML file, or a
 | `# sessions: 3` | Amount of game sessions. Each session has its own set of saves. |
 | `# autosave: false` | Disables autosaves. |
 | `# saves: 5` | Amount of available slots for saves. |
+| `# save_description_length: 50` | Length of save description. See "[Named saves](#named-saves)". |
 | `# load_from_checkpoints` | Show checkpoints in the list of games to load. |
 | `# continue_maximally: false` | Pause the story after each line. |
 | `# single_scene` | Store only the last scene in the Atrament state. |
@@ -143,14 +144,19 @@ Atrament Web UI supports the following save types:
 In addition to above, Atrament Web UI supports **sessions**, which can be enabled by global tag `#sessions`. If they are enabled, players have to choose game session before starting a game. Each session has its own autosaves, checkpoints, and saves.
 
 #### Named saves
-
-By default, saves are named with the date and time when the save was created. To add a human-readable name to the save, use `ATRAMENT_SAVE_DESCRIPTION` variable in your script. Atrament will read its value when user saves the game.
+By default, saves are named with the date and time when the save was created. To add a human-readable description to the save, use `ATRAMENT_SAVE_DESCRIPTION` variable in your script. Atrament will read its value when user saves the game.
 
 ```
 VAR ATRAMENT_SAVE_DESCRIPTION = "In a kingdom far, far away..."
 
 === dark_forest
 ~ ATRAMENT_SAVE_DESCRIPTION = "Dark forest path"
+```
+
+If this variable is not set, Atrament can use excerpt from scene text as a save description. Set global tag `#save_description_length` to define the desired length of the save description text:
+
+```
+# save_description_length: 50
 ```
 
 ### "Click to continue"
