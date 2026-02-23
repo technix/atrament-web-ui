@@ -1,10 +1,9 @@
 import { h } from 'preact';
-import { useRef, useEffect } from 'preact/hooks';
+import { useRef } from 'preact/hooks';
 import clsx from 'clsx';
 import { Text } from '@eo-locale/preact';
 import style from './index.module.css';
 import { useToggle } from 'src/hooks';
-import adjustElementSize from 'src/utils/adjust-element-size';
 
 const DialogYesNo = ({ prompt, onAccept, onReject, attributes }) => (
   <>
@@ -35,14 +34,6 @@ const MenuListItem = ({
   const [ isDeleteDialog, , , showDeleteDialog, hideDeleteDialog ] = useToggle(false);
   const [ isConfirmDialog, , , showConfirmDialog, hideConfirmDialog ] = useToggle(false);
   const elementRef = useRef(null);
-
-  useEffect(() => {
-    let observer;
-    if (elementRef.current) {
-      observer = adjustElementSize(elementRef.current);
-    }
-    return () => observer?.disconnect();
-  }, []);
 
   const handleDelete = (ev) => {
     onDelete(ev);
