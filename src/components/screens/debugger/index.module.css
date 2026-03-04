@@ -28,6 +28,14 @@
     font-family: var(--font-face-ui);
 }
 
+.debug_header {
+  align-items: center;
+  display: flex;
+  color: var(--accent-fg-color);
+  font-weight: bold;
+  font-size: 120%;
+}
+
 .container {
     display: flex;
     flex-direction: row;

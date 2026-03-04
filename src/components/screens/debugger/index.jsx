@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { useCallback, useState } from 'preact/hooks';
-import { useTranslator } from '@eo-locale/preact';
+import { Text, useTranslator } from '@eo-locale/preact';
 import style from './index.module.css';
 
 import { useAtramentState } from 'src/atrament/hooks';
@@ -41,7 +41,10 @@ const DebuggerView = () => {
 
   return (
     <div class={style.debug_container}>
-      <CloseButton onClick={toggleDebugger} />
+      <div class={style.debug_header}>
+        <Text id='debug' />
+        <CloseButton onClick={toggleDebugger} />
+      </div>
       <DebugInfo />
       <DebugGlobaltags />
       <DebugScenetags />

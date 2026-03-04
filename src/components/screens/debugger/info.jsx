@@ -1,6 +1,6 @@
 import { h } from 'preact';
 import { useAtrament } from 'src/atrament/hooks';
-import { useTranslator } from '@eo-locale/preact';
+import { Text, useTranslator } from '@eo-locale/preact';
 
 import { STORYPATH_STORE_KEY } from 'src/constants';
 
@@ -16,10 +16,10 @@ const DebugInfo = () => {
   const gamedata = atrament.state.get().game;
 
   const tableData = [
-    [translator.translate('debug.info.ink-file'), `${gamedata.$path}/${gamedata.$file}`],
-    [translator.translate('debug.info.story-seed'), inkstate.storySeed],
-    [translator.translate('debug.info.current-turn-index'), inkstate.currentTurnIndex],
-    [translator.translate('debug.info.path'), gamedata[STORYPATH_STORE_KEY]]
+    [<Text id='debug.info.ink-file' />, `${gamedata.$path}/${gamedata.$file}`],
+    [<Text id='debug.info.story-seed' />, inkstate.storySeed],
+    [<Text id='debug.info.current-turn-index' />, inkstate.currentTurnIndex],
+    [<Text id='debug.info.path' />, gamedata[STORYPATH_STORE_KEY]]
   ];
 
   return (
