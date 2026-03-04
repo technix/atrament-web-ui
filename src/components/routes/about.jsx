@@ -5,6 +5,7 @@ import { Text } from '@eo-locale/preact';
 import Menu from 'src/components/menu/main-menu';
 
 import Markup from 'src/components/ui/markup';
+import Break from 'src/components/ui/break';
 import Block from 'src/components/ui/block';
 import TextParagraph from 'src/components/ui/text-paragraph';
 import Container from 'src/components/ui/container';
@@ -25,7 +26,7 @@ const AboutRoute = () => {
       <ErrorScreen />
       <ContainerText>
         <ContainerFlex>
-          <Block> </Block>
+          <Break />
           <Block>
             {aboutContent.map((item) => <TextParagraph key={item}><Markup>{item}</Markup></TextParagraph>)}
           </Block>

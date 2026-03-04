@@ -13,7 +13,7 @@ const htmlTags = {};
   'dl', 'dd', 'dd',
   'br', 'hr', 'wbr'
 ].forEach((tag) => {
-  htmlTags[tag] = { tag, component: htmlTagComponent(tag)};
+  htmlTags[tag] = { tag, component: htmlTagComponent(tag) };
 });
 
 export default htmlTags;

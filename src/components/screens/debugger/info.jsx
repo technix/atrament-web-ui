@@ -16,10 +16,10 @@ const DebugInfo = () => {
   const gamedata = atrament.state.get().game;
 
   const tableData = [
-    [<Text id='debug.info.ink-file' />, `${gamedata.$path}/${gamedata.$file}`],
-    [<Text id='debug.info.story-seed' />, inkstate.storySeed],
-    [<Text id='debug.info.current-turn-index' />, inkstate.currentTurnIndex],
-    [<Text id='debug.info.path' />, gamedata[STORYPATH_STORE_KEY]]
+    [<Text id='debug.info.ink-file' key='ink-file' />, `${gamedata.$path}/${gamedata.$file}`],
+    [<Text id='debug.info.story-seed' key='story-seed' />, inkstate.storySeed],
+    [<Text id='debug.info.current-turn-index' key='current-turn-index' />, inkstate.currentTurnIndex],
+    [<Text id='debug.info.path' key='path' />, gamedata[STORYPATH_STORE_KEY]]
   ];
 
   return (
