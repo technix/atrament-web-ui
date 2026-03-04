@@ -15,7 +15,7 @@ const LoadGameMenu = ({ children }) => {
   return (
     <Block align='end'>
       <Header><h2><Text id={'main.loadgame'} /></h2></Header>
-      <LoadGameView loadGame={loadGame} />
+      <LoadGameView loadGame={loadGame} hasConfirmation />
       <Break />
       {children}
     </Block>
