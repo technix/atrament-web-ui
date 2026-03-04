@@ -25,7 +25,7 @@ const ChoiceTimer = ({ options, choices, selectChoice }) => {
       return;
     }
     selectChoice(selected[0].id);
-  }, [ choices, selectChoice, params, throwAtramentError ]);
+  }, [ choices, selectChoice, params.choice, throwAtramentError ]);
 
   // animate progress bar
   useEffect(() => {
@@ -40,7 +40,7 @@ const ChoiceTimer = ({ options, choices, selectChoice }) => {
       });
     }, timerStep);
     return () => clearInterval(timer);
-  }, []);
+  }, [ makeChoice, timerStep ]);
 
   return <ProgressBar options={{ display: 'thin', border: false, min: 0, max: timeout, value: timeLeft }} />;
 };
