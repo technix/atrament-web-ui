@@ -26,7 +26,7 @@ const SessionsView = ({ newGame, loadGame, resumeGame, canResume }) => {
       }
       return { id, name, hasSaves, canStart };
     }));
-  }, [ atrament, metadata, setSessions ]);
+  }, [ atrament, metadata.sessions, setSessions ]);
 
   const startSession = useCallback(async (ev) => {
     const chosenSession = ev.target.getAttribute('data-session');

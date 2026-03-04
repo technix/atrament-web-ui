@@ -41,7 +41,7 @@ const LoadGameView = ({ loadGame, hasConfirmation = false }) => {
     saveSlotList.push(...saves);
     // done
     setSaveslots(saveSlotList);
-  }, [ atrament, metadata, translator ]);
+  }, [ atrament, metadata.load_from_checkpoints, translator ]);
 
   const startSavedGame = useCallback(async (ev) => {
     const chosenSaveslot = ev.target.getAttribute('data-save');
