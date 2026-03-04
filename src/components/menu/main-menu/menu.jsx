@@ -59,6 +59,7 @@ const MenuQuitButton = () => {
     key='main-menu-quit-button'
     onSelect={onSelect}
     hasConfirmation={true}
+    accented={true}
     confirmPrompt={translator.translate('game.confirm-quit')}
   >
     <Text id={'game.quit'} />
