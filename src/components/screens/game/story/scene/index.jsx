@@ -42,7 +42,7 @@ const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
       setIsLoaded(true);
     }
     preloader();
-  }, [ scene, setIsLoaded, getAssetPath ]);
+  }, [ scene.images, setIsLoaded, getAssetPath ]);
 
   const hasNoContent = scene.images.length === 0 && scene.isEmpty;
   if (hasNoContent) {

@@ -1,5 +1,5 @@
 
-import { applicationID, gameFile, gamePath, ATRAMENT_SETTINGS, ERROR_STORE_KEY, STORYPATH_STORE_KEY } from 'src/constants';
+import { APP_ID, GAME_FILE, GAME_PATH, ATRAMENT_SETTINGS, ERROR_STORE_KEY, STORYPATH_STORE_KEY } from 'src/constants';
 
 import muteWhenInactive from 'src/utils/mute-when-inactive';
 
@@ -21,13 +21,13 @@ export default async function atramentInit(atrament, Story) {
   registerSettingsHandlers(atrament);
   // initialize Atrament
   await atrament.init(Story, {
-    applicationID,
+    applicationID: APP_ID,
     settings: ATRAMENT_SETTINGS
   });
   atrament.on('game/initInkStory', () => onGameInit(atrament));
   atrament.on('game/start', () => onGameStart(atrament));
   // initialize game
-  await atrament.game.init(gamePath, gameFile);
+  await atrament.game.init(GAME_PATH, GAME_FILE);
   await atrament.game.initInkStory();
   // load defaults
   loadDefaultTheme(atrament);

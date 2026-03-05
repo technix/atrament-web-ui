@@ -1,4 +1,4 @@
-import { gameDefaultTheme } from 'src/constants';
+import { GAME_DEFAULT_THEME } from 'src/constants';
 import { setCssProperty } from './utils/css-properties';
 
 // import theme modules
@@ -27,7 +27,7 @@ export function applyTheme(theme) {
   if (!theme || !themes[theme]) {
     return;
   }
-  Object.entries(themes[theme] || themes[gameDefaultTheme])
+  Object.entries(themes[theme] || themes[GAME_DEFAULT_THEME])
     .forEach(([prop, value]) => setCssProperty(`--${prop}`, value));
 }
 

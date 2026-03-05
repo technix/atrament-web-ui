@@ -4,7 +4,7 @@ import { TranslationsProvider } from '@eo-locale/preact';
 import { AtramentContext } from 'src/context';
 import atramentInit from 'src/atrament/init';
 import locales from 'src/locales';
-import { appLanguage } from 'src/constants';
+import { APP_LANGUAGE } from 'src/constants';
 
 import ApplicationWrapper from 'src/components/ui/application-wrapper';
 import ErrorModal from 'src/components/ui/error-modal';
@@ -45,7 +45,7 @@ function App() {
   }, []);
 
   return (
-    <TranslationsProvider language={appLanguage} locales={locales}>
+    <TranslationsProvider language={APP_LANGUAGE} locales={locales}>
       <AtramentContext.Provider value={atrament}>
         <ApplicationWrapper>
           {atrament

@@ -2,56 +2,56 @@
 
 const cfg = window.$atramentConfig;
 
-export const appVersion = __APP_VERSION__;
+export const APP_VERSION = __APP_VERSION__;
 
-export const embedFonts = __EMBED_FONTS__;
+export const EMBED_FONTS = __EMBED_FONTS__;
 
 // Ink file
-export const gamePath = import.meta.env.MODE === 'production' && cfg.game?.zip
+export const GAME_PATH = import.meta.env.MODE === 'production' && cfg.game?.zip
   ? cfg.game?.zip // only for production build, not available for "development" and "singlefile"
   : cfg.game?.path;
-export const gameFile = cfg.game.script;
+export const GAME_FILE = cfg.game.script;
 
 // Application ID
 // - uses page URL to make sure it's unique
 
-export const applicationID = [
+export const APP_ID = [
   'Atrament://',
   window.location.host,
   window.location.pathname,
-  gamePath,
+  GAME_PATH,
   '/',
-  gameFile
+  GAME_FILE
 ].join('');
 
 //// Settings ////
 
 // i18n
-export const appLanguage = cfg.language || 'en';
-export const appLocale = cfg.locale || 'en-US';
+export const APP_LANGUAGE = cfg.language || 'en';
+export const APP_LOCALE = cfg.locale || 'en-US';
 
 // theme
-export const gameDefaultTheme = cfg.theme;
+export const GAME_DEFAULT_THEME = cfg.theme;
 
 // font
-export const gameDefaultFont = cfg.font;
+export const GAME_DEFAULT_FONT = cfg.font;
 
 // Font size range and step (percentage)
-export const defaultFontSize = 100;
-export const stepFontSize = 10;
-export const minFontSize = defaultFontSize - (stepFontSize * 3);
-export const maxFontSize = defaultFontSize + (stepFontSize * 5);
+export const DEFAULT_FONT_SIZE = 100;
+export const FONT_SIZE_STEP = 10;
+export const FONT_SIZE_MIN = DEFAULT_FONT_SIZE - (FONT_SIZE_STEP * 3);
+export const FONT_SIZE_MAX = DEFAULT_FONT_SIZE + (FONT_SIZE_STEP * 5);
 
 // volume
-export const defaultVolume = 50;
+export const DEFAULT_VOLUME = 50;
 
 // Atrament settings
 export const ATRAMENT_SETTINGS = {
   fullscreen: false,
   animation: true,
   mute: false,
-  volume: defaultVolume,
-  fontSize: defaultFontSize
+  volume: DEFAULT_VOLUME,
+  fontSize: DEFAULT_FONT_SIZE
 };
 
 //// Internal constants ////

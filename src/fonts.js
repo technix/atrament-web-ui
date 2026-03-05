@@ -1,11 +1,11 @@
 // font styles
-import { gameDefaultFont, embedFonts, FONTS_SYSTEM, FONTS_EMOJI } from 'src/constants';
+import { GAME_DEFAULT_FONT, EMBED_FONTS, FONTS_SYSTEM, FONTS_EMOJI } from 'src/constants';
 import { setCssProperty } from './utils/css-properties';
 
 let fonts = { ...FONTS_SYSTEM };
 
 (async () => {
-  if (import.meta.env.MODE !== 'singlefile' || embedFonts) {
+  if (import.meta.env.MODE !== 'singlefile' || EMBED_FONTS) {
     // import font modules
     const extFonts = {};
     const modules = import.meta.glob('../resources/fonts/**/*.js', { import: 'default' });
@@ -27,5 +27,5 @@ export {
   fonts
 };
 
-export const applyFont = (font) => setCssProperty('--font-face-game', fonts[font] || fonts[gameDefaultFont]);
+export const applyFont = (font) => setCssProperty('--font-face-game', fonts[font] || fonts[GAME_DEFAULT_FONT]);
 export const applyInterfaceFont = (font) => setCssProperty('--font-face-ui', fonts[font] || FONTS_SYSTEM['System']);

@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { Text } from '@eo-locale/preact';
 
-import { appVersion } from 'src/constants';
+import { APP_VERSION } from 'src/constants';
 import Block from 'src/components/ui/block';
 
 import style from './index.module.css';
@@ -21,7 +21,7 @@ const AboutMenu = ({ onClick }) => {
       <div onClick={clickHandler}>
         <div class={style.header}>
           <img src={atramentLogoImage} />
-          <h1>Atrament <small>{appVersion}</small></h1>
+          <h1>Atrament <small>{APP_VERSION}</small></h1>
         </div>
         <p><A href="https://atrament.ink/">https://atrament.ink/</A></p>
         <p>

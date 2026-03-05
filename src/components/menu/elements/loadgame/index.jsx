@@ -2,12 +2,12 @@ import { h } from 'preact';
 import { useTranslator } from '@eo-locale/preact';
 import { useEffect, useState, useCallback } from 'preact/hooks';
 
-import { appLocale } from 'src/constants';
+import { APP_LOCALE } from 'src/constants';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import MenuListItem from 'src/components/ui/menu-list-item';
 
-const datefmt = (date) => new Date(date).toLocaleString(appLocale);
+const datefmt = (date) => new Date(date).toLocaleString(APP_LOCALE);
 
 
 const LoadGameView = ({ loadGame, hasConfirmation = false }) => {
