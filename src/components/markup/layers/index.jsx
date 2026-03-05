@@ -116,7 +116,6 @@ const Layers = ({ options, children }) => {
       return i;
     });
     setAreaLayers(areaLayersProcessed);
-    console.log('Initial useEffect called');
   }, [ isActive, addOnclickHandler, imageLayerData, areaLayerData ]);
 
   return (<>

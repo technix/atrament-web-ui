@@ -9,7 +9,7 @@ export default function useOverlayContent() {
   const [ isLoaded, setIsLoaded ] = useState(false);
 
   const preloader = async () => {
-    await preloadImages(getAssetPath, getImagesFromContent(overlay.content));
+    await preloadImages(getAssetPath, getImagesFromContent(overlay.content?.split('\n')));
     setIsLoaded(true);
   }
 

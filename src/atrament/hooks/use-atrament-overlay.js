@@ -56,11 +56,6 @@ export const useAtramentOverlay = () => {
     closeOverlay,
     setOverlayContent,
     execContentFunction,
-    overlay: {
-      current: atramentState[OVERLAY_STORE_KEY].current,
-      content: atramentState[OVERLAY_STORE_KEY].content.split('\n'),
-      title: atramentState[OVERLAY_STORE_KEY].title,
-      display: atramentState[OVERLAY_STORE_KEY].display
-    }
+    overlay: atramentState[OVERLAY_STORE_KEY]
   }
 };
