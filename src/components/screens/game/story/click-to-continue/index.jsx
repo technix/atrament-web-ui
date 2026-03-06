@@ -6,9 +6,6 @@ import { useTranslator } from '@eo-locale/preact';
 import { useAtrament } from 'src/atrament/hooks';
 import { useKeyboardHandler } from 'src/hooks';
 
-const getSceneElement = () => document.getElementsByClassName('atrament-container-scene')[0];
-const getChoicesElement = () => document.getElementsByClassName('atrament-container-choices')[0];
-
 // options
 // clickable: pause before "click-to-continue" is allowed (0 - immediately)
 // animation: pause before animation is displayed (0 - immediately)
@@ -38,29 +35,17 @@ const ClickToContinue = ({ setReady, withChoice = false, delay = 0, animation = 
 
   useKeyboardHandler(kbdChoiceHandler);
 
-  const addEventListeners = useCallback(() => {
-    getSceneElement().addEventListener("click", continueGame, false);
-    getChoicesElement().addEventListener("click", continueGame, false);
-    return 0;
-  }, [ continueGame, kbdChoiceHandler ]);
-
-  const removeEventListeners = useCallback(() => {
-    getSceneElement().removeEventListener("click", continueGame, false);
-    getChoicesElement().removeEventListener("click", continueGame, false);
-    return 0;
-  }, [ continueGame, kbdChoiceHandler ]);
-
   useEffect(() => {
-    const delayClickToContinue = setTimeout(addEventListeners, clickable * 1000);
+    const delayClickToContinue = setTimeout(() => document.body.addEventListener("click", continueGame, false), clickable * 1000);
     const delayAnimation = setTimeout(() => setIsVisible(true), animation * 1000);
     const delayChoice = delay ? setTimeout(continueGame, delay * 1000) : undefined;
     return () => {
       clearTimeout(delayAnimation);
       clearTimeout(delayClickToContinue);
       clearTimeout(delayChoice);
-      removeEventListeners();
+      document.body.removeEventListener("click", continueGame, false);
     }
-  }, [ addEventListeners, removeEventListeners, continueGame, setIsVisible, clickable, delay, animation ]);
+  }, [ continueGame, setIsVisible, clickable, delay, animation ]);
 
   return (
     <div class={style.container}>
