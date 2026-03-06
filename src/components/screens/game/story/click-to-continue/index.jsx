@@ -4,6 +4,7 @@ import style from './index.module.css';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { useTranslator } from '@eo-locale/preact';
 import { useAtrament } from 'src/atrament/hooks';
+import { useKeyboardHandler } from 'src/hooks';
 
 const getSceneElement = () => document.getElementsByClassName('atrament-container-scene')[0];
 const getChoicesElement = () => document.getElementsByClassName('atrament-container-choices')[0];
@@ -35,15 +36,15 @@ const ClickToContinue = ({ setReady, withChoice = false, delay = 0, animation = 
     }
   }, [ continueGame ]);
 
+  useKeyboardHandler(kbdChoiceHandler);
+
   const addEventListeners = useCallback(() => {
-    document.addEventListener("keydown", kbdChoiceHandler, false);
     getSceneElement().addEventListener("click", continueGame, false);
     getChoicesElement().addEventListener("click", continueGame, false);
     return 0;
   }, [ continueGame, kbdChoiceHandler ]);
 
   const removeEventListeners = useCallback(() => {
-    document.removeEventListener("keydown", kbdChoiceHandler, false);
     getSceneElement().removeEventListener("click", continueGame, false);
     getChoicesElement().removeEventListener("click", continueGame, false);
     return 0;
