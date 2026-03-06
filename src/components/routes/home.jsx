@@ -14,7 +14,7 @@ import { setBackground } from 'src/utils/background';
 const HomeRoute = () => {
   const { getAssetPath, resetBackground } = useAtrament();
   const atramentState = useAtramentState(['metadata']);
-  const { background, sessions } = atramentState.metadata;
+  const { background } = atramentState.metadata;
 
   useEffect(() => {
     // reset game background
