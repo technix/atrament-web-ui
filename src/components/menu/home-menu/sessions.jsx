@@ -6,8 +6,7 @@ import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
 import MenuListItem from 'src/components/ui/menu-list-item';
 
-
-const SessionsView = ({ newGame, loadGame, resumeGame, canResume }) => {
+const SessionsList = ({ startSessionCallback }) => {
   const [ sessions, setSessions ] = useState([]);
   const translator = useTranslator();
   const { atrament } = useAtrament();
@@ -28,23 +27,15 @@ const SessionsView = ({ newGame, loadGame, resumeGame, canResume }) => {
     }));
   }, [ atrament, metadata.sessions, setSessions ]);
 
-  const startSession = useCallback(async (ev) => {
+  const startSession = useCallback((ev) => {
     const chosenSession = ev.target.getAttribute('data-session');
     const sessionData = sessions.filter(item => item.name === chosenSession)[0];
     if (!sessionData) {
       return;
     }
     atrament.game.setSession(chosenSession);
-    if (sessionData.hasSaves) {
-      if (await canResume()) {
-        await resumeGame();
-      } else {
-        await loadGame();
-      }
-    } else {
-      await newGame();
-    }
-  }, [ atrament, sessions, newGame, canResume, resumeGame, loadGame ]);
+    startSessionCallback(sessionData.hasSaves);
+  }, [ atrament, sessions, startSessionCallback ]);
 
   const deleteSession = useCallback(async (ev) => {
     const chosenSession = ev.target.getAttribute('data-session');
@@ -83,4 +74,4 @@ const SessionsView = ({ newGame, loadGame, resumeGame, canResume }) => {
   );
 };
 
-export default SessionsView;
+export default SessionsList;

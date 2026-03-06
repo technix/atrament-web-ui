@@ -7,7 +7,7 @@ import ContainerFlex from 'src/components/ui/container-flex';
 import ErrorScreen from 'src/components/screens/error';
 
 import Menu from 'src/components/menu/main-menu';
-import { SessionsMenuView, HomeMenuView } from 'src/components/menu/home-menu';
+import HomeMenuView from 'src/components/menu/home-menu';
 
 import { setBackground } from 'src/utils/background';
 
@@ -28,7 +28,7 @@ const HomeRoute = () => {
       <ContainerFlex className='font-face-game'>
         <ErrorScreen />
         <Menu isHomeScreen />
-        { sessions ? <SessionsMenuView /> : <HomeMenuView /> }
+        <HomeMenuView />
       </ContainerFlex>
     </Container>
   );
