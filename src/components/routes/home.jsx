@@ -1,37 +1,18 @@
 import { h } from 'preact';
-import { useEffect } from 'preact/hooks';
-import { useAtrament, useAtramentState } from 'src/atrament/hooks';
-
 import Container from 'src/components/ui/container';
 import ContainerFlex from 'src/components/ui/container-flex';
 import ErrorScreen from 'src/components/screens/error';
-
 import Menu from 'src/components/menu/main-menu';
 import HomeMenuView from 'src/components/menu/home-menu';
 
-import { setBackground } from 'src/utils/background';
-
-const HomeRoute = () => {
-  const { getAssetPath, resetBackground } = useAtrament();
-  const atramentState = useAtramentState(['metadata']);
-  const { background } = atramentState.metadata;
-
-  useEffect(() => {
-    // reset game background
-    resetBackground();
-    // set page background
-    setBackground(document.getElementById('atrament-app'), background, getAssetPath);
-  }, [ resetBackground, background, getAssetPath ]);
-
-  return (
-    <Container>
-      <ContainerFlex className='font-face-game'>
-        <ErrorScreen />
-        <Menu isHomeScreen />
-        <HomeMenuView />
-      </ContainerFlex>
-    </Container>
-  );
-};
+const HomeRoute = () => (
+  <Container>
+    <ContainerFlex className='font-face-game'>
+      <ErrorScreen />
+      <Menu isHomeScreen />
+      <HomeMenuView />
+    </ContainerFlex>
+  </Container>
+);
 
 export default HomeRoute;

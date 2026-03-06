@@ -1,7 +1,7 @@
 import { h } from 'preact';
 import { useState } from 'preact/hooks';
 
-import { useAtramentState } from 'src/atrament/hooks';
+import { useAtramentState, useAtramentBackground } from 'src/atrament/hooks';
 
 import ContainerText from 'src/components/ui/container-text';
 import ContainerScenes from './container-scenes';
@@ -11,6 +11,7 @@ import Scene from './scene';
 import Choices from './choices';
 
 const StoryView = () => {
+  useAtramentBackground();
   const atramentState = useAtramentState(['scenes', 'metadata']);
   const [ isReady, setReady ] = useState(false);
 

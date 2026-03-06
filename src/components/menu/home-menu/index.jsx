@@ -3,7 +3,7 @@ import { useState, useCallback } from 'preact/hooks';
 import { route } from 'preact-router';
 import { useTranslator, Text } from '@eo-locale/preact';
 
-import { useAtrament, useAtramentState, useAtramentSaves } from 'src/atrament/hooks';
+import { useAtrament, useAtramentState, useAtramentSaves, useAtramentAppBackground } from 'src/atrament/hooks';
 
 import Block from 'src/components/ui/block';
 import Break from 'src/components/ui/break';
@@ -55,7 +55,7 @@ const MainMenuSessions = ({ setVisibleMenu }) => {
     } else {
       await newGame();
     }
-  }, [ resumeGame, newGame, setVisibleMenu ])
+  }, [ canResume, resumeGame, newGame, setVisibleMenu ])
 
   return <SessionsList startSessionCallback={startSessionCallback} />;
 };
@@ -108,6 +108,7 @@ const LoadMenuScreen = ({ setVisibleMenu }) => {
 const menuComponents = [ MainMenuScreen, LoadMenuScreen ];
 
 const HomeMenuView = () => {
+  useAtramentAppBackground();
   const [ visibleMenu, setVisibleMenu ] = useState(MENU_MAIN);
   const MenuRenderer = menuComponents[visibleMenu];
   return <MenuRenderer setVisibleMenu={setVisibleMenu} />;
