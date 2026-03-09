@@ -6,15 +6,41 @@ import { useTranslator } from '@eo-locale/preact';
 import { useAtrament } from 'src/atrament/hooks';
 import { useKeyboardHandler } from 'src/hooks';
 
+import getTagAttributes from 'src/utils/get-tag-attributes';
+
+function clickToContinueOptions(param) {
+  const options = {
+    delay: 0,
+    animation: 0,
+    clickable: 0
+  };
+  if (param.startsWith('(')) {
+    const attrs = getTagAttributes(param.replace(/[()]/g, ''));
+    Object.entries(attrs).forEach(([k,v]) => options[k] = v);
+    // alternate syntax
+    if (options.continue) {
+      options.delay = options.continue;
+    }
+  } else if (param) {
+    options.delay = param;
+  } else {
+    options.animation = 3; // default animation pause
+  }
+  return options;
+}
+
+
 // options
 // clickable: pause before "click-to-continue" is allowed (0 - immediately)
 // animation: pause before animation is displayed (0 - immediately)
 // delay: pause before story continues (0 - only after click)
 
-const ClickToContinue = ({ setReady, withChoice = false, delay = 0, animation = 0, clickable = 0 }) => {
+const ClickToContinue = ({ setReady, withChoice = false, options }) => {
   const { makeChoice, continueStory } = useAtrament();
   const [ isVisible, setIsVisible ] = useState(false);
   const translator = useTranslator();
+
+  const { delay, animation, clickable } = clickToContinueOptions(options);
 
   const continueGame = useCallback((e) => {
     e?.stopPropagation();

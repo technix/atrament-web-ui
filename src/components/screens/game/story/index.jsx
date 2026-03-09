@@ -37,7 +37,7 @@ const StoryView = () => {
           key={key}
           currentScene={atramentState.scenes[lastSceneIndex]}
           setReady={setReady}
-          isHypertextMode={isHypertextMode}
+          hideChoices={isHypertextMode}
         />
       </ContainerChoices>
     </ContainerText>
