@@ -62,15 +62,16 @@ const MenuListItem = ({
       >
         {children}
       </button>
-      {(isDeletable && !isDisabled) &&
+      {isDeletable ?
         <button
           key={key}
+          disabled={isDisabled}
           onClick={showDeleteDialog}
           class={clsx(style.menu_item, style.delete_button)}
           {...attributes}
         >
           &#x2715;
-        </button>}
+        </button> : ''}
     </>;
   }
 

@@ -20,8 +20,8 @@
   color: var(--fg-color);
   margin-top: 1rem;
   padding: 1rem;
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
+  padding-left: 2.5em;
+  padding-right: 2.5em;
   text-align: center;
   text-decoration: none;
   border: 1px solid var(--fg-color);
