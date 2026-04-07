@@ -19,32 +19,32 @@
   "dependencies": {
     "@atrament/web": "2.2.0",
     "@eo-locale/preact": "1.7.2",
-    "@nanostores/preact": "1.0.0",
+    "@nanostores/preact": "1.1.0",
     "clsx": "2.1.1",
     "history": "5.3.0",
     "inkjs": "2.4.0",
     "mustache": "4.2.0",
     "normalize.css": "8.0.1",
-    "preact": "10.28.4",
+    "preact": "10.29.1",
     "preact-router": "4.1.2",
     "seamless-scroll-polyfill": "2.3.4"
   },
   "devDependencies": {
-    "@neutralinojs/neu": "11.7.0",
-    "@preact/preset-vite": "2.10.3",
+    "@neutralinojs/neu": "11.7.1",
+    "@preact/preset-vite": "2.10.5",
     "@stylistic/eslint-plugin": "5.10.0",
-    "@terascope/fetch-github-release": "2.2.2",
+    "@terascope/fetch-github-release": "2.3.1",
     "@vite-pwa/assets-generator": "1.0.2",
     "eslint": "9.39.3",
     "eslint-config-preact": "2.0.0",
     "shelljs": "0.10.0",
-    "vite": "7.3.1",
+    "vite": "7.3.2",
     "vite-plugin-clean-build": "1.4.1",
     "vite-plugin-html": "3.2.2",
     "vite-plugin-pwa": "1.2.0",
-    "vite-plugin-singlefile": "2.3.0",
+    "vite-plugin-singlefile": "2.3.2",
     "vite-plugin-zip-pack": "1.2.4",
-    "zip-a-folder": "4.0.4"
+    "zip-a-folder": "6.1.0"
   },
   "eslintConfig": {
     "extends": "preact"
