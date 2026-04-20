@@ -1,0 +1,18 @@
+{
+  "android": {
+    "debug": {
+      "keystore": "./atrament_app.keystore",
+      "storePassword": "atrament_store_passwd",
+      "alias": "atrament_app",
+      "password" : "atrament_store_passwd",
+      "keystoreType": "jks"
+    },
+    "release": {
+      "keystore": "./atrament_app.keystore",
+      "storePassword": "atrament_store_passwd",
+      "alias": "atrament_app",
+      "password" : "atrament_store_passwd",
+      "keystoreType": "jks"
+    }
+  }
+}

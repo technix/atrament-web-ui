@@ -10,6 +10,7 @@
     "build-singlefile": "vite build --mode singlefile",
     "build-standalone": "vite build --mode standalone && node tools/build-standalone.mjs",
     "build-template": "vite build --mode singlefile -- --template",
+    "build-android": "vite build --mode standalone && node tools/build-android.mjs",
     "preview": "vite preview",
     "lint": "eslint --ext .jsx --ext js src",
     "compile-ink-script": "node tools/ink-compile.cjs",
