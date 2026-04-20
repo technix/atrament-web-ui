@@ -9,8 +9,8 @@ Example Android configuration in atrament.config.json:
 
   "platform": {
     "android": {
-      "name": "demo.ink.atrament",
-      "display_name": "Atrament Web UI demo",
+      "id": "demo.ink.atrament",
+      "name": "Atrament Web UI demo",
       "description": "Atrament Web UI - shell for Ink games",
       "version": "1.0.0",
       "author": "Serhii Mozhaiskyi",
@@ -30,6 +30,9 @@ Example Android configuration in atrament.config.json:
 
 // stop script in case of failures
 shell.config.fatal = true;
+
+const DEFAULT_ICON = 'maskable-icon-512x512.png';
+const DEFAULT_ORIENTATION = 'portrait';
 
 const APP_DIR = 'build/.tmp_standalone';
 const APP_WWW_DIR = `${APP_DIR}/resources`;
@@ -52,14 +55,15 @@ const cfg = JSON.parse(fs.readFileSync('atrament.config.json', 'utf8'));
 const androidConfig = cfg.platform?.android;
 
 const CORDOVA_CONFIG = {
+  id: androidConfig?.id,
   name: androidConfig?.name,
-  display_name: androidConfig?.display_name,
   version: androidConfig?.version,
   description: androidConfig?.description,
   author: androidConfig?.author,
   email: androidConfig?.email,
   website: androidConfig?.website,
-  orientation: androidConfig?.orientation || 'portrait'
+  icon: androidConfig?.icon || `www/${DEFAULT_ICON}`,
+  orientation: androidConfig?.orientation || DEFAULT_ORIENTATION
 };
 
 const missing_keys = Object.keys(CORDOVA_CONFIG).filter((k) => !CORDOVA_CONFIG[k]);

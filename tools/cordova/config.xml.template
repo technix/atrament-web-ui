@@ -1,10 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="{{name}}" version="{{version}}" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>{{display_name}}</name>
+<widget id="{{id}}" version="{{version}}" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>{{name}}</name>
   <description>{{description}}</description>
   <author email="{{email}}" href="{{website}}">{{author}}</author>
   <content src="index.html" />
-  <icon src="www/maskable-icon-512x512.png" />
+  <icon src="{{icon}}" />
   <allow-intent href="http://*/*" />
   <allow-intent href="https://*/*" />
   <preference name="Orientation" value="{{orientation}}" />
