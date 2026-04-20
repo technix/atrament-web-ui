@@ -165,9 +165,9 @@ function runAndroidBuild() {
         throw err;
       }
       console.log(data);
-      const builtPackages = copyAndroidPackages();
       cleanup();
-      if (data.statusCode === 0) {
+      if (data.StatusCode === 0) {
+        const builtPackages = copyAndroidPackages();
         console.log(`>>> Android build successful.`);
         builtPackages.forEach(p => console.log(`* ${p}`));
       }
@@ -176,12 +176,12 @@ function runAndroidBuild() {
 
   runner.on('container', (container) => {
     activeContainer = container;
-    console.log(`Container started: ${container.id}`);
+    console.log(`Docker container started: ${container.id}`);
   });
 
   process.on('SIGINT', async () => {
     if (activeContainer) {
-      process.stdout.write('Stopping container... ');
+      process.stdout.write('Stopping Docker container... ');
       try {
         await activeContainer.stop();
         console.log('Done.');
