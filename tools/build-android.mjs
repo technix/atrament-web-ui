@@ -74,7 +74,7 @@ if (missing_keys.length > 0) {
 }
 
 const PACKAGETYPE = androidConfig?.debug ? 'debug' : 'release';
-let CLEARBUILD;
+let CLEARBUILD = "";
 
 const docker = new Docker();
 
@@ -139,8 +139,10 @@ function cleanup() {
 
 
 function runAndroidBuild() {
+  let activeContainer;
+  console.log('>>> Starting Cordova builder');
   const projectPath = path.resolve(process.cwd(), BUILD_DIR);
-  docker.run(
+  const runner = docker.run(
     DOCKER_BUILDER,
     ['bash', '-c', '/app/build.sh'],
     process.stdout,
@@ -165,10 +167,30 @@ function runAndroidBuild() {
       console.log(data);
       const builtPackages = copyAndroidPackages();
       cleanup();
-      console.log(`>>> Android build successful.`);
-      builtPackages.forEach(p => console.log(`* ${p}`));
+      if (data.statusCode === 0) {
+        console.log(`>>> Android build successful.`);
+        builtPackages.forEach(p => console.log(`* ${p}`));
+      }
     }
   );
+
+  runner.on('container', (container) => {
+    activeContainer = container;
+    console.log(`Container started: ${container.id}`);
+  });
+
+  process.on('SIGINT', async () => {
+    if (activeContainer) {
+      process.stdout.write('Stopping container... ');
+      try {
+        await activeContainer.stop();
+        console.log('Done.');
+      } catch (err) {
+        console.error(' Failed.', err?.message);
+      }
+    }
+    process.exit(0);
+  });
 }
 
 function followPullProgress(err, stream) {
