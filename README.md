@@ -481,12 +481,12 @@ Before building Android application, add "platform.android" section to the `atra
 "platform": {
   "android": {
     "id": "ink.atrament.demo",
-    "name": "Atrament Web UI demo",
-    "description": "Atrament Web UI - shell for Ink games",
+    "name": "Atrament UI demo",
+    "description": "Atrament UI - shell for Ink games",
     "version": "1.0.0",
     "author": "Serhii Mozhaiskyi",
     "email": "sergei.mozhaisky@gmail.com",
-    "website": "https://atrament.ink/",
+    "website": "https://atrament.ink/"
   }
 }
 ```

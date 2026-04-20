@@ -15,7 +15,7 @@ Example Android configuration in atrament.config.json:
       "version": "1.0.0",
       "author": "Serhii Mozhaiskyi",
       "email": "sergei.mozhaisky@gmail.com",
-      "website": "https://atrament.ink/",
+      "website": "https://atrament.ink/"
     }
   }
 
@@ -73,14 +73,20 @@ if (missing_keys.length > 0) {
   process.exit(1);
 }
 
-const BUILDTYPE = androidConfig?.debug ? 'debug' : 'release';
-
+const PACKAGETYPE = androidConfig?.debug ? 'debug' : 'release';
+let CLEARBUILD;
 
 const docker = new Docker();
 
 function prepareAndroidBuild() {
   if (!fs.existsSync(BUILD_DIR)) {
     fs.mkdirSync(BUILD_DIR);
+  } else {
+    // check if package name was changed
+    const existingConfig = JSON.parse(fs.readFileSync(`${BUILD_DIR}/package.json`, 'utf8'));
+    if (existingConfig.name !== CORDOVA_CONFIG.id) {
+      CLEARBUILD = 'clear'; // remove cached Android build
+    }
   }
   if (!fs.existsSync(BUILD_WWW_DIR)) {
     fs.mkdirSync(BUILD_WWW_DIR);
@@ -104,19 +110,19 @@ function prepareAndroidBuild() {
 
 function copyAndroidPackages() {
   const builtPackages = [];
-  const packageName = `${CORDOVA_CONFIG.name}-${BUILDTYPE}`;
+  const packageName = `${CORDOVA_CONFIG.id}-${PACKAGETYPE}`;
 
   if (!fs.existsSync(OUTPUT_DIR)) {
     fs.mkdirSync(OUTPUT_DIR);
   }
-  const APK_FILE = `${BUILD_DIR}/platforms/android/app/build/outputs/apk/${BUILDTYPE}/app-${BUILDTYPE}.apk`;
+  const APK_FILE = `${BUILD_DIR}/platforms/android/app/build/outputs/apk/${PACKAGETYPE}/app-${PACKAGETYPE}.apk`;
   const APK_OUTPUT = `${OUTPUT_DIR}/${packageName}.apk`;
   if (fs.existsSync(APK_FILE)) {
     console.log(`>>> Copying APK (standalone Android package) to ${OUTPUT_DIR}`);
     shell.cp('-f', APK_FILE, APK_OUTPUT);
     builtPackages.push(APK_OUTPUT);
   }
-  const AAB_FILE = `${BUILD_DIR}/platforms/android/app/build/outputs/bundle/${BUILDTYPE}/app-${BUILDTYPE}.aab`;
+  const AAB_FILE = `${BUILD_DIR}/platforms/android/app/build/outputs/bundle/${PACKAGETYPE}/app-${PACKAGETYPE}.aab`;
   const AAB_OUTPUT = `${OUTPUT_DIR}/${packageName}.aab`;
   if (fs.existsSync(AAB_FILE)) {
     console.log(`>>> Copying AAB (bundle for Play Store) to ${OUTPUT_DIR}`);
@@ -143,7 +149,8 @@ function runAndroidBuild() {
       Env: [
         // `GRADLE_USER_HOME=/tmp/.gradle`,
         `ORGNAME=${CORDOVA_CONFIG.author.replaceAll(' ', '_')}`,
-        `BUILDCONFIG=${BUILDTYPE}`
+        `PACKAGETYPE=${PACKAGETYPE}`,
+        `CLEARBUILD=${CLEARBUILD}`
       ],
       HostConfig: {
         Binds: [`${projectPath}:/app`],
