@@ -70,7 +70,7 @@ export default defineConfig(({ mode }) => {
     }
   } else if (mode === 'standalone') {
     plugins.push(VitePWA(getPWAConfig(atramentConfig)));
-    buildDir = 'build/.tmp_neutralino/resources';
+    buildDir = 'build/.tmp_standalone/resources';
   } else if (mode === 'production') {
     if (atramentConfig.game.zip) {
       const gameDir = `${buildDir}/${atramentConfig.game.path}`;

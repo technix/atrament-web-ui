@@ -4,7 +4,7 @@ import { zip } from 'zip-a-folder';
 import { readdir } from 'node:fs/promises';
 
 const TOOLS_DIR = 'tools/neutralino';
-const BUILD_DIR = 'build/.tmp_neutralino';
+const BUILD_DIR = 'build/.tmp_standalone';
 const OUTPUT_DIR = 'build/standalone';
 
 // stop script in case of failures

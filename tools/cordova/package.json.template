@@ -1,0 +1,7 @@
+{
+  "name": "{{id}}",
+  "displayName": "{{name}}",
+  "version": "{{version}}",
+  "description": "{{description}}",
+  "main": "index.html"
+}
