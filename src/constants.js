@@ -96,7 +96,9 @@ export const KNOWN_GLOBAL_TAGS = [
   'cover',
   'background',
   'debug',
-  'allow_external_function_fallbacks'
+  'allow_external_function_fallbacks',
+  'title_screen_layout',
+  'save_description_length'
 ];
 
 export const KNOWN_SCENE_TAGS = [
