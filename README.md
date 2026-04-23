@@ -476,7 +476,7 @@ To build standalone executables for Windows, Linux, and MacOS, use `npm run buil
 
 **[!] Android build requires [Docker](https://www.docker.com/) to be installed.**
 
-Before building Android application, add "platform.android" section to the `atrament.config.json`:
+Before building an Android application, add "platform.android" section to the `atrament.config.json`:
 ```
 "platform": {
   "android": {
@@ -501,14 +501,9 @@ Before building Android application, add "platform.android" section to the `atra
 | website | Website of the author. |
 | orientation | Optional. Sets default screen orientation. Can be "default", "portrait", or "landscape". |
 | debug | Optional. If set to `true`, debug version of the application will be built. |
-| icon | Optional. Sets icon for the application. Path to file should be relative to the web app folder. Default value is `maskable-icon-512x512.png` |
+| icon | Optional. Sets icon for the application. Path to file should be relative to the web app folder. Default value is `pwa-512x512.png` |
 
-
-To build package for Android, use `npm run build-android` command. 
-```
-npm run build-android
-```
-The standalone APK and a bundle for Play Market will be in the `build/android` folder. 
+To build a package for Android, use `npm run build-android` command. The standalone APK and a bundle for Play Market will be in the `build/android` folder. 
 
 
 ### Zipped game content

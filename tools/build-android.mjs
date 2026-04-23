@@ -31,7 +31,7 @@ Example Android configuration in atrament.config.json:
 // stop script in case of failures
 shell.config.fatal = true;
 
-const DEFAULT_ICON = 'maskable-icon-512x512.png';
+const DEFAULT_ICON = 'pwa-512x512.png';
 const DEFAULT_ORIENTATION = 'portrait';
 
 const APP_DIR = 'build/.tmp_standalone';
@@ -62,7 +62,7 @@ const CORDOVA_CONFIG = {
   author: androidConfig?.author,
   email: androidConfig?.email,
   website: androidConfig?.website,
-  icon: androidConfig?.icon || `www/${DEFAULT_ICON}`,
+  icon: `www/${androidConfig?.icon || DEFAULT_ICON}`,
   orientation: androidConfig?.orientation || DEFAULT_ORIENTATION
 };
 
