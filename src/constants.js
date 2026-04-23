@@ -41,6 +41,11 @@ export const DEFAULT_FONT_SIZE = 100;
 export const FONT_SIZE_STEP = 10;
 export const FONT_SIZE_MIN = DEFAULT_FONT_SIZE - (FONT_SIZE_STEP * 3);
 export const FONT_SIZE_MAX = DEFAULT_FONT_SIZE + (FONT_SIZE_STEP * 5);
+// Text line height range and step (percentage)
+export const DEFAULT_LINE_HEIGHT = 150;
+export const LINE_HEIGHT_STEP = 25;
+export const LINE_HEIGHT_MIN = 100;
+export const LINE_HEIGHT_MAX = 200;
 
 // volume
 export const DEFAULT_VOLUME = 50;
@@ -51,7 +56,8 @@ export const ATRAMENT_SETTINGS = {
   animation: true,
   mute: false,
   volume: DEFAULT_VOLUME,
-  fontSize: DEFAULT_FONT_SIZE
+  fontSize: DEFAULT_FONT_SIZE,
+  lineHeight: DEFAULT_LINE_HEIGHT
 };
 
 //// Internal constants ////

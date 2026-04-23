@@ -1,6 +1,7 @@
 .settings_fontsize_container {
   display: flex;
   flex-direction: row;
+  margin-right: 2rem;
 }
 
 .settings_font_a {
@@ -25,4 +26,17 @@
   line-height: calc(1ex / 0.32);
   overflow: hidden;
   transition: font-size var(--animation-disabled, 0.1s) linear;
+}
+
+.settings_fontlineheight_container {
+  display: flex;
+  flex-direction: row;
+}
+
+.settings_fontlineheight_input {
+  direction: rtl;
+  appearance: slider-vertical;
+  -webkit-appearance: slider-vertical;
+  writing-mode: vertical-lr;
+  accent-color: var(--fg-color);
 }
