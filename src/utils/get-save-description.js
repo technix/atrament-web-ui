@@ -14,11 +14,15 @@ export default function getSaveDescription(atrament) {
   const firstLine = scenes[scenes.length - 1].text[0];
   // remove markup tags and html tags
   const saveDescription = firstLine
+    .replaceAll(/\[img.*?\].+?\[\/img\]/gi, '')
+    .replaceAll(/\[picture.*?\].+?\[\/picture\]/gi, '')
+    .replaceAll(/\[video.*?\].+?\[\/video\]/gi, '')
     .replaceAll(/\[.+?\]/gi, '')
     .replaceAll(/<.+?>/gi, '');
   // create description
   let cutDescription = saveDescription.substring(0, EXCERPT_LENGTH);
-  if (cutDescription !== saveDescription) {
+  // if description can be cut or it is empty
+  if (cutDescription !== saveDescription || !cutDescription?.trim()) {
     cutDescription += '...';
   }
   return cutDescription;
