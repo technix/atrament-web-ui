@@ -19,7 +19,7 @@
     "update-neutralino": "cd tools/neutralino && npx neu update"
   },
   "dependencies": {
-    "@atrament/web": "2.2.0",
+    "@atrament/web": "2.2.1",
     "@eo-locale/preact": "1.7.2",
     "@nanostores/preact": "1.1.0",
     "clsx": "2.1.1",
