@@ -8,6 +8,7 @@ import CleanBuild from 'vite-plugin-clean-build';
 
 import { compileInk, watchInkFiles } from './vite/ink-compiler-plugin';
 import { removeInkFilesFromBuild } from './vite/remove-ink-files-plugin';
+import { conditionalFonts } from './vite/conditional-fonts-plugin';
 import getPWAConfig from './vite/pwa-config';
 
 import atramentCfg from './atrament.config.json';
@@ -49,14 +50,19 @@ export default defineConfig(({ mode }) => {
     watchInkFiles(inkCompileFormat),
     compileInk(inkCompileFormat),
     removeInkFilesFromBuild(),
+    conditionalFonts(mode)
   ]
 
   let buildDir = 'build/web';
   let rollupOptions = {
     output: {
-      manualChunks: {
-        inkjs: ['inkjs'],
-        atrament: ['@atrament/web']
+      manualChunks: (id) => {
+        if (id.includes('inkjs')) {
+          return 'inkjs';
+        }
+        if (id.includes('@atrament')) {
+          return 'atrament';
+        }
       }
     }
   };
@@ -93,8 +99,7 @@ export default defineConfig(({ mode }) => {
   return {
     plugins,
     define: {
-      __APP_VERSION__: JSON.stringify(process.env.npm_package_version),
-      __EMBED_FONTS__: process.argv.includes('--embed-fonts')
+      __APP_VERSION__: JSON.stringify(process.env.npm_package_version)
     },
     resolve: {
       alias: [

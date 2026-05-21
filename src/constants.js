@@ -1,10 +1,8 @@
-/* global __APP_VERSION__, __EMBED_FONTS__ */
+/* global __APP_VERSION__ */
 
 const cfg = window.$atramentConfig;
 
 export const APP_VERSION = __APP_VERSION__;
-
-export const EMBED_FONTS = __EMBED_FONTS__;
 
 // Ink file
 export const GAME_PATH = import.meta.env.MODE === 'production' && cfg.game?.zip
