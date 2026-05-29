@@ -426,7 +426,15 @@ To add a theme to the application, create a JSON file in the `resources/themes` 
 *Note: You can use any valid CSS values for the theme.*
 
 ### Fonts
-To add a font to the application, create a folder in the `resources/fonts` folder with the following files:
+
+To add any [Google font](https://fonts.google.com/) to the application, run the following command in the terminal, supplying quoted font name as a last parameter, for example:
+```
+npm run download-google-font "IBM Plex Sans"
+```
+It will download the font into `resources/fonts` subfolder and create all the required CSS and JS files.
+
+
+To add custom font to the application, create a folder in the `resources/fonts` folder with the following files:
 * `index.js` with the following content:
 ```
 import('./index.css');

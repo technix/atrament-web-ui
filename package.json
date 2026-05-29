@@ -16,6 +16,7 @@
     "lint": "eslint --ext .jsx --ext js src",
     "compile-ink-script": "node tools/ink-compile.cjs",
     "install-inklecate": "node tools/install-inklecate.cjs",
+    "download-google-font": "node tools/download-google-font.mjs",
     "update-neutralino": "cd tools/neutralino && npx neu update"
   },
   "dependencies": {
@@ -40,6 +41,7 @@
     "dockerode": "5.0.0",
     "eslint": "9.39.3",
     "eslint-config-preact": "2.0.0",
+    "google-fonts-helper": "3.7.4",
     "shelljs": "0.10.0",
     "vite": "8.0.14",
     "vite-plugin-clean-build": "1.4.1",
