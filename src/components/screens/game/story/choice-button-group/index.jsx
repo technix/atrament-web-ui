@@ -56,18 +56,27 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
 
   // knot tag '#CHOICES' has more priority than global '#choices' tag
   const choiceConfig = currentScene.tags?.CHOICES || metadata.choices;
+
+  // Parse grid columns from config (e.g., "grid-2", "grid-3")
+  const gridMatch = choiceConfig?.match(/grid-(\d+)/);
+  const gridColumns = gridMatch ? parseInt(gridMatch[1], 10) : null;
+
   const choiceAppearance = {
     grouped: !!choiceConfig?.includes('grouped'),
     left: !!choiceConfig?.includes('left'),
     right: !!choiceConfig?.includes('right'),
     numbered: !!choiceConfig?.includes('numbered'),
     row: !!choiceConfig?.includes('row'),
-    borderless: !!choiceConfig?.includes('borderless')
+    borderless: !!choiceConfig?.includes('borderless'),
+    grid: gridColumns !== null,
+    gridColumns: gridColumns
   };
 
   const choiceButtonGroupClass = clsx(
     choiceAppearance.row && style.choice_row,
     (choiceAppearance.row && !choiceAppearance.grouped) && style.choice_row_ungrouped,
+    choiceAppearance.grid && style.choice_grid,
+    choiceAppearance.grid && gridColumns && style[`choice_grid_${gridColumns}`],
     'atrament-choices'
   );
 

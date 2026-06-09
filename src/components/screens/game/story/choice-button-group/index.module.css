@@ -19,3 +19,28 @@
 .choice_row_ungrouped {
   gap: 0.5em;
 }
+
+.choice_grid {
+  display: grid;
+  gap: 0.5em;
+}
+
+.choice_grid button {
+  margin-top: 0;
+}
+
+.choice_grid_2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.choice_grid_3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.choice_grid_4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.choice_grid_5 {
+  grid-template-columns: repeat(5, 1fr);
+}
