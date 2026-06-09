@@ -20,27 +20,32 @@
   gap: 0.5em;
 }
 
+/* grid */
+
 .choice_grid {
   display: grid;
   gap: 0.5em;
+  grid-template-columns: repeat(var(--grid-columns, 2), 1fr);
 }
 
 .choice_grid button {
   margin-top: 0;
 }
 
-.choice_grid_2 {
-  grid-template-columns: repeat(2, 1fr);
+/* grouped grid */
+.choice_grid_grouped {
+  gap: 0;
+  border: 1px solid var(--fg-color);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  background-color: var(--fg-color);
+  row-gap: 1px;
+  column-gap: 1px;
 }
 
-.choice_grid_3 {
-  grid-template-columns: repeat(3, 1fr);
-}
-
-.choice_grid_4 {
-  grid-template-columns: repeat(4, 1fr);
-}
-
-.choice_grid_5 {
-  grid-template-columns: repeat(5, 1fr);
+.choice_grid_grouped button {
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  background-color: var(--bg-color);
 }

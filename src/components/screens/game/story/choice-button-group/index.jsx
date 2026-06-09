@@ -60,6 +60,13 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
   // Parse grid columns from config (e.g., "grid-2", "grid-3")
   const gridMatch = choiceConfig?.match(/grid-(\d+)/);
   const gridColumns = gridMatch ? parseInt(gridMatch[1], 10) : null;
+  let emptyCells = 0;
+  if (gridColumns) {
+    const remainder = availableChoices.length % gridColumns;
+    if (remainder !== 0) {
+      emptyCells = gridColumns - remainder;
+    }
+  }
 
   const choiceAppearance = {
     grouped: !!choiceConfig?.includes('grouped'),
@@ -76,6 +83,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
     choiceAppearance.row && style.choice_row,
     (choiceAppearance.row && !choiceAppearance.grouped) && style.choice_row_ungrouped,
     choiceAppearance.grid && style.choice_grid,
+    (choiceAppearance.grid && choiceAppearance.grouped) && style.choice_grid_grouped,
     choiceAppearance.grid && gridColumns && style[`choice_grid_${gridColumns}`],
     'atrament-choices'
   );
@@ -90,7 +98,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
           selectChoice={selectChoice}
         />
       }
-      <div class={choiceButtonGroupClass}>
+      <div class={choiceButtonGroupClass} style={{ "--grid-columns": gridColumns }}>
         {availableChoices.map((choice, index) => (
           <ChoiceButton
             key={`${key}-${index}`}
@@ -100,6 +108,10 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
             handleClick={selectChoice}
             choiceAppearance={choiceAppearance}
           />))
+        }
+        {
+          (choiceAppearance.grid && choiceAppearance.grouped && emptyCells > 0) 
+          && <div style={{"grid-column": `span ${emptyCells}`, "background-color": "var(--bg-color)"}}></div>
         }
       </div>
     </>
