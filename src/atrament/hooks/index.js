@@ -3,3 +3,4 @@ export * from './use-atrament-state';
 export * from './use-atrament-overlay';
 export * from './use-atrament-saves';
 export * from './use-atrament-background';
+export * from './use-screen-renderer';

@@ -77,6 +77,10 @@ export const STORYPATH_STORE_KEY = '$story_path';
 export const BACKGROUND_STORE_KEY = 'background';
 export const BACKGROUND_PAGE_STORE_KEY = 'background_page';
 
+// renderers
+export const RENDERER_STORE_KEY = '$renderer';
+export const RENDERER_DEFAULT = 'story';
+
 // known global tags (for debugger)
 
 export const KNOWN_GLOBAL_TAGS = [
