@@ -9,6 +9,10 @@ export const useScreenRenderer = () => {
   const lastSceneIndex = atramentState.scenes.length - 1;
   const lastScene = atramentState.scenes[lastSceneIndex];
 
+  if (lastScene.tags.MAP) {
+    return '$map';
+  }
+
   const rendererTagValue = lastScene.tags.SCREEN; // Ink tag for renderer change
   const renderer = rendererTagValue === true ? RENDERER_DEFAULT : rendererTagValue;
   const currentScreenRenderer = atramentState.game[RENDERER_STORE_KEY] || RENDERER_DEFAULT;

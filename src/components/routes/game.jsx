@@ -8,9 +8,11 @@ import ErrorScreen from 'src/components/screens/error';
 // screen renderers
 import { useScreenRenderer } from 'src/atrament/hooks';
 import StoryView from 'src/components/screens/game/story';
+import MapView from 'src/components/screens/game/map';
 
 const SCREEN_RENDERERS = {
-  'story': StoryView
+  'story': StoryView,
+  '$map': MapView
 };
 
 const GameRoute = () => {
