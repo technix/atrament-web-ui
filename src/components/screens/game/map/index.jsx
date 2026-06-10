@@ -43,6 +43,7 @@ const MapView = () => {
       const config = {
         image: getAssetPath(currentScene.tags.MAP),
         options: getTagAttributes(currentScene.tags.MAP_OPTIONS),
+        markers: currentScene.tags.MAP_MARKER || []
       };
       setMapConfig(config);
     } catch (e) {
@@ -51,13 +52,14 @@ const MapView = () => {
   }, [currentScene, throwAtramentError]);
 
   const processedMarkers = useMemo(() => {
-    if (!mapConfig?.markers) return [];
-    
-    return mapConfig.markers.map(marker => ({
+    if (!mapConfig?.markers) return;
+
+    const mapMarkers = Array.isArray(mapConfig.markers) ? mapConfig.markers : [mapConfig.markers]
+    const mapMarkersConfig = mapMarkers.map(getTagAttributes);
+    return mapMarkersConfig.map(marker => ({
       ...marker,
-      content: marker.type === 'image' ? getAssetPath(marker.content) : marker.content,
-      onclick: addOnclickHandler(marker),
-      disabled: marker.disabled === true
+      img: marker.img ? getAssetPath(marker.img) : undefined,
+      onclick: addOnclickHandler(marker)
     }));
   }, [mapConfig?.markers, getAssetPath, addOnclickHandler]);
 

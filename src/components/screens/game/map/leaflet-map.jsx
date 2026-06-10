@@ -36,17 +36,25 @@ const Map = ({ mapImage, markers = [], playerMarker = false, options = { playerM
   useEffect(() => {
     if (!L || !containerRef.current || !imageLoaded || !imageDimensions) return;
     const { width, height } = imageDimensions;
-    const mapBounds = [[height, 0], [0, width]];
+
+    const MapCRS = L.extend({}, L.CRS.Simple, {
+      transformation: new L.Transformation(1, 0, 1, 0), // use top-left corner as 0,0
+      infinite: true
+    });
+
+    const bounds = [[0, 0], [height, width]];
     const mapInstance = L.map(containerRef.current, {
-      crs: L.CRS.Simple,
+      crs: MapCRS,
       maxZoom: options.maxZoom ?? 3,
       minZoom: options.minZoom ?? -3,
-      maxBounds: mapBounds,
+      zoomDelta: 0.1, // screen buttons zoom
+      zoomSnap: 0,
+      wheelPxPerZoomLevel: 240, // mousewheel zoom
+      maxBounds: bounds,
       maxBoundsViscosity: 1.0,
       attributionControl: false
-    }).fitBounds(mapBounds);
-    const imageBounds = [[0, 0], [height, width]];
-    L.imageOverlay(mapImage, imageBounds).addTo(mapInstance);
+    }).fitBounds(bounds);
+    L.imageOverlay(mapImage, bounds).addTo(mapInstance);
     setMap(mapInstance);
 
     return () => {
@@ -57,7 +65,7 @@ const Map = ({ mapImage, markers = [], playerMarker = false, options = { playerM
   // Store player marker ref for proximity detection
   const playerMarkerRef = useRef(null);
 
-/*
+
 
   // Render markers
   useEffect(() => {
@@ -72,28 +80,27 @@ const Map = ({ mapImage, markers = [], playerMarker = false, options = { playerM
 
     markers.forEach(marker => {
       // Marker position in pixel coordinates (lat/lng reversed for Simple CRS)
-      const markerLatLng = L.latLng(marker.y, marker.x);
       
       let markerIcon = L.icon({
-        iconUrl: marker.type === 'image' ? marker.content : undefined,
-        iconSize: marker.iconSize || [32, 32],
+        iconUrl: marker.img || undefined,
+        iconSize: marker.iconSize || [16, 16],
         iconAnchor: marker.iconAnchor || [16, 16],
         popupAnchor: [0, -16],
         className: marker.disabled ? style.disabled_marker : ''
       });
-
+/*
       // Create a custom div icon for text markers
-      if (marker.type === 'text') {
+      if (!marker.img) {
         markerIcon = L.divIcon({
-          html: `<div class="${clsx(style.text_marker, marker.disabled ? style.disabled : '')}">${marker.content}</div>`,
+          html: `<div class="${clsx(style.text_marker, marker.disabled ? style.disabled : '')}">${marker.label}</div>`,
           iconSize: [60, 40],
           iconAnchor: [30, 20],
           popupAnchor: [0, -20],
           className: ''
         });
       }
-
-      const leafletMarker = L.marker(markerLatLng, {
+*/
+      const leafletMarker = L.marker([marker.y, marker.x], {
         icon: markerIcon,
         draggable: marker.draggable && !marker.disabled
       }).addTo(map);
@@ -115,7 +122,7 @@ const Map = ({ mapImage, markers = [], playerMarker = false, options = { playerM
     });
   }, [map, L, markers]);
 
-*/
+
 
 /*
 
