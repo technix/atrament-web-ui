@@ -1,0 +1,2 @@
+const __vite__mapDeps=(i,m=__vite__mapDeps,d=(m.f||(m.f=["./lora-bsb70R27.css"])))=>i.map(i=>d[i]);
+import{t as e}from"./index-CVzfE_rj.js";e(()=>Promise.resolve({}),__vite__mapDeps([0]),import.meta.url);var t={name:`Lora`,fallback:`serif`};export{t as default};
