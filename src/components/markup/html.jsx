@@ -7,11 +7,12 @@ const htmlTags = {};
   'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
   'b', 'strong', 'i', 'em', 'u', 's',
   'mark', 'del', 'ins', 'code', 'kbd',
-  'small', 'sub', 'sup',
+  'small', 'sub', 'sup', 'strike',
   'abbr', 'blockquote', 'span', 'q',
   'ul', 'ol', 'li', 'menu',
-  'dl', 'dd', 'dd',
-  'br', 'hr', 'wbr'
+  'dl', 'dt', 'dd',
+  'br', 'hr', 'wbr',
+  'div', 'span'
 ].forEach((tag) => {
   htmlTags[tag] = { tag, component: htmlTagComponent(tag) };
 });
