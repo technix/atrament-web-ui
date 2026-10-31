@@ -62,8 +62,8 @@ Atrament game can be published as a web application, as a single HTML file, or a
 
 | Tag | Description                |
 | :-------- | :------------------------- |
-| `# title: A Story Written In Ink` | Game title |
-| `# author: John Doe` | Author |
+| `# title: A Story Written In Ink` | Game title. Use `:::` as a line break. |
+| `# author: John Doe` | Author. Use `:::` as a line break. |
 | `# cover: some/image.jpg` | Cover image to display at the main menu screen. You can change its dimensions by adding width value after the image path: `# cover: some/image.jpg 30%` |
 | `# title_screen_layout: cover, title, author` | Order of the components on the title screen. You can remove items from this list or rearrange them. |
 | `# theme: light` | Game color theme: `light`, `sepia`, or `dark` |
