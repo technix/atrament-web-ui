@@ -318,6 +318,10 @@ To display an overlay, authors need to define a button with the `[button]` tag, 
 
 If the first line of the function is a `[title]Overlay Title[/title]` tag, this title will be displayed in the toolbar.
 
+The first line of the function can also contain an `[overlay]` tag with overlay options. Currently, `class` option is supported, which adds CSS classes to the overlay container: `[overlay class="inventory dark"]`. The `[overlay]` tag can be combined with the `[title]` tag in the same line.
+
+Each overlay container also gets the `atrament-overlay-<function name>` CSS class, for example `atrament-overlay-inventory`.
+
 Example of the toolbar and overlays:
 ```
 # toolbar: game_toolbar
@@ -329,7 +333,7 @@ Example of the toolbar and overlays:
   [button=stats]Stats[/button]
 
 === function inventory()
-  [title]Inventory[/title]
+  [overlay class=inventory-panel][title]Inventory[/title]
   You are carrying:
   ...
 

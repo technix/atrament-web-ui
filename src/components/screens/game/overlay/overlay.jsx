@@ -6,7 +6,7 @@ import { CLOSE_OVERLAY_DELAY } from 'src/constants';
 import { IconToolbarBack } from 'src/components/ui/icons';
 import ContainerText from 'src/components/ui/container-text';
 
-export default function OverlayPresenter({ children, title, closeOverlay }) {
+export default function OverlayPresenter({ children, title, options, closeOverlay }) {
   const [isClosing, setIsClosing] = useState(false);
   const closeHandler = useCallback(() => {
     setIsClosing(true);
@@ -17,7 +17,8 @@ export default function OverlayPresenter({ children, title, closeOverlay }) {
     style.overlay_container,
     'transparent animation_appear animation_appear_overlay',
     isClosing && 'animation_disappear',
-    'atrament-overlay-container'
+    'atrament-overlay-container',
+    options?.class
   );
   const headerClasses = clsx(
     style.overlay_header,

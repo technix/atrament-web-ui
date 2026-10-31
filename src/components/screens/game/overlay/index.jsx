@@ -23,7 +23,7 @@ const OverlayView = () => {
   const title = overlay.title ? <Markup>{overlay.title}</Markup> : '';
   const content = isLoaded ? overlay.content?.split('\n').map(OverlayParagraph) : <CircleLoader />;
   const Presenter = overlay.display === 'modal' ? ModalPresenter : OverlayPresenter;
-  return <Presenter title={title} closeOverlay={closeOverlay}>{content}</Presenter>;
+  return <Presenter title={title} options={overlay.options} closeOverlay={closeOverlay}>{content}</Presenter>;
 }
 
 export default OverlayView;

@@ -6,6 +6,7 @@ export default function initOverlay(atrament) {
     current: null,
     content: '',
     title: null,
-    display: null
+    display: null,
+    options: {}
   });
 }

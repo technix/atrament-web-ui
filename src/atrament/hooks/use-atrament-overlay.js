@@ -1,26 +1,39 @@
 
 import { useCallback } from 'preact/hooks';
 import { OVERLAY_STORE_KEY } from 'src/constants';
+import getTagAttributes from 'src/utils/get-tag-attributes';
+import getMarkupRegex from 'src/utils/get-markup-regex';
 import { useAtrament } from "./use-atrament";
 import { useAtramentState } from "./use-atrament-state";
+
+const overlayTagRegex = getMarkupRegex('overlay', { single: true });
+const titleTagRegex = getMarkupRegex('title');
 
 export const useAtramentOverlay = () => {
   const { evaluateInkFunction, setStateKey } = useAtrament();
   const atramentState = useAtramentState([OVERLAY_STORE_KEY]);
 
   const setOverlayContent = useCallback((overlayName, content, displayType) => {
-    let textContent = `${content}`;
-    const contentArray = content.split('\n');
-    const firstLine = contentArray.shift();
-    const title = firstLine.match(/\[title\](.+?)\[\/title\](.*)$/i);
-    if (title) {
-      textContent = [title[2], ...contentArray].join('\n');
+    const contentArray = `${content}`.split('\n');
+    let firstLine = contentArray.shift();
+    let options = {};
+    const overlayTag = firstLine.match(overlayTagRegex.parser);
+    if (overlayTag) {
+      options = getTagAttributes(overlayTag[1].trim());
+      firstLine = firstLine.replace(overlayTag[0], '');
+    }
+    let title = null;
+    const titleTag = firstLine.match(titleTagRegex.parser);
+    if (titleTag) {
+      title = titleTag[2] || null;
+      firstLine = firstLine.replace(titleTag[0], '');
     }
     setStateKey(OVERLAY_STORE_KEY, {
       current: overlayName,
-      title: title ? title[1] : null,
-      content: textContent,
-      display: displayType || null
+      title,
+      content: [firstLine, ...contentArray].join('\n'),
+      display: displayType || null,
+      options
     });
   }, [ setStateKey ]);
 
@@ -38,7 +51,8 @@ export const useAtramentOverlay = () => {
       current: null,
       content: '',
       title: null,
-      display: null
+      display: null,
+      options: {}
     });
   }, [ setStateKey ]);
 

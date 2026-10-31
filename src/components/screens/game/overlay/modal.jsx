@@ -9,7 +9,7 @@ import Backdrop from 'src/components/ui/backdrop';
 import Modal from 'src/components/ui/modal';
 import CloseButton from 'src/components/ui/close-button';
 
-export default function ModalPresenter({ children, title, closeOverlay }) {
+export default function ModalPresenter({ children, title, options, closeOverlay }) {
   const [isClosing, setIsClosing] = useState(false);
   const closeHandler = useCallback(() => {
     setIsClosing(true);
@@ -18,7 +18,8 @@ export default function ModalPresenter({ children, title, closeOverlay }) {
 
   const containerClasses = clsx(
     'transparent animation_appear animation_appear_overlay',
-    isClosing && 'animation_disappear'
+    isClosing && 'animation_disappear',
+    options?.class
   );
   const headerClasses = clsx(
     style.overlay_header,
