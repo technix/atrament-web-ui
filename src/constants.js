@@ -48,6 +48,15 @@ export const LINE_HEIGHT_MAX = 200;
 // volume
 export const DEFAULT_VOLUME = 50;
 
+// settings screen layout
+export const SETTINGS_SCREEN_DEFAULT = [
+  'fullscreen',
+  'animation',
+  'sound',
+  { title: 'settings.appearance', items: [ 'font', 'text', 'theme' ] }
+];
+export const SETTINGS_SCREEN = Array.isArray(cfg.settings) ? cfg.settings : SETTINGS_SCREEN_DEFAULT;
+
 // Atrament settings
 export const ATRAMENT_SETTINGS = {
   fullscreen: false,

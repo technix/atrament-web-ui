@@ -394,6 +394,16 @@ Tips:
 - if you need an inline template, you can change wrapper to a `<span>`: `[template src=x.html wrapper=span][/template]`.
 - templates can be nested: `[template src=card.html][template src=title.html var:title="Card Title"][/template][/template]`
 
+### Settings screen
+The layout of the settings screen can be defined in the `atrament.config.json` using `settings` parameter. Strings are settings elements (`fullscreen`, `animation`, `sound`, `font`, `text`, `theme`), objects are collapsible groups with a `title` (translation key or text) and a list of `items`. Unknown elements are ignored. If not set, the default layout is used:
+```
+"settings": [
+  "fullscreen",
+  "animation",
+  "sound",
+  { "title": "settings.appearance", "items": [ "font", "text", "theme" ] }
+]
+```
 
 ## Customization
 
