@@ -1,6 +1,6 @@
 
 import { useCallback } from 'preact/hooks';
-import { OVERLAY_STORE_KEY } from 'src/constants';
+import { OVERLAY_STORE_KEY, EMPTY_OVERLAY } from 'src/constants';
 import getTagAttributes from 'src/utils/get-tag-attributes';
 import getMarkupRegex from 'src/utils/get-markup-regex';
 import { useAtrament } from "./use-atrament";
@@ -47,13 +47,7 @@ export const useAtramentOverlay = () => {
   }, [ atramentState, setOverlayContent, evaluateInkFunction ]);
 
   const closeOverlay = useCallback(() => {
-    setStateKey(OVERLAY_STORE_KEY, {
-      current: null,
-      content: '',
-      title: null,
-      display: null,
-      options: {}
-    });
+    setStateKey(OVERLAY_STORE_KEY, EMPTY_OVERLAY);
   }, [ setStateKey ]);
 
   const execContentFunction = useCallback((inkFn, display) => {

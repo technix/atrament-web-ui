@@ -159,3 +159,11 @@ export const SCROLL_INTO_VIEW_DURATION = 300;
 // close overlay delay
 export const CLOSE_OVERLAY_DELAY = 200;
 
+// empty overlay definition
+export const EMPTY_OVERLAY = {
+  current: null,
+  content: '',
+  title: null,
+  display: null,
+  options: {}
+};
