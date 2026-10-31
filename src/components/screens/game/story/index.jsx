@@ -16,12 +16,14 @@ const StoryView = () => {
   const [ isReady, setReady ] = useState(false);
 
   const lastSceneIndex = atramentState.scenes.length - 1;
-  const isHypertextMode = !!atramentState.metadata.hypertext || !!atramentState.scenes[lastSceneIndex]?.tags.HYPERTEXT;
+  const lastSceneTags = atramentState.scenes[lastSceneIndex]?.tags;
+  const isHypertextMode = !!atramentState.metadata.hypertext || !!lastSceneTags?.HYPERTEXT;
+  const scenesAlign = atramentState.metadata.scenes_align || lastSceneTags?.SCENE_ALIGN || '';
   const key = `choices-${atramentState.scenes[lastSceneIndex]?.uuid}`;
 
   return (
     <ContainerText className='atrament-container-game-content'>
-      <ContainerScenes align={atramentState.metadata.scenes_align}>
+      <ContainerScenes align={scenesAlign}>
         {atramentState.scenes.map((s, i) =>
           <Scene
             key={s.uuid}

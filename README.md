@@ -114,6 +114,7 @@ Atrament game can be published as a web application, as a single HTML file, or a
 | `# HYPERTEXT` | Use links instead of choices for this scene. See "[Hypertext mode](#hypertext-mode)". |
 | `# CHOICES: grouped numbered` | Changes the choices appearance for this scene only. Uses the same syntax as global `#choices` tag. |
 | `# AUTO_CHOICE` | Make a choice automatically. See "[Automatic choice](#automatic-choice)". |
+| `# SCENE_ALIGN` | Scene alignment on the screen. Applies to all visible scenes, resets if next scene does not have this tag. Can be set to `top`, `center`, or `bottom`. |
 
 
 Note: For sound effects, please use either AUDIO/AUDIOLOOP or PLAY_SOUND/PLAY_MUSIC/STOP_SOUND/STOP_MUSIC tags. Combining them may lead to unexpected side effects.
