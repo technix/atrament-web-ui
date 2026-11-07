@@ -3,10 +3,12 @@ import clsx from 'clsx';
 import style from './index.module.css';
 import { useCallback, useEffect, useState } from 'preact/hooks';
 import { useTranslator } from '@eo-locale/preact';
-import { useAtrament } from 'src/atrament/hooks';
+import { useAtrament, useAtramentOverlay } from 'src/atrament/hooks';
 import { useKeyboardHandler } from 'src/hooks';
 
 import getTagAttributes from 'src/utils/get-tag-attributes';
+
+const STORY_AREA_SELECTOR = '.atrament-container-game-content';
 
 function clickToContinueOptions(param) {
   const options = {
@@ -37,6 +39,8 @@ function clickToContinueOptions(param) {
 
 const ClickToContinue = ({ setReady, withChoice = false, options }) => {
   const { makeChoice, continueStory } = useAtrament();
+  const { overlay } = useAtramentOverlay();
+  const isOverlayOpen = !!overlay?.current;
   const [ isVisible, setIsVisible ] = useState(false);
   const translator = useTranslator();
 
@@ -53,25 +57,36 @@ const ClickToContinue = ({ setReady, withChoice = false, options }) => {
     }, 0);
   }, [ makeChoice, continueStory, setReady, withChoice ]);
 
+  // continue only on clicks inside the story area (ignore overlay, modal, toolbar, menu)
+  const clickHandler = useCallback((e) => {
+    if (!e.target?.closest?.(STORY_AREA_SELECTOR)) {
+      return;
+    }
+    continueGame(e);
+  }, [ continueGame ]);
+
   const kbdChoiceHandler = useCallback((e) => {
+    if (isOverlayOpen) {
+      return;
+    }
     if (e.key === ' ' || e.key === 'Enter') {
       continueGame();
     }
-  }, [ continueGame ]);
+  }, [ continueGame, isOverlayOpen ]);
 
   useKeyboardHandler(kbdChoiceHandler);
 
   useEffect(() => {
-    const delayClickToContinue = setTimeout(() => document.body.addEventListener("click", continueGame, false), clickable * 1000);
+    const delayClickToContinue = setTimeout(() => document.body.addEventListener("click", clickHandler, false), clickable * 1000);
     const delayAnimation = setTimeout(() => setIsVisible(true), animation * 1000);
     const delayChoice = delay ? setTimeout(continueGame, delay * 1000) : undefined;
     return () => {
       clearTimeout(delayAnimation);
       clearTimeout(delayClickToContinue);
       clearTimeout(delayChoice);
-      document.body.removeEventListener("click", continueGame, false);
+      document.body.removeEventListener("click", clickHandler, false);
     }
-  }, [ continueGame, setIsVisible, clickable, delay, animation ]);
+  }, [ continueGame, clickHandler, setIsVisible, clickable, delay, animation ]);
 
   return (
     <div class={style.container}>
