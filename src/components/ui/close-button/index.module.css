@@ -16,7 +16,9 @@
   transition: background-color var(--animation-disabled, 0.1s) linear;
 }
 
-.close button:hover {
-  background-color: var(--accent-fg-color);
-  color: var(--bg-color);
+@media (hover: hover) {
+  .close button:hover {
+    background-color: var(--accent-fg-color);
+    color: var(--bg-color);
+  }
 }

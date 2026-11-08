@@ -20,9 +20,11 @@
   cursor: inherit;
 }
 
-.menu_button:hover {
-  background-color: var(--fg-color);
-  color: var(--bg-color);
+@media (hover: hover) {
+  .menu_button:hover {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+  }
 }
 
 .accented_button {
@@ -30,7 +32,9 @@
   border: 1px solid var(--accent-fg-color);
 }
 
-.accented_button:hover {
-  background-color: var(--accent-fg-color);
-  color: var(--accent-inverse-color);
+@media (hover: hover) {
+  .accented_button:hover {
+    background-color: var(--accent-fg-color);
+    color: var(--accent-inverse-color);
+  }
 }

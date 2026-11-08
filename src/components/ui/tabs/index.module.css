@@ -27,8 +27,10 @@
     color: var(--accent-fg-color);
 }
 
-.tabheader a:hover {
+@media (hover: hover) {
+  .tabheader a:hover {
     color: var(--bg-color);
     background-color: var(--fg-color);
+  }
 }
 

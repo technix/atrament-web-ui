@@ -30,9 +30,11 @@
   transition: background-color var(--animation-disabled, 0.1s) linear;
 }
 
-.menu_item:hover {
-  background-color: var(--fg-color);
-  color: var(--bg-color);
+@media (hover: hover) {
+  .menu_item:hover {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+  }
 }
 
 .menu_item:disabled {
@@ -42,9 +44,11 @@
   cursor: inherit;
 }
 
-.menu_item:disabled:hover {
-  background-color: var(--shade-color);
-  color: var(--fg-color);
+@media (hover: hover) {
+  .menu_item:disabled:hover {
+    background-color: var(--shade-color);
+    color: var(--fg-color);
+  }
 }
 
 .small {
@@ -63,9 +67,11 @@
   border: 1px solid var(--accent-fg-color);
 }
 
-.accented:hover {
-  background-color: var(--accent-fg-color);
-  color: var(--accent-bg-color);
+@media (hover: hover) {
+  .accented:hover {
+    background-color: var(--accent-fg-color);
+    color: var(--accent-bg-color);
+  }
 }
 
 .delete_button {
@@ -84,9 +90,11 @@
   border: 1px solid var(--accent-fg-color);
 }
 
-.delete_button:hover {
-  background-color: var(--accent-fg-color);
-  color: var(--accent-bg-color);
+@media (hover: hover) {
+  .delete_button:hover {
+    background-color: var(--accent-fg-color);
+    color: var(--accent-bg-color);
+  }
 }
 
 .delete_item {
@@ -97,7 +105,9 @@
   border: 1px solid var(--accent-fg-color);
 }
 
-.delete_item:hover {
-  background-color: var(--accent-fg-color);
-  color: var(--accent-bg-color);
+@media (hover: hover) {
+  .delete_item:hover {
+    background-color: var(--accent-fg-color);
+    color: var(--accent-bg-color);
+  }
 }

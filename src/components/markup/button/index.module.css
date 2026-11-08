@@ -15,9 +15,11 @@
   border: 1px solid var(--fg-color);
 }
 
-.bordered:hover {
-  background-color: var(--fg-color);
-  color: var(--bg-color);
+@media (hover: hover) {
+  .bordered:hover {
+    background-color: var(--fg-color);
+    color: var(--bg-color);
+  }
 }
 
 .bordered:disabled {
@@ -29,8 +31,10 @@
   border: 1px solid var(--bg-color);
 }
 
-.borderless:hover {
-  border: 1px solid var(--fg-color);
+@media (hover: hover) {
+  .borderless:hover {
+    border: 1px solid var(--fg-color);
+  }
 }
 
 .borderless:disabled {
