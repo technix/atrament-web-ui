@@ -15,6 +15,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
   const { metadata } = useAtramentState(['metadata']);
   const [ chosen, setChosen ] = useState(null);
   const choiceGroupRef = useRef(null);
+  const choiceLockRef = useRef(false);
 
   // hide choices with #HIDDEN tag
   const availableChoices = currentScene.choices?.filter((i) => !i.tags?.HIDDEN);
@@ -54,6 +55,10 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
     : noOp;
 
   const selectChoice = useCallback((id) => {
+    if (choiceLockRef.current) {
+      return;
+    }
+    choiceLockRef.current = true;
     choiceGroupHandlerFn();
     setChosen(id);
     // pass choice to Atrament
@@ -62,6 +67,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
       setReady(false);
       makeChoice(id);
       continueStory();
+      choiceLockRef.current = false;
     }, delay);
   }, [ makeChoice, continueStory, setReady, delay, choiceGroupHandlerFn ]);
 
@@ -100,7 +106,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
   return (
     <>
       {currentScene.tags?.PROMPT && <div class={clsx(style.choice_prompt, 'atrament-prompt')}>{currentScene.tags.PROMPT}</div>}
-      {currentScene.tags?.AUTO_CHOICE &&
+      {currentScene.tags?.AUTO_CHOICE && chosen === null &&
         <ChoiceTimer
           options={currentScene.tags.AUTO_CHOICE}
           choices={currentScene.choices}
