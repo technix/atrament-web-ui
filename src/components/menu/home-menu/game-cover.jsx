@@ -1,4 +1,4 @@
-import { h } from 'preact';
+import { h, Fragment } from 'preact';
 import { useTranslator } from '@eo-locale/preact';
 import { useAtrament, useAtramentState } from 'src/atrament/hooks';
 
@@ -16,12 +16,12 @@ const GameCover = () => {
       ? <ContainerImage src={getAssetPath(coverImage)} options={coverSize ? { width: coverSize } : {}} />
       : '',
     title: <h1>{title
-      ? title.split(':::').map((item) => <>{item}<br/></>) 
+      ? title.split(':::').map((item) => <Fragment key={item}>{item}<br/></Fragment>)
       : translator.translate('default.title')
-      }</h1>,
+    }</h1>,
     author: author
-      ? <>{author.split(':::').map((name) => <p>{name}</p>)}</>
-      : <p>{translator.translate('default.author')}</p>,
+      ? <>{author.split(':::').map((name) => <p key={name}>{name}</p>)}</>
+      : <p>{translator.translate('default.author')}</p>
   };
   const layoutConfig = (title_screen_layout || 'cover, title, author');
   const layout = `${layoutConfig}`.split(/\s*,\s*/);

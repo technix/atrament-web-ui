@@ -47,7 +47,7 @@ const ChoiceButtonGroup = ({ key, currentScene, setReady }) => {
     row: !!choiceConfig?.includes('row'),
     borderless: !!choiceConfig?.includes('borderless'),
     grid: gridColumns !== null,
-    gridColumns: gridColumns
+    gridColumns
   };
 
   const choiceGroupHandlerFn = choiceAppearance.grouped && choiceAppearance.grid
