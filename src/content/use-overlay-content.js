@@ -6,10 +6,11 @@ import getImagesFromContent from "src/utils/get-images-from-content";
 export default function useOverlayContent() {
   const { getAssetPath } = useAtrament();
   const { overlay, closeOverlay } = useAtramentOverlay();
-  const [ isLoaded, setIsLoaded ] = useState(false);
+  const images = getImagesFromContent(overlay.content?.split('\n'));
+  const [ isLoaded, setIsLoaded ] = useState(() => images.length === 0);
 
   const preloader = async () => {
-    await preloadImages(getAssetPath, getImagesFromContent(overlay.content?.split('\n')));
+    await preloadImages(getAssetPath, images);
     setIsLoaded(true);
   }
 

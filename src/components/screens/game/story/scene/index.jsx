@@ -14,7 +14,7 @@ import CircleLoader from 'src/components/ui/animation-circles';
 
 const Scene = ({ scene, isCurrent, isSingle, readyHandler }) => {
   const { getAssetPath } = useAtrament();
-  const [ isLoaded, setIsLoaded ] = useState(false);
+  const [ isLoaded, setIsLoaded ] = useState(() => scene.images.length === 0);
   const elementRef = useRef(null);
 
   const scrollToScene = useCallback((behavior) => {
