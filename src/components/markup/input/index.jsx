@@ -22,6 +22,8 @@ const Input = ({ options }) => {
     let targetValue = e.srcElement.value || defaultValue;
     if (options.type === 'number') {
       targetValue = +targetValue;
+    } else if (options.type === 'text' || !options.type) {
+      targetValue = targetValue.trim();
     }
     setInkVariable(options.var, targetValue);
     setDefaultValue(targetValue);
