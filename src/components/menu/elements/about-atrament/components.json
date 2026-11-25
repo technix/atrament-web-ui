@@ -6,7 +6,7 @@
   ["Preact", "https://preactjs.com/"],
   ["Howler", "https://howlerjs.com/"],
   ["Nanostores", "https://github.com/nanostores/nanostores"],
-  ["LocalForage", "https://github.com/localForage/localForage"],
+  ["idb-keyval", "https://github.com/jakearchibald/idb-keyval"],
   ["fflate", "https://github.com/101arrowz/fflate"],
   ["mustache.js", "https://github.com/janl/mustache.js"]
 ]
