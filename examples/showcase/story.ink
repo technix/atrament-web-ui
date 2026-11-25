@@ -286,7 +286,7 @@ To reset the page background, use "PAGE_BACKGROUND: false".
 === media_video
 # CLEAR
 This paragraph contains video.
-[video]https:\/\/storage.googleapis.com\/gtv-videos-bucket\/sample\/ForBiggerEscapes.mp4[/video]
+[video]https:\/\/lorem.video\/cat_480p[/video]
 + [OK] -> media
 
 === media_sound
