@@ -53,5 +53,14 @@
   },
   "eslintConfig": {
     "extends": "preact"
+  },
+  "allowScripts": {
+    "dtrace-provider@0.8.8": true,
+    "protobufjs@7.6.6": true,
+    "ssh2@1.17.0": true,
+    "cpu-features@0.0.10": true,
+    "bufferutil@4.2.0": true,
+    "es5-ext@0.10.64": true,
+    "utf-8-validate@5.0.10": true
   }
 }
