@@ -17,6 +17,10 @@ export function registerSettingsHandlers(atrament) {
     fullscreen:
       (oldV, value) => {
         atrament.interfaces.platform.setFullscreen(value, (v) => {
+          if (atrament.state.get().settings.fullscreen === v) {
+            return;
+          }
+          // update fullscreen setting only if it differs
           atrament.settings.set('fullscreen', v);
           atrament.settings.save();
         });
