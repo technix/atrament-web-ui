@@ -15,6 +15,7 @@ const ContainerImage = ({ src, options = {} }) => (
       style={{
         width: options.width || 'auto'
       }}
+      alt={options.alt || ''}
       class={clsx(
         style.image,
         !options.fullsize && style.illustration,

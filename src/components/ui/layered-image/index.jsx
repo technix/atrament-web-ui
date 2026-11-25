@@ -8,6 +8,7 @@ const ImageLayer = ({ key, scale, item }) => (<img
   key={key}
   src={item.src}
   onClick={item.onclick}
+  alt={item.attrs?.alt || ''}
   style={{
     position: 'absolute',
     left: (item.attrs?.x || 0) * scale,
@@ -81,6 +82,7 @@ const LayeredImage = ({ layers = [], areas=[], options = {} }) => {
       <img
         src={background.src}
         class={clsx(style.background, 'atrament-layer-backround')}
+        alt={background.attrs?.alt || ''}
         style={{
           width: options.width || 'auto'
         }}

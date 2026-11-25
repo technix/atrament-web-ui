@@ -20,7 +20,7 @@ const AboutMenu = ({ onClick }) => {
     <Block className='atrament-about'>
       <div onClick={clickHandler}>
         <div class={style.header}>
-          <img src={atramentLogoImage} />
+          <img src={atramentLogoImage} alt="Atrament Logo" />
           <h1>Atrament <small>{APP_VERSION}</small></h1>
         </div>
         <p><A href="https://atrament.ink/">https://atrament.ink/</A></p>
@@ -32,7 +32,7 @@ const AboutMenu = ({ onClick }) => {
           ))}
         </p>
         <div class={style.infobox}>
-          <img src={iftfLogoImage} />
+          <img src={iftfLogoImage} alt="Interactive Fiction Technology Foundation Logo" />
           <p><Text
             id={"about.iftf_support"}
             html
