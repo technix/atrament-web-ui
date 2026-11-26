@@ -8,6 +8,9 @@
   line-height: var(--text-line-height);
   font-family: var(--font-face-game);
   font-size: var(--font-size-game);
+  /* reserve space for the scrollbar */
+  scrollbar-gutter: stable both-edges;
+  --text-container-gutter: var(--scrollbar-gutter-width, 0px);
 }
 
 /*

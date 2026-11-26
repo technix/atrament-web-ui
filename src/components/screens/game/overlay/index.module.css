@@ -46,6 +46,7 @@
 
 .overlay_content {
   padding: 1rem;
+  padding-inline: max(0px, calc(1rem - var(--text-container-gutter, 0px)));
   flex-grow: 1; 
   overflow: auto;
 }

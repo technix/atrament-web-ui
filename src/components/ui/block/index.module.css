@@ -1,6 +1,7 @@
 .block {
   display: block;
   margin: 1rem;
+  margin-inline: max(0px, calc(1rem - var(--text-container-gutter, 0px)));
 }
 
 .block_start {

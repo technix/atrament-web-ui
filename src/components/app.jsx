@@ -13,6 +13,7 @@ import Loading from 'src/components/ui/loading';
 import AppRouter from './router';
 
 import setInnerHeight from 'src/utils/set-inner-height';
+import setScrollbarGutter from 'src/utils/set-scrollbar-gutter';
 
 window.addEventListener('resize', setInnerHeight);
 
@@ -22,6 +23,7 @@ function App() {
   const [ loadedPercent, setLoadedPercent ] = useState(0);
 
   useEffect(setInnerHeight, []);
+  useEffect(setScrollbarGutter, []);
 
   useEffect(() => {
     const startEngine = async () => {
