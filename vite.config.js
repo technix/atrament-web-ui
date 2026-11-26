@@ -10,6 +10,7 @@ import { compileInk, watchInkFiles } from './vite/ink-compiler-plugin.js';
 import { removeInkFilesFromBuild } from './vite/remove-ink-files-plugin.js';
 import { conditionalFonts } from './vite/conditional-fonts-plugin.js';
 import getPWAConfig from './vite/pwa-config.js';
+import { generatePWAIcons } from './vite/pwa-icons-plugin.js';
 
 import atramentCfg from './atrament.config.json' with { type: 'json' };
 
@@ -75,7 +76,7 @@ export default defineConfig(({ mode }) => {
       buildDir = 'build/atrament-wizard-template';
     }
   } else if (mode === 'standalone') {
-    plugins.push(VitePWA(getPWAConfig(atramentConfig)));
+    plugins.push(generatePWAIcons());
     buildDir = 'build/.tmp_standalone/resources';
   } else if (mode === 'production') {
     if (atramentConfig.game.zip) {
