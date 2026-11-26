@@ -545,6 +545,19 @@ To enable this feature, edit `atrament.config.json` and add `zip` option to it w
 ```
 *Please note: this option is ignored for development and single file builds.*
 
+The zip file is precached by the service worker, so the game works offline. By default, the size of the zip file is limited to 100 MB; if the zip file is larger, the build fails. To change the limit, set `zip_max_size` option (in megabytes):
+```
+{
+  ...
+  "game": {
+    "path": "game",
+    "source": "gamefile.ink",
+    "zip": "yourgame.zip",
+    "zip_max_size": 200
+  }
+}
+```
+
 ### Publishing Atrament games from Inky
 You can create a single file Atrament games written with Inky, without setting up an Atrament project. Run this command in the project folder with Ink files to create a single file build:
 ```

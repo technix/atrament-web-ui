@@ -1,3 +1,6 @@
+// default max size of game zip archive, MB
+const DEFAULT_ZIP_MAX_SIZE = 100;
+
 export default function getPWAConfig(atramentCfg) {
   let pwaConfig = {
     registerType: 'autoUpdate',
@@ -34,6 +37,23 @@ export default function getPWAConfig(atramentCfg) {
     pwaConfig.workbox.globPatterns = [ ...pwaConfig.workbox.globPatterns, atramentCfg.game.zip ];
     // generate service worker after zip is created
     pwaConfig.integration = { closeBundleOrder: 'post' };
+
+    // zip size limit (MB)
+    const zipMaxSize = Number(atramentCfg.game.zip_max_size) || DEFAULT_ZIP_MAX_SIZE;
+    pwaConfig.workbox.maximumFileSizeToCacheInBytes = zipMaxSize * 1024 * 1024;
+    // fail the build if the zip too large or missing
+    pwaConfig.workbox.manifestTransforms = [
+      async (manifest) => {
+        if (!manifest.some((entry) => entry.url === atramentCfg.game.zip)) {
+          throw new Error(
+            `Game archive "${atramentCfg.game.zip}" is not included into service worker precache: ` +
+            `it is either missing or larger than ${zipMaxSize} MB. ` +
+            'Set "game.zip_max_size" (in MB) in atrament.config.json to change the limit.'
+          );
+        }
+        return { manifest };
+      }
+    ];
   }
 
   return pwaConfig;
