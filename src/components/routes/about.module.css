@@ -1,0 +1,10 @@
+.about_header {
+  flex-grow: 0;
+  flex-shrink: 0;
+  height: 2.5rem;
+}
+
+.about_footer {
+  flex-grow: 0;
+  flex-shrink: 0;
+}
