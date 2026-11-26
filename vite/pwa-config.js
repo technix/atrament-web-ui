@@ -33,8 +33,14 @@ export default function getPWAConfig(atramentCfg) {
   };
 
   if (atramentCfg.game.zip) {
-    // game folder will be removed, so don't include these files into service worker
-    pwaConfig.includeAssets = [ `!./${atramentCfg.game.path}/**` ];
+    const gamePath = atramentCfg.game.path.replace(/^(\.?\/)+|\/+$/g, '');
+    // game folder is packed into zip and removed from the build,
+    // so exclude its files but keep other public assets
+    pwaConfig.includeAssets = [ ...pwaConfig.includeAssets, `!${gamePath}/**` ];
+    // precache the zip itself
+    pwaConfig.workbox.globPatterns = [ ...pwaConfig.workbox.globPatterns, atramentCfg.game.zip ];
+    // generate service worker after zip is created
+    pwaConfig.integration = { closeBundleOrder: 'post' };
   }
 
   return pwaConfig;
