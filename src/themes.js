@@ -29,5 +29,20 @@ export function applyTheme(theme) {
   }
   Object.entries(themes[theme] || themes[GAME_DEFAULT_THEME])
     .forEach(([prop, value]) => setCssProperty(`--${prop}`, value));
+  setThemeColorMeta(themes[theme]['bg-color']);
+}
+
+// browser UI / PWA title bar color follows the theme background
+function setThemeColorMeta(color) {
+  if (!color) {
+    return;
+  }
+  let meta = document.querySelector('meta[name="theme-color"]');
+  if (!meta) {
+    meta = document.createElement('meta');
+    meta.name = 'theme-color';
+    document.head.appendChild(meta);
+  }
+  meta.content = color;
 }
 

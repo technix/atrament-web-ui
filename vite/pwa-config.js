@@ -1,7 +1,27 @@
+import fs from 'node:fs';
+
 // default max size of game zip archive, MB
 const DEFAULT_ZIP_MAX_SIZE = 100;
 
+const THEMES_DIR = new URL('../resources/themes/', import.meta.url);
+const DEFAULT_THEME = 'light';
+const DEFAULT_BG_COLOR = '#FCFCFC';
+
+// background color of the game theme
+function getThemeColor(themeName) {
+  const themes = {};
+  fs.readdirSync(THEMES_DIR)
+    .filter((file) => file.endsWith('.json'))
+    .forEach((file) => {
+      const { name, theme } = JSON.parse(fs.readFileSync(new URL(file, THEMES_DIR), 'utf8'));
+      themes[name] = theme;
+    });
+  const theme = themes[themeName] || themes[DEFAULT_THEME];
+  return theme?.['bg-color'] || DEFAULT_BG_COLOR;
+}
+
 export default function getPWAConfig(atramentCfg) {
+  const themeColor = getThemeColor(atramentCfg.theme);
   let pwaConfig = {
     registerType: 'autoUpdate',
     includeAssets: ['**/!(*.ink)'],
@@ -20,8 +40,8 @@ export default function getPWAConfig(atramentCfg) {
       start_url: "./",
       display: "standalone",
       orientation: "portrait",
-      background_color: "#fff",
-      theme_color: "#673ab8"
+      background_color: themeColor,
+      theme_color: themeColor
     },
     pwaAssets: {
       config: 'vite/pwa-assets.config.js'
