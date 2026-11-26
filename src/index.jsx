@@ -9,6 +9,7 @@ import App from './components/app';
 
 // Patches
 import 'src/utils/neutralino-out-of-bounds-fix';
+import 'src/utils/neutralino-fullscreen-fix';
 
 // Override CSS styles
 import '../resources/styles/custom.css';
