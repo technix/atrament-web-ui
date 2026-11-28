@@ -1,0 +1,11 @@
+{
+  "name": "cordova-plugin-textzoom",
+  "version": "1.0.0",
+  "description": "Locks Android WebView text zoom at 100%",
+  "license": "MIT",
+  "cordova": {
+    "id": "cordova-plugin-textzoom",
+    "platforms": ["android"]
+  },
+  "keywords": ["ecosystem:cordova", "cordova-android"]
+}

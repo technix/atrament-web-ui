@@ -10,4 +10,6 @@
   <preference name="Orientation" value="{{{orientation}}}" />
   <preference name="android-minSdkVersion" value="36" />
   <preference name="android-targetSdkVersion" value="36" />
+  <preference name="TextZoom" value="{{{textZoom}}}" />
+  <plugin name="cordova-plugin-textzoom" spec="./local_plugins/cordova-plugin-textzoom" />
 </widget>

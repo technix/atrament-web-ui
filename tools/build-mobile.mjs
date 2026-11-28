@@ -22,6 +22,8 @@ Example Android configuration in atrament.config.json:
   Additional keys:
   * "orientation": "landscape" (portrait by default)
   * "debug": true (if set, the app is built with debug support)
+  * "text-zoom": Android WebView text zoom, in percent (100 by default, the same
+    as Chrome) or "auto" to follow the system font size setting
 
 */
 
@@ -35,6 +37,7 @@ const TARGET_PLATFORM = process.argv[2] || 'android';
 
 const DEFAULT_ICON = 'pwa-512x512.png';
 const DEFAULT_ORIENTATION = 'portrait';
+const DEFAULT_TEXT_ZOOM = 100;
 
 const APP_DIR = 'build/.tmp_standalone';
 const APP_WWW_DIR = `${APP_DIR}/resources`;
@@ -48,6 +51,7 @@ const CORDOVA_PACKAGE_JSON = `${TOOLS_DIR}/package.json.template`;
 const CORDOVA_CONFIG_XML = `${TOOLS_DIR}/config.xml.template`;
 const CORDOVA_BUILD_SH = `${TOOLS_DIR}/build.sh`;
 const CORDOVA_BUILD_JSON = `${TOOLS_DIR}/build.json`;
+const CORDOVA_LOCAL_PLUGINS = `${TOOLS_DIR}/local_plugins`;
 
 const DOCKER_BUILDER = 'frenzytechnix/atrament-android-builder';
 
@@ -66,7 +70,8 @@ const CORDOVA_CONFIG = {
   email: mobileConfig?.email,
   website: mobileConfig?.website,
   icon: `www/${mobileConfig?.icon || DEFAULT_ICON}`,
-  orientation: mobileConfig?.orientation || DEFAULT_ORIENTATION
+  orientation: mobileConfig?.orientation || DEFAULT_ORIENTATION,
+  textZoom: String(mobileConfig?.['text-zoom'] ?? DEFAULT_TEXT_ZOOM)
 };
 
 const PACKAGETYPE = mobileConfig?.debug ? 'debug' : 'release';
@@ -77,7 +82,7 @@ const docker = new Docker();
 function prepareMobileBuild() {
   if (!fs.existsSync(BUILD_DIR)) {
     fs.mkdirSync(BUILD_DIR);
-  } else {
+  } else if (fs.existsSync(`${BUILD_DIR}/package.json`)) {
     // check if package name was changed
     const existingConfig = JSON.parse(fs.readFileSync(`${BUILD_DIR}/package.json`, 'utf8'));
     if (existingConfig.name !== CORDOVA_CONFIG.id) {
@@ -91,15 +96,21 @@ function prepareMobileBuild() {
   shell.mv('-f', `${APP_WWW_DIR}/*`, `${BUILD_WWW_DIR}`);
   console.log('>>> Configuring Cordova project');
   const packageTemplate = fs.readFileSync(CORDOVA_PACKAGE_JSON, 'utf8');
+  const packageJson = JSON.parse(Mustache.render(packageTemplate, CORDOVA_CONFIG));
+  const existingPackageJson = !CLEARBUILD && fs.existsSync(`${BUILD_DIR}/package.json`)
+    ? JSON.parse(fs.readFileSync(`${BUILD_DIR}/package.json`, 'utf8'))
+    : {};
   fs.writeFileSync(
     `${BUILD_DIR}/package.json`,
-    Mustache.render(packageTemplate, CORDOVA_CONFIG)
+    JSON.stringify({ ...existingPackageJson, ...packageJson }, null, 2)
   );
   const configTemplate = fs.readFileSync(CORDOVA_CONFIG_XML, 'utf8');
   fs.writeFileSync(
     `${BUILD_DIR}/config.xml`,
     Mustache.render(configTemplate, CORDOVA_CONFIG)
   );
+  shell.rm('-rf', `${BUILD_DIR}/local_plugins`);
+  shell.cp('-R', CORDOVA_LOCAL_PLUGINS, `${BUILD_DIR}/local_plugins`);
   if (TARGET_PLATFORM === 'android') {
     shell.cp('-f', CORDOVA_BUILD_SH, BUILD_DIR);
     shell.cp('-f', CORDOVA_BUILD_JSON, BUILD_DIR);
@@ -249,6 +260,11 @@ const missing_keys = Object.keys(CORDOVA_CONFIG).filter((k) => !CORDOVA_CONFIG[k
 if (missing_keys.length > 0) {
   console.log("[!] ERROR: missing configuration options in atrament.config.json");
   missing_keys.forEach(k => console.log(`- platform.${TARGET_PLATFORM}.${k}`));
+  process.exit(1);
+}
+
+if (CORDOVA_CONFIG.textZoom !== 'auto' && !/^[1-9]\d*$/.test(CORDOVA_CONFIG.textZoom)) {
+  console.log(`[!] ERROR: platform.${TARGET_PLATFORM}.text-zoom in atrament.config.json should be "auto" or a positive whole number (percent), got "${CORDOVA_CONFIG.textZoom}"`);
   process.exit(1);
 }
 

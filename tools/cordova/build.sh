@@ -7,6 +7,13 @@ if [[ -n "$CLEARBUILD" ]] then
 fi
 echo ">>> Cordova: add Android platform"
 cordova platform add android
+for plugin_dir in ./local_plugins/*/; do
+  plugin_id=$(basename "$plugin_dir")
+  if [[ -d "./plugins/$plugin_id" ]] then
+    echo ">>> Cordova: refresh local plugin $plugin_id"
+    cordova plugin rm "$plugin_id" --nosave
+  fi
+done
 if [[ ! -e ./atrament_app.keystore ]] then
   echo ">>> Cordova: generate keystore"
   keytool -genkey -v \

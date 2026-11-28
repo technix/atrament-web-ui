@@ -525,6 +525,7 @@ Before building an Android application, add "platform.android" section to the `a
 | orientation | Optional. Sets default screen orientation. Can be "default", "portrait", or "landscape". |
 | debug | Optional. If set to `true`, debug version of the application will be built. |
 | icon | Optional. Sets icon for the application. Path to file should be relative to the web app folder. Default value is `pwa-512x512.png` |
+| text-zoom | Optional. Sets text zoom percent value for Cordova webview. If set to `auto`, system-wide text zoom is used. Default value is `100`. |
 
 To build a package for Android, use `npm run build-android` command. The standalone APK and a bundle for Play Market will be in the `build/android` folder. 
 

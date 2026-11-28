@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="cordova-plugin-textzoom"
+        version="1.0.0">
+  <name>TextZoom</name>
+  <description>Sets Android WebView text zoom from the "TextZoom" preference: a percentage (100 by default, as in Chrome) or "auto" to follow the system font size.</description>
+  <license>MIT</license>
+
+  <platform name="android">
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="TextZoom">
+        <param name="android-package" value="ink.atrament.textzoom.TextZoom" />
+        <param name="onload" value="true" />
+      </feature>
+    </config-file>
+    <source-file src="src/android/TextZoom.java" target-dir="src/ink/atrament/textzoom" />
+  </platform>
+</plugin>
