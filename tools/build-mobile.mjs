@@ -22,6 +22,10 @@ Example Android configuration in atrament.config.json:
   Additional keys:
   * "orientation": "landscape" (portrait by default)
   * "debug": true (if set, the app is built with debug support)
+  * "icon": Android app screen icon, relative to the game folder
+    (uses 'pwa-512x512.png' if not set)
+  * "splash-icon": Android splash screen icon, relative to the game folder
+    (uses the default app icon if not set)
   * "text-zoom": Android WebView text zoom, in percent (100 by default, the same
     as Chrome) or "auto" to follow the system font size setting
 
@@ -70,6 +74,7 @@ const CORDOVA_CONFIG = {
   email: mobileConfig?.email,
   website: mobileConfig?.website,
   icon: `www/${mobileConfig?.icon || DEFAULT_ICON}`,
+  splashicon: `www/${mobileConfig?.['splash-icon'] || mobileConfig?.icon || DEFAULT_ICON}`,
   orientation: mobileConfig?.orientation || DEFAULT_ORIENTATION,
   textZoom: String(mobileConfig?.['text-zoom'] ?? DEFAULT_TEXT_ZOOM)
 };
