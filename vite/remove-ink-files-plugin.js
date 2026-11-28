@@ -16,6 +16,20 @@ function findFiles(startPath, filter, callback) {
   });
 }
 
+function removeEmptyDirs(dirPath, isRoot = true) {
+  if (!fs.existsSync(dirPath)) return false;
+  fs.readdirSync(dirPath).forEach((file) => {
+    const fullPath = path.join(dirPath, file);
+    if (fs.lstatSync(fullPath).isDirectory()) {
+      removeEmptyDirs(fullPath, false);
+    }
+  });
+  if (!isRoot && fs.readdirSync(dirPath).length === 0) {
+    console.log(`Removing empty folder from bundle: ${dirPath}`);
+    fs.rmdirSync(dirPath);
+  }
+}
+
 export function removeInkFilesFromBuild() {
   return {
     name: 'remove-files-from-build',
@@ -26,6 +40,7 @@ export function removeInkFilesFromBuild() {
         console.log(`Removing Ink file from bundle: ${item}`);
         fs.unlinkSync(item);
       });
+      removeEmptyDirs(options.dir);
     }
   };
 }
