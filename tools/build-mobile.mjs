@@ -136,6 +136,28 @@ function cleanup() {
 }
 
 
+function fail(stage, err) {
+  console.log('');
+  console.error(`[!] ERROR: ${stage}`);
+  const code = err?.code;
+  const isDockerSocket = err?.address && /docker/i.test(String(err.address));
+  if (isDockerSocket && (code === 'ENOENT' || code === 'ECONNREFUSED')) {
+    console.error('    Cannot connect to Docker. Is Docker Desktop installed and running?');
+    console.error('    Start Docker Desktop, wait until it reports "Engine running", then try again.');
+  } else if (code === 'EACCES' || code === 'EPERM') {
+    console.error('    Permission denied while talking to Docker.');
+    console.error('    Make sure your user is allowed to use Docker (e.g. member of the "docker" group).');
+  } else if (err?.statusCode === 404) {
+    console.error(`    Docker image "${DOCKER_BUILDER}" was not found.`);
+  } else if (code === 'ENOTFOUND' || code === 'ETIMEDOUT' || code === 'EAI_AGAIN') {
+    console.error('    Network error. Check your internet connection and try again.');
+  } else {
+    console.error(`    ${err?.message || err}`);
+  }
+  if (process.env.DEBUG) console.error(err);
+  process.exit(1);
+}
+
 function runAndroidBuild() {
   let activeContainer;
   console.log('>>> Starting Cordova builder');
@@ -159,8 +181,8 @@ function runAndroidBuild() {
     },
     (err, data) => {
       if (err) {
-        console.log('>>> Android build failed.');
-        throw err;
+        cleanup();
+        fail('Android build failed.', err);
       }
       console.log(data);
       cleanup();
@@ -192,7 +214,7 @@ function runAndroidBuild() {
 }
 
 function followPullProgress(err, stream) {
-  if (err) throw err;
+  if (err) fail(`Could not pull Docker image ${DOCKER_BUILDER}.`, err);
 
   // Helper to process the stream and trigger callbacks
   docker.modem.followProgress(
@@ -207,8 +229,7 @@ function followPullProgress(err, stream) {
 
   function onFinished(pullError) {
     if (pullError) {
-      console.error(' Pull failed:', pullError);
-      throw pullError;
+      fail(`Could not pull Docker image ${DOCKER_BUILDER}.`, pullError);
     } else {
       console.log(' Done.');
       // prepare project folder
