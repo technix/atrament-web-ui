@@ -13,6 +13,8 @@
   <preference name="TextZoom" value="{{{textZoom}}}" />
   <platform name="android">
     <preference name="AndroidWindowSplashScreenAnimatedIcon" value="{{{splashicon}}}" />
+    <resource-file src="android_res/build-extras.gradle" target="app/build-extras.gradle" />
+    <resource-file src="android_res/proguard-rules.pro" target="app/proguard-rules.pro" />
   </platform>
   <plugin name="cordova-plugin-textzoom" spec="./local_plugins/cordova-plugin-textzoom" />
 </widget>

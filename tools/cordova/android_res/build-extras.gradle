@@ -1,0 +1,12 @@
+// Picked up by the Cordova app/build.gradle (copied to platforms/android/app via
+// <resource-file> in config.xml). Release builds run R8: drops unused code from
+// AndroidX/Kotlin libraries, which makes classes.dex several times smaller.
+android {
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}

@@ -56,6 +56,7 @@ const CORDOVA_CONFIG_XML = `${TOOLS_DIR}/config.xml.template`;
 const CORDOVA_BUILD_SH = `${TOOLS_DIR}/build.sh`;
 const CORDOVA_BUILD_JSON = `${TOOLS_DIR}/build.json`;
 const CORDOVA_LOCAL_PLUGINS = `${TOOLS_DIR}/local_plugins`;
+const CORDOVA_ANDROID_FILES = `${TOOLS_DIR}/android_res`;
 
 const DOCKER_BUILDER = 'frenzytechnix/atrament-android-builder';
 
@@ -119,6 +120,8 @@ function prepareMobileBuild() {
   if (TARGET_PLATFORM === 'android') {
     shell.cp('-f', CORDOVA_BUILD_SH, BUILD_DIR);
     shell.cp('-f', CORDOVA_BUILD_JSON, BUILD_DIR);
+    shell.rm('-rf', `${BUILD_DIR}/android_res`);
+    shell.cp('-R', CORDOVA_ANDROID_FILES, `${BUILD_DIR}/android_res`);
   }
 }
 
@@ -142,6 +145,13 @@ function copyAndroidPackages() {
     console.log(`>>> Copying AAB (bundle for Play Store) to ${OUTPUT_DIR}`);
     shell.cp('-f', AAB_FILE, AAB_OUTPUT);
     builtPackages.push(AAB_OUTPUT);
+  }
+  const MAPPING_FILE = `${BUILD_DIR}/platforms/android/app/build/outputs/mapping/${PACKAGETYPE}/mapping.txt`;
+  const MAPPING_OUTPUT = `${OUTPUT_DIR}/${packageName}-mapping.txt`;
+  if (fs.existsSync(MAPPING_FILE)) {
+    console.log(`>>> Copying R8 mapping file to ${OUTPUT_DIR}`);
+    shell.cp('-f', MAPPING_FILE, MAPPING_OUTPUT);
+    builtPackages.push(MAPPING_OUTPUT);
   }
   return builtPackages;
 }
